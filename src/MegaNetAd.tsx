@@ -270,6 +270,7 @@ const Scene6: React.FC = () => {
             flexDirection: 'column',
             alignItems: 'center',
             opacity: c,
+            transform: 'translateY(-60px)',
           }}
         >
           <div
