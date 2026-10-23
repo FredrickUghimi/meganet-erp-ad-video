@@ -16,9 +16,11 @@
 import React from 'react';
 import {
   AbsoluteFill,
+  Audio,
   Img,
   Sequence,
   interpolate,
+  getStaticFiles,
   spring,
   staticFile,
   useCurrentFrame,
@@ -37,6 +39,9 @@ const COPY = {
   s6Web: 'meganetsoftware.com.ng',
   s6Brand: 'Mega-Net Software',
 };
+
+// Voiceover is optional: only mounted when public/voiceover.mp3 exists, so renders never fail without it.
+const VOICEOVER_FILE = 'voiceover.mp3';
 
 const BLUE = '#1A6DE0';
 const ORANGE = '#F7941D';
@@ -296,8 +301,11 @@ const Scene6: React.FC = () => {
   );
 };
 
-export const MegaNetAd: React.FC = () => (
+export const MegaNetAd: React.FC = () => {
+  const hasVoiceover = getStaticFiles().some((f) => f.name === VOICEOVER_FILE);
+  return (
   <AbsoluteFill style={{backgroundColor: WHITE}}>
+    {hasVoiceover ? <Audio src={staticFile(VOICEOVER_FILE)} /> : null}
     <Sequence from={0} durationInFrames={90}><Scene1 /></Sequence>
     <Sequence from={90} durationInFrames={90}><Scene2 /></Sequence>
     <Sequence from={180} durationInFrames={90}><Scene3 /></Sequence>
@@ -305,4 +313,5 @@ export const MegaNetAd: React.FC = () => (
     <Sequence from={360} durationInFrames={150}><Scene5 /></Sequence>
     <Sequence from={510} durationInFrames={90}><Scene6 /></Sequence>
   </AbsoluteFill>
-);
+  );
+};
