@@ -1,0 +1,20 @@
+{
+  "name": "meganet-erp-ad-video",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render MegaNetAd out/meganet-ad.mp4",
+    "poster": "remotion still MegaNetAd out/meganet-poster.png --frame=400"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.250",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.250"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "typescript": "^5.5.4"
+  }
+}
