@@ -9,7 +9,8 @@
  * Scene 6 (510-600f): "Join the waitlist"
  *                     "WhatsApp: +2347035682478"
  *                     "meganetsoftware.com.ng"
- * Logo: public/logo.jpg (used as-is)
+ *                     "Mega-Net Software" (text beside logo mark at bottom)
+ * Logo: public/logo-mark.png (transparent mark, shown <=280px tall)
  * Safe margins: 120px left/right, 250px top/bottom.
  */
 import React from 'react';
@@ -34,6 +35,7 @@ const COPY = {
   s6Title: 'Join the waitlist',
   s6Whatsapp: 'WhatsApp: +2347035682478',
   s6Web: 'meganetsoftware.com.ng',
+  s6Brand: 'Mega-Net Software',
 };
 
 const BLUE = '#1A6DE0';
@@ -158,11 +160,10 @@ const Scene5: React.FC = () => {
   return (
     <Safe>
       <Img
-        src={staticFile('logo.jpg')}
+        src={staticFile('logo-mark.png')}
         style={{
-          width: 360,
-          height: 360,
-          objectFit: 'contain',
+          height: 240,
+          width: 'auto',
           transform: `scale(${s})`,
           marginBottom: 50,
         }}
@@ -263,15 +264,31 @@ const Scene6: React.FC = () => {
             {COPY.s6Web}
           </p>
         </div>
-        <Img
-          src={staticFile('logo.jpg')}
+        <div
           style={{
-            width: 200,
-            height: 200,
-            objectFit: 'contain',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             opacity: c,
           }}
-        />
+        >
+          <div
+            style={{
+              width: 280,
+              height: 260,
+              borderRadius: 48,
+              backgroundColor: WHITE,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Img src={staticFile('logo-mark.png')} style={{height: 200, width: 'auto'}} />
+          </div>
+          <p style={{fontSize: 48, fontWeight: 700, color: WHITE, margin: '24px 0 0'}}>
+            {COPY.s6Brand}
+          </p>
+        </div>
       </div>
     </AbsoluteFill>
   );
