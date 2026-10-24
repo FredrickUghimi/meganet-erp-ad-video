@@ -6,7 +6,7 @@
  * Scene 4 (270-360f): "Still guessing?"
  * Scene 5 (360-510f): "Mega-Net ERP Cloud"
  *                     "Simple business management & accounting for small & medium businesses"
- * Scene 6 (510-600f): "Join the waitlist"
+ * Scene 6 (510-600f): "Book a free demo"
  *                     "WhatsApp: +2347035682478"
  *                     "meganetsoftware.com.ng"
  *                     "Mega-Net Software" (text beside logo mark at bottom)
@@ -32,7 +32,7 @@ const COPY = {
   s4: 'Still guessing?',
   s5Title: 'Mega-Net ERP Cloud',
   s5Sub: 'Simple business management & accounting for small & medium businesses',
-  s6Title: 'Join the waitlist',
+  s6Title: 'Book a free demo',
   s6Whatsapp: 'WhatsApp: +2347035682478',
   s6Web: 'meganetsoftware.com.ng',
   s6Brand: 'Mega-Net Software',
