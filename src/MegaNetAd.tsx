@@ -27,7 +27,20 @@ import {
   useVideoConfig,
 } from 'remotion';
 
-const COPY = {
+type AdCopy = {
+  s1: string;
+  s2: string;
+  s3: string;
+  s4: string;
+  s5Title: string;
+  s5Sub: string;
+  s6Title: string;
+  s6Whatsapp: string;
+  s6Web: string;
+  s6Brand: string;
+};
+
+const COPY: AdCopy = {
   s1: 'Who owes you money?',
   s2: 'How much cash do you have?',
   s3: 'Are you making profit',
@@ -40,7 +53,24 @@ const COPY = {
   s6Brand: 'Mega-Net Software',
 };
 
-// Voiceover is optional: only mounted when public/voiceover.mp3 exists, so renders never fail without it.
+// Copy for the Mega-Net EHR Cloud ad (MegaNetEhrAd composition). Same scenes, layout and timing.
+export const EHR_COPY: AdCopy = {
+  s1: 'How long do patients wait?',
+  s2: 'Are lab results reaching the doctor?',
+  s3: 'Is every bill captured',
+  s4: 'Still using paper files?',
+  s5Title: 'Mega-Net EHR Cloud',
+  s5Sub: 'Patient records, lab, prescriptions and billing in one system for hospitals and clinics',
+  s6Title: 'Book a\nfree demo', // \n = forced line break
+  s6Whatsapp: 'WhatsApp: +2347035682478',
+  s6Web: 'meganetsoftware.com.ng',
+  s6Brand: 'Mega-Net Software',
+};
+
+// Scenes read their copy from context so one set of components serves both ads (default = ERP copy).
+const CopyContext = React.createContext<AdCopy>(COPY);
+
+// Voiceover is optional: only mounted when the file exists in public/, so renders never fail without it.
 const VOICEOVER_FILE = 'voiceover.mp3';
 
 const BLUE = '#1A6DE0';
@@ -84,6 +114,7 @@ const bigText: React.CSSProperties = {
 
 // Scene 1: slam-in
 const Scene1: React.FC = () => {
+  const copy = React.useContext(CopyContext);
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame, fps, config: {damping: 9, stiffness: 160, mass: 1.2}});
@@ -91,13 +122,14 @@ const Scene1: React.FC = () => {
   const opacity = interpolate(frame, [0, 6], [0, 1], {extrapolateRight: 'clamp'});
   return (
     <Safe>
-      <h1 style={{...bigText, transform: `scale(${scale})`, opacity}}>{COPY.s1}</h1>
+      <h1 style={{...bigText, transform: `scale(${scale})`, opacity}}>{copy.s1}</h1>
     </Safe>
   );
 };
 
 // Scene 2: slide in from right, slide out to left
 const Scene2: React.FC = () => {
+  const copy = React.useContext(CopyContext);
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const inP = spring({frame, fps, config: {damping: 16, stiffness: 120}});
@@ -108,13 +140,14 @@ const Scene2: React.FC = () => {
   const x = interpolate(inP, [0, 1], [1080, 0]) - outP * 1080;
   return (
     <Safe>
-      <h1 style={{...bigText, transform: `translateX(${x}px)`}}>{COPY.s2}</h1>
+      <h1 style={{...bigText, transform: `translateX(${x}px)`}}>{copy.s2}</h1>
     </Safe>
   );
 };
 
 // Scene 3: pulsing orange "?"
 const Scene3: React.FC = () => {
+  const copy = React.useContext(CopyContext);
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const inP = spring({frame, fps, config: {damping: 14}});
@@ -122,7 +155,7 @@ const Scene3: React.FC = () => {
   return (
     <Safe>
       <h1 style={{...bigText, opacity: inP, transform: `translateY(${(1 - inP) * 60}px)`}}>
-        {COPY.s3}
+        {copy.s3}
         <span
           style={{
             display: 'inline-block',
@@ -140,6 +173,7 @@ const Scene3: React.FC = () => {
 
 // Scene 4: one quick shake, then still
 const Scene4: React.FC = () => {
+  const copy = React.useContext(CopyContext);
   const frame = useCurrentFrame();
   const shakeStart = 15;
   const shakeLen = 14;
@@ -151,13 +185,14 @@ const Scene4: React.FC = () => {
   const opacity = interpolate(frame, [0, 8], [0, 1], {extrapolateRight: 'clamp'});
   return (
     <Safe>
-      <h1 style={{...bigText, opacity, transform: `translateX(${x}px)`}}>{COPY.s4}</h1>
+      <h1 style={{...bigText, opacity, transform: `translateX(${x}px)`}}>{copy.s4}</h1>
     </Safe>
   );
 };
 
 // Scene 5: brand reveal
 const Scene5: React.FC = () => {
+  const copy = React.useContext(CopyContext);
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame, fps, config: {damping: 12, stiffness: 100}});
@@ -182,7 +217,7 @@ const Scene5: React.FC = () => {
           opacity: s,
         }}
       >
-        {COPY.s5Title}
+        {copy.s5Title}
       </h1>
       <p
         style={{
@@ -195,7 +230,7 @@ const Scene5: React.FC = () => {
           transform: `translateY(${(1 - subP) * 50}px)`,
         }}
       >
-        {COPY.s5Sub}
+        {copy.s5Sub}
       </p>
     </Safe>
   );
@@ -203,6 +238,7 @@ const Scene5: React.FC = () => {
 
 // Scene 6: CTA on blue
 const Scene6: React.FC = () => {
+  const copy = React.useContext(CopyContext);
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const a = spring({frame, fps, config: {damping: 14}});
@@ -243,7 +279,7 @@ const Scene6: React.FC = () => {
               transform: `scale(${interpolate(a, [0, 1], [0.8, 1])})`,
             }}
           >
-            {COPY.s6Title}
+            {copy.s6Title}
           </h1>
           <p
             style={{
@@ -255,7 +291,7 @@ const Scene6: React.FC = () => {
               transform: rise(b),
             }}
           >
-            {COPY.s6Whatsapp}
+            {copy.s6Whatsapp}
           </p>
           <p
             style={{
@@ -267,7 +303,7 @@ const Scene6: React.FC = () => {
               transform: rise(c),
             }}
           >
-            {COPY.s6Web}
+            {copy.s6Web}
           </p>
         </div>
         <div
@@ -293,7 +329,7 @@ const Scene6: React.FC = () => {
             <Img src={staticFile('logo-mark.png')} style={{height: 200, width: 'auto'}} />
           </div>
           <p style={{fontSize: 48, fontWeight: 700, color: WHITE, margin: '24px 0 0'}}>
-            {COPY.s6Brand}
+            {copy.s6Brand}
           </p>
         </div>
       </div>
@@ -301,11 +337,11 @@ const Scene6: React.FC = () => {
   );
 };
 
-export const MegaNetAd: React.FC = () => {
-  const hasVoiceover = getStaticFiles().some((f) => f.name === VOICEOVER_FILE);
+const AdTimeline: React.FC<{voiceoverFile: string}> = ({voiceoverFile}) => {
+  const hasVoiceover = getStaticFiles().some((f) => f.name === voiceoverFile);
   return (
   <AbsoluteFill style={{backgroundColor: WHITE}}>
-    {hasVoiceover ? <Audio src={staticFile(VOICEOVER_FILE)} /> : null}
+    {hasVoiceover ? <Audio src={staticFile(voiceoverFile)} /> : null}
     <Sequence from={0} durationInFrames={90}><Scene1 /></Sequence>
     <Sequence from={90} durationInFrames={90}><Scene2 /></Sequence>
     <Sequence from={180} durationInFrames={90}><Scene3 /></Sequence>
@@ -315,3 +351,15 @@ export const MegaNetAd: React.FC = () => {
   </AbsoluteFill>
   );
 };
+
+export const MegaNetAd: React.FC = () => (
+  <CopyContext.Provider value={COPY}>
+    <AdTimeline voiceoverFile={VOICEOVER_FILE} />
+  </CopyContext.Provider>
+);
+
+export const MegaNetEhrAd: React.FC = () => (
+  <CopyContext.Provider value={EHR_COPY}>
+    <AdTimeline voiceoverFile="voiceover-ehr.mp3" />
+  </CopyContext.Provider>
+);

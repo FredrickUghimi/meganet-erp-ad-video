@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "remotion studio",
     "render": "remotion render MegaNetAd out/meganet-ad.mp4",
-    "poster": "remotion still MegaNetAd out/meganet-poster.png --frame=400"
+    "poster": "remotion still MegaNetAd out/meganet-poster.png --frame=400",
+    "render:ehr": "remotion render MegaNetEhrAd out/meganet-ehr-ad.mp4",
+    "poster:ehr": "remotion still MegaNetEhrAd out/meganet-ehr-poster.png --frame=400"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.250",
