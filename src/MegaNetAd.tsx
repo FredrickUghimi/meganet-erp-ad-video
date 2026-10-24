@@ -32,7 +32,7 @@ const COPY = {
   s4: 'Still guessing?',
   s5Title: 'Mega-Net ERP Cloud',
   s5Sub: 'Simple business management & accounting for small & medium businesses',
-  s6Title: 'Book a free demo',
+  s6Title: 'Book a\nfree demo', // \n = forced line break
   s6Whatsapp: 'WhatsApp: +2347035682478',
   s6Web: 'meganetsoftware.com.ng',
   s6Brand: 'Mega-Net Software',
@@ -232,6 +232,7 @@ const Scene6: React.FC = () => {
           <h1
             style={{
               ...bigText,
+              whiteSpace: 'pre-line',
               color: WHITE,
               opacity: a,
               transform: `scale(${interpolate(a, [0, 1], [0.8, 1])})`,
