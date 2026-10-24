@@ -1,6 +1,6 @@
 # Mega-Net ERP Cloud ad: voiceover script
 
-Total: 47 words, 20 seconds (about 2.4 words per second). Natural pace, short pauses between scenes.
+Total: 48 words, 20 seconds (about 2.4 words per second). Natural pace, short pauses between scenes.
 
 | Scene | Frames | Time | On-screen text | Voiceover |
 |---|---|---|---|---|
@@ -9,7 +9,7 @@ Total: 47 words, 20 seconds (about 2.4 words per second). Natural pace, short pa
 | 3 | 180-270 | 6-9s | Are you making profit? | "Be honest. Are you really making profit?" (7) |
 | 4 | 270-360 | 9-12s | Still guessing? | "Or are you still guessing?" (5) |
 | 5 | 360-510 | 12-17s | Mega-Net ERP Cloud / Simple business management & accounting for small & medium businesses | "Mega-Net ERP Cloud. Simple business management and accounting for small and medium businesses." (13) |
-| 6 | 510-600 | 17-20s | Join the waitlist / WhatsApp: +2347035682478 / meganetsoftware.com.ng / Mega-Net Software | "Join the waitlist. Message us on WhatsApp." (7) |
+| 6 | 510-600 | 17-20s | Book a free demo / WhatsApp: +2347035682478 / meganetsoftware.com.ng / Mega-Net Software | "Book a free demo. Message us on WhatsApp." (8) |
 
 Notes
 - Phone number and website are not read aloud (they stay on screen).
