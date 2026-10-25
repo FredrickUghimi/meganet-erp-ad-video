@@ -7,7 +7,9 @@
     "render": "remotion render MegaNetAd out/meganet-ad.mp4",
     "poster": "remotion still MegaNetAd out/meganet-poster.png --frame=400",
     "render:ehr": "remotion render MegaNetEhrAd out/meganet-ehr-ad.mp4",
-    "poster:ehr": "remotion still MegaNetEhrAd out/meganet-ehr-poster.png --frame=400"
+    "poster:ehr": "remotion still MegaNetEhrAd out/meganet-ehr-poster.png --frame=400",
+    "render:sentinel": "remotion render MegaNetSentinelAd out/meganet-sentinel-ad.mp4",
+    "poster:sentinel": "remotion still MegaNetSentinelAd out/meganet-sentinel-poster.png --frame=300"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.250",
@@ -17,6 +19,6 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.31",
-    "typescript": "^5.5.4"
+    "typescript": "5.5.4"
   }
 }
