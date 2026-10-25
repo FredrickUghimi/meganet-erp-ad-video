@@ -21,7 +21,9 @@
  * Captions: burned in, word for word from the voice, highlighted as each word is spoken.
  * Last frame holds ~0.5 s after the last spoken word (voice ends ~20.15 s, video ends 20.7 s).
  * Logo: public/logo-trim.jpg (trimmed from logo.jpg) in a white rounded card on blue scenes.
- * Safe margins: 120px left/right, 250px top/bottom (captions sit inside the bottom margin).
+ * Safe area (Shorts/Reels/TikTok): top 200px, bottom 480px, left 80px, right 160px, i.e. everything
+ * (captions, chips, cards, button, CTA, logo) stays inside x 80-920, y 200-1440, including during animations.
+ * Captions: bottom edge at y=1440, max 2 lines, centered in the 840px safe width.
  */
 import React from 'react';
 import {
@@ -43,9 +45,11 @@ const DARK = '#263238';
 const WHITE = '#FFFFFF';
 const GREY = '#CFD8DC';
 
-const SAFE_X = 120;
-const SAFE_Y = 250;
-const CAPTION_ZONE = 230; // extra space kept free above the bottom margin for captions
+const SAFE_L = 80;
+const SAFE_R = 160;
+const SAFE_T = 200;
+const SAFE_B = 480; // captions end at y = 1920 - 480 = 1440
+const CAPTION_ZONE = 200; // room kept free above the captions (2 lines + gap)
 const FONT = 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
 
 export const SENTINEL_FPS = 30;
@@ -82,7 +86,7 @@ const useWord = (i: number, config: {damping?: number; stiffness?: number; mass?
   const frame = useCurrentFrame();
   const from = React.useContext(SceneStart);
   const {fps} = useVideoConfig();
-  return spring({frame: frame - (f(WORDS[i].s) - from - 3), fps, config});
+  return Math.min(1, spring({frame: frame - (f(WORDS[i].s) - from - 3), fps, config}));
 };
 
 const Stage: React.FC<{bg: string; children: React.ReactNode}> = ({bg, children}) => (
@@ -90,10 +94,10 @@ const Stage: React.FC<{bg: string; children: React.ReactNode}> = ({bg, children}
     <div
       style={{
         position: 'absolute',
-        left: SAFE_X,
-        right: SAFE_X,
-        top: SAFE_Y,
-        bottom: SAFE_Y + CAPTION_ZONE,
+        left: SAFE_L,
+        right: SAFE_R,
+        top: SAFE_T,
+        bottom: SAFE_B + CAPTION_ZONE,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -153,7 +157,7 @@ const Scene1: React.FC = () => {
   const d = useWord(W.or, {damping: 9, stiffness: 150, mass: 1.2});
   const slam = (p: number): React.CSSProperties => ({
     opacity: interpolate(p, [0, 0.25], [0, 1], {extrapolateRight: 'clamp'}),
-    transform: `scale(${interpolate(p, [0, 1], [2.4, 1])})`,
+    transform: `scale(${interpolate(p, [0, 1], [0.6, 1])})`,
   });
   return (
     <Stage bg={WHITE}>
@@ -185,7 +189,7 @@ const Scene2: React.FC = () => {
   const ehr = useWord(W.mega, {damping: 16, stiffness: 110});
   return (
     <Stage bg={BLUE}>
-      <div style={{opacity: card, transform: `translateY(${(1 - card) * -120}px)`}}>
+      <div style={{opacity: card, transform: `translateY(${(1 - card) * 50}px)`}}>
         <LogoCard width={760} />
       </div>
       <div style={{marginTop: 70, transform: `scale(${badge})`, opacity: badge}}>
@@ -246,7 +250,7 @@ const RunButton: React.FC = () => {
     extrapolateRight: 'clamp',
   });
   const ripple = interpolate(frame, [clickF, clickF + 22], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const cursorP = spring({frame: frame - (clickF - 22), fps, config: {damping: 18, stiffness: 90}});
+  const cursorP = Math.min(1, spring({frame: frame - (clickF - 22), fps, config: {damping: 18, stiffness: 90}}));
   return (
     <div style={{position: 'relative', width: 760, height: 170, opacity: enter, transform: `scale(${enter})`}}>
       {ripple > 0 && ripple < 1 ? (
@@ -255,10 +259,10 @@ const RunButton: React.FC = () => {
             position: 'absolute',
             left: '50%',
             top: '50%',
-            width: 300 + ripple * 520,
-            height: 150 + ripple * 280,
-            marginLeft: -(300 + ripple * 520) / 2,
-            marginTop: -(150 + ripple * 280) / 2,
+            width: 300 + ripple * 470,
+            height: 150 + ripple * 80,
+            marginLeft: -(300 + ripple * 470) / 2,
+            marginTop: -(150 + ripple * 80) / 2,
             borderRadius: 120,
             border: `10px solid ${ORANGE}`,
             opacity: 1 - ripple,
@@ -288,8 +292,8 @@ const RunButton: React.FC = () => {
       <div
         style={{
           position: 'absolute',
-          left: interpolate(cursorP, [0, 1], [760, 640]),
-          top: interpolate(cursorP, [0, 1], [300, 128]),
+          left: interpolate(cursorP, [0, 1], [560, 640]),
+          top: interpolate(cursorP, [0, 1], [260, 128]),
           opacity: interpolate(cursorP, [0, 0.4], [0, 1], {extrapolateRight: 'clamp'}),
         }}
       >
@@ -373,7 +377,7 @@ const Chip: React.FC<{label: string; word: number}> = ({label, word}) => {
         gap: 26,
         padding: '0 36px',
         opacity: p,
-        transform: `translateX(${(1 - p) * 220}px)`,
+        transform: `translateY(${(1 - p) * 40}px)`,
       }}
     >
       <div
@@ -433,25 +437,25 @@ const Scene4: React.FC = () => {
   return (
     <Stage bg={WHITE}>
       <h1 style={{...big(96), opacity: each, transform: `translateY(${(1 - each) * 40}px)`}}>Each finding</h1>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, marginTop: 40}}>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 36}}>
         {LADDER.map((r, i) => {
-          const p = spring({frame: frame - rankF - i * 5, fps, config: {damping: 14, stiffness: 140}});
+          const p = Math.min(1, spring({frame: frame - rankF - i * 5, fps, config: {damping: 14, stiffness: 140}}));
           return (
             <div
               key={r.label}
               style={{
                 width: r.w,
-                height: 100,
-                borderRadius: 50,
+                height: 88,
+                borderRadius: 44,
                 backgroundColor: r.bg,
                 color: r.fg,
-                fontSize: 54,
+                fontSize: 50,
                 fontWeight: 800,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 opacity: p,
-                transform: `translateX(${(1 - p) * -300}px)`,
+                transform: `scaleX(${interpolate(p, [0, 1], [0.5, 1])})`,
               }}
             >
               {r.label}
@@ -462,7 +466,7 @@ const Scene4: React.FC = () => {
       <h1 style={{...big(130, BLUE), marginTop: 60, opacity: expl, transform: `scale(${interpolate(expl, [0, 1], [0.7, 1])})`}}>
         Explained.
       </h1>
-      <h1 style={{...big(96), marginTop: 24, opacity: team, transform: `translateY(${(1 - team) * 40}px)`}}>
+      <h1 style={{...big(88), marginTop: 20, opacity: team, transform: `translateY(${(1 - team) * 40}px)`}}>
         Your team <span style={{color: ORANGE}}>decides.</span>
       </h1>
     </Stage>
@@ -516,9 +520,9 @@ const Captions: React.FC = () => {
     <div
       style={{
         position: 'absolute',
-        left: SAFE_X,
-        right: SAFE_X,
-        bottom: SAFE_Y,
+        left: SAFE_L,
+        right: SAFE_R,
+        bottom: SAFE_B,
         display: 'flex',
         justifyContent: 'center',
         fontFamily: FONT,
