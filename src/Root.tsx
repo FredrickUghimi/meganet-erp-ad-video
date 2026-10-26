@@ -1,6 +1,7 @@
 import React from 'react';
 import {Composition} from 'remotion';
-import {MegaNetAd, MegaNetEhrAd} from './MegaNetAd';
+import {MegaNetEhrAd} from './MegaNetAd';
+import {MegaNetAd} from './MegaNetErpAd';
 import {MegaNetSentinelAd, SENTINEL_FPS, SENTINEL_FRAMES} from './MegaNetSentinelAd';
 
 export const Root: React.FC = () => (
