@@ -1,6 +1,7 @@
 import React from 'react';
 import {Composition} from 'remotion';
 import {MegaNetAd, MegaNetEhrAd} from './MegaNetAd';
+import {ASSISTANT_DURATION, MegaNetAssistantAd} from './MegaNetAssistantAd';
 
 export const Root: React.FC = () => (
   <>
@@ -19,6 +20,15 @@ export const Root: React.FC = () => (
     fps={30}
     width={1080}
     height={1920}
+  />
+  <Composition
+    id="MegaNetAssistantAd"
+    component={MegaNetAssistantAd}
+    durationInFrames={ASSISTANT_DURATION}
+    fps={30}
+    width={1080}
+    height={1920}
+    defaultProps={{mode: 'full' as const}}
   />
   </>
 );
