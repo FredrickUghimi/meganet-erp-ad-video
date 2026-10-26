@@ -9,7 +9,8 @@
     "render:ehr": "remotion render MegaNetEhrAd out/meganet-ehr-ad.mp4",
     "poster:ehr": "remotion still MegaNetEhrAd out/meganet-ehr-poster.png --frame=400",
     "render:sentinel": "remotion render MegaNetSentinelAd out/meganet-sentinel-ad.mp4",
-    "poster:sentinel": "remotion still MegaNetSentinelAd out/meganet-sentinel-poster.png --frame=300"
+    "poster:sentinel": "remotion still MegaNetSentinelAd out/meganet-sentinel-poster.png --frame=300",
+    "render:assistant": "remotion render MegaNetAssistantAd out/meganet-assistant-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.250",

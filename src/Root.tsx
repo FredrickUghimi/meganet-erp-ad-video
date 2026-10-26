@@ -3,6 +3,7 @@ import {Composition} from 'remotion';
 import {MegaNetEhrAd} from './MegaNetAd';
 import {MegaNetAd} from './MegaNetErpAd';
 import {MegaNetSentinelAd, SENTINEL_FPS, SENTINEL_FRAMES} from './MegaNetSentinelAd';
+import {ASSISTANT_DURATION, MegaNetAssistantAd} from './MegaNetAssistantAd';
 
 export const Root: React.FC = () => (
   <>
@@ -29,6 +30,15 @@ export const Root: React.FC = () => (
     fps={SENTINEL_FPS}
     width={1080}
     height={1920}
+  />
+  <Composition
+    id="MegaNetAssistantAd"
+    component={MegaNetAssistantAd}
+    durationInFrames={ASSISTANT_DURATION}
+    fps={30}
+    width={1080}
+    height={1920}
+    defaultProps={{mode: 'full' as const}}
   />
   </>
 );
