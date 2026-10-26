@@ -26,3 +26,6 @@ Measured on the render: mean -17.1 dB, peak -3.3 dB.
 
 Not claimed: real-time or 24/7 monitoring, automatic fixes or recovery of money, that every missed charge is caught (matching a service to a bill is best-effort), discount/waiver/refund monitoring (not built). No figures, patient data or medical claims.
 Read from the code only (EHR-Cloud- at 074d814); the app was not run and nothing was checked on staging or production.
+
+## v3 colour makeover
+Colour and caption position only; voiceover, timings, narration and all on-screen copy are unchanged. Gradient backgrounds per scene, drawn floating icons (scene 1), traffic-light severity pills, coloured chips. Captions now end at y=1360 (max 2 lines). Checks: `scripts/verify_safe_area.py` (every frame vs a gradient-only render, with negative controls), `scripts/verify_captions.py`, `scripts/contrast_check.py`. The `debug` input prop only exists for those checks.
