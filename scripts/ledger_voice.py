@@ -18,7 +18,7 @@ VOICE = "en-NG-AbeoNeural"
 GAP = 0.3
 # One entry per scene; each scene is one or more sentences, spoken with a 0.3s gap.
 SCENES = [
-    ["Where did the money go?"],
+    ["Every naira leaves a trail."],
     ["Meet the General Ledger.", "Pick an account, choose your dates."],
     ["Every debit and credit, with its reference and a running balance."],
     ["Entries are never edited, only reversed."],

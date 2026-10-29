@@ -11,7 +11,7 @@ import json, re, subprocess, sys
 import numpy as np
 
 W, H = 1080, 1920
-NARRATION = ["Where did the money go?",
+NARRATION = ["Every naira leaves a trail.",
              "Meet the General Ledger. Pick an account, choose your dates.",
              "Every debit and credit, with its reference and a running balance.",
              "Entries are never edited, only reversed.",

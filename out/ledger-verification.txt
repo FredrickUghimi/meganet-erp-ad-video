@@ -1,32 +1,56 @@
-### safe-area, all frames (full vs gradient-only)
-frames decoded: 562
-content bbox over all frames: x 110-889, y 216-1349 (safe x 80-920, y 200-1440)
+MegaNetLedgerAd verification log (light palette build)
+
+### 1. safe area, lossless: all 571 frames as PNG (no codec), full vs gradient-only, threshold 6/255 (any visible content)
+frames decoded (lossless PNG): 571; threshold 6/255
+content bbox over all frames: x 80-919, y 200-1408 (safe x 80-919, y 200-1439)
+violating frames: 0; worst pixel count 0
+RESULT: PASS
+
+### 2. safe area, decoded from the delivered MP4: all frames, threshold 30/255 (H.264 ringing at hard moving edges reaches >=18 for a few pixels, see notes)
+frames decoded: 571
+content bbox over all frames: x 80-920, y 198-1365 (safe x 80-920, y 200-1440)
 violating frames: 0
 RESULT: PASS 
-### negative control: box just outside left edge
-frames decoded: 10
-content bbox over all frames: x 40-889, y 216-1349 (safe x 80-920, y 200-1440)
+    same MP4 check at threshold 18 (stricter than the codec noise floor):
+violating frames: 7
+  frame 61: 8 px outside; x 80-923 y 204-1343
+  frame 292: 8 px outside; x 80-921 y 203-1343
+  frame 293: 24 px outside; x 80-927 y 205-1343
+  frame 297: 32 px outside; x 80-927 y 212-1348
+  frame 457: 8 px outside; x 98-891 y 198-1401
+  frame 458: 8 px outside; x 100-891 y 196-1343
+  frame 459: 12 px outside; x 96-891 y 196-1343
+RESULT: FAIL 
+
+### 3. negative controls on the MP4 check (threshold 30): 40x40 box 30px outside each edge, plus a faint white box
+-- violate-left
 violating frames: 10
 RESULT: PASS (negative control)
-### negative control: box just outside right edge
-frames decoded: 10
-content bbox over all frames: x 110-965, y 216-1349 (safe x 80-920, y 200-1440)
+-- violate-right
 violating frames: 10
 RESULT: PASS (negative control)
-### negative control: box just outside top edge
-frames decoded: 10
-content bbox over all frames: x 110-889, y 150-1349 (safe x 80-920, y 200-1440)
+-- violate-top
 violating frames: 10
 RESULT: PASS (negative control)
-### negative control: box just outside bottom edge
-frames decoded: 10
-content bbox over all frames: x 110-889, y 216-1489 (safe x 80-920, y 200-1440)
+-- violate-bottom
 violating frames: 10
 RESULT: PASS (negative control)
-### captions
+-- violateweak-left
+violating frames: 10
+RESULT: PASS (negative control)
+
+### 4. negative controls on the lossless check (expected RESULT: FAIL = caught)
+-- violate-left
+violating frames: 3; worst pixel count 1600
+RESULT: FAIL
+-- violateweak-left
+violating frames: 3; worst pixel count 1600
+RESULT: FAIL
+
+### 5. captions
 caption words: 46 | narration words: 46
 TEXT MATCH (word for word, in order): PASS
-  chunk: Where did the money go?
+  chunk: Every naira leaves a trail.
   chunk: Meet the General Ledger.
   chunk: Pick an account, choose your dates.
   chunk: Every debit and credit,
@@ -35,23 +59,187 @@ TEXT MATCH (word for word, in order): PASS
   chunk: Only roles with accounting access
   chunk: can view it.
   chunk: Book a free demo with Mega-Net.
-voice ends 16.32s; longest silences between words: [(0.39, 'go', 'Meet'), (0.39, 'Ledger', 'Pick'), (0.39, 'reversed', 'Only'), (0.39, 'it', 'Book')]
-  scene 0.00-1.10s
-  scene 1.40-4.91s
-  scene 5.21-8.85s
-  scene 9.15-11.66s
-  scene 11.96-14.34s
-  scene 14.64-16.32s
-frames 562, with caption 541; caption bbox x 110-889, y 1202-1349 (bottom limit 1360); tallest pill 148px (1 line ~86, 2 lines ~146, 3 lines ~204)
+voice ends 16.62s; longest silences between words: [(0.39, 'trail', 'Meet'), (0.39, 'Ledger', 'Pick'), (0.39, 'dates', 'Every'), (0.39, 'reversed', 'Only')]
+  scene 0.00-1.40s
+  scene 1.70-5.21s
+  scene 5.51-9.15s
+  scene 9.45-11.96s
+  scene 12.26-14.64s
+  scene 14.94-16.62s
+frames 571, with caption 550; caption bbox x 110-889, y 1188-1345 (bottom limit 1360); tallest pill 153px (1 line ~86, 2 lines ~146, 3 lines ~204)
 GEOMETRY: PASS
 RESULT: PASS
-### contrast (white text vs gradient only, worst case)
-frame 150 y 340-560 text #FFFFFF: min contrast 3.45, mean 4.27
-frame 520 y 560-800 text #FFFFFF: min contrast 4.24, mean 5.26
-frame 30 y 216-290 text #FFFFFF: min contrast 4.07, mean 5.29
-frame 150 y 216-290 text #FFFFFF: min contrast 3.58, mean 4.08
-frame 290 y 216-290 text #FFFFFF: min contrast 4.08, mean 4.45
-frame 430 y 216-290 text #FFFFFF: min contrast 6.25, mean 7.26
-### streams
-h264,video,1080,1920,30/1,18.733333,562,
-aac,audio,0/0,18.730667,878
+
+### 6. contrast >= 4.5:1, font >= 32px, inside safe area, every text node on 15 settled frames (scripts/ledger_audit.*)
+frame text                              px min contrast in safe
+   50 Mega-Net ERP Cloud                32        15.65    True 
+   50 Every                            108         11.8    True 
+   50 naira                            108         5.69    True 
+   50 leaves                           108        11.78    True 
+   50 a                                108        13.24    True 
+   50 trail.                           108         5.19    True 
+   50 Every                             48        15.65    True 
+   50 naira                             48        15.65    True 
+   50 leaves                            48        15.65    True 
+   50 a                                 48        15.65    True 
+   50 trail.                            48         6.86    True 
+   58 Mega-Net ERP Cloud                32        15.65    True 
+   58 Every                            108        11.78    True 
+   58 naira                            108         5.68    True 
+   58 leaves                           108        11.78    True 
+   58 a                                108        13.24    True 
+   58 trail.                           108         5.19    True 
+   58 Every                             48        15.65    True 
+   58 naira                             48        15.65    True 
+   58 leaves                            48        15.65    True 
+   58 a                                 48        15.65    True 
+   58 trail.                            48         6.86    True 
+   94 Mega-Net ERP Cloud                32        15.65    True 
+   94 General                           92        12.84    True 
+   94 Ledger                            92        12.85    True 
+   94 Meet                              48        15.65    True 
+   94 the                               48        15.65    True 
+   94 General                           48        15.65    True 
+   94 Ledger.                           48         6.86    True 
+  161 Mega-Net ERP Cloud                32        15.65    True 
+  161 General                           92        12.85    True 
+  161 Ledger                            92        12.95    True 
+  161 Account                           34         8.07    True 
+  161 Start date                        32        13.69    True 
+  161 End date                          32        13.69    True 
+  161 Pick                              48        15.65    True 
+  161 an                                48        15.65    True 
+  161 account,                          48         6.86    True 
+  161 choose                            48         6.86    True 
+  161 your                              48        15.65    True 
+  161 dates.                            48         6.86    True 
+  172 Mega-Net ERP Cloud                32        15.65    True 
+  172 General                           92        12.85    True 
+  172 Ledger                            92        12.95    True 
+  172 Account                           34         8.07    True 
+  172 Start date                        32        13.69    True 
+  172 End date                          32        13.69    True 
+  172 Pick                              48        15.65    True 
+  172 an                                48        15.65    True 
+  172 account,                          48         6.86    True 
+  172 choose                            48         6.86    True 
+  172 your                              48        15.65    True 
+  172 dates.                            48         6.86    True 
+  213 Mega-Net ERP Cloud                32        15.65    True 
+  213 Reference                         32         6.79    True 
+  213 Debit                             32         5.54    True 
+  213 Credit                            32         4.91    True 
+  213 Running balance                   32         6.31    True 
+  213 Opening balance                   32        11.26    True 
+  213 Every                             48        15.65    True 
+  213 debit                             48        15.65    True 
+  213 and                               48        15.65    True 
+  213 credit,                           48         6.86    True 
+  277 Mega-Net ERP Cloud                32        15.65    True 
+  277 Reference                         32         5.92    True 
+  277 Debit                             32         5.54    True 
+  277 Credit                            32         5.66    True 
+  277 Running balance                   32         5.59    True 
+  277 Opening balance                   32        11.23    True 
+  277 Closing balance                   32        12.22    True 
+  277 with                              48        15.65    True 
+  277 its                               48        15.65    True 
+  277 reference                         48         6.86    True 
+  277 and                               48         6.86    True 
+  277 a                                 48        15.65    True 
+  277 running                           48        15.65    True 
+  277 balance.                          48         6.86    True 
+  290 Mega-Net ERP Cloud                32        15.65    True 
+  290 Reference                         32         5.92    True 
+  290 Debit                             32         5.54    True 
+  290 Credit                            32         5.66    True 
+  290 Running balance                   32         5.64    True 
+  290 Opening balance                   32        11.23    True 
+  290 Closing balance                   32        12.22    True 
+  290 with                              48        15.65    True 
+  290 its                               48        15.65    True 
+  290 reference                         48         6.86    True 
+  290 and                               48         6.86    True 
+  290 a                                 48        15.65    True 
+  290 running                           48        15.65    True 
+  290 balance.                          48         6.86    True 
+  362 Mega-Net ERP Cloud                32        15.65    True 
+  362 Journal entry                     42        15.65    True 
+  362 Debit                             32          6.3    True 
+  362 Credit                            32         6.54    True 
+  362 Reversal                          42        15.65    True 
+  362 Credit                            32         6.54    True 
+  362 Debit                             32          6.3    True 
+  362 Entries                           48        15.65    True 
+  362 are                               48         6.86    True 
+  362 never                             48         6.86    True 
+  362 edited,                           48         6.86    True 
+  362 only                              48        15.65    True 
+  362 reversed.                         48         6.86    True 
+  375 Mega-Net ERP Cloud                32        15.65    True 
+  375 Journal entry                     42        15.65    True 
+  375 Debit                             32          6.3    True 
+  375 Credit                            32         6.54    True 
+  375 Reversal                          42        15.65    True 
+  375 Credit                            32         6.54    True 
+  375 Debit                             32          6.3    True 
+  375 Entries                           48        15.65    True 
+  375 are                               48         6.86    True 
+  375 never                             48         6.86    True 
+  375 edited,                           48         6.86    True 
+  375 only                              48        15.65    True 
+  375 reversed.                         48         6.86    True 
+  425 Mega-Net ERP Cloud                32        15.65    True 
+  425 Other roles                       42        15.65    True 
+  425 No accounting access              32         6.54    True 
+  425 Accounting access                 42        15.65    True 
+  425 Can view the General Ledger       32          6.3    True 
+  425 Only                              48        15.65    True 
+  425 roles                             48         7.11    True 
+  425 with                              48         6.86    True 
+  425 accounting                        48         6.86    True 
+  425 access                            48         6.86    True 
+  451 Mega-Net ERP Cloud                32        15.65    True 
+  451 Other roles                       42        15.65    True 
+  451 No accounting access              32         6.54    True 
+  451 Accounting access                 42        15.65    True 
+  451 Can view the General Ledger       32          6.3    True 
+  451 can                               48        15.65    True 
+  451 view                              48        15.65    True 
+  451 it.                               48         6.86    True 
+  455 Mega-Net ERP Cloud                32        15.65    True 
+  455 Other roles                       42        15.65    True 
+  455 No accounting access              32         6.54    True 
+  455 Accounting access                 42        15.65    True 
+  455 Can view the General Ledger       32          6.3    True 
+  455 can                               48        15.65    True 
+  455 view                              48        15.65    True 
+  455 it.                               48         6.86    True 
+  502 Book a                           116        13.63    True 
+  502 free demo                        116         5.92    True 
+  502 WhatsApp +2347035682478           42          6.3    True 
+  502 meganetsoftware.com.ng            42         6.79    True 
+  502 Book                              48        15.65    True 
+  502 a                                 48         6.86    True 
+  502 free                              48         6.86    True 
+  502 demo                              48         6.86    True 
+  502 with                              48        15.65    True 
+  502 Mega-Net.                         48         6.86    True 
+  511 Book a                           116        13.63    True 
+  511 free demo                        116         5.92    True 
+  511 WhatsApp +2347035682478           42          6.3    True 
+  511 meganetsoftware.com.ng            42         6.79    True 
+  511 Book                              48        15.65    True 
+  511 a                                 48         6.86    True 
+  511 free                              48         6.86    True 
+  511 demo                              48         6.86    True 
+  511 with                              48        15.65    True 
+  511 Mega-Net.                         48         6.86    True 
+text nodes audited: 163; smallest font 32px; lowest contrast 4.91; failures: 0
+RESULT: PASS
+
+### 7. streams
+h264,video,1080,1920,30/1,19.033333,571,
+aac,audio,0/0,19.029333,892
+
+### 8. hold: lossless frames 512-570 vs frame 511 (voice ends at 511): max pixel diff = 0
