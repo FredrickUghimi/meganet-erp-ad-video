@@ -1,0 +1,57 @@
+### safe-area, all frames (full vs gradient-only)
+frames decoded: 562
+content bbox over all frames: x 110-889, y 216-1349 (safe x 80-920, y 200-1440)
+violating frames: 0
+RESULT: PASS 
+### negative control: box just outside left edge
+frames decoded: 10
+content bbox over all frames: x 40-889, y 216-1349 (safe x 80-920, y 200-1440)
+violating frames: 10
+RESULT: PASS (negative control)
+### negative control: box just outside right edge
+frames decoded: 10
+content bbox over all frames: x 110-965, y 216-1349 (safe x 80-920, y 200-1440)
+violating frames: 10
+RESULT: PASS (negative control)
+### negative control: box just outside top edge
+frames decoded: 10
+content bbox over all frames: x 110-889, y 150-1349 (safe x 80-920, y 200-1440)
+violating frames: 10
+RESULT: PASS (negative control)
+### negative control: box just outside bottom edge
+frames decoded: 10
+content bbox over all frames: x 110-889, y 216-1489 (safe x 80-920, y 200-1440)
+violating frames: 10
+RESULT: PASS (negative control)
+### captions
+caption words: 46 | narration words: 46
+TEXT MATCH (word for word, in order): PASS
+  chunk: Where did the money go?
+  chunk: Meet the General Ledger.
+  chunk: Pick an account, choose your dates.
+  chunk: Every debit and credit,
+  chunk: with its reference and a running balance.
+  chunk: Entries are never edited, only reversed.
+  chunk: Only roles with accounting access
+  chunk: can view it.
+  chunk: Book a free demo with Mega-Net.
+voice ends 16.32s; longest silences between words: [(0.39, 'go', 'Meet'), (0.39, 'Ledger', 'Pick'), (0.39, 'reversed', 'Only'), (0.39, 'it', 'Book')]
+  scene 0.00-1.10s
+  scene 1.40-4.91s
+  scene 5.21-8.85s
+  scene 9.15-11.66s
+  scene 11.96-14.34s
+  scene 14.64-16.32s
+frames 562, with caption 541; caption bbox x 110-889, y 1202-1349 (bottom limit 1360); tallest pill 148px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+RESULT: PASS
+### contrast (white text vs gradient only, worst case)
+frame 150 y 340-560 text #FFFFFF: min contrast 3.45, mean 4.27
+frame 520 y 560-800 text #FFFFFF: min contrast 4.24, mean 5.26
+frame 30 y 216-290 text #FFFFFF: min contrast 4.07, mean 5.29
+frame 150 y 216-290 text #FFFFFF: min contrast 3.58, mean 4.08
+frame 290 y 216-290 text #FFFFFF: min contrast 4.08, mean 4.45
+frame 430 y 216-290 text #FFFFFF: min contrast 6.25, mean 7.26
+### streams
+h264,video,1080,1920,30/1,18.733333,562,
+aac,audio,0/0,18.730667,878
