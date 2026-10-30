@@ -55,5 +55,6 @@ The first scene of each ad must be built differently from every other ad's first
 | `MegaNetSentinelAd` | Short staccato statements stacked line by line |
 | `MegaNetAssistantAd` | Typed question field, then answer bubbles |
 | `MegaNetLedgerAd` | A dotted trail line draws across the screen and lands on a ledger row while the words slide in |
+| `MegaNetProfitLossAd` | Mini-story told on objects, not text lines: a calendar page with its last day marked flips away to reveal a report card, and a green bottom-line pill lands on it; each beat's words sit on the object as a label |
 
 Scene transitions should also vary between ads. The Ledger ad uses slides and wipes only, in a different direction at each cut (slide-left, wipe-up, slide-right, diagonal wipe, slide-up), all inside the safe area.
