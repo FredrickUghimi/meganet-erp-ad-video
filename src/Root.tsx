@@ -4,6 +4,7 @@ import {MegaNetEhrAd} from './MegaNetAd';
 import {MegaNetAd} from './MegaNetErpAd';
 import {MegaNetSentinelAd, SENTINEL_FPS, SENTINEL_FRAMES} from './MegaNetSentinelAd';
 import {ASSISTANT_DURATION, MegaNetAssistantAd} from './MegaNetAssistantAd';
+import {MegaNetProfitLossAd, PL_DURATION, PL_FPS} from './MegaNetProfitLossAd';
 
 export const Root: React.FC = () => (
   <>
@@ -39,6 +40,15 @@ export const Root: React.FC = () => (
     width={1080}
     height={1920}
     defaultProps={{mode: 'full' as const}}
+  />
+  <Composition
+    id="MegaNetProfitLossAd"
+    component={MegaNetProfitLossAd}
+    durationInFrames={PL_DURATION}
+    fps={PL_FPS}
+    width={1080}
+    height={1920}
+    defaultProps={{debug: ''}}
   />
   </>
 );

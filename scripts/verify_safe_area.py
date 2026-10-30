@@ -16,7 +16,7 @@ import numpy as np
 
 W, H = 1080, 1920
 X0, X1, Y0, Y1 = 80, 920, 200, 1440
-THRESH = 60
+THRESH = 60  # override with --thresh N (the light-palette ledger ad uses 18: pale content differs little from pale backgrounds)
 MIN_PIXELS = 6  # ignore isolated codec specks
 
 
@@ -35,7 +35,11 @@ def frames(path):
 
 
 def main():
+    global THRESH
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    if '--thresh' in sys.argv:
+        THRESH = int(sys.argv[sys.argv.index('--thresh') + 1])
+        args.remove(str(THRESH))
     expect_fail = '--expect-fail' in sys.argv
     first = 0
     if '--first' in sys.argv:
