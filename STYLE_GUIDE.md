@@ -57,4 +57,4 @@ The first scene of each ad must be built differently from every other ad's first
 | `MegaNetLedgerAd` | A dotted trail line draws across the screen and lands on a ledger row while the words slide in |
 | `MegaNetProfitLossAd` | Mini-story told on objects, not text lines: a calendar page with its last day marked flips away to reveal a report card, and a green bottom-line pill lands on it; each beat's words sit on the object as a label |
 
-Scene transitions should also vary between ads. The Ledger ad uses slides and wipes only, in a different direction at each cut (slide-left, wipe-up, slide-right, diagonal wipe, slide-up), all inside the safe area. The Profit & Loss ad uses zooms and card flips (zoom-in, flip around the vertical axis, zoom-out, flip around the horizontal axis, pop), also clipped to the safe area.
+Scene transitions should also vary between ads. The Ledger ad uses slides and wipes only, in a different direction at each cut (slide-left, wipe-up, slide-right, diagonal wipe, slide-up), all inside the safe area.
