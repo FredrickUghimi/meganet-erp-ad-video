@@ -1,6 +1,6 @@
 # MegaNetCashFlowAd: script and build notes
 
-1080x1920, 30fps, CF_FRAMES frames (CF_SECONDS s): 0.4s lead-in, voice 19.28s, 2s frozen hold after the voice.
+1080x1920, 30fps, 650 frames (21.67s): 0.4s lead-in, voice 19.28s, 2s frozen hold after the voice.
 Voice: Microsoft `en-NG-AbeoNeural` (male), one edge-tts call per sentence with word boundaries, sentences joined with 0.3s gaps, no speed-up, no music.
 Look and rules: `STYLE_GUIDE.md` (light blue/orange family, text >= 32px and >= 4.5:1, safe area x 80-920 / y 200-1440, captions end by y 1360, max 2 lines). Green marks cash in, red marks cash out.
 No figures, names or statistics: rows, chips and bars are drawn placeholders (bar lengths in the Cash In vs. Cash Out chart are illustrative, not data). The Cash In and Cash Out rows carry no category names.

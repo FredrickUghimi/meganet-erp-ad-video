@@ -1,0 +1,221 @@
+MegaNetCashFlowAd verification log
+
+### 1. safe area, lossless: all 650 frames as PNG, full vs gradient-only render, threshold 6/255
+frames decoded (lossless PNG): 650; threshold 6/255
+content bbox over all frames: x 90-907, y 200-1352 (safe x 80-919, y 200-1439)
+violating frames: 0; worst pixel count 0
+RESULT: PASS
+
+### 2. negative controls (frames 100-105; 40x40 box 30px outside each edge, plus a faint white box). FAIL = caught
+-- violate-left
+violating frames: 6; worst pixel count 1600
+  frame 0: 1600 px outside; x 40-893 y 216-1347
+RESULT: FAIL
+-- violate-right
+violating frames: 6; worst pixel count 1600
+  frame 0: 1600 px outside; x 100-964 y 216-1347
+RESULT: FAIL
+-- violate-top
+violating frames: 6; worst pixel count 1600
+  frame 0: 1600 px outside; x 100-893 y 150-1347
+RESULT: FAIL
+-- violate-bottom
+violating frames: 6; worst pixel count 1600
+  frame 0: 1600 px outside; x 100-893 y 216-1489
+RESULT: FAIL
+-- violateweak-left
+violating frames: 6; worst pixel count 1600
+  frame 0: 1600 px outside; x 40-893 y 216-1347
+RESULT: FAIL
+
+### 3. hold
+frame 590 vs last: max diff 0
+frame 589 vs last: max diff 1
+frame 588 vs last: max diff 1
+lossless frames 590-649 vs 590: max diff 0
+
+### 4. captions
+caption words: 54 | narration words: 54
+TEXT MATCH (word for word, in order): PASS
+  chunk: Follow your cash.
+  chunk: Meet the Cash Flow report.
+  chunk: Pick a period, or set your own dates.
+  chunk: See your opening balance,
+  chunk: cash in, cash out, and closing balance.
+  chunk: It tracks cash that actually moved.
+  chunk: A credit sale counts once it's paid.
+  chunk: Only roles with accounting permission
+  chunk: can view it.
+  chunk: Book a free demo with Mega-Net.
+voice ends 19.28s; longest silences between words: [(0.39, 'report', 'Pick'), (0.39, 'it', 'Book'), (0.39, 'balance', 'It'), (0.39, 'cash', 'Meet')]
+  scene 0.00-1.03s
+  scene 1.33-5.36s
+  scene 5.66-10.10s
+  scene 10.40-14.48s
+  scene 14.78-17.30s
+  scene 17.61-19.28s
+frames 650, with caption 628; caption bbox x 110-889, y 1188-1345 (bottom limit 1360); tallest pill 152px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+RESULT: PASS
+
+### 5. contrast, size and position of every text node on settled frames (frames inside a 14-frame transition window are skipped)
+audit frames: 37,43,87,165,173,218,305,315,377,446,504,531,582,590
+frame text                              px min contrast in safe
+   37 Mega-Net ERP Cloud                32        15.65    True 
+   37 Follow                            60         4.87    True 
+   37 your                              60        15.65    True 
+   37 cash                              60         6.86    True 
+   37 Follow                            48        15.65    True 
+   37 your                              48        15.65    True 
+   37 cash.                             48         6.86    True 
+   43 Mega-Net ERP Cloud                32        15.65    True 
+   43 Follow                            60         4.87    True 
+   43 your                              60        15.65    True 
+   43 cash                              60         6.86    True 
+   43 Follow                            48        15.65    True 
+   43 your                              48        15.65    True 
+   43 cash.                             48         6.86    True 
+   87 Mega-Net ERP Cloud                32        15.65    True 
+   87 Cash Flow                         92        11.09    True 
+   87 Meet                              48        15.65    True 
+   87 the                               48        15.65    True 
+   87 Cash                              48        15.65    True 
+   87 Flow                              48        15.65    True 
+   87 report.                           48         6.86    True 
+  165 Mega-Net ERP Cloud                32        15.65    True 
+  165 Cash Flow                         92        11.09    True 
+  165 Period                            34         8.07    True 
+  165 This month                        34        13.64    True 
+  165 This month                        34        14.05    True 
+  165 Last month                        34        14.05    True 
+  165 This quarter                      34        14.05    True 
+  165 Custom range                      34        13.32    True 
+  165 Start date                        32        13.69    True 
+  165 End date                          32        13.69    True 
+  165 Pick                              48        15.65    True 
+  165 a                                 48        15.65    True 
+  165 period,                           48         6.86    True 
+  165 or                                48         6.86    True 
+  165 set                               48         6.86    True 
+  165 your                              48        15.65    True 
+  165 own                               48        15.65    True 
+  165 dates.                            48         6.86    True 
+  173 Mega-Net ERP Cloud                32        15.65    True 
+  173 Cash Flow                         92        11.16    True 
+  173 Period                            34         8.07    True 
+  173 This month                        34        13.64    True 
+  173 This month                        34        14.05    True 
+  173 Last month                        34        14.05    True 
+  173 This quarter                      34        14.05    True 
+  173 Custom range                      34        13.32    True 
+  173 Start date                        32        13.69    True 
+  173 End date                          32        13.69    True 
+  173 Pick                              48        15.65    True 
+  173 a                                 48        15.65    True 
+  173 period,                           48         6.86    True 
+  173 or                                48         6.86    True 
+  173 set                               48         6.86    True 
+  173 your                              48        15.65    True 
+  173 own                               48        15.65    True 
+  173 dates.                            48         6.86    True 
+  218 Mega-Net ERP Cloud                32        15.65    True 
+  218 Opening Balance                   34        15.65    True 
+  218 Cash In vs. Cash Out              40        15.65    True 
+  218 See                               48        15.65    True 
+  218 your                              48        15.65    True 
+  218 opening                           48        15.65    True 
+  218 balance,                          48         6.86    True 
+  305 Mega-Net ERP Cloud                32        15.65    True 
+  305 Opening Balance                   34        15.65    True 
+  305 Closing Balance                   34        15.65    True 
+  305 Cash In vs. Cash Out              40        15.65    True 
+  305 Cash in                           34        15.65    True 
+  305 Cash out                          34        15.65    True 
+  305 Net Change in Cash                38        12.81    True 
+  305 Cash In                           38        15.65    True 
+  305 Cash Out                          38        15.65    True 
+  305 cash                              48        15.65    True 
+  305 in,                               48        15.65    True 
+  305 cash                              48         6.86    True 
+  305 out,                              48         6.86    True 
+  305 and                               48         6.86    True 
+  305 closing                           48        15.65    True 
+  305 balance.                          48         6.86    True 
+  315 Mega-Net ERP Cloud                32        15.65    True 
+  315 Opening Balance                   34        15.65    True 
+  315 Closing Balance                   34        15.65    True 
+  315 Cash In vs. Cash Out              40        15.65    True 
+  315 Cash in                           34        15.65    True 
+  315 Cash out                          34        15.65    True 
+  315 Net Change in Cash                38        15.65    True 
+  315 Cash In                           38        15.65    True 
+  315 Cash Out                          38        15.65    True 
+  315 cash                              48        15.65    True 
+  315 in,                               48        15.65    True 
+  315 cash                              48         6.86    True 
+  315 out,                              48         6.86    True 
+  315 and                               48         6.86    True 
+  315 closing                           48        15.65    True 
+  315 balance.                          48         6.86    True 
+  377 Mega-Net ERP Cloud                32        15.65    True 
+  377 It                                48        15.65    True 
+  377 tracks                            48        15.65    True 
+  377 cash                              48         6.86    True 
+  377 that                              48         6.86    True 
+  377 actually                          48        15.65    True 
+  377 moved.                            48         6.86    True 
+  446 Mega-Net ERP Cloud                32        15.65    True 
+  446 Credit sale                       48        15.65    True 
+  446 Paid                              44          6.3    True 
+  446 A                                 48        15.65    True 
+  446 credit                            48        15.65    True 
+  446 sale                              48         6.86    True 
+  446 counts                            48         6.86    True 
+  446 once                              48        15.65    True 
+  446 it's                              48        15.65    True 
+  446 paid.                             48         6.86    True 
+  504 Mega-Net ERP Cloud                32        15.65    True 
+  504 Cash Flow                         48        15.65    True 
+  504 Accounting permission             42        15.65    True 
+  504 Required to view this report      32         6.79    True 
+  504 Only                              48        15.65    True 
+  504 roles                             48         6.86    True 
+  504 with                              48         6.86    True 
+  504 accounting                        48         6.86    True 
+  504 permission                        48         6.86    True 
+  531 Mega-Net ERP Cloud                32        15.65    True 
+  531 Cash Flow                         48        15.65    True 
+  531 Accounting permission             42        15.65    True 
+  531 Required to view this report      32         6.79    True 
+  531 can                               48        15.65    True 
+  531 view                              48        15.65    True 
+  531 it.                               48         6.86    True 
+  582 Book a                           116        13.63    True 
+  582 free demo                        116         5.92    True 
+  582 WhatsApp +2347035682478           42          6.3    True 
+  582 meganetsoftware.com.ng            42         6.79    True 
+  582 Book                              48        15.65    True 
+  582 a                                 48         6.86    True 
+  582 free                              48         6.86    True 
+  582 demo                              48         6.86    True 
+  582 with                              48        15.65    True 
+  582 Mega-Net.                         48         6.86    True 
+  590 Book a                           116        13.63    True 
+  590 free demo                        116         5.92    True 
+  590 WhatsApp +2347035682478           42          6.3    True 
+  590 meganetsoftware.com.ng            42         6.79    True 
+  590 Book                              48        15.65    True 
+  590 a                                 48         6.86    True 
+  590 free                              48         6.86    True 
+  590 demo                              48         6.86    True 
+  590 with                              48        15.65    True 
+  590 Mega-Net.                         48         6.86    True 
+text nodes audited: 149; smallest font 32px; lowest contrast 4.87; failures: 0
+RESULT: PASS
+
+### Not verified
+- Safe area on the delivered MP4 (H.264): only the lossless PNG frames were checked; the MP4 itself was not decoded and diffed (the P&L ad's MP4 check flagged codec noise at moving edges).
+- Contrast was measured on 14 settled frames (every distinct text string appears on at least one), not on every one of the 650 frames; text mid-transition and mid-entry is excluded by design.
+- Audio: voice timing and the 0.3s gaps come from the generator's word boundaries; the mono MP3 was not listened to, and pronunciation of "Mega-Net" / "it's" was not checked by ear.
+- Transitions (blinds, clock wipe, blur, diamond iris, fade-through) were seen only in a few stills, not played back as video.
+- The app was not run; every claim rests on reading the code (see CASHFLOW_AD_SCRIPT.md).
