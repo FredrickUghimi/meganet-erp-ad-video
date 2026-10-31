@@ -57,5 +57,6 @@ The first scene of each ad must be built differently from every other ad's first
 | `MegaNetLedgerAd` | A dotted trail line draws across the screen and lands on a ledger row while the words slide in |
 | `MegaNetProfitLossAd` | Mini-story told on objects, not text lines: a calendar page with its last day marked flips away to reveal a report card, and a green bottom-line pill lands on it; each beat's words sit on the object as a label |
 | `MegaNetCashFlowAd` | Command-style: a single imperative ("Follow your cash.") stamped as a prompt line (">" Follow / your / cash tiles) while four corner brackets lock onto a coin; no question, no trail line, no object story |
+| `MegaNetBalanceSheetAd` | Snapshot hook: a viewfinder snaps shut on a drawn block structure while the spoken statement names the report and product. It has no question, trail line, command prompt, object story or split screen. |
 
 Scene transitions should also vary between ads. The Ledger ad uses slides and wipes only, in a different direction at each cut (slide-left, wipe-up, slide-right, diagonal wipe, slide-up), all inside the safe area.

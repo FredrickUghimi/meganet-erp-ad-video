@@ -6,6 +6,7 @@ import {MegaNetSentinelAd, SENTINEL_FPS, SENTINEL_FRAMES} from './MegaNetSentine
 import {ASSISTANT_DURATION, MegaNetAssistantAd} from './MegaNetAssistantAd';
 import {LEDGER_DURATION, LEDGER_FPS, MegaNetLedgerAd} from './MegaNetLedgerAd';
 import {MegaNetProfitLossAd, PL_DURATION, PL_FPS} from './MegaNetProfitLossAd';
+import {BS_DURATION, BS_FPS, MegaNetBalanceSheetAd} from './MegaNetBalanceSheetAd';
 import {CF_DURATION, CF_FPS, MegaNetCashFlowAd} from './MegaNetCashFlowAd';
 
 export const Root: React.FC = () => (
@@ -66,6 +67,15 @@ export const Root: React.FC = () => (
     component={MegaNetCashFlowAd}
     durationInFrames={CF_DURATION}
     fps={CF_FPS}
+    width={1080}
+    height={1920}
+    defaultProps={{debug: ''}}
+  />
+  <Composition
+    id="MegaNetBalanceSheetAd"
+    component={MegaNetBalanceSheetAd}
+    durationInFrames={BS_DURATION}
+    fps={BS_FPS}
     width={1080}
     height={1920}
     defaultProps={{debug: ''}}

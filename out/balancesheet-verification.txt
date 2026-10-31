@@ -1,0 +1,194 @@
+# MegaNetBalanceSheetAd verification log
+
+## Lossless all-frames safe-area check (640 PNG frames, full vs gradient-only, threshold 6/255)
+frames decoded (lossless PNG): 640; threshold 6/255
+content bbox over all frames: x 80-919, y 200-1439 (safe x 80-919, y 200-1439)
+violating frames: 0; worst pixel count 0
+RESULT: PASS
+
+## Negative controls (frame 300 with a 40x40 box 30px outside each edge; must FAIL)
+== negative control violate-left
+content bbox over all frames: x 40-915, y 215-1347 (safe x 80-919, y 200-1439)
+violating frames: 1; worst pixel count 1600
+  frame 0: 1600 px outside; x 40-915 y 215-1347
+RESULT: FAIL
+== negative control violate-right
+content bbox over all frames: x 97-964, y 215-1347 (safe x 80-919, y 200-1439)
+violating frames: 1; worst pixel count 1600
+  frame 0: 1600 px outside; x 97-964 y 215-1347
+RESULT: FAIL
+== negative control violate-top
+content bbox over all frames: x 97-915, y 150-1347 (safe x 80-919, y 200-1439)
+violating frames: 1; worst pixel count 1600
+  frame 0: 1600 px outside; x 97-915 y 150-1347
+RESULT: FAIL
+== negative control violate-bottom
+content bbox over all frames: x 97-915, y 215-1489 (safe x 80-919, y 200-1439)
+violating frames: 1; worst pixel count 1600
+  frame 0: 1600 px outside; x 97-915 y 215-1489
+RESULT: FAIL
+== negative control violateweak-left
+content bbox over all frames: x 40-915, y 215-1347 (safe x 80-919, y 200-1439)
+violating frames: 1; worst pixel count 1600
+  frame 0: 1600 px outside; x 40-915 y 215-1347
+RESULT: FAIL
+
+## Captions vs narration, geometry, pauses
+caption words: 55 | narration words: 55
+TEXT MATCH (word for word, in order): PASS
+  chunk: Your business, measured on one day.
+  chunk: The Balance Sheet Report in Mega-Net ERP Cloud.
+  chunk: Choose a date, and
+  chunk: see where your business stands.
+  chunk: Total assets on one side.
+  chunk: Total liabilities plus equity on the other.
+  chunk: Open only to people
+  chunk: you've given accounting permission.
+  chunk: Want to see yours?
+  chunk: Message us on WhatsApp for a free demo.
+voice ends 18.93s; longest silences between words: [(0.39, 'yours', 'Message'), (0.39, 'permission', 'Want'), (0.39, 'day', 'The'), (0.39, 'stands', 'Total')]
+  scene 0.00-4.94s
+  scene 5.24-7.89s
+  scene 8.20-12.38s
+  scene 12.67-15.24s
+  scene 15.54-18.93s
+frames 640, with caption 618; caption bbox x 110-889, y 1188-1345 (bottom limit 1360); tallest pill 152px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+RESULT: PASS
+
+## Contrast / size / position of every text node on settled frames
+frame text                              px min contrast in safe
+   77 Your                              48        15.65    True 
+   77 business,                         48         6.86    True 
+   77 measured                          48         6.86    True 
+   77 on                                48        15.65    True 
+   77 one                               48        15.65    True 
+   77 day.                              48         6.86    True 
+  157 Balance Sheet Report              64        15.65    True 
+  157 in Mega-Net ERP Cloud             44         6.79    True 
+  157 The                               48        15.65    True 
+  157 Balance                           48        15.65    True 
+  157 Sheet                             48         6.86    True 
+  157 Report                            48         6.86    True 
+  157 in                                48        15.65    True 
+  157 Mega-Net                          48        15.65    True 
+  157 ERP                               48        15.65    True 
+  157 Cloud.                            48         6.86    True 
+  160 Balance Sheet Report              64        15.65    True 
+  160 in Mega-Net ERP Cloud             44         6.79    True 
+  160 The                               48        15.65    True 
+  160 Balance                           48        15.65    True 
+  160 Sheet                             48         6.86    True 
+  160 Report                            48         6.86    True 
+  160 in                                48        15.65    True 
+  160 Mega-Net                          48        15.65    True 
+  160 ERP                               48        15.65    True 
+  160 Cloud.                            48         6.86    True 
+  202 Mega-Net ERP Cloud                32        15.65    True 
+  202 Balance Sheet                     80        11.07    True 
+  202 As of                             34         8.07    True 
+  202 Choose                            48        15.65    True 
+  202 a                                 48        15.65    True 
+  202 date,                             48        15.65    True 
+  202 and                               48         6.86    True 
+  239 Mega-Net ERP Cloud                32        15.65    True 
+  239 Balance Sheet                     80        11.04    True 
+  239 As of                             34         8.07    True 
+  239 see                               48        15.65    True 
+  239 where                             48         6.86    True 
+  239 your                              48         6.86    True 
+  239 business                          48         6.86    True 
+  239 stands.                           48         6.86    True 
+  249 Mega-Net ERP Cloud                32        15.65    True 
+  249 Balance Sheet                     80        11.04    True 
+  249 As of                             34         8.07    True 
+  249 see                               48        15.65    True 
+  249 where                             48         6.86    True 
+  249 your                              48         6.86    True 
+  249 business                          48         6.86    True 
+  249 stands.                           48         6.86    True 
+  302 Mega-Net ERP Cloud                32        15.65    True 
+  302 Total assets                      40        15.65    True 
+  302 Total                             48        15.65    True 
+  302 assets                            48        15.65    True 
+  302 on                                48        15.65    True 
+  302 one                               48        15.65    True 
+  302 side.                             48         6.86    True 
+  381 Mega-Net ERP Cloud                32        15.65    True 
+  381 Total assets                      40        15.65    True 
+  381 Total Liabilities + Equity        40        15.65    True 
+  381 Total                             48        15.65    True 
+  381 liabilities                       48         6.86    True 
+  381 plus                              48         6.86    True 
+  381 equity                            48        15.65    True 
+  381 on                                48        15.65    True 
+  381 the                               48        15.65    True 
+  381 other.                            48         6.86    True 
+  383 Mega-Net ERP Cloud                32        15.65    True 
+  383 Total assets                      40        15.65    True 
+  383 Total Liabilities + Equity        40        15.65    True 
+  383 Total                             48        15.65    True 
+  383 liabilities                       48         6.86    True 
+  383 plus                              48         6.86    True 
+  383 equity                            48        15.65    True 
+  383 on                                48        15.65    True 
+  383 the                               48        15.65    True 
+  383 other.                            48         6.86    True 
+  422 Mega-Net ERP Cloud                32        15.65    True 
+  422 Balance Sheet                     48        15.65    True 
+  422 Accounting permission             42        15.61    True 
+  422 Required to view this report      32         6.78    True 
+  422 Open                              48        15.65    True 
+  422 only                              48        15.65    True 
+  422 to                                48        15.65    True 
+  422 people                            48         6.86    True 
+  462 Mega-Net ERP Cloud                32        15.65    True 
+  462 Balance Sheet                     48        15.65    True 
+  462 Accounting permission             42        15.65    True 
+  462 Required to view this report      32         6.79    True 
+  462 you've                            48         6.86    True 
+  462 given                             48         6.86    True 
+  462 accounting                        48         6.86    True 
+  462 permission.                       48         6.86    True 
+  469 Mega-Net ERP Cloud                32        15.65    True 
+  469 Balance Sheet                     48        15.65    True 
+  469 Accounting permission             42        15.65    True 
+  469 Required to view this report      32         6.79    True 
+  469 you've                            48         6.86    True 
+  469 given                             48         6.86    True 
+  469 accounting                        48         6.86    True 
+  469 permission.                       48         6.86    True 
+  505 Book a                           116        13.63    True 
+  505 free demo                        116         5.92    True 
+  505 WhatsApp +2347035682478           42          6.3    True 
+  505 meganetsoftware.com.ng            42         6.79    True 
+  505 Want                              48        15.65    True 
+  505 to                                48        15.65    True 
+  505 see                               48        15.65    True 
+  505 yours?                            48         6.86    True 
+  578 Book a                           116        13.63    True 
+  578 free demo                        116         5.92    True 
+  578 WhatsApp +2347035682478           42          6.3    True 
+  578 meganetsoftware.com.ng            42         6.79    True 
+  578 Message                           48        15.65    True 
+  578 us                                48        15.65    True 
+  578 on                                48         6.86    True 
+  578 WhatsApp                          48         6.86    True 
+  578 for                               48        15.65    True 
+  578 a                                 48        15.65    True 
+  578 free                              48        15.65    True 
+  578 demo.                             48         6.86    True 
+  580 Book a                           116        13.63    True 
+  580 free demo                        116         5.92    True 
+  580 WhatsApp +2347035682478           42          6.3    True 
+  580 meganetsoftware.com.ng            42         6.79    True 
+  580 Message                           48        15.65    True 
+  580 us                                48        15.65    True 
+  580 on                                48         6.86    True 
+  580 WhatsApp                          48         6.86    True 
+  580 for                               48        15.65    True 
+  580 a                                 48        15.65    True 
+  580 free                              48        15.65    True 
+  580 demo.                             48         6.86    True 
+text nodes audited: 132; smallest font 32px; lowest contrast 5.92; failures: 0
+RESULT: PASS
