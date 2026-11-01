@@ -3,6 +3,8 @@
  * Debug modes (input prop `debug`) exist only for the verification scripts in scripts/:
  *   'bg'   -> gradient backgrounds only (reference for the safe-area diff)
  *   'caps' -> backgrounds + captions only
+ *   'nocaps' -> backgrounds + scene content, caption layer off (caption-overlap audit, scripts/verify_caption_overlap.py)
+ *   'nocaps-violate-caption' / 'nocaps-violateweak-caption' -> same plus a test box inside the caption zone (negative control)
  *   'violate-left|right|top|bottom' -> normal frame plus a small box just outside the safe area (negative control)
  */
 import React from 'react';
@@ -20,7 +22,7 @@ export const DebugContext = React.createContext<string>('');
 /** Kind of layer: 'bg' always renders; 'cap' renders in full and 'caps'; 'content' only in full/violate modes. */
 export const Layer: React.FC<{kind: 'content' | 'cap'; children: React.ReactNode}> = ({kind, children}) => {
   const mode = React.useContext(DebugContext);
-  const show = mode === 'bg' ? false : mode === 'caps' ? kind === 'cap' : true;
+  const show = mode === 'bg' ? false : mode === 'caps' ? kind === 'cap' : mode.startsWith('nocaps') ? kind === 'content' : true;
   return <div style={{display: show ? 'contents' : 'none'}}>{children}</div>;
 };
 
@@ -36,6 +38,14 @@ export const Violation: React.FC = () => {
     bottom: {left: 500, top: 1450},
   };
   return <div style={{position: 'absolute', width: 40, height: 40, backgroundColor: '#fff', ...box[edge]}} />;
+};
+
+/** Negative control for the caption-overlap check: a box inside the caption zone (x 110-890, y 1189-1340), content layer only. */
+export const CaptionViolation: React.FC = () => {
+  const mode = React.useContext(DebugContext);
+  const m = /^nocaps-violate(weak)?-caption$/.exec(mode);
+  if (!m) return null;
+  return <div style={{position: 'absolute', left: 500, top: 1260, width: 40, height: 40, backgroundColor: m[1] ? '#FFFFFF' : '#E5484D'}} />;
 };
 
 export type Glow = {x: number; y: number; r: number; color: string; drift?: number};
