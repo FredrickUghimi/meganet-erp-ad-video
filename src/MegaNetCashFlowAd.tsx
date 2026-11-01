@@ -12,7 +12,7 @@
  * Transitions (not slides/wipes of the Ledger ad, not the zooms/flips of the P&L ad): vertical blinds, clock wipe,
  * blur dissolve, diamond iris, fade-through. Backgrounds cross-fade.
  *
- * Safe area: all content inside x 80-920, y 200-1440; captions end at y=1340 (limit 1360). Every scene lives in a clip
+ * Safe area: all content inside x 80-920, y 200-1440; captions end at y=1272 (limit 1280); content ends by y 1095 (24px above the two-line caption zone y 1120-1272). Every scene lives in a clip
  * box of exactly the safe area, so masks and blurs can never leave it.
  *
  * Debug input prop (verification only): 'bg' = gradients only, 'caps' = captions only, 'violate-*' / 'violateweak-left'
@@ -23,7 +23,7 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Audio, Easing, Freeze, Img, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {LINES, VOICE_END} from './cashflowTimings';
-import {DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
+import {CaptionViolation, DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
 
 export const CF_FPS = 30;
 const LEAD = 12; // 0.4s before the voice starts
@@ -49,6 +49,7 @@ const FONT = 'Inter, "Inter Display", system-ui, sans-serif';
 const COL_L = 110;
 const COL_W = 780; // x 110-890, inside the 80-920 safe area
 const SAFE = {x: 80, y: 200, w: 840, h: 1240};
+const CLIP_H = 896; // scene clip box is y 200-1096: 24px above the caption zone (y 1120-1272)
 const CX = 540;
 const CY = SAFE.y + SAFE.h / 2; // 820: centre of the safe box
 
@@ -259,7 +260,7 @@ const SceneFrame: React.FC<{i: number; header?: boolean; children: (l: number) =
   const l = f - from;
   return (
     <Layer kind="content">
-      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: SAFE.h, overflow: 'hidden'}}>
+      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: CLIP_H, overflow: 'hidden'}}>
         <div style={{position: 'absolute', left: -SAFE.x, top: -SAFE.y, width: 1080, height: 1920, ...inStyle, ...outStyle}}>
           {header && <Header l={l} />}
           {children(l)}
@@ -366,20 +367,20 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
   const dates = enter(l, w(9) - 3, 10); // "set"
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 346, display: 'flex', alignItems: 'center', gap: 28, opacity: title, transform: rise(title)}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 336, display: 'flex', alignItems: 'center', gap: 28, opacity: title, transform: rise(title)}}>
         <Tile color={BLUE} size={150} radius={40}>
           <FxIcon name="wallet" size={104} accent={ORANGE} ink={WHITE} />
         </Tile>
         <div style={{color: INK, fontSize: 92, fontWeight: 900, lineHeight: 1.02, letterSpacing: -2, whiteSpace: 'nowrap'}}>Cash Flow</div>
       </div>
-      <Card style={{top: 545, height: 120, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, opacity: sel, transform: rise(sel), borderLeft: `16px solid ${ORANGE}`}}>
+      <Card style={{top: 525, height: 120, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, opacity: sel, transform: rise(sel), borderLeft: `16px solid ${ORANGE}`}}>
         <div style={{fontSize: 34, fontWeight: 800, color: MUTED, width: 140}}>Period</div>
         <div style={{flex: 1, height: 72, borderRadius: 24, background: `${BLUE}1A`, border: `3px solid ${BLUE}`, boxSizing: 'border-box', display: 'flex', alignItems: 'center', padding: '0 22px', fontSize: 34, fontWeight: 800, color: INK}}>This month</div>
         <div style={{width: 56, height: 56, borderRadius: 28, background: BLUE, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${open * 180}deg)`}}>
           <Glyph name="chevron" size={34} stroke={3.2} />
         </div>
       </Card>
-      <Card style={{top: 685, padding: '16px 18px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32, display: 'flex', flexWrap: 'wrap', gap: 12}}>
+      <Card style={{top: 660, padding: '16px 18px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32, display: 'flex', flexWrap: 'wrap', gap: 12}}>
         {PRESET_CHIPS.map((c, i) => {
           const t = enter(l, w(7) - 1 + i * 4, 7);
           const isCustom = i === 3;
@@ -393,7 +394,7 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
           );
         })}
       </Card>
-      <Card style={{top: 960, height: 136, padding: '0 26px', display: 'flex', alignItems: 'center', gap: 12, opacity: dates, transform: rise(dates), borderLeft: `16px solid ${TEAL}`}}>
+      <Card style={{top: 925, height: 136, padding: '0 26px', display: 'flex', alignItems: 'center', gap: 12, opacity: dates, transform: rise(dates), borderLeft: `16px solid ${TEAL}`}}>
         {['Start date', 'End date'].map((t, i) => (
           <React.Fragment key={t}>
             {i === 1 && <div style={{width: 24, height: 6, borderRadius: 3, background: TEAL, flex: 'none'}} />}
@@ -411,7 +412,7 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
 /* ---------- scene 3: opening balance, cash in, cash out, closing balance ---------- */
 
 const BalanceCard: React.FC<{left: number; title: string; accent: string; t: number}> = ({left, title, accent, t}) => (
-  <Card style={{left, width: 380, top: 336, height: 160, padding: '20px 24px', borderLeft: `16px solid ${accent}`, opacity: t, transform: rise(t)}}>
+  <Card style={{left, width: 380, top: 322, height: 150, padding: '16px 24px', borderLeft: `16px solid ${accent}`, opacity: t, transform: rise(t)}}>
     <div style={{fontSize: 34, fontWeight: 800, color: INK, whiteSpace: 'nowrap', height: 50, display: 'flex', alignItems: 'center'}}>{title}</div>
     <div style={{marginTop: 14}}>
       <Bar w={`${40 + 40 * t}%`} h={34} color={accent} alpha="CC" />
@@ -420,12 +421,12 @@ const BalanceCard: React.FC<{left: number; title: string; accent: string; t: num
 );
 
 const RowsCard: React.FC<{left: number; title: string; accent: string; t: number; l: number; start: number}> = ({left, title, accent, t, l, start}) => (
-  <Card style={{left, width: 380, top: 906, height: 230, padding: '16px 24px', borderLeft: `16px solid ${accent}`, opacity: t, transform: rise(t)}}>
-    <div style={{fontSize: 38, fontWeight: 900, color: INK, height: 56, display: 'flex', alignItems: 'center'}}>{title}</div>
+  <Card style={{left, width: 380, top: 826, height: 214, padding: '14px 24px', borderLeft: `16px solid ${accent}`, opacity: t, transform: rise(t)}}>
+    <div style={{fontSize: 38, fontWeight: 900, color: INK, height: 52, display: 'flex', alignItems: 'center'}}>{title}</div>
     {[210, 150, 180].map((wd, i) => {
       const r = enter(l, start + i * 5, 8);
       return (
-        <div key={i} style={{display: 'flex', alignItems: 'center', gap: 14, height: 44, opacity: r, transform: `translateX(${(1 - r) * 30}px)`}}>
+        <div key={i} style={{display: 'flex', alignItems: 'center', gap: 14, height: 40, opacity: r, transform: `translateX(${(1 - r) * 30}px)`}}>
           <div style={{width: 20, height: 20, borderRadius: 6, background: accent, flex: 'none'}} />
           <Bar w={wd} h={20} color="#B8C2DA" alpha="AA" />
         </div>
@@ -446,19 +447,19 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
     <>
       <BalanceCard left={COL_L} title="Opening Balance" accent={BLUE} t={open} />
       <BalanceCard left={COL_L + 400} title="Closing Balance" accent={TEAL} t={close} />
-      <Card style={{top: 516, height: 270, padding: '20px 28px', opacity: chart, transform: rise(chart)}}>
+      <Card style={{top: 486, height: 230, padding: '20px 28px', opacity: chart, transform: rise(chart)}}>
         <div style={{fontSize: 40, fontWeight: 900, color: INK, height: 56, display: 'flex', alignItems: 'center'}}>Cash In vs. Cash Out</div>
         {[
           {label: 'Cash in', color: GREEN, wd: 470, t: inT},
           {label: 'Cash out', color: RED, wd: 330, t: outT},
         ].map((r) => (
-          <div key={r.label} style={{display: 'flex', alignItems: 'center', gap: 20, height: 80}}>
+          <div key={r.label} style={{display: 'flex', alignItems: 'center', gap: 20, height: 64}}>
             <div style={{width: 160, fontSize: 34, fontWeight: 800, color: INK, whiteSpace: 'nowrap', opacity: r.t}}>{r.label}</div>
             <div style={{height: 46, width: r.wd * r.t, borderRadius: 23, background: r.color}} />
           </div>
         ))}
       </Card>
-      <Card style={{top: 806, height: 80, padding: '0 28px', display: 'flex', alignItems: 'center', borderLeft: `16px solid ${ORANGE}`, opacity: net, transform: rise(net)}}>
+      <Card style={{top: 730, height: 80, padding: '0 28px', display: 'flex', alignItems: 'center', borderLeft: `16px solid ${ORANGE}`, opacity: net, transform: rise(net)}}>
         <div style={{fontSize: 38, fontWeight: 900, color: INK, whiteSpace: 'nowrap'}}>Net Change in Cash</div>
         <div style={{marginLeft: 'auto'}}>
           <Bar w={150} h={30} color={ORANGE} alpha="" />
@@ -484,7 +485,7 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
   const coinX = 60 + 300 * moveP;
   return (
     <>
-      <Card style={{top: 346, height: 300, opacity: top, transform: rise(top), borderLeft: `18px solid ${BLUE}`}}>
+      <Card style={{top: 336, height: 300, opacity: top, transform: rise(top), borderLeft: `18px solid ${BLUE}`}}>
         <div style={{position: 'absolute', left: 44, top: 90}}>
           <Tile color={BLUE} size={120} radius={36}>
             <Glyph name="user" size={72} stroke={2.2} />
@@ -506,7 +507,7 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
           {landed > 0 && landed < 1 && <div style={{position: 'absolute', inset: -6, borderRadius: 42, border: `7px solid ${GREEN}`, opacity: 1 - landed, transform: `scale(${1 + 0.5 * landed})`}} />}
         </div>
       </Card>
-      <Card style={{top: 690, height: 420, padding: '30px 34px', opacity: sale, transform: rise(sale), borderLeft: `18px solid ${ORANGE}`}}>
+      <Card style={{top: 664, height: 376, padding: '24px 34px', opacity: sale, transform: rise(sale), borderLeft: `18px solid ${ORANGE}`}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 24, height: 100}}>
           <Tile color={ORANGE} size={96} radius={30}>
             <Glyph name="doc" size={60} stroke={2.2} />
@@ -578,18 +579,18 @@ const Scene6: React.FC<{l: number}> = ({l}) => {
   const pill = (bg: string): React.CSSProperties => ({position: 'absolute', left: COL_L, width: COL_W, height: 112, borderRadius: 56, background: bg, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, fontSize: 42, fontWeight: 800, boxShadow: '0 10px 24px rgba(26,80,160,0.22)'});
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 270, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 212, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
         <LogoCard width={520} pad={32} radius={50} />
       </div>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 560, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 502, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
         Book a<br />
         <span style={{color: TXT_BLUE}}>free demo</span>
       </div>
-      <div style={{...pill(TXT_GREEN), top: 880, opacity: t(14), transform: rise(t(14))}}>
+      <div style={{...pill(TXT_GREEN), top: 822, opacity: t(14), transform: rise(t(14))}}>
         <Glyph name="phone" size={50} />
         WhatsApp +2347035682478
       </div>
-      <div style={{...pill(TXT_BLUE), top: 1016, opacity: t(20), transform: rise(t(20))}}>
+      <div style={{...pill(TXT_BLUE), top: 958, opacity: t(20), transform: rise(t(20))}}>
         <Glyph name="globe" size={50} />
         meganetsoftware.com.ng
       </div>
@@ -597,7 +598,7 @@ const Scene6: React.FC<{l: number}> = ({l}) => {
   );
 };
 
-/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1340) ---------- */
+/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1272, limit 1280) ---------- */
 
 // [scene, firstWord, lastWord] per caption chunk; chunks cover every narrated word once, in order.
 export const CHUNKS: [number, number, number][] = [
@@ -626,7 +627,7 @@ const Captions: React.FC = () => {
   const t = interpolate(f, [first - 1, first + 4], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <Layer kind="cap">
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1340, display: 'flex', justifyContent: 'center', fontFamily: FONT, transform: `translateY(${(1 - t) * 14}px)`, opacity: t}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1272, display: 'flex', justifyContent: 'center', fontFamily: FONT, transform: `translateY(${(1 - t) * 14}px)`, opacity: t}}>
         <div style={{maxWidth: COL_W, boxSizing: 'border-box', padding: '14px 30px', borderRadius: 36, background: WHITE, border: '3px solid #9FBFEA', boxShadow: '0 4px 10px rgba(26,80,160,0.12)', fontSize: 48, lineHeight: 1.22, fontWeight: 800, textAlign: 'center'}}>
           {TOKENS[s].slice(a, b + 1).map((tok, i) => {
             const wi = a + i;
@@ -702,6 +703,7 @@ export const MegaNetCashFlowAd: React.FC<{debug?: string}> = ({debug = ''}) => {
           <SceneFrame i={5} header={false}>{(l) => <Scene6 l={l} />}</SceneFrame>
           <Captions />
           <Violate />
+          <CaptionViolation />
         </Freeze>
         {debug === 'audit' && <AuditProbe />}
       </AbsoluteFill>
