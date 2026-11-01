@@ -2,9 +2,9 @@
 """Caption-vs-content overlap check on LOSSLESS frames (STYLE_GUIDE.md section 3, "caption zone").
 
 Rule: the caption box must never cover scene content. The caption zone is the FULL caption box rectangle at its
-maximum two-line height (not the current line): x 110-890, y 1188-1340. All scene content (text, cards, icons, chips,
+maximum two-line height (not the current line): x 110-890, y 1120-1272. All scene content (text, cards, icons, chips,
 labels, CTA block, WhatsApp number, website) must sit above it with at least CLEARANCE (24px) to spare, i.e. end at
-y <= 1163. Decorative background gradients may extend behind the captions; they are in the reference render, so they
+y <= 1095. Decorative background gradients may extend behind the captions; they are in the reference render, so they
 are subtracted out.
 
 Inputs are two PNG sequences rendered with `remotion render <Comp> <dir> --sequence --image-format=png`:
@@ -27,7 +27,7 @@ import glob, os, sys
 import numpy as np
 from PIL import Image
 
-ZONE = (110, 1188, 890, 1340)  # x0, y0, x1, y1 (exclusive): caption box, 780 wide, max two lines (~151px), bottom edge y=1340
+ZONE = (110, 1120, 890, 1272)  # x0, y0, x1, y1 (exclusive): caption box, 780 wide, max two lines (~152px), bottom edge y=1272 (limit 1280)
 CLEARANCE = 24
 
 
