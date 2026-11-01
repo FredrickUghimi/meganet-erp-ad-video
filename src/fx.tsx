@@ -40,12 +40,12 @@ export const Violation: React.FC = () => {
   return <div style={{position: 'absolute', width: 40, height: 40, backgroundColor: '#fff', ...box[edge]}} />;
 };
 
-/** Negative control for the caption-overlap check: a box inside the caption zone (x 110-890, y 1189-1340), content layer only. */
+/** Negative control for the caption-overlap check: a box inside the caption zone (x 110-890, y 1120-1272), content layer only. */
 export const CaptionViolation: React.FC = () => {
   const mode = React.useContext(DebugContext);
   const m = /^nocaps-violate(weak)?-caption$/.exec(mode);
   if (!m) return null;
-  return <div style={{position: 'absolute', left: 500, top: 1260, width: 40, height: 40, backgroundColor: m[1] ? '#FFFFFF' : '#E5484D'}} />;
+  return <div style={{position: 'absolute', left: 500, top: 1180, width: 40, height: 40, backgroundColor: m[1] ? '#FFFFFF' : '#E5484D'}} />;
 };
 
 export type Glow = {x: number; y: number; r: number; color: string; drift?: number};
