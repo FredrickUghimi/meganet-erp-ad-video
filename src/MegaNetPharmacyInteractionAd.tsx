@@ -92,7 +92,7 @@ const contentStyle = (t: Trans | null, r: number, dir: 'in' | 'out'): React.CSSP
     case 'zoom':
       return dir === 'in'
         ? {opacity: e, transform: `scale(${(0.94 + 0.06 * e).toFixed(4)})`}
-        : {opacity: 1 - e, transform: `scale(${(1 + 0.05 * e).toFixed(4)})`};
+        : {opacity: 1 - e, transform: `scale(${(1 - 0.05 * e).toFixed(4)})`};
   }
 };
 /** Full-bleed backgrounds simply cross-fade. */
@@ -238,57 +238,63 @@ const SceneFrame: React.FC<{i: number; header?: boolean; children: (l: number) =
 
 const NAME_FONT = 900;
 
-/** A drug tile: icon square on top, generic name below. */
-const DrugTile: React.FC<{name: string; color: string; ink: string; w?: number; h?: number}> = ({name, color, ink, w = 300, h = 270}) => (
-  <div style={{width: w, height: h, boxSizing: 'border-box', background: WHITE, borderRadius: 40, border: '3px solid #C9DCF6', boxShadow: '0 12px 28px rgba(26,80,160,0.16)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 22}}>
-    <Tile color={color} size={110} radius={34}>
-      <FxIcon name="pill" size={84} accent={ink} ink={WHITE} />
-    </Tile>
-    <div style={{fontSize: 48, fontWeight: NAME_FONT, color: INK, lineHeight: 1}}>{name}</div>
-  </div>
-);
-
 const Chip: React.FC<{text: string; bg: string; fg?: string; size?: number; style?: React.CSSProperties}> = ({text, bg, fg = WHITE, size = 36, style}) => (
   <div style={{display: 'inline-flex', alignItems: 'center', height: size + 36, padding: '0 28px', borderRadius: (size + 36) / 2, background: bg, color: fg, fontSize: size, fontWeight: 900, whiteSpace: 'nowrap', ...style}}>{text}</div>
 );
 
 /* ---------- scene 1 (hook): "Warfarin meets aspirin. Spot the collision." ---------- */
 
-const T_W = 300;
-const T_TOP = 640;
-const T_H = 270;
-const BAR_W = 28;
-const L_HALT = CX - BAR_W / 2 - 26 - T_W; // left tile's left edge when halted: 200
-const R_HALT = CX + BAR_W / 2 + 26; // right tile's left edge when halted: 580
+// Geometry: every tile starts and ends inside the safe area (x 80-920, y 200-1440), so no text box is ever outside it,
+// not even while the tiles move. The two tiles converge on the centre line (y 746-774) from above-left and below-right.
+const T_W = 520;
+const T_H = 200;
+const BAR_Y = 746;
+const BAR_H = 28;
+const BAR_W = 700;
+const TILE_X = 240; // x of both tiles when halted (centred on the safe box centre x=500)
+const TOP_HALT = BAR_Y - 26 - T_H; // 520
+const BOT_HALT = BAR_Y + BAR_H + 26; // 800
+const TRAVEL_Y = 180;
+const TRAVEL_X = 110;
+
+/** A drug tile for the hook: icon square at the left, generic name beside it. */
+const DrugTileRow: React.FC<{name: string; color: string; ink: string}> = ({name, color, ink}) => (
+  <div style={{width: T_W, height: T_H, boxSizing: 'border-box', background: WHITE, borderRadius: 40, border: '3px solid #C9DCF6', boxShadow: '0 12px 28px rgba(26,80,160,0.16)', display: 'flex', alignItems: 'center', gap: 30, padding: '0 36px'}}>
+    <Tile color={color} size={116} radius={36}>
+      <FxIcon name="pill" size={88} accent={ink} ink={WHITE} />
+    </Tile>
+    <div style={{fontSize: 60, fontWeight: NAME_FONT, color: INK, lineHeight: 1}}>{name}</div>
+  </div>
+);
 
 const Scene1: React.FC<{l: number}> = ({l}) => {
   const w = (n: number) => wordF(0, n) - sceneFrom(0); // Warfarin0 meets1 aspirin2 Spot3 the4 collision5
   const HALT = w(3) + 2; // the bar lands and the tiles stop here
   const travel = clamp01(l / HALT);
   const p = Math.pow(travel, 1.7); // they accelerate toward each other
-  const off = 420;
   const recoil = l >= HALT ? Math.sin((l - HALT) * 1.9) * 9 * Math.max(0, 1 - (l - HALT) / 9) : 0;
-  const lx = L_HALT - off * (1 - p) - recoil;
-  const rx = R_HALT + off * (1 - p) + recoil;
+  const topY = TOP_HALT - TRAVEL_Y * (1 - p) - recoil;
+  const botY = BOT_HALT + TRAVEL_Y * (1 - p) + recoil;
+  const topX = TILE_X - TRAVEL_X * (1 - p);
+  const botX = TILE_X + TRAVEL_X * (1 - p);
   const barT = clamp01((l - (w(3) - 8)) / 9);
-  const barY = (1 - Easing.out(Easing.back(1.2))(barT)) * -320;
   const ring = clamp01((l - HALT) / 14);
   const lab = (n: number) => enter(l, w(5) - 2 + n, 10);
   return (
     <>
-      <div style={{position: 'absolute', left: lx, top: T_TOP, opacity: enter(l, 0, 6)}}>
-        <DrugTile name="Warfarin" color={BLUE} ink={ORANGE} w={T_W} h={T_H} />
+      <div style={{position: 'absolute', left: topX, top: topY, opacity: enter(l, 0, 6)}}>
+        <DrugTileRow name="Warfarin" color={BLUE} ink={ORANGE} />
       </div>
-      <div style={{position: 'absolute', left: rx, top: T_TOP, opacity: enter(l, 0, 6)}}>
-        <DrugTile name="Aspirin" color={TXT_ORANGE} ink={BLUE} w={T_W} h={T_H} />
+      <div style={{position: 'absolute', left: botX, top: botY, opacity: enter(l, 0, 6)}}>
+        <DrugTileRow name="Aspirin" color={TXT_ORANGE} ink={BLUE} />
       </div>
-      {/* the orange stop-bar */}
-      <div style={{position: 'absolute', left: CX - BAR_W / 2, top: T_TOP - 50 + barY, width: BAR_W, height: T_H + 100, borderRadius: 14, background: ORANGE, boxShadow: '0 8px 20px rgba(247,148,29,0.45)', opacity: barT > 0 ? 1 : 0}} />
+      {/* the orange stop-bar: grows from the centre outwards and halts the tiles */}
+      <div style={{position: 'absolute', left: CX - 40 - BAR_W / 2, top: BAR_Y, width: BAR_W, height: BAR_H, borderRadius: 14, background: ORANGE, boxShadow: '0 8px 20px rgba(247,148,29,0.45)', opacity: barT > 0 ? 1 : 0, transform: `scaleX(${Easing.out(Easing.back(1.2))(barT)})`}} />
       {ring > 0 && ring < 1 && (
-        <div style={{position: 'absolute', left: CX - 90 * ring - 14, top: T_TOP + T_H / 2 - 90 * ring, width: 180 * ring + 28, height: 180 * ring, borderRadius: 999, border: `8px solid ${ORANGE}`, opacity: 1 - ring, boxSizing: 'border-box'}} />
+        <div style={{position: 'absolute', left: CX - 40 - 110 * ring, top: BAR_Y + BAR_H / 2 - 110 * ring, width: 220 * ring, height: 220 * ring, borderRadius: 999, border: `8px solid ${ORANGE}`, opacity: 1 - ring, boxSizing: 'border-box'}} />
       )}
       {/* the label lands */}
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 1010, display: 'flex', justifyContent: 'center', opacity: lab(0), transform: `translateY(${(1 - back(lab(0))) * -60}px)`}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 1040, display: 'flex', justifyContent: 'center', opacity: lab(0), transform: `translateY(${(1 - back(lab(0))) * -40}px)`}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 22, background: WHITE, border: `4px solid ${RED}`, borderRadius: 48, padding: '16px 40px 16px 20px', boxShadow: '0 12px 28px rgba(26,80,160,0.16)'}}>
           <Tile color={TXT_RED} size={84} radius={28}>
             <Glyph name="alert" size={54} stroke={2.6} />
