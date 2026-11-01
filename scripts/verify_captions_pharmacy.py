@@ -8,7 +8,8 @@ usage: verify_captions_pharmacy.py CAPS_DIR BG_DIR FINAL.mp4 OUT_CSV
 2) GEOMETRY: every frame of the captions-only PNG render vs the gradient-only render: the caption pill must stay inside
    x 80-920, end at y <= 1360 and be at most 2 lines tall.
 3) TIMING: per sentence, when the caption appears and disappears (frame-accurate, from the pixels) vs the measured sentence
-   boundaries, two ways: TTS word boundaries (+0.4s lead-in) and silence detection run on the rendered video's own audio.
+   boundaries, two ways: TTS word boundaries (+0.4s lead-in) and silence detection (-45dB) run on the rendered video's own
+   audio. Pass = within 0.1s on both ends against both measurements.
    Pass = within 0.1s on both ends against both measurements."""
 import csv, glob, json, os, re, subprocess, sys
 import numpy as np
@@ -87,7 +88,7 @@ for f, p in enumerate(present):
         runs.append((cur / FPS, f / FPS)); cur = None
 if cur is not None:
     runs.append((cur / FPS, len(present) / FPS))
-sd = subprocess.run(['ffmpeg', '-v', 'info', '-i', sys.argv[3], '-af', 'silencedetect=noise=-35dB:d=0.15', '-vn', '-f', 'null', '-'], capture_output=True, text=True).stderr
+sd = subprocess.run(['ffmpeg', '-v', 'info', '-i', sys.argv[3], '-af', 'silencedetect=noise=-45dB:d=0.12', '-vn', '-f', 'null', '-'], capture_output=True, text=True).stderr
 sil = [(float(a), float(b)) for a, b in zip(re.findall(r'silence_start: ([\d.]+)', sd), re.findall(r'silence_end: ([\d.]+)', sd))]
 dur = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', sys.argv[3]]))
 speech, last = [], 0.0
@@ -97,20 +98,30 @@ for a, b in sil:
     last = b
 if dur - last > 0.05:
     speech.append((last, dur))
-speech = [sg for sg in speech if sg[1] - sg[0] > 0.3]
-print(f'sentences {len(sent)} | caption runs {len(runs)} | speech segments by silence detection {len(speech)}')
-rows, tok = [], len(sent) == len(runs) == len(speech)
+speech = [sg for sg in speech if sg[1] - sg[0] > 0.08]
+
+
+def measured(ts, te):
+    """Audible start/end of a sentence: the outer edges of every detected speech segment that overlaps its TTS window
+    (pauses at commas split one sentence into several segments)."""
+    seg = [sg for sg in speech if sg[1] > ts - 0.15 and sg[0] < te + 0.15]
+    return (min(x[0] for x in seg), max(x[1] for x in seg)) if seg else (None, None)
+
+
+print(f'sentences {len(sent)} | caption runs {len(runs)} | speech segments by silence detection (-45dB) {len(speech)}')
+rows, tok = [], len(sent) == len(runs)
 ok &= tok
+print('"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.')
 print(f'{"#":>2} {"sentence":<30} {"caption on":>10} {"caption off":>11} {"TTS start":>9} {"TTS end":>8} {"audio start":>11} {"audio end":>9} {"max |delta|":>11}  result')
 for i, (txt, ts, te) in enumerate(sent if tok else []):
-    on, off = runs[i]; ss, se = speech[i]
+    on, off = runs[i]; ss, se = measured(ts, te)
     deltas = [abs(on - ts), abs(off - te), abs(on - ss), abs(off - se)]
     good = max(deltas) <= 0.1
     ok &= good
     rows.append([i + 1, txt, f'{on:.3f}', f'{off:.3f}', f'{ts:.3f}', f'{te:.3f}', f'{ss:.3f}', f'{se:.3f}', f'{max(deltas):.3f}', 'PASS' if good else 'FAIL'])
     print(f'{i + 1:>2} {txt[:30]:<30} {on:>10.3f} {off:>11.3f} {ts:>9.3f} {te:>8.3f} {ss:>11.3f} {se:>9.3f} {max(deltas):>11.3f}  {"PASS" if good else "FAIL"}')
 if not tok:
-    print('COUNT MISMATCH: runs', runs, 'speech', speech)
+    print('COUNT MISMATCH: runs', runs)
 with open(sys.argv[4], 'w', newline='') as fh:
     w = csv.writer(fh)
     w.writerow(['n', 'sentence', 'caption_on_s', 'caption_off_s', 'tts_start_s', 'tts_end_s', 'audio_start_s', 'audio_end_s', 'max_abs_delta_s', 'result'])

@@ -434,7 +434,7 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
 
 // [line, firstWord, lastWord] per caption chunk; chunks cover every narrated word once, in order.
 // A chunk whose last token ends a sentence (. ? !) disappears when that last word ends; any other chunk stays until the
-// next one starts. Every chunk appears when its first word starts.
+// next one starts. Every chunk appears when its first word starts (all shifted by CAP_DELAY, below).
 export const CHUNKS: [number, number, number][] = [
   [0, 0, 2],
   [0, 3, 5],
@@ -446,12 +446,15 @@ export const CHUNKS: [number, number, number][] = [
   [3, 6, 9],
 ];
 const TOKENS = LINES.map((s) => s.text.split(' '));
+// The TTS engine's word boundaries lead the audible onset by about 0.05-0.15s (measured on the rendered audio with
+// silence detection), so captions and the spoken-word highlight run 2 frames (0.067s) behind the reported boundaries.
+const CAP_DELAY = 2;
 const endsSentence = (s: number, b: number) => /[.?!]$/.test(TOKENS[s][b]);
 /** [on, off) frame window of caption chunk i. */
 export const chunkWindow = (i: number): [number, number] => {
   const [s, a, b] = CHUNKS[i];
-  const on = wordF(s, a);
-  const off = endsSentence(s, b) || i === CHUNKS.length - 1 ? wordEndF(s, b) + 1 : wordF(CHUNKS[i + 1][0], CHUNKS[i + 1][1]);
+  const on = wordF(s, a) + CAP_DELAY;
+  const off = endsSentence(s, b) || i === CHUNKS.length - 1 ? wordEndF(s, b) + CAP_DELAY : wordF(CHUNKS[i + 1][0], CHUNKS[i + 1][1]) + CAP_DELAY;
   return [on, off];
 };
 
@@ -472,8 +475,8 @@ const Captions: React.FC = () => {
         <div style={{maxWidth: COL_W, boxSizing: 'border-box', padding: '14px 30px', borderRadius: 36, background: WHITE, border: '3px solid #9FBFEA', boxShadow: '0 4px 10px rgba(26,80,160,0.12)', fontSize: 48, lineHeight: 1.22, fontWeight: 800, textAlign: 'center', opacity: t}}>
           {TOKENS[s].slice(a, b + 1).map((tok, i) => {
             const wi = a + i;
-            const started = f >= wordF(s, wi);
-            const nextStart = wi + 1 < LINES[s].words.length ? wordF(s, wi + 1) : Infinity;
+            const started = f >= wordF(s, wi) + CAP_DELAY;
+            const nextStart = wi + 1 < LINES[s].words.length ? wordF(s, wi + 1) + CAP_DELAY : Infinity;
             const active = started && f < nextStart;
             return (
               <React.Fragment key={wi}>
