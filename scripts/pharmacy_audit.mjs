@@ -22,8 +22,8 @@ const sceneFrom = (i) => (i === 0 ? 0 : wordF(i, 0) - 9);
 const frames = new Set();
 chunks.forEach(([s, , b]) => frames.add(Math.min(wordF(s, b) + 8, s < LINES.length - 1 ? sceneFrom(s + 1) - 1 : 1e9)));
 for (let s = 0; s < LINES.length; s++) frames.add(s < LINES.length - 1 ? sceneFrom(s + 1) - 1 : LEAD + Math.round(parseFloat(/VOICE_END = ([\d.]+)/.exec(t)[1]) * 30));
-// extra settled states: hook tiles in motion + label landed, gate with the sign and the disabled button, gate enabled
-[wordF(0, 2) + 3, wordF(0, 5) + 16, wordF(2, 8) + 10, wordEndF(2, 10) + 10].forEach((f) => frames.add(f));
+// extra settled states (not mid-slide: text in motion is transient, STYLE_GUIDE.md section 2): hook label landed, gate with the sign and the disabled button, gate enabled
+[wordF(0, 5) + 16, wordF(2, 8) + 10, wordEndF(2, 10) + 10].forEach((f) => frames.add(f));
 const TR = 14; // transition length, as in src/MegaNetPharmacyInteractionAd.tsx; text mid-transition is transient (STYLE_GUIDE.md section 2)
 const inTransition = (f) => LINES.some((_, i) => i > 0 && f >= sceneFrom(i) && f < sceneFrom(i) + TR);
 const skipped = [...frames].filter(inTransition);

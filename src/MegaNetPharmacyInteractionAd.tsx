@@ -480,7 +480,7 @@ const Captions: React.FC = () => {
             const active = started && f < nextStart;
             return (
               <React.Fragment key={wi}>
-                <span style={{color: started ? INK : MUTED, background: active ? ORANGE : 'transparent', borderRadius: 12, padding: '0 4px', margin: '0 -4px', whiteSpace: 'nowrap'}}>{tok}</span>
+                <span style={{color: started ? INK : MUTED, background: active ? ORANGE : 'transparent', borderRadius: 12, padding: '0 4px', margin: '0 -4px', whiteSpace: 'nowrap', display: 'inline-block', lineHeight: 1.1}}>{tok}</span>
                 {i < b - a ? ' ' : ''}
               </React.Fragment>
             );
