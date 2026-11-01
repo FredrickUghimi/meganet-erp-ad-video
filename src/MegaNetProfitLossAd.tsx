@@ -21,7 +21,7 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Audio, Easing, Freeze, Img, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {LINES, VOICE_END} from './plTimings';
-import {DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
+import {CaptionViolation, DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
 
 export const PL_FPS = 30;
 const LEAD = 12; // 0.4s before the voice starts
@@ -656,6 +656,7 @@ export const MegaNetProfitLossAd: React.FC<{debug?: string}> = ({debug = ''}) =>
           <SceneFrame i={5} header={false}>{(l) => <Scene6 l={l} />}</SceneFrame>
           <Captions />
           <Violate />
+          <CaptionViolation />
         </Freeze>
         {debug === 'audit' && <AuditProbe />}
       </AbsoluteFill>
