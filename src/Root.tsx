@@ -7,6 +7,7 @@ import {ASSISTANT_DURATION, MegaNetAssistantAd} from './MegaNetAssistantAd';
 import {LEDGER_DURATION, LEDGER_FPS, MegaNetLedgerAd} from './MegaNetLedgerAd';
 import {MegaNetProfitLossAd, PL_DURATION, PL_FPS} from './MegaNetProfitLossAd';
 import {CF_DURATION, CF_FPS, MegaNetCashFlowAd} from './MegaNetCashFlowAd';
+import {MegaNetPharmacyInteractionAd, PH_DURATION, PH_FPS} from './MegaNetPharmacyInteractionAd';
 
 export const Root: React.FC = () => (
   <>
@@ -66,6 +67,15 @@ export const Root: React.FC = () => (
     component={MegaNetCashFlowAd}
     durationInFrames={CF_DURATION}
     fps={CF_FPS}
+    width={1080}
+    height={1920}
+    defaultProps={{debug: ''}}
+  />
+  <Composition
+    id="MegaNetPharmacyInteractionAd"
+    component={MegaNetPharmacyInteractionAd}
+    durationInFrames={PH_DURATION}
+    fps={PH_FPS}
     width={1080}
     height={1920}
     defaultProps={{debug: ''}}
