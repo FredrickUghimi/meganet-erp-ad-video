@@ -1,0 +1,34 @@
+Caption-zone overlap audit of the ORIGINAL renders on main (scripts/verify_caption_overlap.py, thresh 24/255, lossless PNG, every frame)
+Zone x 110-890, y 1188-1340 (max two-line caption box) + 24px clearance band above it.
+
+### MegaNetProfitLossAd
+frames decoded (lossless PNG): 655; threshold 24/255; zone x 110-889, y 1188-1339; clearance 24px (content must end by y 1163)
+lowest scene content outside zone + band: y 1154
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+
+(same check at --thresh 12: 0 frames, lowest content y 1156; at --thresh 6: 2 frames, only card-shadow tails)
+
+### MegaNetCashFlowAd
+frames decoded (lossless PNG): 650; threshold 24/255; zone x 110-889, y 1188-1339; clearance 24px (content must end by y 1163)
+lowest scene content outside zone + band: y 1157
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+
+### MegaNetLedgerAd (fixed in PR ledger-ad-fix)
+frames decoded (lossless PNG): 571; threshold 24/255; zone x 110-889, y 1188-1339; clearance 24px (content must end by y 1163)
+lowest scene content outside zone + band: y 1163
+frames with scene content inside the zone or its clearance band: 37
+  scene 2: 30 frames (139-168); worst frame 141 (0 px in zone, 8684 px in band); offending bbox x 113-882, y 1164-1185
+  scene 3: 6 frames (169-174); worst frame 173 (0 px in zone, 3896 px in band); offending bbox x 140-863, y 1164-1169
+  scene 6: 1 frames (457); worst frame 457 (19865 px in zone, 0 px in band); offending bbox x 242-757, y 1236-1339
+RESULT: FAIL
+
+### MegaNetBalanceSheetAd (fixed in PR balancesheet-ad-fix, base balancesheet-ad)
+frames decoded (lossless PNG): 640; threshold 24/255; zone x 110-889, y 1188-1339; clearance 24px (content must end by y 1163)
+lowest scene content outside zone + band: y 1163
+frames with scene content inside the zone or its clearance band: 8
+  scene 2: 1 frames (203); worst frame 203 (0 px in zone, 39 px in band); offending bbox x 126-139, y 1164-1167
+  scene 3: 3 frames (251-252, 324); worst frame 251 (18399 px in zone, 3151 px in band); offending bbox x 124-889, y 1164-1339
+  scene 4: 4 frames (385-388); worst frame 386 (115454 px in zone, 17304 px in band); offending bbox x 110-889, y 1164-1339
+RESULT: FAIL
