@@ -20,8 +20,8 @@ CONFIRM                             #44506A   #FFFFFF         48  800     8.07  
 to                                  #44506A   #FFFFFF         48  800     8.07    373    True
 continue.                           #44506A   #FFFFFF         48  800     8.07    373    True
 Book a                              #1B2430   #F2EFE8        116  900    13.63    464    True
-Aspirin                             #1B2430   #FEEDD5         48  900    13.63     46 clipped
-Warfarin                            #1B2430   #FFF3E2         48  900    14.29     46 clipped
+Warfarin                            #1B2430   #F4F8FF         46  900    14.70    170    True
+Aspirin                             #1B2430   #F4F8FF         46  900    14.70    255    True
 Mega-Net EHR Cloud                  #1B2430   #FFFFFF         32  800    15.65     46    True
 meets                               #1B2430   #FFFFFF         48  800    15.65     46    True
 Spot                                #1B2430   #FFFFFF         48  800    15.65     86    True

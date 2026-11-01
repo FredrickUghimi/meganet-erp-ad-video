@@ -49,7 +49,7 @@ for jf in sorted(glob.glob(os.path.join(d, 'audit-*.json')), key=lambda p: int(r
         # scene's safe-area clip box, so its overflowing part is not visible (scripts/verify_safe_area_pharmacy.py proves no
         # visible pixel leaves the box on every frame). Its contrast and size are still enforced; only the box-position rule
         # is waived, and it is listed as 'clipped mid-slide'.
-        clipped = (not ok_pos) and (not cap) and y0 >= 200 and y1 <= 1440
+        clipped = False  # no waiver: every text box must be inside the safe area
         ok = r >= min_c and it['size'] >= min_s and (ok_pos or clipped)
         nodes += 1
         fails += not ok
