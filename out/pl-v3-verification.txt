@@ -1,0 +1,239 @@
+pl: caption limit v3 (caption box bottom edge y=1272, limit 1280) - verification log
+
+### pl verification (post-fix) 2026-11-02T01:08:56Z
+video: out/meganet-pl-ad-v3.mp4
+### 1. safe area, lossless, all frames, full vs gradient-only, threshold 6/255
+frames decoded (lossless PNG): 655; threshold 6/255
+content bbox over all frames: x 80-919, y 200-1284 (safe x 80-919, y 200-1439)
+violating frames: 0; worst pixel count 0
+RESULT: PASS
+### 2. negative controls on the lossless safe-area check (frames 100-105; expected FAIL = caught)
+-- violate-left
+  frame 4: 1600 px outside; x 40-919 y 200-1279
+  frame 5: 1600 px outside; x 40-919 y 200-1279
+RESULT: FAIL
+-- violate-right
+  frame 4: 1600 px outside; x 80-964 y 200-1279
+  frame 5: 1600 px outside; x 80-964 y 200-1279
+RESULT: FAIL
+-- violate-top
+  frame 4: 1600 px outside; x 80-919 y 150-1279
+  frame 5: 1600 px outside; x 80-919 y 150-1279
+RESULT: FAIL
+-- violate-bottom
+  frame 4: 1600 px outside; x 80-919 y 200-1489
+  frame 5: 1600 px outside; x 80-919 y 200-1489
+RESULT: FAIL
+-- violateweak-left
+  frame 4: 1600 px outside; x 40-919 y 200-1279
+  frame 5: 1600 px outside; x 40-919 y 200-1279
+RESULT: FAIL
+### 3. caption zone, lossless, all frames, captions off vs gradient-only
+frames decoded (lossless PNG): 655; threshold 24/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1095
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+### 4. caption-zone negative controls
+  test box inside zone: flagged (expected flagged)
+  test box inside clearance band: flagged (expected flagged)
+  test box just clear of band (control, must NOT be flagged): not flagged (expected not flagged)
+NEGATIVE CONTROL: PASS (checker catches a box in the caption zone)
+-- rendered control nocaps-violate-caption (6 frames, --expect-fail: PASS means all 6 flagged)
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+-- rendered control nocaps-violateweak-caption (6 frames, --expect-fail: PASS means all 6 flagged)
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+### 5. captions vs narration
+caption words: 53 | narration words: 53
+TEXT MATCH (word for word, in order): PASS
+  chunk: Month end.
+  chunk: One report.
+  chunk: Your answer.
+  chunk: Meet the Profit and Loss report.
+  chunk: Pick a period, or set your own dates.
+  chunk: See your income and your expenses,
+  chunk: line by line.
+  chunk: Income minus expenses gives your net profit.
+  chunk: Your dashboard shows a profit summary too,
+  chunk: for accounting roles only.
+  chunk: Book a free demo with Mega-Net.
+voice ends 19.43s; longest silences between words: [(0.39, 'only', 'Book'), (0.39, 'profit', 'Your'), (0.39, 'line', 'Income'), (0.39, 'report', 'Your')]
+  scene 0.00-2.83s
+  scene 3.13-7.49s
+  scene 7.79-10.62s
+  scene 10.91-13.42s
+  scene 13.72-17.46s
+  scene 17.76-19.43s
+frames 655, with caption 632; caption bbox x 110-889, y 1120-1277 (bottom limit 1280); tallest pill 152px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+RESULT: PASS
+### 6. contrast >= 4.5, font >= 32px, in safe area, every text node on settled frames
+audit frames 32,58,90,97,151,229,237,287,328,330,407,414,488,534,536,586,595
+frame 32 text nodes 6
+frame 58 text nodes 5
+frame text                              px min contrast in safe
+   32 Mega-Net ERP Cloud                32        15.65    True 
+   32 Month end                         56        15.65    True 
+   32 Month                             48        15.65    True 
+   32 end.                              48         6.86    True 
+   58 Mega-Net ERP Cloud                32        15.65    True 
+   58 One report                        56        15.65    True 
+   58 One                               48        15.65    True 
+   58 report.                           48         6.86    True 
+   90 Mega-Net ERP Cloud                32        15.65    True 
+   90 Your answer                       56          6.3    True 
+   90 One report                        56        15.65    True 
+   90 Your                              48        15.65    True 
+   90 answer.                           48         6.86    True 
+   97 Mega-Net ERP Cloud                32        15.65    True 
+   97 Your answer                       56          6.3    True 
+   97 One report                        56        15.65    True 
+   97 Your                              48        15.65    True 
+   97 answer.                           48         6.86    True 
+  151 Mega-Net ERP Cloud                32        15.65    True 
+  151 Profit &                          92        11.18    True 
+  151 Loss                              92        11.09    True 
+  151 Meet                              48        15.65    True 
+  151 the                               48        14.96    True 
+  151 Profit                            48         6.86    True 
+  151 and                               48         7.73    True 
+  151 Loss                              48        15.65    True 
+  151 report.                           48         6.86    True 
+  229 Mega-Net ERP Cloud                32        15.65    True 
+  229 Profit &                          92        11.18    True 
+  229 Loss                              92        11.16    True 
+  229 Period                            34         8.07    True 
+  229 This month                        34        13.64    True 
+  229 This month                        34        14.05    True 
+  229 Last month                        34        14.05    True 
+  229 This quarter                      34        14.05    True 
+  229 Custom range                      34        13.32    True 
+  229 Start date                        32        13.69    True 
+  229 End date                          32        13.69    True 
+  229 Pick                              48        15.65    True 
+  229 a                                 48        15.65    True 
+  229 period,                           48         6.86    True 
+  229 or                                48         6.86    True 
+  229 set                               48         6.86    True 
+  229 your                              48        15.65    True 
+  229 own                               48        15.65    True 
+  229 dates.                            48         6.86    True 
+  237 Mega-Net ERP Cloud                32        15.65    True 
+  237 Profit &                          92        11.18    True 
+  237 Loss                              92        11.18    True 
+  237 Period                            34         8.07    True 
+  237 This month                        34        13.64    True 
+  237 This month                        34        14.05    True 
+  237 Last month                        34        14.05    True 
+  237 This quarter                      34        14.05    True 
+  237 Custom range                      34        13.32    True 
+  237 Start date                        32        13.69    True 
+  237 End date                          32        13.69    True 
+  237 Pick                              48        15.65    True 
+  237 a                                 48        15.65    True 
+  237 period,                           48         6.86    True 
+  237 or                                48         6.86    True 
+  237 set                               48         6.86    True 
+  237 your                              48        15.65    True 
+  237 own                               48        15.65    True 
+  237 dates.                            48         6.86    True 
+  287 Mega-Net ERP Cloud                32        15.65    True 
+  287 Income                            44        15.65    True 
+  287 Expenses                          44        15.65    True 
+  287 See                               48        15.65    True 
+  287 your                              48         6.86    True 
+  287 income                            48         6.86    True 
+  287 and                               48         6.86    True 
+  287 your                              48        15.65    True 
+  287 expenses,                         48         6.86    True 
+  328 Mega-Net ERP Cloud                32        15.65    True 
+  328 Income                            44        15.65    True 
+  328 Total income                      34         5.53    True 
+  328 Expenses                          44        15.65    True 
+  328 Total expenses                    34         5.88    True 
+  328 line                              48        15.65    True 
+  328 by                                48        15.65    True 
+  328 line.                             48         6.86    True 
+  330 Mega-Net ERP Cloud                32        15.65    True 
+  330 Income                            44        15.65    True 
+  330 Total income                      34         5.53    True 
+  330 Expenses                          44        15.65    True 
+  330 Total expenses                    34         5.88    True 
+  330 line                              48        15.65    True 
+  330 by                                48        15.65    True 
+  330 line.                             48         6.86    True 
+  407 Mega-Net ERP Cloud                32        15.65    True 
+  407 Income                            38        15.65    True 
+  407 Expenses                          38        15.65    True 
+  407 Net Profit                        38          6.3    True 
+  407 Income                            48        15.65    True 
+  407 minus                             48        15.65    True 
+  407 expenses                          48         6.86    True 
+  407 gives                             48        15.65    True 
+  407 your                              48        15.65    True 
+  407 net                               48        15.65    True 
+  407 profit.                           48         6.86    True 
+  414 Mega-Net ERP Cloud                32        15.65    True 
+  414 Income                            38        15.65    True 
+  414 Expenses                          38        15.65    True 
+  414 Net Profit                        38          6.3    True 
+  414 Income                            48        15.65    True 
+  414 minus                             48        15.65    True 
+  414 expenses                          48         6.86    True 
+  414 gives                             48        15.65    True 
+  414 your                              48        15.65    True 
+  414 net                               48        15.65    True 
+  414 profit.                           48         6.86    True 
+  488 Mega-Net ERP Cloud                32        15.65    True 
+  488 Profit Summary                    48        15.65    True 
+  488 Your                              48        15.65    True 
+  488 dashboard                         48        15.65    True 
+  488 shows                             48         6.86    True 
+  488 a                                 48        15.65    True 
+  488 profit                            48        15.65    True 
+  488 summary                           48        15.65    True 
+  488 too,                              48         6.86    True 
+  534 Mega-Net ERP Cloud                32        15.65    True 
+  534 Profit Summary                    48        15.65    True 
+  534 Accounting roles only             42        15.65    True 
+  534 Other roles don't see this car    32         6.79    True 
+  534 for                               48        15.65    True 
+  534 accounting                        48        15.65    True 
+  534 roles                             48        15.65    True 
+  534 only.                             48         6.86    True 
+  536 Mega-Net ERP Cloud                32        15.65    True 
+  536 Profit Summary                    48        15.65    True 
+  536 Accounting roles only             42        15.65    True 
+  536 Other roles don't see this car    32         6.79    True 
+  536 for                               48        15.65    True 
+  536 accounting                        48        15.65    True 
+  536 roles                             48        15.65    True 
+  536 only.                             48         6.86    True 
+  586 Book a                           116        13.51    True 
+  586 free demo                        116         5.92    True 
+  586 WhatsApp +2347035682478           42          6.3    True 
+  586 meganetsoftware.com.ng            42         6.79    True 
+  586 Book                              48        15.65    True 
+  586 a                                 48         6.86    True 
+  586 free                              48         6.86    True 
+  586 demo                              48         6.86    True 
+  586 with                              48        15.65    True 
+  586 Mega-Net.                         48         6.86    True 
+  595 Book a                           116        13.51    True 
+  595 free demo                        116         5.92    True 
+  595 WhatsApp +2347035682478           42          6.3    True 
+  595 meganetsoftware.com.ng            42         6.79    True 
+  595 Book                              48        15.65    True 
+  595 a                                 48         6.86    True 
+  595 free                              48         6.86    True 
+  595 demo                              48         6.86    True 
+  595 with                              48        15.65    True 
+  595 Mega-Net.                         48         6.86    True 
+text nodes audited: 157; smallest font 32px; lowest contrast 5.53; failures: 0
+RESULT: PASS
+### 7. streams
+h264,video,1080,1920,30/1,21.833333,655,
+aac,audio,0/0,21.824000,1023
