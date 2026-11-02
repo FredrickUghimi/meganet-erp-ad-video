@@ -5,7 +5,7 @@ usage: verify_captions_ledger.py CAPS.mp4 BG.mp4 [FULL.mp4]
    src/ledgerTimings.ts, compares word for word with the approved narration, and compares each caption token with
    the TTS word-boundary the voice reported for it (punctuation stripped).
 2) geometry: decodes every frame of the captions-only render vs the gradient-only render; the caption pill must
-   stay inside x 80-920, end at y <= 1360 and be at most 2 lines tall.
+   stay inside x 80-920, end at y <= 1280 and be at most 2 lines tall.
 3) audio: pause (gap) statistics between the spoken words from the timing file, and the video/audio durations."""
 import json, re, subprocess, sys
 import numpy as np
@@ -79,9 +79,9 @@ for fr, bg in zip(frames(sys.argv[1]), frames(sys.argv[2])):
     bottom = max(bottom, ys.max()); top = min(top, ys.min())
     height = max(height, ys.max() - ys.min() + 1)
     xmin_all, xmax_all = min(xmin_all, xs.min()), max(xmax_all, xs.max())
-print(f'frames {n}, with caption {shown}; caption bbox x {xmin_all}-{xmax_all}, y {top}-{bottom} (bottom limit 1360); '
+print(f'frames {n}, with caption {shown}; caption bbox x {xmin_all}-{xmax_all}, y {top}-{bottom} (bottom limit 1280); '
       f'tallest pill {height}px (1 line ~86, 2 lines ~146, 3 lines ~204)')
-geo = bottom <= 1360 and height <= 160 and xmin_all >= 80 and xmax_all <= 920
+geo = bottom <= 1280 and height <= 160 and xmin_all >= 80 and xmax_all <= 920
 ok &= geo
 print('GEOMETRY:', 'PASS' if geo else 'FAIL')
 print('RESULT:', 'PASS' if ok else 'FAIL')
