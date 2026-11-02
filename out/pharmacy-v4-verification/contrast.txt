@@ -1,0 +1,130 @@
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+free demo                           #1458B5   #F2EFE8        104  900     5.91    882    True
+Example                             #9E3F00   #FFF1DC         34  900     5.96    331    True
+Saved                               #FFFFFF   #0B6E46         34  900     6.30    710    True
+WhatsApp +2347035682478             #FFFFFF   #0B6E46         40  800     6.30    856    True
+Drug interaction                    #B42328   #FFFFFF         62  900     6.54    311    True
+warning                             #B42328   #FFFFFF         62  900     6.54    311    True
+Drug interaction warning            #B42328   #FFFFFF         44  900     6.54    417    True
+Severe                              #FFFFFF   #B42328         34  900     6.54    536    True
+Confirm — Prescribe Anyway          #FFFFFF   #B42328         38  900     6.54    636    True
+Confirm — Prescribe Anyway          #44506A   #E3E8F0         38  900     6.56    600    True
+Feature: Drug interaction warning   #1458B5   #FFFFFF         34  900     6.79     31    True
+New feature                         #FFFFFF   #1458B5         36  900     6.79    244    True
+Save Prescription                   #FFFFFF   #1458B5         40  900     6.79    331    True
+Defined interaction pair            #FFFFFF   #1458B5         34  900     6.79    479    True
+meganetsoftware.com.ng              #FFFFFF   #1458B5         40  800     6.79    872    True
+doctor                              #1B2430   #F7941D         48  800     6.86    583    True
+is                                  #1B2430   #F7941D         48  800     6.86     31    True
+to                                  #1B2430   #F7941D         48  800     6.86    636    True
+prescribe                           #1B2430   #F7941D         48  800     6.86     54    True
+two                                 #1B2430   #F7941D         48  800     6.86    448    True
+drugs                               #1B2430   #F7941D         48  800     6.86     69    True
+for                                 #1B2430   #F7941D         48  800     6.86    252    True
+patient.                            #1B2430   #F7941D         48  800     6.86     98    True
+Some                                #1B2430   #F7941D         48  800     6.86    123    True
+drug                                #1B2430   #F7941D         48  800     6.86    135    True
+interact.                           #1B2430   #F7941D         48  800     6.86    162    True
+Mega-Net                            #1B2430   #F7941D         48  800     6.86    190    True
+EHR                                 #1B2430   #F7941D         48  800     6.86    752    True
+feature                             #1B2430   #F7941D         48  800     6.86    244    True
+warning.                            #1B2430   #F7941D         48  800     6.86    311    True
+When                                #1B2430   #F7941D         48  800     6.86    331    True
+the                                 #1B2430   #F7941D         48  800     6.86    370    True
+prescription,                       #1B2430   #F7941D         48  800     6.86    380    True
+warning                             #1B2430   #F7941D         48  800     6.86    417    True
+appears                             #1B2430   #F7941D         48  800     6.86    421    True
+defined                             #1B2430   #F7941D         48  800     6.86    479    True
+pair.                               #1B2430   #F7941D         48  800     6.86    507    True
+severe                              #1B2430   #F7941D         48  800     6.86    536    True
+interaction,                        #1B2430   #F7941D         48  800     6.86    539    True
+stop                                #1B2430   #F7941D         48  800     6.86    600    True
+and                                 #1B2430   #F7941D         48  800     6.86    605    True
+continue.                           #1B2430   #F7941D         48  800     6.86    643    True
+Nothing                             #1B2430   #F7941D         48  800     6.86    671    True
+do.                                 #1B2430   #F7941D         48  800     6.86    710    True
+Cloud.                              #1B2430   #F7941D         48  800     6.86    763    True
+Book                                #1B2430   #F7941D         48  800     6.86    801    True
+demo.                               #1B2430   #F7941D         48  800     6.86    813    True
+Message                             #1B2430   #F7941D         48  800     6.86    856    True
+on                                  #1B2430   #F7941D         48  800     6.86    872    True
+WhatsApp.                           #1B2430   #F7941D         48  800     6.86    882    True
+about                               #44506A   #FFFFFF         48  800     8.07     31    True
+to                                  #44506A   #FFFFFF         48  800     8.07     31    True
+prescribe                           #44506A   #FFFFFF         48  800     8.07     31    True
+for                                 #44506A   #FFFFFF         48  800     8.07     69    True
+one                                 #44506A   #FFFFFF         48  800     8.07     69    True
+patient.                            #44506A   #FFFFFF         48  800     8.07     69    True
+drug                                #44506A   #FFFFFF         48  800     8.07    123    True
+pairs                               #44506A   #FFFFFF         48  800     8.07    123    True
+can                                 #44506A   #FFFFFF         48  800     8.07    123    True
+interact.                           #44506A   #FFFFFF         48  800     8.07    123    True
+EHR                                 #44506A   #FFFFFF         48  800     8.07    190    True
+Cloud                               #44506A   #FFFFFF         48  800     8.07    190    True
+has                                 #44506A   #FFFFFF         48  800     8.07    190    True
+a                                   #44506A   #FFFFFF         48  800     8.07    190    True
+feature                             #44506A   #FFFFFF         48  800     8.07    190    True
+that:                               #44506A   #FFFFFF         48  800     8.07    252    True
+interaction                         #44506A   #FFFFFF         48  800     8.07    252    True
+warning.                            #44506A   #FFFFFF         48  800     8.07    252    True
+the                                 #44506A   #FFFFFF         48  800     8.07    331    True
+doctor                              #44506A   #FFFFFF         48  800     8.07    331    True
+tries                               #44506A   #FFFFFF         48  800     8.07    331    True
+save                                #44506A   #FFFFFF         48  800     8.07    331    True
+prescription,                       #44506A   #FFFFFF         48  800     8.07    331    True
+appears                             #44506A   #FFFFFF         48  800     8.07    417    True
+if                                  #44506A   #FFFFFF         48  800     8.07    417    True
+drugs                               #44506A   #FFFFFF         48  800     8.07    448    True
+are                                 #44506A   #FFFFFF         48  800     8.07    448    True
+defined                             #44506A   #FFFFFF         48  800     8.07    448    True
+pair.                               #44506A   #FFFFFF         48  800     8.07    448    True
+interaction,                        #44506A   #FFFFFF         48  800     8.07    536    True
+Type CONFIRM to proceed             #44506A   #FFFFFF         36  800     8.07    600    True
+and                                 #44506A   #FFFFFF         48  800     8.07    600    True
+type                                #44506A   #FFFFFF         48  800     8.07    600    True
+CONFIRM                             #44506A   #FFFFFF         48  800     8.07    600    True
+continue.                           #44506A   #FFFFFF         48  800     8.07    600    True
+is                                  #44506A   #FFFFFF         48  800     8.07    671    True
+saved                               #44506A   #FFFFFF         48  800     8.07    671    True
+until                               #44506A   #FFFFFF         48  800     8.07    671    True
+they                                #44506A   #FFFFFF         48  800     8.07    671    True
+do.                                 #44506A   #FFFFFF         48  800     8.07    671    True
+Cloud.                              #44506A   #FFFFFF         48  800     8.07    733    True
+free                                #44506A   #FFFFFF         48  800     8.07    801    True
+demo.                               #44506A   #FFFFFF         48  800     8.07    801    True
+us                                  #44506A   #FFFFFF         48  800     8.07    856    True
+on                                  #44506A   #FFFFFF         48  800     8.07    856    True
+WhatsApp.                           #44506A   #FFFFFF         48  800     8.07    856    True
+Book a                              #1B2430   #E7E6E5        104  900    12.56    882    True
+Warfarin                            #1B2430   #F4F8FF         46  900    14.70    331    True
+Aspirin                             #1B2430   #F4F8FF         46  900    14.70    331    True
+New prescription                    #1B2430   #FFFFFF         42  900    15.65     31    True
+Mega-Net EHR Cloud                  #1B2430   #FFFFFF         32  800    15.65     31    True
+A                                   #1B2430   #FFFFFF         48  800    15.65     31    True
+about                               #1B2430   #FFFFFF         48  800    15.65     54    True
+one                                 #1B2430   #FFFFFF         48  800    15.65     98    True
+pairs                               #1B2430   #FFFFFF         48  800    15.65    162    True
+can                                 #1B2430   #FFFFFF         48  800    15.65    162    True
+Cloud                               #1B2430   #FFFFFF         48  800    15.65    244    True
+has                                 #1B2430   #FFFFFF         48  800    15.65    244    True
+a                                   #1B2430   #FFFFFF         48  800    15.65    244    True
+that:                               #1B2430   #FFFFFF         48  800    15.65    311    True
+interaction                         #1B2430   #FFFFFF         48  800    15.65    311    True
+Write a Prescription                #1B2430   #FFFFFF         42  900    15.65    331    True
+tries                               #1B2430   #FFFFFF         48  800    15.65    370    True
+save                                #1B2430   #FFFFFF         48  800    15.65    370    True
+Warfarin + Aspirin                  #1B2430   #FFFFFF         44  800    15.65    417    True
+if                                  #1B2430   #FFFFFF         48  800    15.65    441    True
+are                                 #1B2430   #FFFFFF         48  800    15.65    479    True
+For                                 #1B2430   #FFFFFF         48  800    15.65    536    True
+must                                #1B2430   #FFFFFF         48  800    15.65    600    True
+CONFIRM                             #1B2430   #FFFFFF         56  900    15.65    636    True
+type                                #1B2430   #FFFFFF         48  800    15.65    636    True
+Nothing saved yet                   #1B2430   #FFFFFF         34  900    15.65    671    True
+saved                               #1B2430   #FFFFFF         48  800    15.65    710    True
+until                               #1B2430   #FFFFFF         48  800    15.65    710    True
+they                                #1B2430   #FFFFFF         48  800    15.65    710    True
+free                                #1B2430   #FFFFFF         48  800    15.65    813    True
+us                                  #1B2430   #FFFFFF         48  800    15.65    872    True
+distinct text+colour pairs: 127; text-node samples audited: 466; smallest font 32px; lowest contrast 5.91:1; failing samples: 0
+RESULT: PASS
