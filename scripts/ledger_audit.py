@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reads the output of scripts/ledger_audit.mjs and reports, for every text node on the audited frames:
 worst-case WCAG contrast (text colour with its effective opacity vs the pixels behind it, text-less render),
-font size (>= 32px), and position (inside the safe area x 80-920, y 200-1440; captions end by y 1360).
+font size (>= 32px), and position (inside the safe area x 80-920, y 200-1440; captions end by y 1280; scene text by y 1095).
 usage: ledger_audit.py <audit-dir> [--min-contrast 4.5] [--min-size 32]"""
 import glob, json, os, re, sys
 import numpy as np
@@ -38,8 +38,8 @@ for jf in sorted(glob.glob(os.path.join(d, 'audit-*.json')), key=lambda p: int(r
         fg = col * alpha + bg * (1 - alpha)
         l1, l2 = lum(fg), lum(bg)
         ratio = (np.maximum(l1, l2) + 0.05) / (np.minimum(l1, l2) + 0.05)
-        cap = y1 > 1100 and y0 > 1150  # caption text sits below the scene content
-        ok_pos = x0 >= 80 and x1 <= 920 and y0 >= 200 and y1 <= (1360 if cap else 1440)
+        cap = y0 > 1110  # caption text sits below the scene content (scene content ends by y 1095)
+        ok_pos = x0 >= 80 and x1 <= 920 and y0 >= 200 and y1 <= (1280 if cap else 1095)
         ok = ratio.min() >= min_c and it['size'] >= min_s and ok_pos
         fails += not ok
         rows.append((fr, it['text'][:30], it['size'], round(float(ratio.min()), 2), ok_pos, ok))

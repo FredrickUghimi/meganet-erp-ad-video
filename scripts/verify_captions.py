@@ -2,7 +2,7 @@
 """Caption checks for the Sentinel ad.
 usage: verify_captions.py CAPS.mp4 BG.mp4
 1) geometry: decodes every frame of the captions-only render vs the gradient-only render; reports the caption
-   pill bbox (bottom must be <= 1360, height <= 2 lines).
+   pill bbox (bottom must be <= 1280, height <= 2 lines).
 2) text: rebuilds the caption text from CHUNKS in src/MegaNetSentinelAd.tsx + WORDS in src/sentinelTimings.ts and
    compares it word for word with the narration."""
 import re
@@ -51,8 +51,8 @@ for fr, bg in zip(frames(sys.argv[1]), frames(sys.argv[2])):
     xmin, xmax = xs.min(), xs.max()
     if xmin < 80 or xmax >= 920:
         print('caption outside x-safe at frame', n - 1, xmin, xmax)
-print(f'frames {n}, with caption {shown}; lowest caption pixel y={bottom} (limit 1360); tallest pill {height}px '
+print(f'frames {n}, with caption {shown}; lowest caption pixel y={bottom} (limit 1280); tallest pill {height}px '
       f'(1 line ~110, 2 lines ~176, 3 lines ~242)')
-ok = cap_text == NARRATION and bottom <= 1360 and height <= 190
+ok = cap_text == NARRATION and bottom <= 1280 and height <= 190
 print('RESULT:', 'PASS' if ok else 'FAIL')
 sys.exit(0 if ok else 1)

@@ -23,16 +23,18 @@
  * Logo: public/logo-trim.jpg (trimmed from logo.jpg) in a white rounded card on blue scenes.
  * Safe area (Shorts/Reels/TikTok): top 200px, bottom 480px, left 80px, right 160px, i.e. everything
  * (captions, chips, cards, button, CTA, logo) stays inside x 80-920, y 200-1440, including during animations.
- * Captions: bottom edge at y=1360 (Shorts channel-handle row starts near y=1430), max 2 lines, centered in the 840px safe width.
+ * Captions: bottom edge at y=1272 (limit 1280; was 1360 before v3), max 2 lines, centered in the 840px safe width. Scene content ends by y=1072.
  * v3 colour makeover: gradient backgrounds per scene, drawn floating icons, traffic-light severity pills, coloured chips.
  * Copy, voiceover and timings are unchanged. Helpers (gradients, icons, debug layers) live in src/fx.tsx.
  */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   AbsoluteFill,
   Audio,
   Img,
   Sequence,
+  continueRender,
+  delayRender,
   interpolate,
   spring,
   staticFile,
@@ -42,6 +44,7 @@ import {
 import {WORDS} from './sentinelTimings';
 import {
   BLUE,
+  CaptionViolation,
   DARK,
   DebugContext,
   Floaters,
@@ -62,8 +65,8 @@ const SAFE_L = 80;
 const SAFE_R = 160;
 const SAFE_T = 200;
 const SAFE_B = 480; // safe area ends at y = 1440
-const CAP_B = 560; // captions end at y = 1920 - 560 = 1360
-const STAGE_B = 750; // scene content ends at y = 1170, above the 2-line caption (top ~1184)
+const CAP_B = 648; // captions end at y = 1920 - 648 = 1272 (limit 1280)
+const STAGE_B = 848; // scene content ends at y = 1072, 24px above the 2-line caption (176px tall, top 1096)
 const FONT = 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
 
 export const SENTINEL_FPS = 30;
@@ -227,8 +230,8 @@ const Scene1: React.FC = () => {
       items={[
         {icon: 'tube', x: 150, y: 262, size: 104, phase: 0, accent: '#37E0C8'},
         {icon: 'pill', x: 850, y: 262, size: 104, phase: 1.7, accent: ORANGE},
-        {icon: 'receipt', x: 150, y: 1100, size: 104, phase: 3.1, accent: BLUE},
-        {icon: 'pill', x: 850, y: 1100, size: 104, phase: 4.6, accent: '#37E0C8'},
+        {icon: 'receipt', x: 150, y: 985, size: 104, phase: 3.1, accent: BLUE},
+        {icon: 'pill', x: 850, y: 985, size: 104, phase: 4.6, accent: '#37E0C8'},
       ]}
       opacity={interpolate(a, [0, 1], [0, 1])}
     />
@@ -270,14 +273,14 @@ const Scene2: React.FC = () => {
   return (
     <Stage stops={BG2} glows={GLOWS2}>
       <div style={{opacity: card, transform: `translateY(${(1 - card) * 50}px)`}}>
-        <LogoCard width={620} />
+        <LogoCard width={560} />
       </div>
-      <div style={{marginTop: 50, transform: `scale(${badge})`, opacity: badge}}>
-        <ShieldBadge size={140} />
+      <div style={{marginTop: 36, transform: `scale(${badge})`, opacity: badge}}>
+        <ShieldBadge size={120} />
       </div>
       <h1
         style={{
-          ...big(150, ORANGE),
+          ...big(144, ORANGE),
           marginTop: 20,
           opacity: title,
           transform: `translateY(${(1 - title) * 50}px)`,
@@ -300,7 +303,7 @@ const Scene2: React.FC = () => {
           height: 14,
           borderRadius: 7,
           backgroundColor: ORANGE,
-          marginTop: 22,
+          marginTop: 18,
           boxShadow: '0 0 20px rgba(247,148,29,0.6)',
         }}
       />
@@ -309,7 +312,7 @@ const Scene2: React.FC = () => {
           fontSize: 62,
           fontWeight: 700,
           color: WHITE,
-          margin: '30px 0 0',
+          margin: '24px 0 0',
           opacity: ehr,
           transform: `translateY(${(1 - ehr) * 30}px)`,
         }}
@@ -344,7 +347,7 @@ const RunButton: React.FC = () => {
   const ripple = interpolate(frame, [clickF, clickF + 22], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const cursorP = Math.min(1, spring({frame: frame - (clickF - 22), fps, config: {damping: 18, stiffness: 90}}));
   return (
-    <div style={{position: 'relative', width: 700, height: 170, opacity: enter, transform: `scale(${enter})`}}>
+    <div style={{position: 'relative', width: 700, height: 150, opacity: enter, transform: `scale(${enter})`}}>
       {ripple > 0 && ripple < 1 ? (
         <div
           style={{
@@ -500,7 +503,7 @@ const Chip: React.FC<{label: string; word: number; color: string; tint: string; 
     <div
       style={{
         width: 840,
-        height: 104,
+        height: 96,
         borderRadius: 52,
         backgroundColor: tint,
         border: `6px solid ${color}`,
@@ -526,12 +529,12 @@ const Chip: React.FC<{label: string; word: number; color: string; tint: string; 
 const Scene3: React.FC = () => (
   <Stage stops={BG3} glows={GLOWS3}>
     <RunButton />
-    <div style={{display: 'flex', alignItems: 'center', gap: 0, marginTop: 56}}>
+    <div style={{display: 'flex', alignItems: 'center', gap: 0, marginTop: 40}}>
       <RecordCard label="Clinical records" accent={BLUE} fill="#D6E6FF" word={W.clinical} kind="clip" />
       <FlowDots />
       <RecordCard label="Bills" accent={ORANGE} fill="#FFE6C7" word={W.bills} kind="bill" />
     </div>
-    <div style={{display: 'flex', flexDirection: 'column', gap: 18, marginTop: 56}}>
+    <div style={{display: 'flex', flexDirection: 'column', gap: 14, marginTop: 40}}>
       <Chip label="Unbilled services" word={W.unbilled} color={ORANGE} tint="#FFEBD2" icon="unbilled" />
       <Chip label="Duplicate transactions" word={W.duplicates} color={PURPLE} tint="#EADFFF" icon="duplicate" />
       <Chip label="Rejected claims" word={W.rejected} color={RED} tint="#FFDDDD" icon="rejected" />
@@ -558,7 +561,7 @@ const Scene4: React.FC = () => {
   return (
     <Stage stops={BG4} glows={GLOWS4}>
       <h1 style={{...big(96), opacity: each, transform: `translateY(${(1 - each) * 40}px)`}}>Each finding</h1>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 36}}>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 28}}>
         {LADDER.map((r, i) => {
           const p = Math.min(1, spring({frame: frame - rankF - i * 5, fps, config: {damping: 14, stiffness: 140}}));
           return (
@@ -585,7 +588,7 @@ const Scene4: React.FC = () => {
           );
         })}
       </div>
-      <h1 style={{...big(130, BLUE), marginTop: 60, opacity: expl, transform: `scale(${interpolate(expl, [0, 1], [0.7, 1])})`}}>
+      <h1 style={{...big(130, BLUE), marginTop: 44, opacity: expl, transform: `scale(${interpolate(expl, [0, 1], [0.7, 1])})`}}>
         Explained.
       </h1>
       <h1 style={{...big(88), marginTop: 20, opacity: team, transform: `translateY(${(1 - team) * 40}px)`}}>
@@ -615,13 +618,13 @@ const Scene5: React.FC = () => {
       >
         {'Book a\nfree demo'}
       </h1>
-      <p style={{fontSize: 52, fontWeight: 700, color: WHITE, margin: '70px 0 0', opacity: b, transform: rise(b)}}>
+      <p style={{fontSize: 52, fontWeight: 700, color: WHITE, margin: '52px 0 0', opacity: b, transform: rise(b)}}>
         WhatsApp: +2347035682478
       </p>
       <p style={{fontSize: 52, fontWeight: 700, color: WHITE, margin: '24px 0 0', opacity: c, transform: rise(c)}}>
         meganetsoftware.com.ng
       </p>
-      <div style={{marginTop: 70, opacity: c, transform: rise(c)}}>
+      <div style={{marginTop: 52, opacity: c, transform: rise(c)}}>
         <LogoCard width={620} />
       </div>
     </Stage>
@@ -680,6 +683,29 @@ const Captions: React.FC = () => {
   );
 };
 
+/** Verification only: logs every text node's box, colour, size and effective opacity (console line starting AUDIT_JSON). */
+const AuditProbe: React.FC = () => {
+  const [handle] = useState(() => delayRender('audit'));
+  useEffect(() => {
+    const out: unknown[] = [];
+    document.querySelectorAll('div,span').forEach((el) => {
+      el.childNodes.forEach((n) => {
+        if (n.nodeType !== 3 || !(n.textContent || '').trim()) return;
+        const r = document.createRange();
+        r.selectNodeContents(n);
+        const b = r.getBoundingClientRect();
+        const cs = getComputedStyle(el);
+        let op = 1;
+        for (let e: Element | null = el; e; e = e.parentElement) op *= parseFloat(getComputedStyle(e).opacity);
+        out.push({text: (n.textContent || '').trim(), x0: b.left, y0: b.top, x1: b.right, y1: b.bottom, color: cs.color, size: parseFloat(cs.fontSize), weight: cs.fontWeight, opacity: op});
+      });
+    });
+    console.log('AUDIT_JSON' + JSON.stringify(out));
+    continueRender(handle);
+  }, [handle]);
+  return null;
+};
+
 export const MegaNetSentinelAd: React.FC<{debug?: string}> = ({debug = ''}) => {
   const seq = (key: keyof typeof SCENES, next: keyof typeof SCENES, node: React.ReactNode) => (
     <Sequence from={f(SCENES[key])} durationInFrames={f(SCENES[next]) - f(SCENES[key])}>
@@ -689,6 +715,7 @@ export const MegaNetSentinelAd: React.FC<{debug?: string}> = ({debug = ''}) => {
   return (
     <DebugContext.Provider value={debug}>
     <AbsoluteFill style={{backgroundColor: WHITE}}>
+      {debug === 'notext' && <style>{'*{color:transparent!important;-webkit-text-fill-color:transparent!important;text-shadow:none!important}'}</style>}
       <Audio src={staticFile('voiceover-sentinel.mp3')} />
       {seq('s1', 's2', <Scene1 />)}
       {seq('s2', 's3', <Scene2 />)}
@@ -697,6 +724,8 @@ export const MegaNetSentinelAd: React.FC<{debug?: string}> = ({debug = ''}) => {
       {seq('s5', 'end', <Scene5 />)}
       <Captions />
       <Violation />
+      <CaptionViolation />
+      {debug === 'audit' && <AuditProbe />}
     </AbsoluteFill>
     </DebugContext.Provider>
   );
