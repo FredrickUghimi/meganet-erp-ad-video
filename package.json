@@ -16,7 +16,9 @@
     "render:pl": "remotion render MegaNetProfitLossAd out/meganet-pl-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
     "poster:pl": "remotion still MegaNetProfitLossAd out/meganet-pl-poster.png --frame=90 --browser-executable=/opt/pw-browsers/chromium",
     "render:cashflow": "remotion render MegaNetCashFlowAd out/meganet-cashflow-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
-    "poster:cashflow": "remotion still MegaNetCashFlowAd out/meganet-cashflow-poster.png --frame=300 --browser-executable=/opt/pw-browsers/chromium"
+    "poster:cashflow": "remotion still MegaNetCashFlowAd out/meganet-cashflow-poster.png --frame=157 --browser-executable=/opt/pw-browsers/chromium",
+    "render:balancesheet": "remotion render MegaNetBalanceSheetAd out/meganet-balancesheet-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
+    "poster:balancesheet": "remotion still MegaNetBalanceSheetAd out/meganet-balancesheet-poster.png --frame=157 --browser-executable=/opt/pw-browsers/chromium"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.250",
