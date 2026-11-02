@@ -6,7 +6,7 @@
  * Look: light and airy. Brand blue #1A6DE0 + orange #F7941D on near-white / pale blue / pale peach gradients, white cards,
  * dark charcoal text, green/red/teal accents. See STYLE_GUIDE.md for the rules (contrast >= 4.5:1, labels >= 32px).
  *
- * Safe area: all content inside x 80-920, y 200-1163 (24px above the caption zone y 1188-1340); captions end at y=1340 (limit 1360). Every scene (and its
+ * Safe area: all content inside x 80-920, y 200-1095 (24px above the two-line caption zone y 1120-1272); captions end at y=1272 (limit 1280). Every scene (and its
  * header) lives inside a clip box of exactly the safe area, so slides and wipes can never leave it.
  * Transitions are slides and wipes, not fades: slide-left, wipe-up, slide-right, diagonal wipe, slide-up.
  *
@@ -45,7 +45,7 @@ const FONT = 'Inter, "Inter Display", system-ui, sans-serif';
 const COL_L = 110;
 const COL_W = 780; // x 110-890, inside the 80-920 safe area
 const SAFE = {x: 80, y: 200, w: 840, h: 1240};
-const CLIP_H = 963; // scene clip box is y 200-1163: 24px above the caption zone (y 1188-1340), so transitions never pass under a caption
+const CLIP_H = 896; // scene clip box is y 200-1096: 24px above the caption zone (y 1120-1272), so transitions never pass under a caption
 
 const wordF = (s: number, w: number) => LEAD + Math.round(LINES[s].words[w].start * LEDGER_FPS);
 const sceneFrom = (i: number) => (i === 0 ? 0 : wordF(i, 0) - 5);
@@ -264,7 +264,7 @@ const HOOK_COLOR: Record<string, string> = {naira: TXT_BLUE, 'trail.': TXT_ORANG
 // trail samples (full-canvas coordinates) and cumulative arc length
 const TRAIL = Array.from({length: 241}, (_, k) => {
   const t = k / 240;
-  return {x: 130 + 720 * t, y: 730 + 245 * t + 62 * Math.sin(t * Math.PI * 3) * (1 - 0.35 * t)};
+  return {x: 130 + 720 * t, y: 660 + 245 * t + 62 * Math.sin(t * Math.PI * 3) * (1 - 0.35 * t)};
 });
 const TRAIL_LEN = TRAIL.reduce((acc, p, k) => {
   acc.push(k === 0 ? 0 : acc[k - 1] + Math.hypot(p.x - TRAIL[k - 1].x, p.y - TRAIL[k - 1].y));
@@ -297,9 +297,9 @@ const Scene1: React.FC<{l: number}> = ({l}) => {
   let wi = 0;
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 318, fontSize: 108, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, color: INK}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 304, fontSize: 108, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, color: INK}}>
         {HOOK_LINES.map((line, li) => (
-          <div key={li} style={{height: 118, whiteSpace: 'nowrap'}}>
+          <div key={li} style={{height: 108, whiteSpace: 'nowrap'}}>
             {line.map((word) => {
               const idx = wi++;
               const t = enter(l, w(idx) - 3, 9);
@@ -328,7 +328,7 @@ const Scene1: React.FC<{l: number}> = ({l}) => {
         )}
         {ring > 0 && <circle cx={TRAIL[240].x} cy={TRAIL[240].y} r={14 + ring * 46} fill="none" stroke={ORANGE} strokeWidth={6 * (1 - ring)} opacity={1 - ring} />}
       </svg>
-      <Card style={{top: 1000, height: 140, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, borderLeft: `16px solid ${ORANGE}`, opacity: rowT, transform: `translateX(${(1 - rowT) * 140}px)`}}>
+      <Card style={{top: 930, height: 140, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, borderLeft: `16px solid ${ORANGE}`, opacity: rowT, transform: `translateX(${(1 - rowT) * 140}px)`}}>
         <Tile color={BLUE} size={80} radius={24}>
           <Glyph name="doc" size={46} />
         </Tile>
@@ -354,31 +354,31 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
   const rows = [0.62, 0.8, 0.5];
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 350, display: 'flex', alignItems: 'center', gap: 28, opacity: title, transform: rise(title)}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 322, display: 'flex', alignItems: 'center', gap: 28, opacity: title, transform: rise(title)}}>
         <Tile color={ORANGE} size={150} radius={40}>
           <FxIcon name="notebook" size={104} accent={BLUE} ink={WHITE} />
         </Tile>
-        <div style={{color: INK, fontSize: 92, fontWeight: 900, lineHeight: 1.02, letterSpacing: -2}}>General<br />Ledger</div>
+        <div style={{color: INK, fontSize: 84, fontWeight: 900, lineHeight: 1.02, letterSpacing: -2}}>General<br />Ledger</div>
       </div>
-      <Card style={{top: 560, height: 138, padding: '0 34px', display: 'flex', alignItems: 'center', gap: 24, opacity: acct, transform: rise(acct), borderLeft: `16px solid ${ORANGE}`}}>
+      <Card style={{top: 520, height: 124, padding: '0 34px', display: 'flex', alignItems: 'center', gap: 24, opacity: acct, transform: rise(acct), borderLeft: `16px solid ${ORANGE}`}}>
         <div style={{fontSize: 34, fontWeight: 800, color: MUTED, width: 170}}>Account</div>
         <Bar w={320} color={BLUE} alpha="44" h={30} />
         <div style={{marginLeft: 'auto', width: 56, height: 56, borderRadius: 28, background: BLUE, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${open * 180}deg)`}}>
           <Glyph name="chevron" size={34} stroke={3.2} />
         </div>
       </Card>
-      <Card style={{top: 712, padding: '18px 26px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32}}>
+      <Card style={{top: 658, padding: '18px 26px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32}}>
         {rows.map((wd, i) => {
           const chosen = i === 1;
           return (
-            <div key={i} style={{height: 72, display: 'flex', alignItems: 'center', gap: 22, padding: '0 14px', borderRadius: 22, background: chosen ? `rgba(247,148,29,${0.14 + 0.1 * sel})` : 'transparent'}}>
+            <div key={i} style={{height: 68, display: 'flex', alignItems: 'center', gap: 22, padding: '0 14px', borderRadius: 22, background: chosen ? `rgba(247,148,29,${0.14 + 0.1 * sel})` : 'transparent'}}>
               <div style={{width: 30, height: 30, borderRadius: '50%', border: `4px solid ${chosen ? ORANGE : '#B8C2DA'}`, background: chosen && sel > 0.5 ? ORANGE : 'transparent', flex: 'none'}} />
               <Bar w={`${wd * 100}%`} color={chosen ? ORANGE : '#B8C2DA'} alpha={chosen ? '99' : '99'} h={26} />
             </div>
           );
         })}
       </Card>
-      <Card style={{top: 984, height: 138, padding: '0 26px', display: 'flex', alignItems: 'center', gap: 12, opacity: dates, transform: rise(dates), borderLeft: `16px solid ${TEAL}`}}>
+      <Card style={{top: 918, height: 138, padding: '0 26px', display: 'flex', alignItems: 'center', gap: 12, opacity: dates, transform: rise(dates), borderLeft: `16px solid ${TEAL}`}}>
         {['Start date', 'End date'].map((t, i) => (
           <React.Fragment key={t}>
             {i === 1 && <div style={{width: 24, height: 6, borderRadius: 3, background: TEAL, flex: 'none'}} />}
@@ -465,7 +465,7 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
 /* ---------- scene 4: entries are never edited, only reversed ---------- */
 
 const EntryCard: React.FC<{title: string; accent: string; flip?: boolean; style?: React.CSSProperties; children?: React.ReactNode}> = ({title, accent, flip, style, children}) => (
-  <Card style={{height: 300, padding: '26px 34px', borderTop: `14px solid ${accent}`, ...style}}>
+  <Card style={{height: 276, padding: '22px 34px', borderTop: `14px solid ${accent}`, ...style}}>
     <div style={{display: 'flex', alignItems: 'center', gap: 20, marginBottom: 22}}>
       <Tile color={accent} size={76} radius={24}>
         <Glyph name="doc" size={44} />
@@ -476,7 +476,7 @@ const EntryCard: React.FC<{title: string; accent: string; flip?: boolean; style?
     {[0, 1].map((r) => {
       const debitLine = (r === 0) !== !!flip;
       return (
-        <div key={r} style={{display: 'flex', alignItems: 'center', gap: 18, height: 62}}>
+        <div key={r} style={{display: 'flex', alignItems: 'center', gap: 18, height: 54}}>
           <Bar w={290} color="#B8C2DA" alpha="AA" h={24} />
           <div style={{marginLeft: 'auto', display: 'flex', gap: 12, alignItems: 'center'}}>
             <div style={{fontSize: 32, fontWeight: 900, color: debitLine ? TXT_GREEN : TXT_RED}}>{debitLine ? 'Debit' : 'Credit'}</div>
@@ -496,18 +496,18 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
   const arrow = enter(l, w(5) - 6, 8);
   return (
     <>
-      <EntryCard title="Journal entry" accent={LAV} style={{top: 380, opacity: first, transform: rise(first)}}>
+      <EntryCard title="Journal entry" accent={LAV} style={{top: 360, opacity: first, transform: rise(first)}}>
         <div style={{marginLeft: 'auto', width: 84, height: 84, borderRadius: '50%', background: WHITE, border: `6px solid ${RED}`, boxSizing: 'border-box', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', opacity: nope, transform: `scale(${0.6 + 0.4 * nope})`}}>
           <Glyph name="pencil" size={42} color={INK} stroke={2.6} />
           <div style={{position: 'absolute', width: 70, height: 7, borderRadius: 4, background: RED, transform: 'rotate(-45deg)'}} />
         </div>
       </EntryCard>
-      <div style={{position: 'absolute', left: 540 - 60, top: 696, width: 120, height: 90, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: arrow, transform: `scale(${0.6 + 0.4 * arrow})`}}>
+      <div style={{position: 'absolute', left: 540 - 60, top: 646, width: 120, height: 90, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: arrow, transform: `scale(${0.6 + 0.4 * arrow})`}}>
         <div style={{width: 84, height: 84, borderRadius: '50%', background: ORANGE, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 18px rgba(26,80,160,0.25)'}}>
           <Glyph name="undo" size={52} color={INK} stroke={2.8} />
         </div>
       </div>
-      <EntryCard title="Reversal" accent={ORANGE} flip style={{top: 800, opacity: rev, transform: rise(rev)}} />
+      <EntryCard title="Reversal" accent={ORANGE} flip style={{top: 744, opacity: rev, transform: rise(rev)}} />
     </>
   );
 };
@@ -515,7 +515,7 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
 /* ---------- scene 5: only roles with accounting access ---------- */
 
 const RoleCard: React.FC<{top: number; t: number; color: string; icon: GlyphName; title: string; sub: string; badge: GlyphName; subColor: string}> = ({top, t, color, icon, title, sub, badge, subColor}) => (
-  <Card style={{top, height: 220, padding: '0 34px', display: 'flex', alignItems: 'center', gap: 26, borderLeft: `18px solid ${color}`, opacity: t, transform: rise(t)}}>
+  <Card style={{top, height: 200, padding: '0 34px', display: 'flex', alignItems: 'center', gap: 26, borderLeft: `18px solid ${color}`, opacity: t, transform: rise(t)}}>
     <Tile color={color} size={110} radius={34}>
       <Glyph name={icon} size={64} />
     </Tile>
@@ -537,11 +537,11 @@ const Scene5: React.FC<{l: number}> = ({l}) => {
   const check = enter(l, w(6) - 2, 7); // "view"
   return (
     <>
-      <div style={{position: 'absolute', left: 540 - 120, top: 360, width: 240, height: 240, borderRadius: '50%', background: WHITE, border: '3px solid #C9DCF6', boxShadow: '0 14px 30px rgba(26,80,160,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: lock, transform: `scale(${0.7 + 0.3 * lock})`}}>
+      <div style={{position: 'absolute', left: 540 - 120, top: 340, width: 240, height: 240, borderRadius: '50%', background: WHITE, border: '3px solid #C9DCF6', boxShadow: '0 14px 30px rgba(26,80,160,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: lock, transform: `scale(${0.7 + 0.3 * lock})`}}>
         <Glyph name="lock" size={140} color={BLUE} stroke={2.2} />
       </div>
-      <RoleCard top={640} t={other} color={RED} icon="user" title="Other roles" sub="No accounting access" badge="x" subColor={TXT_RED} />
-      <RoleCard top={890} t={mine} color={GREEN} icon="user" title="Accounting access" sub="Can view the General Ledger" badge={check > 0.5 ? 'eye' : 'user'} subColor={TXT_GREEN} />
+      <RoleCard top={610} t={other} color={RED} icon="user" title="Other roles" sub="No accounting access" badge="x" subColor={TXT_RED} />
+      <RoleCard top={826} t={mine} color={GREEN} icon="user" title="Accounting access" sub="Can view the General Ledger" badge={check > 0.5 ? 'eye' : 'user'} subColor={TXT_GREEN} />
     </>
   );
 };
@@ -553,18 +553,18 @@ const Scene6: React.FC<{l: number}> = ({l}) => {
   const pill = (bg: string): React.CSSProperties => ({position: 'absolute', left: COL_L, width: COL_W, height: 112, borderRadius: 56, background: bg, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, fontSize: 42, fontWeight: 800, boxShadow: '0 10px 24px rgba(26,80,160,0.22)'});
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 270, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 212, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
         <LogoCard width={520} pad={32} radius={50} />
       </div>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 560, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 502, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
         Book a<br />
         <span style={{color: TXT_BLUE}}>free demo</span>
       </div>
-      <div style={{...pill(TXT_GREEN), top: 880, opacity: t(14), transform: rise(t(14))}}>
+      <div style={{...pill(TXT_GREEN), top: 822, opacity: t(14), transform: rise(t(14))}}>
         <Glyph name="phone" size={50} />
         WhatsApp +2347035682478
       </div>
-      <div style={{...pill(TXT_BLUE), top: 1016, opacity: t(20), transform: rise(t(20))}}>
+      <div style={{...pill(TXT_BLUE), top: 958, opacity: t(20), transform: rise(t(20))}}>
         <Glyph name="globe" size={50} />
         meganetsoftware.com.ng
       </div>
@@ -572,7 +572,7 @@ const Scene6: React.FC<{l: number}> = ({l}) => {
   );
 };
 
-/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1340) ---------- */
+/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1272, limit 1280) ---------- */
 
 // [scene, firstWord, lastWord] per caption chunk; chunks cover every narrated word once, in order.
 export const CHUNKS: [number, number, number][] = [
@@ -600,7 +600,7 @@ const Captions: React.FC = () => {
   const t = interpolate(f, [first - 1, first + 4], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <Layer kind="cap">
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1340, display: 'flex', justifyContent: 'center', fontFamily: FONT, transform: `translateY(${(1 - t) * 14}px)`, opacity: t}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1272, display: 'flex', justifyContent: 'center', fontFamily: FONT, transform: `translateY(${(1 - t) * 14}px)`, opacity: t}}>
         <div style={{maxWidth: COL_W, boxSizing: 'border-box', padding: '14px 30px', borderRadius: 36, background: WHITE, border: '3px solid #9FBFEA', boxShadow: '0 4px 10px rgba(26,80,160,0.12)', fontSize: 48, lineHeight: 1.22, fontWeight: 800, textAlign: 'center'}}>
           {TOKENS[s].slice(a, b + 1).map((tok, i) => {
             const wi = a + i;
