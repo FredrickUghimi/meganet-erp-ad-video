@@ -13,7 +13,7 @@
  * Transitions (not the slides/wipes of the Ledger ad, the zooms/flips of the P&L ad or the blinds/clock/blur/diamond of
  * the Cash Flow ad): split doors (vertical seam), stacked-block build, split doors (horizontal seam), fade-through.
  *
- * Safe area: all content inside x 80-920, y 200-1163 (24px above the caption zone y 1188-1340); captions end at y=1340 (limit 1360). Every scene lives in a clip
+ * Safe area: all content inside x 80-920, y 200-1095 (24px above the two-line caption zone y 1120-1272); captions end at y=1272 (limit 1280). Every scene lives in a clip
  * box of exactly the safe area, so masks and sliding halves can never leave it.
  *
  * Debug input prop (verification only): 'bg' = gradients only, 'caps' = captions only, 'violate-*' / 'violateweak-left'
@@ -48,7 +48,7 @@ const FONT = 'Inter, "Inter Display", system-ui, sans-serif';
 const COL_L = 110;
 const COL_W = 780; // x 110-890, inside the 80-920 safe area
 const SAFE = {x: 80, y: 200, w: 840, h: 1240};
-const CLIP_H = 963; // scene clip box is y 200-1163: 24px above the caption zone (y 1188-1340), so no transition passes under a caption
+const CLIP_H = 896; // scene clip box is y 200-1096: 24px above the caption zone (y 1120-1272), so no transition passes under a caption
 const CX = 540;
 const CY = SAFE.y + SAFE.h / 2; // 820: centre of the safe box
 
@@ -74,7 +74,7 @@ const raw = (f: number, from: number) => clamp01((f - from) / TR);
 const BCOLS = 6; // stacked-block build: 6 columns x 8 rows of blocks over the safe area
 const BROWS = 8;
 const BW = SAFE.w / BCOLS; // 140
-const BH = CLIP_H / BROWS; // ~120: the block build rises from the bottom of the clip box (y 1163)
+const BH = CLIP_H / BROWS; // ~112: the block build rises from the bottom of the clip box (y 1096)
 const colProgress = (c: number, e: number) => clamp01(e * 1.5 - c * 0.1);
 const colSteps = (c: number, e: number) => Math.ceil(colProgress(c, e) * BROWS - 1e-6);
 
@@ -369,7 +369,7 @@ const Scene1: React.FC<{l: number}> = ({l}) => {
         <Glyph name="calendar" size={34} color={TXT_ORANGE} stroke={2.4} />
         <Bar w={120} h={20} color={ORANGE} />
       </div>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 880, height: 212, background: WHITE, borderRadius: 40, border: '3px solid #C9DCF6', borderLeft: `18px solid ${BLUE}`, boxShadow: '0 12px 28px rgba(26,80,160,0.16)', boxSizing: 'border-box', padding: '22px 30px 0 34px', opacity: title, transform: `translateY(${(1 - back(title)) * 50}px) scale(${0.94 + 0.06 * title})`}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 862, height: 190, background: WHITE, borderRadius: 40, border: '3px solid #C9DCF6', borderLeft: `18px solid ${BLUE}`, boxShadow: '0 12px 28px rgba(26,80,160,0.16)', boxSizing: 'border-box', padding: '22px 30px 0 34px', opacity: title, transform: `translateY(${(1 - back(title)) * 50}px) scale(${0.94 + 0.06 * title})`}}>
         <div style={{fontSize: 64, fontWeight: 900, color: INK, letterSpacing: -1.5, whiteSpace: 'nowrap', lineHeight: 1.12}}>Balance Sheet Report</div>
         <div style={{fontSize: 44, fontWeight: 800, color: TXT_BLUE, whiteSpace: 'nowrap', marginTop: 10, opacity: sub, transform: rise(sub)}}>in Mega-Net ERP Cloud</div>
       </div>
@@ -389,13 +389,13 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
   const SEL = 17;
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 346, display: 'flex', alignItems: 'center', gap: 24, opacity: title, transform: rise(title)}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 326, display: 'flex', alignItems: 'center', gap: 24, opacity: title, transform: rise(title)}}>
         <Tile color={BLUE} size={130} radius={36}>
           <FxIcon name="chart" size={88} accent={ORANGE} ink={WHITE} />
         </Tile>
         <div style={{color: INK, fontSize: 80, fontWeight: 900, lineHeight: 1.02, letterSpacing: -2, whiteSpace: 'nowrap'}}>Balance Sheet</div>
       </div>
-      <Card style={{top: 506, height: 120, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, opacity: field, transform: rise(field), borderLeft: `16px solid ${ORANGE}`}}>
+      <Card style={{top: 476, height: 120, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, opacity: field, transform: rise(field), borderLeft: `16px solid ${ORANGE}`}}>
         <div style={{fontSize: 34, fontWeight: 800, color: MUTED, width: 100}}>As of</div>
         <div style={{flex: 1, height: 72, borderRadius: 24, background: `${BLUE}1A`, border: `3px solid ${BLUE}`, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 16, padding: '0 22px'}}>
           <Glyph name="calendar" size={40} color={TXT_BLUE} stroke={2.4} />
@@ -405,7 +405,7 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
           <Glyph name="chevron" size={34} stroke={3.2} />
         </div>
       </Card>
-      <Card style={{top: 650, height: 300, padding: '22px 24px', opacity: cal, transform: `translateY(${(1 - cal) * -24}px)`, borderRadius: 32}}>
+      <Card style={{top: 612, height: 278, padding: '22px 24px', opacity: cal, transform: `translateY(${(1 - cal) * -24}px)`, borderRadius: 32}}>
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: 44}}>
           <Bar w={190} h={24} color={BLUE} alpha="" />
           <div style={{display: 'flex', gap: 12}}>
@@ -417,15 +417,15 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
             </Tile>
           </div>
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap', gap: '10px 14px', marginTop: 14}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', gap: '8px 14px', marginTop: 14}}>
           {Array.from({length: 28}).map((_, k) => {
             const on = k === SEL && pick > 0.5;
-            return <div key={k} style={{width: 90, height: 42, borderRadius: 14, background: on ? ORANGE : '#EEF3FB', border: `3px solid ${on ? ORANGE : '#D3E1F6'}`, boxSizing: 'border-box', transform: on ? `scale(${1 + 0.12 * Math.sin(pick * Math.PI)})` : undefined}} />;
+            return <div key={k} style={{width: 90, height: 36, borderRadius: 14, background: on ? ORANGE : '#EEF3FB', border: `3px solid ${on ? ORANGE : '#D3E1F6'}`, boxSizing: 'border-box', transform: on ? `scale(${1 + 0.12 * Math.sin(pick * Math.PI)})` : undefined}} />;
           })}
         </div>
       </Card>
-      <Card style={{top: 976, height: 170, padding: '20px 30px', display: 'flex', alignItems: 'flex-end', gap: 40, borderLeft: `16px solid ${TEAL}`, opacity: rep, transform: rise(rep)}}>
-        <div style={{display: 'flex', alignItems: 'flex-end', gap: 36, flex: 1, justifyContent: 'center', height: 130}}>
+      <Card style={{top: 904, height: 156, padding: '20px 30px', display: 'flex', alignItems: 'flex-end', gap: 40, borderLeft: `16px solid ${TEAL}`, opacity: rep, transform: rise(rep)}}>
+        <div style={{display: 'flex', alignItems: 'flex-end', gap: 36, flex: 1, justifyContent: 'center', height: 116}}>
           {[
             {w: [96, 76, 56], c: [BLUE, BLUE_LIGHT, BLUE], s: 6},
             {w: [96, 76], c: [ORANGE, ORANGE], s: 11},
@@ -474,7 +474,7 @@ const Scales: React.FC<{leftT: (k: number) => number; rightT: (k: number) => num
     );
   };
   return (
-    <svg width="840" height="540" viewBox="0 0 840 540" style={{position: 'absolute', left: 80, top: 330, overflow: 'visible'}}>
+    <svg width="840" height="540" viewBox="0 0 840 540" style={{position: 'absolute', left: 80, top: 290, overflow: 'visible'}}>
       <path d="M360 478 H560 L530 446 H390 Z" fill="#C9DCF6" stroke="#9FBFEA" strokeWidth="3" strokeLinejoin="round" />
       <rect x={px - 13} y={py} width="26" height="360" rx="8" fill="#C9DCF6" stroke="#9FBFEA" strokeWidth="3" />
       {pan(L, widths, leftC, leftT)}
@@ -486,7 +486,7 @@ const Scales: React.FC<{leftT: (k: number) => number; rightT: (k: number) => num
 };
 
 const LegendCard: React.FC<{top: number; color: string; label: string; t: number}> = ({top, color, label, t}) => (
-  <Card style={{top, height: 124, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 24, borderLeft: `18px solid ${color}`, opacity: t, transform: rise(t)}}>
+  <Card style={{top, height: 110, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 24, borderLeft: `18px solid ${color}`, opacity: t, transform: rise(t)}}>
     <Tile color={color} size={70} radius={22}>
       <FxIcon name="chart" size={46} accent={WHITE} ink={WHITE} />
     </Tile>
@@ -502,8 +502,8 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
       <div style={{opacity: frame}}>
         <Scales leftT={(k) => enter(l, w(0) + k * 6, 9)} rightT={(k) => enter(l, w(5) + k * 6, 9)} />
       </div>
-      <LegendCard top={860} color={BLUE} label="Total assets" t={enter(l, w(1) - 2, 10)} />
-      <LegendCard top={994} color={ORANGE} label="Total Liabilities + Equity" t={enter(l, w(6) - 2, 10)} />
+      <LegendCard top={800} color={BLUE} label="Total assets" t={enter(l, w(1) - 2, 10)} />
+      <LegendCard top={924} color={ORANGE} label="Total Liabilities + Equity" t={enter(l, w(6) - 2, 10)} />
     </>
   );
 };
@@ -552,18 +552,18 @@ const Scene5: React.FC<{l: number}> = ({l}) => {
   const pill = (bg: string): React.CSSProperties => ({position: 'absolute', left: COL_L, width: COL_W, height: 112, borderRadius: 56, background: bg, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, fontSize: 42, fontWeight: 800, boxShadow: '0 10px 24px rgba(26,80,160,0.22)'});
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 270, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 212, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
         <LogoCard width={520} pad={32} radius={50} />
       </div>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 560, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 502, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
         Book a<br />
         <span style={{color: TXT_BLUE}}>free demo</span>
       </div>
-      <div style={{...pill(TXT_GREEN), top: 880, opacity: t(14), transform: rise(t(14))}}>
+      <div style={{...pill(TXT_GREEN), top: 822, opacity: t(14), transform: rise(t(14))}}>
         <Glyph name="phone" size={50} />
         WhatsApp +2347035682478
       </div>
-      <div style={{...pill(TXT_BLUE), top: 1016, opacity: t(20), transform: rise(t(20))}}>
+      <div style={{...pill(TXT_BLUE), top: 958, opacity: t(20), transform: rise(t(20))}}>
         <Glyph name="globe" size={50} />
         meganetsoftware.com.ng
       </div>
@@ -571,7 +571,7 @@ const Scene5: React.FC<{l: number}> = ({l}) => {
   );
 };
 
-/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1340) ---------- */
+/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1272, limit 1280) ---------- */
 
 // [scene, firstWord, lastWord] per caption chunk; chunks cover every narrated word once, in order.
 export const CHUNKS: [number, number, number][] = [
@@ -600,7 +600,7 @@ const Captions: React.FC = () => {
   const t = interpolate(f, [first - 1, first + 4], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <Layer kind="cap">
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1340, display: 'flex', justifyContent: 'center', fontFamily: FONT, transform: `translateY(${(1 - t) * 14}px)`, opacity: t}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1272, display: 'flex', justifyContent: 'center', fontFamily: FONT, transform: `translateY(${(1 - t) * 14}px)`, opacity: t}}>
         <div style={{maxWidth: COL_W, boxSizing: 'border-box', padding: '14px 30px', borderRadius: 36, background: WHITE, border: '3px solid #9FBFEA', boxShadow: '0 4px 10px rgba(26,80,160,0.12)', fontSize: 48, lineHeight: 1.22, fontWeight: 800, textAlign: 'center'}}>
           {TOKENS[s].slice(a, b + 1).map((tok, i) => {
             const wi = a + i;
