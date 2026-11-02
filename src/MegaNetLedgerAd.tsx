@@ -6,7 +6,7 @@
  * Look: light and airy. Brand blue #1A6DE0 + orange #F7941D on near-white / pale blue / pale peach gradients, white cards,
  * dark charcoal text, green/red/teal accents. See STYLE_GUIDE.md for the rules (contrast >= 4.5:1, labels >= 32px).
  *
- * Safe area: all content inside x 80-920, y 200-1440; captions end at y=1340 (limit 1360). Every scene (and its
+ * Safe area: all content inside x 80-920, y 200-1163 (24px above the caption zone y 1188-1340); captions end at y=1340 (limit 1360). Every scene (and its
  * header) lives inside a clip box of exactly the safe area, so slides and wipes can never leave it.
  * Transitions are slides and wipes, not fades: slide-left, wipe-up, slide-right, diagonal wipe, slide-up.
  *
@@ -18,7 +18,7 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Audio, Easing, Freeze, Img, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {LINES, VOICE_END} from './ledgerTimings';
-import {DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
+import {CaptionViolation, DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
 
 export const LEDGER_FPS = 30;
 const LEAD = 12; // 0.4s before the voice starts
@@ -45,6 +45,7 @@ const FONT = 'Inter, "Inter Display", system-ui, sans-serif';
 const COL_L = 110;
 const COL_W = 780; // x 110-890, inside the 80-920 safe area
 const SAFE = {x: 80, y: 200, w: 840, h: 1240};
+const CLIP_H = 963; // scene clip box is y 200-1163: 24px above the caption zone (y 1188-1340), so transitions never pass under a caption
 
 const wordF = (s: number, w: number) => LEAD + Math.round(LINES[s].words[w].start * LEDGER_FPS);
 const sceneFrom = (i: number) => (i === 0 ? 0 : wordF(i, 0) - 5);
@@ -245,7 +246,7 @@ const SceneFrame: React.FC<{i: number; header?: boolean; children: (l: number) =
   const l = f - from;
   return (
     <Layer kind="content">
-      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: SAFE.h, overflow: 'hidden'}}>
+      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: CLIP_H, overflow: 'hidden'}}>
         <div style={{position: 'absolute', left: -SAFE.x, top: -SAFE.y, width: 1080, height: 1920, ...inStyle, ...outStyle}}>
           {header && <Header l={l} />}
           {children(l)}
@@ -359,14 +360,14 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
         </Tile>
         <div style={{color: INK, fontSize: 92, fontWeight: 900, lineHeight: 1.02, letterSpacing: -2}}>General<br />Ledger</div>
       </div>
-      <Card style={{top: 600, height: 138, padding: '0 34px', display: 'flex', alignItems: 'center', gap: 24, opacity: acct, transform: rise(acct), borderLeft: `16px solid ${ORANGE}`}}>
+      <Card style={{top: 560, height: 138, padding: '0 34px', display: 'flex', alignItems: 'center', gap: 24, opacity: acct, transform: rise(acct), borderLeft: `16px solid ${ORANGE}`}}>
         <div style={{fontSize: 34, fontWeight: 800, color: MUTED, width: 170}}>Account</div>
         <Bar w={320} color={BLUE} alpha="44" h={30} />
         <div style={{marginLeft: 'auto', width: 56, height: 56, borderRadius: 28, background: BLUE, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${open * 180}deg)`}}>
           <Glyph name="chevron" size={34} stroke={3.2} />
         </div>
       </Card>
-      <Card style={{top: 752, padding: '18px 26px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32}}>
+      <Card style={{top: 712, padding: '18px 26px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32}}>
         {rows.map((wd, i) => {
           const chosen = i === 1;
           return (
@@ -377,7 +378,7 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
           );
         })}
       </Card>
-      <Card style={{top: 1026, height: 138, padding: '0 26px', display: 'flex', alignItems: 'center', gap: 12, opacity: dates, transform: rise(dates), borderLeft: `16px solid ${TEAL}`}}>
+      <Card style={{top: 984, height: 138, padding: '0 26px', display: 'flex', alignItems: 'center', gap: 12, opacity: dates, transform: rise(dates), borderLeft: `16px solid ${TEAL}`}}>
         {['Start date', 'End date'].map((t, i) => (
           <React.Fragment key={t}>
             {i === 1 && <div style={{width: 24, height: 6, borderRadius: 3, background: TEAL, flex: 'none'}} />}
@@ -675,6 +676,7 @@ export const MegaNetLedgerAd: React.FC<{debug?: string}> = ({debug = ''}) => {
           <SceneFrame i={5} header={false}>{(l) => <Scene6 l={l} />}</SceneFrame>
           <Captions />
           <Violate />
+          <CaptionViolation />
         </Freeze>
         {debug === 'audit' && <AuditProbe />}
       </AbsoluteFill>

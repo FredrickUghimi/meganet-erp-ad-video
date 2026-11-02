@@ -42,7 +42,7 @@ Cards: white, 3px `#C9DCF6` border, soft blue-tinted shadow. Font: Inter (Inter 
 
 ## 4. Voice, timing, claims
 
-- Voice: Microsoft `en-NG-AbeoNeural` (male), word-level timing, no music, never sped up, pauses between sentences about 0.3s, 2s frozen hold after the voice ends. Point `certifi` at `/root/.ccr/ca-bundle.crt` if TLS fails; verification stays on.
+- Voice: a Microsoft `en-NG` neural voice, word-level timing, no music, never sped up, pauses between sentences about 0.3s, 2s frozen hold after the voice ends. **Series default: `en-NG-AbeoNeural` (male).** The voice is a per-feature choice: an ad uses a different `en-NG` voice only when the brief for that ad says so, and its script doc must name the voice and say it is a deliberate exception. The Voice column in section 5 records which voice each ad uses. Narration timing always comes from that ad's own generated audio, never from another ad's timings. Point `certifi` at `/root/.ccr/ca-bundle.crt` if TLS fails; verification stays on.
 - Captions match the narration word for word (`scripts/verify_captions_ledger.py` pattern).
 - No figures, names or statistics; rows, bars and chips are drawn placeholders. No app screenshots. Every product claim traced to the backend or frontend code and written up in the ad's script doc, with what is deliberately not claimed.
 - CTA: "Book a free demo", WhatsApp +2347035682478, meganetsoftware.com.ng.
@@ -51,14 +51,16 @@ Cards: white, 3px `#C9DCF6` border, soft blue-tinted shadow. Font: Inter (Inter 
 
 The first scene of each ad must be built differently from every other ad's first scene, in layout, motion and transition. Pick a style that is not on this list, and add the new one to it.
 
-| Ad | Hook style |
-|---|---|
-| `MegaNetAd` (ERP) | Questions as on-screen text cards |
-| `MegaNetEhrAd` | Questions as on-screen text cards, one pulsing "?" |
-| `MegaNetSentinelAd` | Short staccato statements stacked line by line |
-| `MegaNetAssistantAd` | Typed question field, then answer bubbles |
-| `MegaNetLedgerAd` | A dotted trail line draws across the screen and lands on a ledger row while the words slide in |
-| `MegaNetProfitLossAd` | Mini-story told on objects, not text lines: a calendar page with its last day marked flips away to reveal a report card, and a green bottom-line pill lands on it; each beat's words sit on the object as a label |
-| `MegaNetCashFlowAd` | Command-style: a single imperative ("Follow your cash.") stamped as a prompt line (">" Follow / your / cash tiles) while four corner brackets lock onto a coin; no question, no trail line, no object story |
+| Ad | Hook style | Voice |
+|---|---|---|
+| `MegaNetAd` (ERP) | Questions as on-screen text cards | not recorded in the repo |
+| `MegaNetEhrAd` | Questions as on-screen text cards, one pulsing "?" | Abeo |
+| `MegaNetSentinelAd` | Short staccato statements stacked line by line | Abeo |
+| `MegaNetAssistantAd` | Typed question field, then answer bubbles | Abeo |
+| `MegaNetLedgerAd` | A dotted trail line draws across the screen and lands on a ledger row while the words slide in | Abeo |
+| `MegaNetProfitLossAd` | Mini-story told on objects, not text lines: a calendar page with its last day marked flips away to reveal a report card, and a green bottom-line pill lands on it; each beat's words sit on the object as a label | Abeo |
+| `MegaNetCashFlowAd` | Command-style: a single imperative ("Follow your cash.") stamped as a prompt line (">" Follow / your / cash tiles) while four corner brackets lock onto a coin; no question, no trail line, no object story | Abeo |
+| `MegaNetBalanceSheetAd` | Snapshot hook: a viewfinder snaps shut on a drawn block structure while the spoken statement names the report and product. It has no question, trail line, command prompt, object story or split screen. | Abeo |
+| `MegaNetPharmacyInteractionAd` | "Spot the collision": two drug tiles slide toward each other, an orange stop-bar drops between them and halts them, and the label "Interaction warning" lands; the words sit under the object in the caption pill, no question, no trail, no calendar story, no command stamp | Ezinne (`en-NG-EzinneNeural`, female; per-feature exception requested by the project owner) |
 
-Scene transitions should also vary between ads. The Ledger ad uses slides and wipes only, in a different direction at each cut (slide-left, wipe-up, slide-right, diagonal wipe, slide-up), all inside the safe area.
+Scene transitions should also vary between ads. The Cash Flow ad uses vertical blinds, a clock wipe, a blur dissolve, a diamond iris and a fade-through; the Pharmacy Interaction ad uses a split (barn doors from the centre line), a circle iris and a zoom-fade. The Ledger ad uses slides and wipes only, in a different direction at each cut (slide-left, wipe-up, slide-right, diagonal wipe, slide-up), all inside the safe area.

@@ -1,0 +1,69 @@
+caption words 43 | approved narration words 43 | TTS-reported words 43
+TEXT vs approved narration, word for word, in order: PASS
+TEXT vs TTS engine word-boundary transcript (punctuation stripped): PASS
+word-by-word:
+   1. caption Warfarin     narration Warfarin     TTS Warfarin     ok
+   2. caption meets        narration meets        TTS meets        ok
+   3. caption aspirin.     narration aspirin.     TTS aspirin      ok
+   4. caption Spot         narration Spot         TTS Spot         ok
+   5. caption the          narration the          TTS the          ok
+   6. caption collision.   narration collision.   TTS collision    ok
+   7. caption Mega-Net     narration Mega-Net     TTS Mega-Net     ok
+   8. caption EHR          narration EHR          TTS EHR          ok
+   9. caption Cloud        narration Cloud        TTS Cloud        ok
+  10. caption warns        narration warns        TTS warns        ok
+  11. caption the          narration the          TTS the          ok
+  12. caption prescriber   narration prescriber   TTS prescriber   ok
+  13. caption when         narration when         TTS when         ok
+  14. caption two          narration two          TTS two          ok
+  15. caption drugs        narration drugs        TTS drugs        ok
+  16. caption are          narration are          TTS are          ok
+  17. caption a            narration a            TTS a            ok
+  18. caption defined      narration defined      TTS defined      ok
+  19. caption interaction  narration interaction  TTS interaction  ok
+  20. caption pair.        narration pair.        TTS pair         ok
+  21. caption For          narration For          TTS For          ok
+  22. caption a            narration a            TTS a            ok
+  23. caption severe       narration severe       TTS severe       ok
+  24. caption interaction, narration interaction, TTS interaction  ok
+  25. caption the          narration the          TTS the          ok
+  26. caption prescriber   narration prescriber   TTS prescriber   ok
+  27. caption must         narration must         TTS must         ok
+  28. caption stop,        narration stop,        TTS stop         ok
+  29. caption and          narration and          TTS and          ok
+  30. caption type         narration type         TTS type         ok
+  31. caption CONFIRM      narration CONFIRM      TTS CONFIRM      ok
+  32. caption to           narration to           TTS to           ok
+  33. caption continue.    narration continue.    TTS continue     ok
+  34. caption Book         narration Book         TTS Book         ok
+  35. caption a            narration a            TTS a            ok
+  36. caption free         narration free         TTS free         ok
+  37. caption demo         narration demo         TTS demo         ok
+  38. caption with         narration with         TTS with         ok
+  39. caption Mega-Net.    narration Mega-Net.    TTS Mega-Net     ok
+  40. caption Message      narration Message      TTS Message      ok
+  41. caption us           narration us           TTS us           ok
+  42. caption on           narration on           TTS on           ok
+  43. caption WhatsApp.    narration WhatsApp.    TTS WhatsApp     ok
+caption chunks (max 2 lines each):
+  | Warfarin meets aspirin.
+  | Spot the collision.
+  | Mega-Net EHR Cloud warns the prescriber
+  | when two drugs are a defined interaction pair.
+  | For a severe interaction, the prescriber
+  | must stop, and type CONFIRM to continue.
+  | Book a free demo with Mega-Net.
+  | Message us on WhatsApp.
+frames 584, with caption 449; caption bbox x 110-889, y 1189-1339 (limit: x 80-920, bottom y <= 1360); tallest pill 151px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+sentences 6 | caption runs 6 | speech segments by silence detection (-45dB) 8
+"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.
+ # sentence                       caption on caption off TTS start  TTS end audio start audio end max |delta|  result
+ 1 Warfarin meets aspirin.             0.500       1.867     0.430    1.805       0.533     1.907       0.070  PASS
+ 2 Spot the collision.                 2.267       3.133     2.195    3.070       2.292     3.173       0.072  PASS
+ 3 Mega-Net EHR Cloud warns the p      3.533       8.500     3.460    8.447       3.612     8.550       0.079  PASS
+ 4 For a severe interaction, the       8.900      13.733     8.837   13.675       8.984    13.778       0.084  PASS
+ 5 Book a free demo with Mega-Net     14.133      15.767    14.065   15.715      14.168    15.818       0.068  PASS
+ 6 Message us on WhatsApp.            16.167      17.467    16.105   17.392      16.246    17.472       0.079  PASS
+TIMING (within 0.1s of the measured sentence boundaries): PASS
+RESULT: PASS
