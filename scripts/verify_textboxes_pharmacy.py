@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Every text box on every frame must sit inside the safe area: x 80-920, y 200-1440 (caption text: bottom <= 1360).
+"""Every text box on every frame must sit inside the safe area: x 80-920, y 200-1095 for scene text (v3: 24px above the caption zone), caption text bottom <= 1280.
 Input: textboxes.json from scripts/pharmacy_textbox_audit.mjs (box of every text node incl. transforms, every frame,
 no settled-frame or opacity filter; clipped or invisible text still counts). A box counts as outside if any edge is
 more than EPS pixels past the limit (EPS covers sub-pixel rounding only).
 usage: verify_textboxes_pharmacy.py textboxes.json OUT_CSV"""
 import csv, json, sys
 FPS, EPS = 30, 0.5
-X0, X1, Y0, Y1, CAPY = 80, 920, 200, 1440, 1360
+X0, X1, Y0, Y1, CAPY = 80, 920, 200, 1095, 1280
 data = {int(k): v for k, v in json.load(open(sys.argv[1])).items()}
 rows, bad_frames = [], []
 for f in sorted(data):
     bad = []
     for n in data[f]:
-        cap = n['y0'] > 1150
+        cap = n['y0'] > 1110
         if n['x0'] < X0 - EPS or n['x1'] > X1 + EPS or n['y0'] < Y0 - EPS or n['y1'] > (CAPY if cap else Y1) + EPS:
             bad.append(n)
     rows.append((f, len(data[f]), bad))

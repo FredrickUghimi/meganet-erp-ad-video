@@ -2,7 +2,7 @@
 """Per-frame safe-area check for MegaNetPharmacyInteractionAd on LOSSLESS PNG frames.
 Every frame of the full render is diffed against the gradient-only render ('bg' debug mode, same frame); any pixel
 that differs by more than THRESH (default 6/255: any real content, however pale) outside x 80-920, y 200-1440 is a
-violation. Captions are part of the full render, so they are inside the same box (their own limit, y <= 1360 and at
+violation. Captions are part of the full render, so they are inside the same box (their own limit, y <= 1280 and at
 most 2 lines, is checked by verify_captions_pharmacy.py).
 Negative controls: NEG_DIR holds stills of frame NEG_FRAME rendered with debug=violate-left/right/top/bottom and
 violateweak-left (a box 30px outside that edge); each must be flagged, otherwise the check proves nothing.

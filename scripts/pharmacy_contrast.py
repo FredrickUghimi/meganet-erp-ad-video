@@ -2,7 +2,7 @@
 """Contrast / size / position report for MegaNetPharmacyInteractionAd from the output of scripts/pharmacy_audit.mjs.
 For every text node on every audited settled frame: WCAG contrast of the text colour (with its effective opacity)
 against EVERY pixel behind its box in the text-less render (worst pixel = minimum), font size, and position (safe area
-x 80-920, y 200-1440; captions end by y 1360). One line per distinct text+colour (worst case over frames), then the totals.
+x 80-920, y 200-1440; captions end by y 1280; scene text by y 1095). One line per distinct text+colour (worst case over frames), then the totals.
 usage: pharmacy_contrast.py <audit-dir> [--min-contrast 4.5] [--min-size 32]"""
 import glob, json, os, re, sys
 import numpy as np
@@ -42,8 +42,8 @@ for jf in sorted(glob.glob(os.path.join(d, 'audit-*.json')), key=lambda p: int(r
         l1, l2 = lum(fg), lum(bg)
         ratio = (np.maximum(l1, l2) + 0.05) / (np.minimum(l1, l2) + 0.05)
         k = int(ratio.argmin())
-        cap = y0 > 1150  # caption text sits below the scene content
-        ok_pos = x0 >= 80 and x1 <= 920 and y0 >= 200 and y1 <= (1360 if cap else 1440)
+        cap = y0 > 1110  # caption text sits below the scene content (scene content ends by y 1095)
+        ok_pos = x0 >= 80 and x1 <= 920 and y0 >= 200 and y1 <= (1280 if cap else 1095)
         r = float(ratio.min())
         # A non-caption text node whose box crosses the safe-area edge while its tile is still sliding in is clipped by the
         # scene's safe-area clip box, so its overflowing part is not visible (scripts/verify_safe_area_pharmacy.py proves no

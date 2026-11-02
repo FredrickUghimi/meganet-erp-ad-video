@@ -13,7 +13,7 @@
  * (Cash Flow).
  * Transitions (new for the series): split (barn doors open from the centre line), circle iris, zoom-fade.
  *
- * Safe area: all content inside x 80-920, y 200-1440; captions end at y=1340 (limit 1360). Every scene lives in a clip
+ * Safe area: all content inside x 80-920, y 200-1440; captions end at y=1272 (limit 1280); content ends by y 1095 (24px above the two-line caption zone y 1120-1272). Every scene lives in a clip
  * box of exactly the safe area, so masks and scales can never leave it.
  *
  * Product wording on screen comes from the EHR Cloud code (EHR-Cloud- at e8ca779): "Drug interaction warning"
@@ -28,7 +28,7 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Audio, Easing, Freeze, Img, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {LINES, VOICE_END} from './pharmacyTimings';
-import {DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
+import {CaptionViolation, DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
 
 export const PH_FPS = 30;
 const LEAD = 12; // 0.4s before the voice starts
@@ -52,6 +52,7 @@ const FONT = 'Inter, "Inter Display", system-ui, sans-serif';
 const COL_L = 110;
 const COL_W = 780; // x 110-890, inside the 80-920 safe area
 const SAFE = {x: 80, y: 200, w: 840, h: 1240};
+const CLIP_H = 896; // scene clip box is y 200-1096: 24px above the caption zone (y 1120-1272), so masks and scales never pass under a caption
 const CX = 540;
 const CY = SAFE.y + SAFE.h / 2; // 820: centre of the safe box
 
@@ -223,7 +224,7 @@ const SceneFrame: React.FC<{i: number; header?: boolean; children: (l: number) =
   const l = f - from;
   return (
     <Layer kind="content">
-      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: SAFE.h, overflow: 'hidden'}}>
+      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: CLIP_H, overflow: 'hidden'}}>
         <div style={{position: 'absolute', left: -SAFE.x, top: -SAFE.y, width: 1080, height: 1920, ...inStyle, ...outStyle}}>
           {header && <Header l={l} />}
           {children(l)}
@@ -245,15 +246,15 @@ const Chip: React.FC<{text: string; bg: string; fg?: string; size?: number; styl
 /* ---------- scene 1 (hook): "Warfarin meets aspirin. Spot the collision." ---------- */
 
 // Geometry: every tile starts and ends inside the safe area (x 80-920, y 200-1440), so no text box is ever outside it,
-// not even while the tiles move. The two tiles converge on the centre line (y 746-774) from above-left and below-right.
+// not even while the tiles move. The two tiles converge on the centre line (y 680-708) from above-left and below-right.
 const T_W = 520;
-const T_H = 200;
-const BAR_Y = 746;
+const T_H = 180;
+const BAR_Y = 680;
 const BAR_H = 28;
 const BAR_W = 700;
 const TILE_X = 240; // x of both tiles when halted (centred on the safe box centre x=500)
-const TOP_HALT = BAR_Y - 26 - T_H; // 520
-const BOT_HALT = BAR_Y + BAR_H + 26; // 800
+const TOP_HALT = BAR_Y - 26 - T_H; // 474
+const BOT_HALT = BAR_Y + BAR_H + 26; // 734
 const TRAVEL_Y = 180;
 const TRAVEL_X = 110;
 
@@ -294,7 +295,7 @@ const Scene1: React.FC<{l: number}> = ({l}) => {
         <div style={{position: 'absolute', left: CX - 40 - 110 * ring, top: BAR_Y + BAR_H / 2 - 110 * ring, width: 220 * ring, height: 220 * ring, borderRadius: 999, border: `8px solid ${ORANGE}`, opacity: 1 - ring, boxSizing: 'border-box'}} />
       )}
       {/* the label lands */}
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 1040, display: 'flex', justifyContent: 'center', opacity: lab(0), transform: `translateY(${(1 - back(lab(0))) * -40}px)`}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 940, display: 'flex', justifyContent: 'center', opacity: lab(0), transform: `translateY(${(1 - back(lab(0))) * -40}px)`}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 22, background: WHITE, border: `4px solid ${RED}`, borderRadius: 48, padding: '16px 40px 16px 20px', boxShadow: '0 12px 28px rgba(26,80,160,0.16)'}}>
           <Tile color={TXT_RED} size={84} radius={28}>
             <Glyph name="alert" size={54} stroke={2.6} />
@@ -317,7 +318,7 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
   const pair = enter(l, w(11) - 2, 10);
   const hot = warn > 0.5 ? ORANGE : '#C9DCF6';
   const row = (name: string, color: string, ink: string, t: number): React.ReactNode => (
-    <div style={{display: 'flex', alignItems: 'center', gap: 22, height: 118, padding: '0 24px', borderRadius: 30, background: '#F4F8FF', border: `4px solid ${hot}`, opacity: t, transform: rise(t)}}>
+    <div style={{display: 'flex', alignItems: 'center', gap: 22, height: 100, padding: '0 24px', borderRadius: 30, background: '#F4F8FF', border: `4px solid ${hot}`, opacity: t, transform: rise(t)}}>
       <Tile color={color} size={78} radius={26}>
         <FxIcon name="pill" size={58} accent={ink} ink={WHITE} />
       </Tile>
@@ -328,19 +329,19 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
   );
   return (
     <>
-      <Card style={{top: 330, height: 392, padding: '26px 30px', opacity: card, transform: rise(card)}}>
-        <div style={{display: 'flex', alignItems: 'center', gap: 18, marginBottom: 22}}>
+      <Card style={{top: 316, height: 346, padding: '26px 30px', opacity: card, transform: rise(card)}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 18, marginBottom: 16}}>
           <Tile color={BLUE} size={64} radius={20}>
             <Glyph name="doc" size={40} />
           </Tile>
           <div style={{fontSize: 40, fontWeight: 900, color: INK}}>Prescription</div>
         </div>
-        <div style={{display: 'flex', flexDirection: 'column', gap: 18}}>
+        <div style={{display: 'flex', flexDirection: 'column', gap: 14}}>
           {row('Warfarin', BLUE, ORANGE, r1)}
           {row('Aspirin', TXT_ORANGE, BLUE, r2)}
         </div>
       </Card>
-      <Card style={{top: 760, height: 366, padding: '30px 34px', border: `4px solid ${RED}`, opacity: warn, transform: rise(warn)}}>
+      <Card style={{top: 682, height: 346, padding: '30px 34px', border: `4px solid ${RED}`, opacity: warn, transform: rise(warn)}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 22}}>
           <Tile color={TXT_RED} size={92} radius={30}>
             <Glyph name="alert" size={60} stroke={2.6} />
@@ -375,7 +376,7 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
   const pulse = ready ? Math.max(0, 1 - (l - (typeEnd + 1)) / 10) : 0;
   return (
     <>
-      <Card style={{top: 330, height: 262, padding: '26px 34px', border: `4px solid ${RED}`, opacity: top, transform: rise(top)}}>
+      <Card style={{top: 316, height: 262, padding: '26px 34px', border: `4px solid ${RED}`, opacity: top, transform: rise(top)}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 20}}>
           <Tile color={TXT_RED} size={78} radius={26}>
             <Glyph name="alert" size={50} stroke={2.6} />
@@ -389,7 +390,7 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
           </div>
         </div>
       </Card>
-      <Card style={{top: 640, height: 462, padding: '30px 34px', opacity: gate, transform: rise(gate)}}>
+      <Card style={{top: 598, height: 424, padding: '30px 34px', opacity: gate, transform: rise(gate)}}>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           <div style={{fontSize: 34, fontWeight: 800, color: MUTED, maxWidth: 480, lineHeight: 1.15}}>Type CONFIRM to proceed</div>
           <div style={{width: 112, height: 112, opacity: sign, transform: `scale(${0.5 + 0.5 * sign})`}}>
@@ -398,11 +399,11 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
             </div>
           </div>
         </div>
-        <div style={{marginTop: 26, height: 124, boxSizing: 'border-box', borderRadius: 30, border: `5px solid ${ready ? GREEN : BLUE}`, background: WHITE, display: 'flex', alignItems: 'center', padding: '0 30px', fontSize: 64, fontWeight: 900, color: INK, letterSpacing: 6}}>
+        <div style={{marginTop: 18, height: 112, boxSizing: 'border-box', borderRadius: 30, border: `5px solid ${ready ? GREEN : BLUE}`, background: WHITE, display: 'flex', alignItems: 'center', padding: '0 30px', fontSize: 64, fontWeight: 900, color: INK, letterSpacing: 6}}>
           {CONFIRM.slice(0, chars)}
           {!ready && <span style={{display: 'inline-block', width: 5, height: 70, marginLeft: 4, background: caret ? BLUE : 'transparent'}} />}
         </div>
-        <div style={{marginTop: 34, height: 112, borderRadius: 56, background: ready ? TXT_RED : '#E3E8F0', color: ready ? WHITE : MUTED, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 38, fontWeight: 900, whiteSpace: 'nowrap', transform: `scale(${1 + 0.04 * pulse})`, boxShadow: ready ? '0 10px 22px rgba(180,35,40,0.3)' : 'none'}}>
+        <div style={{marginTop: 24, height: 100, borderRadius: 50, background: ready ? TXT_RED : '#E3E8F0', color: ready ? WHITE : MUTED, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 38, fontWeight: 900, whiteSpace: 'nowrap', transform: `scale(${1 + 0.04 * pulse})`, boxShadow: ready ? '0 10px 22px rgba(180,35,40,0.3)' : 'none'}}>
           Confirm — Prescribe Anyway
         </div>
       </Card>
@@ -417,18 +418,18 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
   const pill = (bg: string): React.CSSProperties => ({position: 'absolute', left: COL_L, width: COL_W, height: 112, borderRadius: 56, background: bg, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, fontSize: 42, fontWeight: 800, boxShadow: '0 10px 24px rgba(26,80,160,0.22)'});
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 270, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 212, display: 'flex', justifyContent: 'center', opacity: t(0), transform: rise(t(0))}}>
         <LogoCard width={520} pad={32} radius={50} />
       </div>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 560, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 502, textAlign: 'center', color: INK, fontSize: 116, fontWeight: 900, lineHeight: 1.04, letterSpacing: -2, opacity: t(6), transform: rise(t(6))}}>
         Book a<br />
         <span style={{color: TXT_BLUE}}>free demo</span>
       </div>
-      <div style={{...pill(TXT_GREEN), top: 880, opacity: t(14), transform: rise(t(14))}}>
+      <div style={{...pill(TXT_GREEN), top: 822, opacity: t(14), transform: rise(t(14))}}>
         <Glyph name="phone" size={50} />
         WhatsApp +2347035682478
       </div>
-      <div style={{...pill(TXT_BLUE), top: 1016, opacity: t(20), transform: rise(t(20))}}>
+      <div style={{...pill(TXT_BLUE), top: 958, opacity: t(20), transform: rise(t(20))}}>
         <Glyph name="globe" size={50} />
         meganetsoftware.com.ng
       </div>
@@ -436,7 +437,7 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
   );
 };
 
-/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1340) ---------- */
+/* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1272, limit 1280) ---------- */
 
 // [line, firstWord, lastWord] per caption chunk; chunks cover every narrated word once, in order.
 // A chunk whose last token ends a sentence (. ? !) disappears when that last word ends; any other chunk stays until the
@@ -477,7 +478,7 @@ const Captions: React.FC = () => {
   const t = interpolate(f, [on, on + 3], [0.35, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <Layer kind="cap">
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1340, display: 'flex', justifyContent: 'center', fontFamily: FONT}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, bottom: 1920 - 1272, display: 'flex', justifyContent: 'center', fontFamily: FONT}}>
         <div style={{maxWidth: COL_W, boxSizing: 'border-box', padding: '14px 30px', borderRadius: 36, background: WHITE, border: '3px solid #9FBFEA', boxShadow: '0 4px 10px rgba(26,80,160,0.12)', fontSize: 48, lineHeight: 1.22, fontWeight: 800, textAlign: 'center', opacity: t}}>
           {TOKENS[s].slice(a, b + 1).map((tok, i) => {
             const wi = a + i;
@@ -551,6 +552,7 @@ export const MegaNetPharmacyInteractionAd: React.FC<{debug?: string}> = ({debug 
           <SceneFrame i={3} header={false}>{(l) => <Scene4 l={l} />}</SceneFrame>
           <Captions />
           <Violate />
+          <CaptionViolation />
         </Freeze>
         {debug === 'audit' && <AuditProbe />}
       </AbsoluteFill>

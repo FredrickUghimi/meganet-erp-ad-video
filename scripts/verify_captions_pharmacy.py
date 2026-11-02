@@ -6,7 +6,7 @@ usage: verify_captions_pharmacy.py CAPS_DIR BG_DIR FINAL.mp4 OUT_CSV
    (src/pharmacyTimings.ts, punctuation stripped). NOTE: (b) is the engine's own word-boundary transcript, not an
    independent speech recogniser (no recogniser model could be downloaded in this environment).
 2) GEOMETRY: every frame of the captions-only PNG render vs the gradient-only render: the caption pill must stay inside
-   x 80-920, end at y <= 1360 and be at most 2 lines tall.
+   x 80-920, end at y <= 1280 and be at most 2 lines tall.
 3) TIMING: per sentence, when the caption appears and disappears (frame-accurate, from the pixels) vs the measured sentence
    boundaries, two ways: TTS word boundaries (+0.4s lead-in) and silence detection (-45dB) run on the rendered video's own
    audio. Pass = within 0.1s on both ends against both measurements.
@@ -66,8 +66,8 @@ for c, b in zip(caps, bgs):
     bottom, top = max(bottom, ys.max()), min(top, ys.min())
     tall = max(tall, ys.max() - ys.min() + 1)
     xmin, xmax = min(xmin, xs.min()), max(xmax, xs.max())
-print(f'frames {len(present)}, with caption {sum(present)}; caption bbox x {xmin}-{xmax}, y {top}-{bottom} (limit: x 80-920, bottom y <= 1360); tallest pill {tall}px (1 line ~86, 2 lines ~146, 3 lines ~204)')
-geo = bottom <= 1360 and tall <= 160 and xmin >= 80 and xmax <= 920
+print(f'frames {len(present)}, with caption {sum(present)}; caption bbox x {xmin}-{xmax}, y {top}-{bottom} (limit: x 80-920, bottom y <= 1280); tallest pill {tall}px (1 line ~86, 2 lines ~146, 3 lines ~204)')
+geo = bottom <= 1280 and tall <= 160 and xmin >= 80 and xmax <= 920
 ok &= geo
 print('GEOMETRY:', 'PASS' if geo else 'FAIL')
 
