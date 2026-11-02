@@ -1,0 +1,7 @@
+n,sentence,caption_on_s,caption_off_s,tts_start_s,tts_end_s,audio_start_s,audio_end_s,max_abs_delta_s,result
+1,Warfarin meets aspirin.,0.500,1.867,0.430,1.805,0.533,1.907,0.070,PASS
+2,Spot the collision.,2.267,3.133,2.195,3.070,2.292,3.173,0.072,PASS
+3,Mega-Net EHR Cloud warns the prescriber when two drugs are a defined interaction pair.,3.533,8.500,3.460,8.447,3.612,8.550,0.079,PASS
+4,"For a severe interaction, the prescriber must stop, and type CONFIRM to continue.",8.900,13.733,8.837,13.675,8.984,13.778,0.084,PASS
+5,Book a free demo with Mega-Net.,14.133,15.767,14.065,15.715,14.168,15.818,0.068,PASS
+6,Message us on WhatsApp.,16.167,17.467,16.105,17.392,16.246,17.472,0.079,PASS

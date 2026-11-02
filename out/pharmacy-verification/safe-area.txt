@@ -1,0 +1,31 @@
+frames checked: 584 (lossless PNG, threshold 6/255); every frame listed in out/pharmacy-verification/safe-area-frames.csv
+time window    frames      content bbox x0-x1, y0-y1      px outside  result
+ 0.00- 1.00 s    0-29      x 99-889, y 200-1347                    0  PASS
+ 1.00- 2.00 s   30-59      x 99-889, y 215-1347                    0  PASS
+ 2.00- 3.00 s   60-89      x 99-889, y 215-1347                    0  PASS
+ 3.00- 4.00 s   90-119     x 95-902, y 200-1347                    0  PASS
+ 4.00- 5.00 s  120-149     x 98-902, y 216-1347                    0  PASS
+ 5.00- 6.00 s  150-179     x 97-902, y 216-1347                    0  PASS
+ 6.00- 7.00 s  180-209     x 97-902, y 216-1347                    0  PASS
+ 7.00- 8.00 s  210-239     x 97-902, y 216-1347                    0  PASS
+ 8.00- 9.00 s  240-269     x 92-907, y 209-1347                    0  PASS
+ 9.00-10.00 s  270-299     x 97-902, y 215-1347                    0  PASS
+10.00-11.00 s  300-329     x 97-902, y 215-1347                    0  PASS
+11.00-12.00 s  330-359     x 97-902, y 215-1347                    0  PASS
+12.00-13.00 s  360-389     x 97-902, y 215-1347                    0  PASS
+13.00-14.00 s  390-419     x 97-902, y 215-1347                    0  PASS
+14.00-15.00 s  420-449     x 97-902, y 261-1347                    0  PASS
+15.00-16.00 s  450-479     x 97-902, y 269-1347                    0  PASS
+16.00-17.00 s  480-509     x 97-902, y 269-1347                    0  PASS
+17.00-18.00 s  510-539     x 97-902, y 269-1347                    0  PASS
+18.00-19.00 s  540-569     x 97-902, y 269-1151                    0  PASS
+19.00-20.00 s  570-583     x 97-902, y 269-1151                    0  PASS
+content bbox over all frames: x 92-907, y 200-1347 (safe x 80-919, y 200-1439)
+frames failing: 0 of 584
+negative controls (frame 300; each MUST be flagged):
+  violate-left       px outside:  1600  -> flagged (check works)
+  violate-right      px outside:  1600  -> flagged (check works)
+  violate-top        px outside:  1600  -> flagged (check works)
+  violate-bottom     px outside:  1600  -> flagged (check works)
+  violateweak-left   px outside:  1600  -> flagged (check works)
+RESULT: PASS
