@@ -1,0 +1,10 @@
+frames 948; press frame 394 (13.133s); Save Prescription first on screen at frame 314 (10.467s); first warning text at frame 406 (13.533s)
+warning appears 12 frames (0.400s) after the press
+badge + feature label on every frame from frame 0: PASS
+warning only after the Save Prescription press: PASS
+drug names always tagged Example, none in the hook: PASS
+Warfarin/Aspirin absent from the narration (TTS word list): PASS
+negative control, warning injected 40 frames early: flagged (check works)
+negative control, Example tag removed: flagged (check works)
+negative control, badge removed at frame 0: flagged (check works)
+RESULT: PASS

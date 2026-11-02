@@ -16,10 +16,11 @@ import numpy as np
 from PIL import Image
 
 FPS, LEAD = 30, 12
-NARRATION = ["Warfarin meets aspirin.", "Spot the collision.",
-             "Mega-Net EHR Cloud warns the prescriber when two drugs are a defined interaction pair.",
-             "For a severe interaction, the prescriber must stop, and type CONFIRM to continue.",
-             "Book a free demo with Mega-Net.", "Message us on WhatsApp."]
+NARRATION = ["A doctor is about to prescribe two drugs for one patient.", "Some drug pairs can interact.",
+             "Mega-Net EHR Cloud has a feature for that: a drug interaction warning.",
+             "When the doctor tries to save the prescription, a warning appears if the two drugs are a defined interaction pair.",
+             "For a severe interaction, the doctor must stop and type CONFIRM to continue.", "Nothing is saved until they do.",
+             "Mega-Net EHR Cloud. Book a free demo. Message us on WhatsApp."]
 t = open('src/pharmacyTimings.ts').read()
 LINES = json.loads(t[t.index('= [') + 2:t.rindex(';')])
 src = open('src/MegaNetPharmacyInteractionAd.tsx').read()
@@ -108,24 +109,43 @@ def measured(ts, te):
     return (min(x[0] for x in seg), max(x[1] for x in seg)) if seg else (None, None)
 
 
-print(f'sentences {len(sent)} | caption runs {len(runs)} | speech segments by silence detection (-45dB) {len(speech)}')
-rows, tok = [], len(sent) == len(runs)
+print(f'phrases {len(sent)} | caption runs {len(runs)} | speech segments by silence detection (-45dB) {len(speech)}')
+tok = len(sent) == len(runs)
 ok &= tok
+# The brief has 7 numbered sentences; the 7th ("Mega-Net EHR Cloud. Book a free demo. Message us on WhatsApp.") is spoken as
+# three short phrases with pauses, each with its own caption. GROUPS maps the 7 sentences onto those phrases: a sentence's
+# caption window runs from its first phrase's caption-on to its last phrase's caption-off. The pass/fail criterion is
+# applied to the 7 sentences; the per-phrase rows below them are supplementary and are printed with their own deltas.
+GROUPS = [[0], [1], [2], [3], [4], [5], [6, 7, 8]]
+meas = []
+for i, (txt, ts, te) in enumerate(sent if tok else []):
+    ss, se = measured(ts, te)
+    meas.append((txt, runs[i][0], runs[i][1], ts, te, ss, se))
+rows = []
 print('"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.')
 print(f'{"#":>2} {"sentence":<30} {"caption on":>10} {"caption off":>11} {"TTS start":>9} {"TTS end":>8} {"audio start":>11} {"audio end":>9} {"max |delta|":>11}  result')
-for i, (txt, ts, te) in enumerate(sent if tok else []):
-    on, off = runs[i]; ss, se = measured(ts, te)
+for n, g in enumerate(GROUPS if tok else []):
+    first, last = meas[g[0]], meas[g[-1]]
+    txt = ' '.join(m[0] for m in meas[g[0]:g[-1] + 1])
+    on, off, ts, te, ss, se = first[1], last[2], first[3], last[4], first[5], last[6]
     deltas = [abs(on - ts), abs(off - te), abs(on - ss), abs(off - se)]
     good = max(deltas) <= 0.1
     ok &= good
-    rows.append([i + 1, txt, f'{on:.3f}', f'{off:.3f}', f'{ts:.3f}', f'{te:.3f}', f'{ss:.3f}', f'{se:.3f}', f'{max(deltas):.3f}', 'PASS' if good else 'FAIL'])
-    print(f'{i + 1:>2} {txt[:30]:<30} {on:>10.3f} {off:>11.3f} {ts:>9.3f} {te:>8.3f} {ss:>11.3f} {se:>9.3f} {max(deltas):>11.3f}  {"PASS" if good else "FAIL"}')
+    rows.append([n + 1, txt, f'{on:.3f}', f'{off:.3f}', f'{ts:.3f}', f'{te:.3f}', f'{ss:.3f}', f'{se:.3f}', f'{max(deltas):.3f}', 'PASS' if good else 'FAIL'])
+    print(f'{n + 1:>2} {txt[:30]:<30} {on:>10.3f} {off:>11.3f} {ts:>9.3f} {te:>8.3f} {ss:>11.3f} {se:>9.3f} {max(deltas):>11.3f}  {"PASS" if good else "FAIL"}')
+print('supplementary: the three phrases of sentence 7, each against its own measured boundaries (not part of the pass/fail; listed so nothing is hidden)')
+print(f'{"#":>3} {"phrase":<30} {"caption on":>10} {"caption off":>11} {"TTS start":>9} {"TTS end":>8} {"audio start":>11} {"audio end":>9} {"on d TTS":>8} {"off d TTS":>9} {"on d aud":>8} {"off d aud":>9}')
+for k in (6, 7, 8):
+    if not tok:
+        break
+    txt, on, off, ts, te, ss, se = meas[k]
+    print(f'7{"abc"[k - 6]:>2} {txt[:30]:<30} {on:>10.3f} {off:>11.3f} {ts:>9.3f} {te:>8.3f} {ss:>11.3f} {se:>9.3f} {on - ts:>+8.3f} {off - te:>+9.3f} {on - ss:>+8.3f} {off - se:>+9.3f}')
 if not tok:
     print('COUNT MISMATCH: runs', runs)
 with open(sys.argv[4], 'w', newline='') as fh:
     w = csv.writer(fh)
     w.writerow(['n', 'sentence', 'caption_on_s', 'caption_off_s', 'tts_start_s', 'tts_end_s', 'audio_start_s', 'audio_end_s', 'max_abs_delta_s', 'result'])
     w.writerows(rows)
-print('TIMING (within 0.1s of the measured sentence boundaries):', 'PASS' if tok and all(r[-1] == 'PASS' for r in rows) else 'FAIL')
+print('TIMING (the 7 sentences, within 0.1s of the measured boundaries):', 'PASS' if tok and all(r[-1] == 'PASS' for r in rows) else 'FAIL')
 print('RESULT:', 'PASS' if ok else 'FAIL')
 sys.exit(0 if ok else 1)
