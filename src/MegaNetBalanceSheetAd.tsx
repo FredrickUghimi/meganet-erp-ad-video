@@ -13,7 +13,7 @@
  * Transitions (not the slides/wipes of the Ledger ad, the zooms/flips of the P&L ad or the blinds/clock/blur/diamond of
  * the Cash Flow ad): split doors (vertical seam), stacked-block build, split doors (horizontal seam), fade-through.
  *
- * Safe area: all content inside x 80-920, y 200-1440; captions end at y=1340 (limit 1360). Every scene lives in a clip
+ * Safe area: all content inside x 80-920, y 200-1163 (24px above the caption zone y 1188-1340); captions end at y=1340 (limit 1360). Every scene lives in a clip
  * box of exactly the safe area, so masks and sliding halves can never leave it.
  *
  * Debug input prop (verification only): 'bg' = gradients only, 'caps' = captions only, 'violate-*' / 'violateweak-left'
@@ -24,7 +24,7 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Audio, Easing, Freeze, Img, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {LINES, VOICE_END} from './bsTimings';
-import {DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
+import {CaptionViolation, DebugContext, Icon as FxIcon, Layer, GradientBg, Glow} from './fx';
 
 export const BS_FPS = 30;
 const LEAD = 12; // 0.4s before the voice starts
@@ -48,6 +48,7 @@ const FONT = 'Inter, "Inter Display", system-ui, sans-serif';
 const COL_L = 110;
 const COL_W = 780; // x 110-890, inside the 80-920 safe area
 const SAFE = {x: 80, y: 200, w: 840, h: 1240};
+const CLIP_H = 963; // scene clip box is y 200-1163: 24px above the caption zone (y 1188-1340), so no transition passes under a caption
 const CX = 540;
 const CY = SAFE.y + SAFE.h / 2; // 820: centre of the safe box
 
@@ -73,7 +74,7 @@ const raw = (f: number, from: number) => clamp01((f - from) / TR);
 const BCOLS = 6; // stacked-block build: 6 columns x 8 rows of blocks over the safe area
 const BROWS = 8;
 const BW = SAFE.w / BCOLS; // 140
-const BH = SAFE.h / BROWS; // 155
+const BH = CLIP_H / BROWS; // ~120: the block build rises from the bottom of the clip box (y 1163)
 const colProgress = (c: number, e: number) => clamp01(e * 1.5 - c * 0.1);
 const colSteps = (c: number, e: number) => Math.ceil(colProgress(c, e) * BROWS - 1e-6);
 
@@ -101,7 +102,7 @@ const inStyleFor = (t: Trans | null, r: number): React.CSSProperties => {
         if (h <= 0) continue;
         imgs.push('linear-gradient(#000, #000)');
         sizes.push(`${BW}px ${h}px`);
-        pos.push(`${SAFE.x + c * BW}px ${SAFE.y + SAFE.h - h}px`);
+        pos.push(`${SAFE.x + c * BW}px ${SAFE.y + CLIP_H - h}px`);
       }
       const o: Record<string, string> = {maskImage: imgs.join(','), maskSize: sizes.join(','), maskPosition: pos.join(','), maskRepeat: 'no-repeat'};
       return {...o, WebkitMaskImage: o.maskImage, WebkitMaskSize: o.maskSize, WebkitMaskPosition: o.maskPosition, WebkitMaskRepeat: 'no-repeat'} as React.CSSProperties;
@@ -283,7 +284,7 @@ const SceneFrame: React.FC<{i: number; header?: boolean; children: (l: number) =
   const showCaps = inT === 'blocks';
   return (
     <Layer kind="content">
-      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: SAFE.h, overflow: 'hidden'}}>
+      <div style={{position: 'absolute', left: SAFE.x, top: SAFE.y, width: SAFE.w, height: CLIP_H, overflow: 'hidden'}}>
         {split ? (
           halves.map((h, k) => (
             <div key={k} style={{...full, ...h}}>
@@ -297,7 +298,7 @@ const SceneFrame: React.FC<{i: number; header?: boolean; children: (l: number) =
           Array.from({length: BCOLS}).map((_, c) => {
             const steps = colSteps(c, ee);
             if (steps <= 0 || steps >= BROWS) return null;
-            return <div key={c} style={{position: 'absolute', left: c * BW + 6, top: SAFE.h - steps * BH + 6, width: BW - 12, height: BH - 12, borderRadius: 24, background: c % 2 ? ORANGE : BLUE, boxShadow: '0 8px 18px rgba(26,80,160,0.25)'}} />;
+            return <div key={c} style={{position: 'absolute', left: c * BW + 6, top: CLIP_H - steps * BH + 6, width: BW - 12, height: BH - 12, borderRadius: 24, background: c % 2 ? ORANGE : BLUE, boxShadow: '0 8px 18px rgba(26,80,160,0.25)'}} />;
           })}
       </div>
     </Layer>
@@ -501,8 +502,8 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
       <div style={{opacity: frame}}>
         <Scales leftT={(k) => enter(l, w(0) + k * 6, 9)} rightT={(k) => enter(l, w(5) + k * 6, 9)} />
       </div>
-      <LegendCard top={890} color={BLUE} label="Total assets" t={enter(l, w(1) - 2, 10)} />
-      <LegendCard top={1024} color={ORANGE} label="Total Liabilities + Equity" t={enter(l, w(6) - 2, 10)} />
+      <LegendCard top={860} color={BLUE} label="Total assets" t={enter(l, w(1) - 2, 10)} />
+      <LegendCard top={994} color={ORANGE} label="Total Liabilities + Equity" t={enter(l, w(6) - 2, 10)} />
     </>
   );
 };
@@ -674,6 +675,7 @@ export const MegaNetBalanceSheetAd: React.FC<{debug?: string}> = ({debug = ''}) 
           <SceneFrame i={4} header={false}>{(l) => <Scene5 l={l} />}</SceneFrame>
           <Captions />
           <Violate />
+          <CaptionViolation />
         </Freeze>
         {debug === 'audit' && <AuditProbe />}
       </AbsoluteFill>
