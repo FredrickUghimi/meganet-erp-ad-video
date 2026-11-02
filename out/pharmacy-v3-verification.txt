@@ -1,0 +1,255 @@
+pharmacy: caption limit v3 (caption box bottom edge y=1272, limit 1280) - verification log
+
+### pharmacy verification (post-fix) 2026-11-02T00:37:01Z
+video: out/meganet-pharmacy-interaction-ad-v3.mp4
+### 1. safe area, lossless, all frames, full vs gradient-only, threshold 6/255
+frames decoded (lossless PNG): 584; threshold 6/255
+content bbox over all frames: x 92-907, y 200-1279 (safe x 80-919, y 200-1439)
+violating frames: 0; worst pixel count 0
+RESULT: PASS
+### 2. negative controls on the lossless safe-area check (frames 100-105; expected FAIL = caught)
+-- violate-left
+  frame 4: 1600 px outside; x 40-901 y 210-1088
+  frame 5: 1600 px outside; x 40-901 y 210-1088
+RESULT: FAIL
+-- violate-right
+  frame 4: 1600 px outside; x 95-964 y 210-1088
+  frame 5: 1600 px outside; x 95-964 y 210-1088
+RESULT: FAIL
+-- violate-top
+  frame 4: 1600 px outside; x 95-901 y 150-1088
+  frame 5: 1600 px outside; x 95-901 y 150-1088
+RESULT: FAIL
+-- violate-bottom
+  frame 4: 1600 px outside; x 95-901 y 210-1489
+  frame 5: 1600 px outside; x 95-901 y 210-1489
+RESULT: FAIL
+-- violateweak-left
+  frame 4: 1600 px outside; x 40-901 y 210-1088
+  frame 5: 1600 px outside; x 40-901 y 210-1088
+RESULT: FAIL
+### 3. caption zone, lossless, all frames, captions off vs gradient-only
+frames decoded (lossless PNG): 584; threshold 24/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1095
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+### 4. caption-zone negative controls
+  test box inside zone: flagged (expected flagged)
+  test box inside clearance band: flagged (expected flagged)
+  test box just clear of band (control, must NOT be flagged): not flagged (expected not flagged)
+NEGATIVE CONTROL: PASS (checker catches a box in the caption zone)
+-- rendered control nocaps-violate-caption (6 frames, --expect-fail: PASS means all 6 flagged)
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+-- rendered control nocaps-violateweak-caption (6 frames, --expect-fail: PASS means all 6 flagged)
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+### 5. captions vs narration (pharmacy script: PNG captions-only render vs gradient-only render)
+caption words 43 | approved narration words 43 | TTS-reported words 43
+TEXT vs approved narration, word for word, in order: PASS
+TEXT vs TTS engine word-boundary transcript (punctuation stripped): PASS
+word-by-word:
+   1. caption Warfarin     narration Warfarin     TTS Warfarin     ok
+   2. caption meets        narration meets        TTS meets        ok
+   3. caption aspirin.     narration aspirin.     TTS aspirin      ok
+   4. caption Spot         narration Spot         TTS Spot         ok
+   5. caption the          narration the          TTS the          ok
+   6. caption collision.   narration collision.   TTS collision    ok
+   7. caption Mega-Net     narration Mega-Net     TTS Mega-Net     ok
+   8. caption EHR          narration EHR          TTS EHR          ok
+   9. caption Cloud        narration Cloud        TTS Cloud        ok
+  10. caption warns        narration warns        TTS warns        ok
+  11. caption the          narration the          TTS the          ok
+  12. caption prescriber   narration prescriber   TTS prescriber   ok
+  13. caption when         narration when         TTS when         ok
+  14. caption two          narration two          TTS two          ok
+  15. caption drugs        narration drugs        TTS drugs        ok
+  16. caption are          narration are          TTS are          ok
+  17. caption a            narration a            TTS a            ok
+  18. caption defined      narration defined      TTS defined      ok
+  19. caption interaction  narration interaction  TTS interaction  ok
+  20. caption pair.        narration pair.        TTS pair         ok
+  21. caption For          narration For          TTS For          ok
+  22. caption a            narration a            TTS a            ok
+  23. caption severe       narration severe       TTS severe       ok
+  24. caption interaction, narration interaction, TTS interaction  ok
+  25. caption the          narration the          TTS the          ok
+  26. caption prescriber   narration prescriber   TTS prescriber   ok
+  27. caption must         narration must         TTS must         ok
+  28. caption stop,        narration stop,        TTS stop         ok
+  29. caption and          narration and          TTS and          ok
+  30. caption type         narration type         TTS type         ok
+  31. caption CONFIRM      narration CONFIRM      TTS CONFIRM      ok
+  32. caption to           narration to           TTS to           ok
+  33. caption continue.    narration continue.    TTS continue     ok
+  34. caption Book         narration Book         TTS Book         ok
+  35. caption a            narration a            TTS a            ok
+  36. caption free         narration free         TTS free         ok
+  37. caption demo         narration demo         TTS demo         ok
+  38. caption with         narration with         TTS with         ok
+  39. caption Mega-Net.    narration Mega-Net.    TTS Mega-Net     ok
+  40. caption Message      narration Message      TTS Message      ok
+  41. caption us           narration us           TTS us           ok
+  42. caption on           narration on           TTS on           ok
+  43. caption WhatsApp.    narration WhatsApp.    TTS WhatsApp     ok
+caption chunks (max 2 lines each):
+  | Warfarin meets aspirin.
+  | Spot the collision.
+  | Mega-Net EHR Cloud warns the prescriber
+  | when two drugs are a defined interaction pair.
+  | For a severe interaction, the prescriber
+  | must stop, and type CONFIRM to continue.
+  | Book a free demo with Mega-Net.
+  | Message us on WhatsApp.
+frames 584, with caption 449; caption bbox x 110-889, y 1121-1271 (limit: x 80-920, bottom y <= 1280); tallest pill 151px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+sentences 6 | caption runs 6 | speech segments by silence detection (-45dB) 8
+"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.
+ # sentence                       caption on caption off TTS start  TTS end audio start audio end max |delta|  result
+ 1 Warfarin meets aspirin.             0.500       1.867     0.430    1.805       0.533     1.907       0.070  PASS
+ 2 Spot the collision.                 2.267       3.133     2.195    3.070       2.292     3.173       0.072  PASS
+ 3 Mega-Net EHR Cloud warns the p      3.533       8.500     3.460    8.447       3.612     8.550       0.079  PASS
+ 4 For a severe interaction, the       8.900      13.733     8.837   13.675       8.984    13.778       0.084  PASS
+ 5 Book a free demo with Mega-Net     14.133      15.767    14.065   15.715      14.168    15.818       0.068  PASS
+ 6 Message us on WhatsApp.            16.167      17.467    16.105   17.392      16.246    17.472       0.079  PASS
+TIMING (within 0.1s of the measured sentence boundaries): PASS
+RESULT: PASS
+### 6. contrast >= 4.5, font >= 32px, in safe area, every text node on settled frames
+audit frames 46,86,94,170,255,329,373,399,403,412,464,518,524
+frame 46 text nodes 7
+frame 86 text nodes 7
+frame text                              px min contrast in safe
+   46 Mega-Net EHR Cloud                32        15.65    True 
+   46 Warfarin                          60        15.65    True 
+   46 Aspirin                           60        15.65    True 
+   46 Warfarin                          48        15.65    True 
+   46 meets                             48        15.65    True 
+   46 aspirin.                          48         6.86    True 
+   86 Mega-Net EHR Cloud                32        15.65    True 
+   86 Warfarin                          60        15.65    True 
+   86 Aspirin                           60        15.65    True 
+   86 Interaction warning               52         6.54    True 
+   86 Spot                              48        15.65    True 
+   86 the                               48        15.65    True 
+   86 collision.                        48         6.86    True 
+   94 Mega-Net EHR Cloud                32        15.65    True 
+   94 Warfarin                          60        15.65    True 
+   94 Aspirin                           60        15.65    True 
+   94 Interaction warning               52         6.54    True 
+  170 Mega-Net EHR Cloud                32        15.65    True 
+  170 Prescription                      40        15.65    True 
+  170 Warfarin                          46         14.7    True 
+  170 Drug interaction warning          46         6.54    True 
+  170 Warfarin + Aspirin                44        15.65    True 
+  170 Mega-Net                          48        15.65    True 
+  170 EHR                               48        15.65    True 
+  170 Cloud                             48        15.65    True 
+  170 warns                             48        15.65    True 
+  170 the                               48        15.65    True 
+  170 prescriber                        48         6.86    True 
+  255 Mega-Net EHR Cloud                32        15.65    True 
+  255 Prescription                      40        15.65    True 
+  255 Warfarin                          46         14.7    True 
+  255 Aspirin                           46         14.7    True 
+  255 Drug interaction warning          46         6.54    True 
+  255 Warfarin + Aspirin                44        15.65    True 
+  255 Defined interaction pair          40         6.79    True 
+  329 Mega-Net EHR Cloud                32        15.65    True 
+  329 Drug interaction warning          42         6.54    True 
+  329 Warfarin + Aspirin                42        15.65    True 
+  329 Severe                            34         6.54    True 
+  329 Type CONFIRM to proceed           34         8.07    True 
+  329 Confirm — Prescribe Anyway        38         6.56    True 
+  329 For                               48        15.65    True 
+  329 a                                 48        15.65    True 
+  329 severe                            48        15.65    True 
+  329 interaction,                      48        15.65    True 
+  329 the                               48        15.65    True 
+  329 prescriber                        48         6.86    True 
+  373 Mega-Net EHR Cloud                32        15.65    True 
+  373 Drug interaction warning          42         6.54    True 
+  373 Warfarin + Aspirin                42        15.65    True 
+  373 Severe                            34         6.54    True 
+  373 Type CONFIRM to proceed           34         8.07    True 
+  373 C                                 64        15.65    True 
+  373 Confirm — Prescribe Anyway        38         6.56    True 
+  373 must                              48        15.65    True 
+  373 stop,                             48        15.65    True 
+  373 and                               48        15.65    True 
+  373 type                              48         6.86    True 
+  373 CONFIRM                           48         8.07    True 
+  373 to                                48         8.07    True 
+  373 continue.                         48         8.07    True 
+  399 Mega-Net EHR Cloud                32        15.65    True 
+  399 Drug interaction warning          42         6.54    True 
+  399 Warfarin + Aspirin                42        15.65    True 
+  399 Severe                            34         6.54    True 
+  399 Type CONFIRM to proceed           34         8.07    True 
+  399 CONFIRM                           64        15.65    True 
+  399 Confirm — Prescribe Anyway        38         6.54    True 
+  399 must                              48        15.65    True 
+  399 stop,                             48        15.65    True 
+  399 and                               48        15.65    True 
+  399 type                              48        15.65    True 
+  399 CONFIRM                           48        15.65    True 
+  399 to                                48        15.65    True 
+  399 continue.                         48         6.86    True 
+  403 Mega-Net EHR Cloud                32        15.65    True 
+  403 Drug interaction warning          42         6.54    True 
+  403 Warfarin + Aspirin                42        15.65    True 
+  403 Severe                            34         6.54    True 
+  403 Type CONFIRM to proceed           34         8.07    True 
+  403 CONFIRM                           64        15.65    True 
+  403 Confirm — Prescribe Anyway        38         6.54    True 
+  403 must                              48        15.65    True 
+  403 stop,                             48        15.65    True 
+  403 and                               48        15.65    True 
+  403 type                              48        15.65    True 
+  403 CONFIRM                           48        15.65    True 
+  403 to                                48        15.65    True 
+  403 continue.                         48         6.86    True 
+  412 Mega-Net EHR Cloud                32        15.65    True 
+  412 Drug interaction warning          42         6.54    True 
+  412 Warfarin + Aspirin                42        15.65    True 
+  412 Severe                            34         6.54    True 
+  412 Type CONFIRM to proceed           34         8.07    True 
+  412 CONFIRM                           64        15.65    True 
+  412 Confirm — Prescribe Anyway        38         6.54    True 
+  464 Book a                           116        13.51    True 
+  464 free demo                        116         5.92    True 
+  464 WhatsApp +2347035682478           42          6.3    True 
+  464 meganetsoftware.com.ng            42         6.79    True 
+  464 Book                              48        15.65    True 
+  464 a                                 48        15.65    True 
+  464 free                              48        15.65    True 
+  464 demo                              48        15.65    True 
+  464 with                              48        15.65    True 
+  464 Mega-Net.                         48         6.86    True 
+  518 Book a                           116        13.51    True 
+  518 free demo                        116         5.92    True 
+  518 WhatsApp +2347035682478           42          6.3    True 
+  518 meganetsoftware.com.ng            42         6.79    True 
+  518 Message                           48        15.65    True 
+  518 us                                48        15.65    True 
+  518 on                                48        15.65    True 
+  518 WhatsApp.                         48         6.86    True 
+  524 Book a                           116        13.51    True 
+  524 free demo                        116         5.92    True 
+  524 WhatsApp +2347035682478           42          6.3    True 
+  524 meganetsoftware.com.ng            42         6.79    True 
+text nodes audited: 118; smallest font 32px; lowest contrast 5.92; failures: 0
+RESULT: PASS
+### 6b. every text box on every frame inside the safe area (no mid-slide waiver)
+15.00-16.00 s  450-479           258              0  PASS
+16.00-17.00 s  480-509           220              0  PASS
+17.00-18.00 s  510-539           176              0  PASS
+18.00-19.00 s  540-569           120              0  PASS
+19.00-20.00 s  570-583            56              0  PASS
+extreme text-box edges over all frames: left 144.1 (>= 80), right 859.0 (<= 920), top 210.5 (>= 200), bottom 1254.5 (<= 1095; captions <= 1280)
+frames failing: 0 of 584
+RESULT: PASS
+### 7. streams
+h264,video,1080,1920,30/1,19.466667,584,
+aac,audio,0/0,19.456000,912
