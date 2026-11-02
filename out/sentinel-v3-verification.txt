@@ -1,0 +1,189 @@
+sentinel: caption limit v3 (caption box bottom edge y=1272, limit 1280) - verification log
+
+### sentinel verification (post-fix) 2026-11-02T00:17:31Z
+video: out/meganet-sentinel-ad-v3.mp4
+### 1. safe area, lossless, all frames, full vs gradient-only, threshold 6/255
+frames decoded (lossless PNG): 621; threshold 6/255
+content bbox over all frames: x 66-933, y 196-1271 (safe x 80-919, y 200-1439)
+violating frames: 329; worst pixel count 7665
+  frame 129: 898 px outside; x 143-856 y 198-1271
+  frame 130: 898 px outside; x 143-856 y 198-1271
+  frame 131: 898 px outside; x 143-856 y 198-1271
+  frame 132: 898 px outside; x 143-856 y 198-1271
+  frame 133: 898 px outside; x 143-856 y 198-1271
+  frame 134: 898 px outside; x 143-856 y 198-1271
+  frame 135: 898 px outside; x 143-856 y 198-1271
+  frame 136: 898 px outside; x 143-856 y 198-1271
+  frame 137: 898 px outside; x 143-856 y 198-1271
+  frame 138: 898 px outside; x 143-856 y 198-1271
+  frame 139: 898 px outside; x 143-856 y 198-1271
+  frame 140: 898 px outside; x 143-856 y 198-1271
+  frame 141: 880 px outside; x 143-856 y 198-1271
+  frame 142: 879 px outside; x 143-856 y 198-1271
+  frame 143: 879 px outside; x 143-856 y 198-1271
+  frame 144: 880 px outside; x 143-856 y 198-1271
+  frame 145: 880 px outside; x 143-856 y 198-1271
+  frame 146: 880 px outside; x 143-856 y 198-1271
+  frame 147: 880 px outside; x 143-856 y 198-1271
+  frame 148: 898 px outside; x 143-856 y 198-1271
+RESULT: FAIL
+### 2. negative controls on the lossless safe-area check (frames 100-105; expected FAIL = caught)
+-- violate-left
+  frame 4: 1600 px outside; x 40-902 y 210-1271
+  frame 5: 1600 px outside; x 40-902 y 210-1271
+RESULT: FAIL
+-- violate-right
+  frame 4: 1600 px outside; x 100-964 y 210-1271
+  frame 5: 1600 px outside; x 100-964 y 210-1271
+RESULT: FAIL
+-- violate-top
+  frame 4: 1600 px outside; x 100-902 y 150-1271
+  frame 5: 1600 px outside; x 100-902 y 150-1271
+RESULT: FAIL
+-- violate-bottom
+  frame 4: 1600 px outside; x 100-902 y 210-1489
+  frame 5: 1600 px outside; x 100-902 y 210-1489
+RESULT: FAIL
+### 3. caption zone, lossless, all frames, captions off vs gradient-only
+frames decoded (lossless PNG): 621; threshold 24/255; zone x 80-919, y 1096-1271; clearance 24px (content must end by y 1071)
+lowest scene content outside zone + band: y 1068
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+### 4. caption-zone negative controls
+  test box inside zone: flagged (expected flagged)
+  test box inside clearance band: flagged (expected flagged)
+  test box just clear of band (control, must NOT be flagged): not flagged (expected not flagged)
+NEGATIVE CONTROL: PASS (checker catches a box in the caption zone)
+-- rendered control nocaps-violate-caption (6 frames, --expect-fail: PASS means all 6 flagged)
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+-- rendered control nocaps-violateweak-caption (6 frames, --expect-fail: PASS means all 6 flagged)
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+### 5. captions vs narration
+caption words: 47 | narration words: 47
+TEXT MATCH: PASS
+  chunk: Tests done.
+  chunk: Drugs dispensed.
+  chunk: Billed? Or lost?
+  chunk: Meet Financial Sentinel,
+  chunk: in Mega-Net EHR Cloud.
+  chunk: One click checks clinical records
+  chunk: against bills and flags unbilled services,
+  chunk: duplicates and rejected claim patterns.
+  chunk: Each finding is ranked and explained.
+  chunk: Your team decides.
+  chunk: Book a free demo.
+  chunk: Message us on WhatsApp.
+frames 621, with caption 613; lowest caption pixel y=1271 (limit 1280); tallest pill 176px (1 line ~110, 2 lines ~176, 3 lines ~242)
+RESULT: PASS
+### 6. contrast >= 4.5, font >= 32px, in safe area, every text node on settled frames
+audit frames 23,52,107,117,155,207,214,266,326,400,412,463,505,520,554,599,619
+frame 23 text nodes 4
+frame 52 text nodes 4
+frame text                              px min contrast in safe
+   23 Tests                             54        12.33    True 
+   23 done.                             54         5.51    True 
+   52 Drugs                             54        12.19    True 
+   52 dispensed.                        54         5.45    True 
+  107 ?                                200          1.0    True   <-- FAIL
+  107 ?                                150          2.2    True   <-- FAIL
+  107 Billed?                           54        12.33    True 
+  107 Or                                54        12.43    True 
+  107 lost?                             54         5.51    True 
+  117 ?                                200          1.0    True   <-- FAIL
+  117 ?                                150         2.23    True   <-- FAIL
+  117 Billed?                           54        12.33    True 
+  117 Or                                54        12.43    True 
+  117 lost?                             54        12.56    True 
+  155 Meet                              54        13.04    True 
+  155 Financial                         54        13.04    True 
+  155 Sentinel,                         54          5.6    True 
+  207 in                                54        13.04    True 
+  207 Mega-Net                          54        13.04    True 
+  207 EHR                               54         12.9    True 
+  207 Cloud.                            54          5.6    True 
+  214 in                                54        13.04    True 
+  214 Mega-Net                          54        13.04    True 
+  214 EHR                               54         12.9    True 
+  214 Cloud.                            54        12.77    True 
+  266 Run Analysis                      74         5.31    True 
+  266 Clinical records                  36        10.16    True 
+  266 One                               54        10.62    True 
+  266 click                             54        10.62    True 
+  266 checks                            54        10.62    True 
+  266 clinical                          54        10.62    True 
+  266 records                           54         4.65    True 
+  326 Run Analysis                      74         5.31    True 
+  326 Clinical records                  36        10.42    True 
+  326 Bills                             36         10.9    True 
+  326 Unbilled services                 54        10.83    True 
+  326 against                           54        10.62    True 
+  326 bills                             54        10.62    True 
+  326 and                               54        10.62    True 
+  326 flags                             54        10.62    True 
+  326 unbilled                          54        10.62    True 
+  326 services,                         54         4.65    True 
+  400 Run Analysis                      74         5.31    True 
+  400 Clinical records                  36        10.42    True 
+  400 Bills                             36         10.9    True 
+  400 Unbilled services                 54        11.32    True 
+  400 Duplicate transactions            54        10.34    True 
+  400 Rejected claims                   54        10.41    True 
+  400 duplicates                        54        10.62    True 
+  400 and                               54        10.62    True 
+  400 rejected                          54        10.62    True 
+  400 claim                             54        10.62    True 
+  400 patterns.                         54         4.65    True 
+  412 Run Analysis                      74         5.31    True 
+  412 Clinical records                  36        10.42    True 
+  412 Bills                             36         10.9    True 
+  412 Unbilled services                 54        11.32    True 
+  412 Duplicate transactions            54        10.34    True 
+  412 Rejected claims                   54        10.43    True 
+  412 duplicates                        54        10.62    True 
+  412 and                               54        10.62    True 
+  412 rejected                          54        10.62    True 
+  412 claim                             54        10.62    True 
+  412 patterns.                         54        10.62    True 
+  463 Critical                          50         4.89    True 
+  463 High                              50         5.77    True 
+  463 Medium                            50         9.32    True 
+  463 Informational                     50         3.84    True   <-- FAIL
+  463 Each                              54        10.62    True 
+  463 finding                           54        10.47    True 
+  463 is                                54        10.47    True 
+  463 ranked                            54        10.47    True 
+  463 and                               54        10.47    True 
+  463 explained.                        54         4.59    True 
+  505 Critical                          50         4.98    True 
+  505 High                              50         5.77    True 
+  505 Medium                            50         9.32    True 
+  505 Informational                     50         4.87    True 
+  505 decides.                          88         3.97    True   <-- FAIL
+  505 Your                              54        10.47    True 
+  505 team                              54        10.47    True 
+  505 decides.                          54         4.59    True 
+  520 Critical                          50         4.98    True 
+  520 High                              50         5.77    True 
+  520 Medium                            50         9.32    True 
+  520 Informational                     50         4.87    True 
+  520 decides.                          88         3.98    True   <-- FAIL
+  520 Your                              54        10.47    True 
+  520 team                              54        10.47    True 
+  520 decides.                          54        10.47    True 
+  554 Book                              54        12.58    True 
+  554 a                                 54        12.69    True 
+  554 free                              54        12.69    True 
+  554 demo.                             54         5.61    True 
+  599 Message                           54        12.45    True 
+  599 us                                54        12.69    True 
+  599 on                                54        12.69    True 
+  599 WhatsApp.                         54         5.61    True 
+text nodes audited: 98; smallest font 36px; lowest contrast 1.0; failures: 7
+RESULT: FAIL
+### 7. streams
+h264,video,1080,1920,30/1,20.700000,621,
+aac,audio,0/0,20.757333,973

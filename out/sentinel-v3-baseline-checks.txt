@@ -1,0 +1,22 @@
+Sentinel BASELINE: same checks on the ORIGINAL layout (v3 layout edits reversed: captions bottom 1360, stage to y 1170).
+Purpose: show which failures in the v3 log are pre-existing design issues rather than caused by the caption move.
+
+### lossless safe area, all 621 frames, threshold 6/255 (baseline)
+frames decoded (lossless PNG): 621; threshold 6/255
+content bbox over all frames: x 66-933, y 203-1359 (safe x 80-919, y 200-1439)
+violating frames: 238; worst pixel count 7823
+RESULT: FAIL
+(first violating frames:)
+  frame 249: 344 px outside; x 77-919 y 214-1359
+  frame 250: 1484 px outside; x 72-919 y 212-1359
+  frame 251: 2484 px outside; x 67-919 y 215-1359
+
+### contrast/size (baseline). Rows with 'in safe = False' fail only the NEW y<=1095 content limit that the baseline layout (content to y 1170, captions at 1360) deliberately does not meet; the contrast-only failures are the ones to compare:
+  107 ?                                200          1.0    True   <-- FAIL
+  107 ?                                150         2.19    True   <-- FAIL
+  117 ?                                200          1.0    True   <-- FAIL
+  117 ?                                150         2.23    True   <-- FAIL
+  463 Informational                     50         3.84    True   <-- FAIL
+text nodes audited: 98; smallest font 36px; lowest contrast 1.0; failures: 52
+
+v3 has the same three contrast failures: '?' glyphs (white stroke over blue, 1.0 and 2.2:1), 'Informational' 3.84:1, 'decides.' 3.97:1. Colours are unchanged by v3.
