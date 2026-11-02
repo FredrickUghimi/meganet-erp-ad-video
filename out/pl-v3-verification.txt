@@ -1,6 +1,6 @@
 pl: caption limit v3 (caption box bottom edge y=1272, limit 1280) - verification log
 
-### pl verification (post-fix) 2026-11-01T23:27:34Z
+### pl verification (post-fix) 2026-11-02T01:08:56Z
 video: out/meganet-pl-ad-v3.mp4
 ### 1. safe area, lossless, all frames, full vs gradient-only, threshold 6/255
 frames decoded (lossless PNG): 655; threshold 6/255
@@ -104,7 +104,7 @@ frame text                              px min contrast in safe
   151 report.                           48         6.86    True 
   229 Mega-Net ERP Cloud                32        15.65    True 
   229 Profit &                          92        11.18    True 
-  229 Loss                              92        10.75    True 
+  229 Loss                              92        11.16    True 
   229 Period                            34         8.07    True 
   229 This month                        34        13.64    True 
   229 This month                        34        14.05    True 
@@ -123,7 +123,7 @@ frame text                              px min contrast in safe
   229 dates.                            48         6.86    True 
   237 Mega-Net ERP Cloud                32        15.65    True 
   237 Profit &                          92        11.18    True 
-  237 Loss                              92        10.75    True 
+  237 Loss                              92        11.18    True 
   237 Period                            34         8.07    True 
   237 This month                        34        13.64    True 
   237 This month                        34        14.05    True 

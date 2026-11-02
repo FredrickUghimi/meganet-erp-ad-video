@@ -356,7 +356,7 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
   const dates = enter(l, w(10) - 3, 10); // "set"
   return (
     <>
-      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 336, display: 'flex', alignItems: 'center', gap: 28, opacity: title, transform: rise(title)}}>
+      <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 322, display: 'flex', alignItems: 'center', gap: 28, opacity: title, transform: rise(title)}}>
         <Tile color={GREEN} size={150} radius={40}>
           <FxIcon name="chart" size={104} accent={ORANGE} ink={WHITE} />
         </Tile>
@@ -366,14 +366,14 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
           Loss
         </div>
       </div>
-      <Card style={{top: 525, height: 120, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, opacity: sel, transform: rise(sel), borderLeft: `16px solid ${ORANGE}`}}>
+      <Card style={{top: 532, height: 120, padding: '0 28px', display: 'flex', alignItems: 'center', gap: 22, opacity: sel, transform: rise(sel), borderLeft: `16px solid ${ORANGE}`}}>
         <div style={{fontSize: 34, fontWeight: 800, color: MUTED, width: 140}}>Period</div>
         <div style={{flex: 1, height: 72, borderRadius: 24, background: `${BLUE}1A`, border: `3px solid ${BLUE}`, boxSizing: 'border-box', display: 'flex', alignItems: 'center', padding: '0 22px', fontSize: 34, fontWeight: 800, color: INK}}>This month</div>
         <div style={{width: 56, height: 56, borderRadius: 28, background: BLUE, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${open * 180}deg)`}}>
           <Glyph name="chevron" size={34} stroke={3.2} />
         </div>
       </Card>
-      <Card style={{top: 660, padding: '16px 18px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32, display: 'flex', flexWrap: 'wrap', gap: 12}}>
+      <Card style={{top: 668, padding: '16px 18px', opacity: open, transform: `translateY(${(1 - open) * -24}px)`, borderRadius: 32, display: 'flex', flexWrap: 'wrap', gap: 12}}>
         {PRESET_CHIPS.map((c, i) => {
           const t = enter(l, w(8) - 1 + i * 4, 7);
           const isCustom = i === 3;
