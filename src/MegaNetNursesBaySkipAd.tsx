@@ -431,7 +431,7 @@ const Scene2: React.FC<{l: number}> = ({l}) => {
     </RowShell>
   );
   return (
-    <Card style={{top: 396, height: 622, padding: '26px 28px', opacity: card, transform: rise(card)}}>
+    <Card style={{top: 396, height: 622, padding: '26px 28px', transform: rise(card)}}>
       <div style={{display: 'flex', alignItems: 'center', gap: 18, height: 76}}>
         <Tile color={BLUE} size={64} radius={20}>
           <Glyph name="bed" size={40} />
@@ -465,7 +465,7 @@ const Scene3: React.FC<{l: number}> = ({l}) => {
   const ring = clamp01((l - w(4)) / 16);
   return (
     <>
-      <Card style={{top: 396, height: 616, padding: '24px 28px', opacity: card, transform: rise(card)}}>
+      <Card style={{top: 396, height: 616, padding: '24px 28px', transform: rise(card)}}>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 76}}>
           <div style={{fontSize: 40, fontWeight: 900, color: INK}}>Waiting list</div>
           <div style={{opacity: tag > 0 ? 1 : 0, transform: `scale(${0.8 + 0.2 * tag})`, transformOrigin: 'right center'}}>
@@ -508,9 +508,8 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
   const calledPop = back(enter(l, w(7), 9));
   const btnGone = enter(l, w(8), 8);
   const c = rowColors(called ? 'normal' : 'skipped', 1, 1);
-  const outline = enter(l, w(7), 6); // the red outline goes as soon as the chip reads "Called"
-  const border = called ? mix(TXT_RED, CARD_BORDER, outline) : TXT_RED;
-  const bw = called ? 3 + (1 - outline) : 4;
+  const border = called ? CARD_BORDER : TXT_RED; // the red outline goes on the same frame the chip reads "Called"
+  const bw = called ? 3 : 4;
   const plain = (n: number) => (
     <RowShell h={96} bg={WHITE} border={CARD_BORDER} bw={3}>
       <Disc n={n} size={58} font={32} />
@@ -521,7 +520,7 @@ const Scene4: React.FC<{l: number}> = ({l}) => {
     </RowShell>
   );
   return (
-    <Card style={{top: 396, height: 622, padding: '26px 28px', opacity: card, transform: rise(card)}}>
+    <Card style={{top: 396, height: 622, padding: '26px 28px', transform: rise(card)}}>
       <div style={{display: 'flex', alignItems: 'center', gap: 18, height: 76}}>
         <Tile color={BLUE} size={64} radius={20}>
           <Glyph name="bed" size={40} />
@@ -568,7 +567,7 @@ const Scene5: React.FC<{l: number}> = ({l}) => {
   );
   return (
     <div style={{position: 'absolute', left: COL_L, width: COL_W, top: 470, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <div style={{opacity: a, transform: rise(a)}}>
+      <div style={{transform: rise(a)}}>
         <Chip text="Skipped" bg={TXT_RED} size={60} style={{padding: '0 54px'}} />
       </div>
       {arrow(b)}

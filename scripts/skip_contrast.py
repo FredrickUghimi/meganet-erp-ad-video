@@ -11,6 +11,7 @@ from PIL import Image
 d = sys.argv[1]
 min_c = float(sys.argv[sys.argv.index('--min-contrast') + 1]) if '--min-contrast' in sys.argv else 4.5
 min_s = float(sys.argv[sys.argv.index('--min-size') + 1]) if '--min-size' in sys.argv else 32
+only = sys.argv[sys.argv.index('--only') + 1].rsplit(':', 1) if '--only' in sys.argv else None  # TEXT:#RRGGBB, judge only that text node (e.g. the dimmed row's number)
 
 
 def lin(c):
@@ -33,6 +34,8 @@ for jf in sorted(glob.glob(os.path.join(d, 'audit-*.json')), key=lambda p: int(r
         m = re.match(r'rgba?\(([\d.]+), ([\d.]+), ([\d.]+)(?:, ([\d.]+))?\)', it['color'])
         col = np.array([float(m.group(i)) for i in (1, 2, 3)])
         alpha = float(m.group(4) or 1) * it['opacity']
+        if only and not (it['text'] == only[0] and hexc(col) == only[1].upper()):
+            continue
         x0, y0, x1, y1 = (int(round(it[k])) for k in ('x0', 'y0', 'x1', 'y1'))
         cx0, cy0, cx1, cy1 = max(x0, 0), max(y0, 0), min(x1, 1080), min(y1, 1920)
         if cx1 <= cx0 or cy1 <= cy0 or alpha < 0.02:

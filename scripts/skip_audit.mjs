@@ -34,6 +34,11 @@ if (process.env.FRAMES) {
   const frames = new Set();
   const lastOf = (f) => { const k = sceneOf(f); return k < LASTV ? sceneFrom(k + 1) - 1 : 1e9; };
   chunks.forEach(([s, , b]) => frames.add(Math.min(wordF(s, b) + 8, lastOf(wordF(s, b)))));
+  // captions fade in over 3 frames after CAP_DELAY=2 (transient, STYLE_GUIDE.md section 2): audit each caption chunk just after its fade, and drop any frame inside a fade
+  const CAP_DELAY = 2;
+  const capOn = chunks.map(([s, a]) => wordF(s, a) + CAP_DELAY);
+  capOn.forEach((on) => frames.add(on + 6));
+  for (const f of [...frames]) if (capOn.some((on) => f >= on && f < on + 4)) frames.delete(f);
   for (let k = 0; k < LASTV; k++) frames.add(sceneFrom(k + 1) - 1);
   frames.add(LEAD + Math.round(parseFloat(/VOICE_END = ([\d.]+)/.exec(t)[1]) * 30));
   // extra settled states: waiting room + dimmed row, labels landed, chip landed, reason landed, Called state, mark cleared, loop
