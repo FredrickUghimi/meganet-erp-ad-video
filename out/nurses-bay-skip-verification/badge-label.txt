@@ -1,0 +1,7 @@
+frames checked: 739 (frame 0 to 738); every frame listed in out/nurses-bay-skip-verification/badge-label-frames.csv
+frame 0: badge node ok True, label node ok True, badge pixels 9372, label pixels 25789 (need >= 500)
+lowest pixel counts over all frames: badge 9226, label 25709
+frames failing: 0 of 739 
+negative control 1 (badge and label nodes deleted from frame 0 data): flagged (check works)
+negative control 2 (frame 0 compared with itself, no drawn difference): flagged (check works)
+RESULT: PASS

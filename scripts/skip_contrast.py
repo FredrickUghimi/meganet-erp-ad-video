@@ -27,6 +27,7 @@ def lum(rgb):
 hexc = lambda c: '#%02X%02X%02X' % tuple(int(round(v)) for v in c)
 best = {}  # (text, colour) -> worst record
 nodes, fails = 0, 0
+seen, measured, excluded = set(), set(), 0
 for jf in sorted(glob.glob(os.path.join(d, 'audit-*.json')), key=lambda p: int(re.findall(r'(\d+)', os.path.basename(p))[0])):
     fr = int(re.findall(r'(\d+)', os.path.basename(jf))[0])
     img = np.asarray(Image.open(os.path.join(d, f'notext-{fr}.png')).convert('RGB'))
@@ -40,6 +41,12 @@ for jf in sorted(glob.glob(os.path.join(d, 'audit-*.json')), key=lambda p: int(r
         cx0, cy0, cx1, cy1 = max(x0, 0), max(y0, 0), min(x1, 1080), min(y1, 1920)
         if cx1 <= cx0 or cy1 <= cy0 or alpha < 0.02:
             continue  # off-canvas or invisible at this frame
+        key0 = (it['text'][:34], hexc(col))
+        seen.add(key0)
+        if alpha < 0.99:
+            excluded += 1  # mid-entry or mid-exit fade (STYLE_GUIDE.md section 2: transient, not part of the contrast check)
+            continue
+        measured.add(key0)
         bg = img[cy0:cy1, cx0:cx1].reshape(-1, 3).astype(float)
         fg = col * alpha + bg * (1 - alpha)
         l1, l2 = lum(fg), lum(bg)
@@ -65,5 +72,10 @@ for rec in sorted(best.values(), key=lambda r: r['ratio']):
     print(f'{rec["text"]:<35} {rec["fg"]:<9} {rec["bg"]:<14} {rec["size"]:>3.0f} {rec["weight"]:>4} {rec["ratio"]:>8.2f}  {rec["frame"]:>5} {("clipped" if rec["clipped"] else str(rec["pos"])):>7}{"" if rec["ok"] else "  <-- FAIL"}')
 rs = list(best.values())
 print(f'distinct text+colour pairs: {len(rs)}; text-node samples audited: {nodes}; smallest font {min(r["size"] for r in rs):.0f}px; lowest contrast {min(r["ratio"] for r in rs):.2f}:1; failing samples: {fails}')
+never = sorted(seen - measured)
+print(f'text-node samples excluded as mid-fade (opacity < 0.99): {excluded}; distinct text+colour pairs seen: {len(seen)}, measured fully settled at least once: {len(measured)}')
+if never:
+    print('NEVER MEASURED SETTLED (every text must be measured fully opaque at least once):', never[:20])
+    fails += len(never)
 print('RESULT:', 'PASS' if fails == 0 else 'FAIL')
 sys.exit(1 if fails else 0)
