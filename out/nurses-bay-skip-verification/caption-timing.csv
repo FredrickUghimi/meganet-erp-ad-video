@@ -1,0 +1,10 @@
+n,sentence,caption_on_s,caption_off_s,tts_start_s,tts_end_s,audio_start_s,audio_end_s,max_abs_delta_s,result
+1,"A busy clinic, a full waiting room.",0.500,2.567,0.430,2.505,0.561,2.608,0.070,PASS
+2,"A patient steps out when called, and their name can drop off the list.",2.967,6.933,2.895,6.857,3.041,6.936,0.076,PASS
+3,"With Mega-Net EHR Cloud, a skipped patient stays on the waiting list.",7.300,11.367,7.247,11.297,7.387,11.373,0.087,PASS
+4,"The nurse sees them marked as skipped, with the reason underneath.",11.767,15.300,11.687,15.237,11.828,15.339,0.079,PASS
+5,They keep their original place in the line.,15.700,17.733,15.627,17.652,15.775,17.755,0.081,PASS
+6,"When they are back, the nurse calls them, and the mark clears.",18.100,21.433,18.042,21.367,18.181,21.470,0.081,PASS
+7,So a patient who steps out is easy to call again.,21.833,24.600,21.757,24.532,21.901,24.635,0.076,PASS
+8,Book a free demo with Mega-Net.,25.000,26.633,24.922,26.572,25.025,26.675,0.078,PASS
+9,Message us on WhatsApp.,27.033,28.300,26.962,28.250,27.104,28.329,0.071,PASS
