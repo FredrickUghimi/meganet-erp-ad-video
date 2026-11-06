@@ -1,0 +1,116 @@
+caption words 78 | approved narration words 78 | TTS-reported words 78
+TEXT vs approved narration, word for word, in order: PASS
+TEXT vs TTS engine word-boundary transcript (punctuation stripped): PASS
+word-by-word:
+   1. caption A            narration A            TTS A            ok
+   2. caption doctor       narration doctor       TTS doctor       ok
+   3. caption is           narration is           TTS is           ok
+   4. caption about        narration about        TTS about        ok
+   5. caption to           narration to           TTS to           ok
+   6. caption prescribe    narration prescribe    TTS prescribe    ok
+   7. caption two          narration two          TTS two          ok
+   8. caption drugs        narration drugs        TTS drugs        ok
+   9. caption for          narration for          TTS for          ok
+  10. caption one          narration one          TTS one          ok
+  11. caption patient.     narration patient.     TTS patient      ok
+  12. caption Some         narration Some         TTS Some         ok
+  13. caption drug         narration drug         TTS drug         ok
+  14. caption pairs        narration pairs        TTS pairs        ok
+  15. caption can          narration can          TTS can          ok
+  16. caption interact.    narration interact.    TTS interact     ok
+  17. caption Mega-Net     narration Mega-Net     TTS Mega-Net     ok
+  18. caption EHR          narration EHR          TTS EHR          ok
+  19. caption Cloud        narration Cloud        TTS Cloud        ok
+  20. caption has          narration has          TTS has          ok
+  21. caption a            narration a            TTS a            ok
+  22. caption feature      narration feature      TTS feature      ok
+  23. caption for          narration for          TTS for          ok
+  24. caption that:        narration that:        TTS that         ok
+  25. caption a            narration a            TTS a            ok
+  26. caption drug         narration drug         TTS drug         ok
+  27. caption interaction  narration interaction  TTS interaction  ok
+  28. caption warning.     narration warning.     TTS warning      ok
+  29. caption When         narration When         TTS When         ok
+  30. caption the          narration the          TTS the          ok
+  31. caption doctor       narration doctor       TTS doctor       ok
+  32. caption tries        narration tries        TTS tries        ok
+  33. caption to           narration to           TTS to           ok
+  34. caption save         narration save         TTS save         ok
+  35. caption the          narration the          TTS the          ok
+  36. caption prescription, narration prescription, TTS prescription ok
+  37. caption a            narration a            TTS a            ok
+  38. caption warning      narration warning      TTS warning      ok
+  39. caption appears      narration appears      TTS appears      ok
+  40. caption if           narration if           TTS if           ok
+  41. caption the          narration the          TTS the          ok
+  42. caption two          narration two          TTS two          ok
+  43. caption drugs        narration drugs        TTS drugs        ok
+  44. caption are          narration are          TTS are          ok
+  45. caption a            narration a            TTS a            ok
+  46. caption defined      narration defined      TTS defined      ok
+  47. caption interaction  narration interaction  TTS interaction  ok
+  48. caption pair.        narration pair.        TTS pair         ok
+  49. caption For          narration For          TTS For          ok
+  50. caption a            narration a            TTS a            ok
+  51. caption severe       narration severe       TTS severe       ok
+  52. caption interaction, narration interaction, TTS interaction  ok
+  53. caption the          narration the          TTS the          ok
+  54. caption doctor       narration doctor       TTS doctor       ok
+  55. caption must         narration must         TTS must         ok
+  56. caption stop         narration stop         TTS stop         ok
+  57. caption and          narration and          TTS and          ok
+  58. caption type         narration type         TTS type         ok
+  59. caption CONFIRM      narration CONFIRM      TTS CONFIRM      ok
+  60. caption to           narration to           TTS to           ok
+  61. caption continue.    narration continue.    TTS continue     ok
+  62. caption Nothing      narration Nothing      TTS Nothing      ok
+  63. caption is           narration is           TTS is           ok
+  64. caption saved        narration saved        TTS saved        ok
+  65. caption until        narration until        TTS until        ok
+  66. caption they         narration they         TTS they         ok
+  67. caption do.          narration do.          TTS do           ok
+  68. caption Mega-Net     narration Mega-Net     TTS Mega-Net     ok
+  69. caption EHR          narration EHR          TTS EHR          ok
+  70. caption Cloud.       narration Cloud.       TTS Cloud        ok
+  71. caption Book         narration Book         TTS Book         ok
+  72. caption a            narration a            TTS a            ok
+  73. caption free         narration free         TTS free         ok
+  74. caption demo.        narration demo.        TTS demo         ok
+  75. caption Message      narration Message      TTS Message      ok
+  76. caption us           narration us           TTS us           ok
+  77. caption on           narration on           TTS on           ok
+  78. caption WhatsApp.    narration WhatsApp.    TTS WhatsApp     ok
+caption chunks (max 2 lines each):
+  | A doctor is about to prescribe
+  | two drugs for one patient.
+  | Some drug pairs can interact.
+  | Mega-Net EHR Cloud has a feature
+  | for that: a drug interaction warning.
+  | When the doctor tries to save the prescription,
+  | a warning appears if the
+  | two drugs are a defined interaction pair.
+  | For a severe interaction, the doctor
+  | must stop and type CONFIRM to continue.
+  | Nothing is saved until they do.
+  | Mega-Net EHR Cloud.
+  | Book a free demo.
+  | Message us on WhatsApp.
+frames 948, with caption 747; caption bbox x 110-889, y 1121-1271 (limit: x 80-920, bottom y <= 1280); tallest pill 151px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+phrases 9 | caption runs 9 | speech segments by silence detection (-45dB) 12
+"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.
+ # sentence                       caption on caption off TTS start  TTS end audio start audio end max |delta|  result
+ 1 A doctor is about to prescribe      0.500       3.533     0.430    3.455       0.562     3.558       0.078  PASS
+ 2 Some drug pairs can interact.       3.900       5.733     3.845    5.683       3.981     5.785       0.081  PASS
+ 3 Mega-Net EHR Cloud has a featu      6.133      10.467     6.072   10.385       6.225    10.488       0.092  PASS
+ 4 When the doctor tries to save      10.833      16.933    10.775   16.850      10.914    16.953       0.083  PASS
+ 5 For a severe interaction, the      17.300      21.733    17.240   21.665      17.383    21.768       0.083  PASS
+ 6 Nothing is saved until they do     22.133      23.733    22.055   23.667      22.148    23.770       0.078  PASS
+ 7 Mega-Net EHR Cloud. Book a fre     24.133      29.600    24.058   29.545      24.175    29.622       0.076  PASS
+supplementary: the three phrases of sentence 7, each against its own measured boundaries (not part of the pass/fail; listed so nothing is hidden)
+  # phrase                         caption on caption off TTS start  TTS end audio start audio end on d TTS off d TTS on d aud off d aud
+7 a Mega-Net EHR Cloud.                24.133      25.533    24.058   25.482      24.175    25.676   +0.076    +0.051   -0.041    -0.143
+7 b Book a free demo.                  26.500      27.400    26.445   27.332      26.546    27.469   +0.055    +0.067   -0.046    -0.069
+7 c Message us on WhatsApp.            28.333      29.600    28.258   29.545      28.399    29.622   +0.076    +0.055   -0.065    -0.022
+TIMING (the 7 sentences, within 0.1s of the measured boundaries): PASS
+RESULT: PASS

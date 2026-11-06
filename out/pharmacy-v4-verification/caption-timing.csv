@@ -1,0 +1,8 @@
+n,sentence,caption_on_s,caption_off_s,tts_start_s,tts_end_s,audio_start_s,audio_end_s,max_abs_delta_s,result
+1,A doctor is about to prescribe two drugs for one patient.,0.500,3.533,0.430,3.455,0.562,3.558,0.078,PASS
+2,Some drug pairs can interact.,3.900,5.733,3.845,5.683,3.981,5.785,0.081,PASS
+3,Mega-Net EHR Cloud has a feature for that: a drug interaction warning.,6.133,10.467,6.072,10.385,6.225,10.488,0.092,PASS
+4,"When the doctor tries to save the prescription, a warning appears if the two drugs are a defined interaction pair.",10.833,16.933,10.775,16.850,10.914,16.953,0.083,PASS
+5,"For a severe interaction, the doctor must stop and type CONFIRM to continue.",17.300,21.733,17.240,21.665,17.383,21.768,0.083,PASS
+6,Nothing is saved until they do.,22.133,23.733,22.055,23.667,22.148,23.770,0.078,PASS
+7,Mega-Net EHR Cloud. Book a free demo. Message us on WhatsApp.,24.133,29.600,24.058,29.545,24.175,29.622,0.076,PASS
