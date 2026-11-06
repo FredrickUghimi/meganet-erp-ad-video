@@ -1,0 +1,5 @@
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+2                                   #44506A   #C8D1E0         32  900     5.25    174    True
+distinct text+colour pairs: 1; text-node samples audited: 103; smallest font 32px; lowest contrast 5.25:1; failing samples: 0
+text-node samples excluded as mid-fade (opacity < 0.99): 0; distinct text+colour pairs seen: 1, measured fully settled at least once: 1
+RESULT: PASS

@@ -1,0 +1,8 @@
+frames decoded (lossless PNG): 909; threshold 24/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1087
+frames with scene content inside the zone or its clearance band: 357
+  scene 2: 115 frames (345-459); worst frame 345 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 3: 72 frames (460-531); worst frame 460 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 4: 3 frames (532-534); worst frame 532 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 6: 167 frames (742-908); worst frame 742 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: FAIL (negative control: expected all 909 frames flagged, got 357)
