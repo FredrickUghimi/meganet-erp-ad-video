@@ -1,0 +1,42 @@
+frames audited: 895; text-node boxes measured: 7166; every frame listed in out/booking-verification/textbox-frames.csv
+time window    frames     text nodes  boxes outside  result
+ 0.00- 1.00 s    0-29            180              0  PASS
+ 1.00- 2.00 s   30-59            240              0  PASS
+ 2.00- 3.00 s   60-89            200              0  PASS
+ 3.00- 4.00 s   90-119           260              0  PASS
+ 4.00- 5.00 s  120-149           194              0  PASS
+ 5.00- 6.00 s  150-179           210              0  PASS
+ 6.00- 7.00 s  180-209           210              0  PASS
+ 7.00- 8.00 s  210-239           187              0  PASS
+ 8.00- 9.00 s  240-269           240              0  PASS
+ 9.00-10.00 s  270-299           238              0  PASS
+10.00-11.00 s  300-329           250              0  PASS
+11.00-12.00 s  330-359           189              0  PASS
+12.00-13.00 s  360-389           261              0  PASS
+13.00-14.00 s  390-419           270              0  PASS
+14.00-15.00 s  420-449           295              0  PASS
+15.00-16.00 s  450-479           300              0  PASS
+16.00-17.00 s  480-509           300              0  PASS
+17.00-18.00 s  510-539           277              0  PASS
+18.00-19.00 s  540-569           326              0  PASS
+19.00-20.00 s  570-599           292              0  PASS
+20.00-21.00 s  600-629           270              0  PASS
+21.00-22.00 s  630-659           308              0  PASS
+22.00-23.00 s  660-689           303              0  PASS
+23.00-24.00 s  690-719           260              0  PASS
+24.00-25.00 s  720-749           269              0  PASS
+25.00-26.00 s  750-779           210              0  PASS
+26.00-27.00 s  780-809           187              0  PASS
+27.00-28.00 s  810-839           220              0  PASS
+28.00-29.00 s  840-869           120              0  PASS
+29.00-30.00 s  870-894           100              0  PASS
+extreme text-box edges over all frames: left 149.0 (>= 80), right 859.0 (<= 920), top 234.5 (>= 200), bottom 1254.5 (<= 1095; captions <= 1280)
+frames failing: 0 of 895
+RESULT: PASS
+
+== negative control (rendered): debug 'audit-violate' adds a text node 40px left of the safe area on frame 300; the verifier must FAIL ==
+extreme text-box edges over all frames: left 40.0 (>= 80), right 859.0 (<= 920), top 234.5 (>= 200), bottom 1254.5 (<= 1095; captions <= 1280)
+frames failing: 1 of 1
+  frame 300 (10.00s): "Outside" x 40-195 y 900-949
+RESULT: FAIL
+(RESULT: FAIL above = the check can fail, i.e. it works)

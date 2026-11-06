@@ -1,0 +1,14 @@
+# Local end-to-end run (scratch copy of EHR-Cloud- at e8ca779, local Postgres 16; NOT staging, NOT production)
+# test source: e2e_front_desk_list_test.py.txt (lives only in the scratch copy; EHR-Cloud- itself was not modified)
+  foundation.0018: is_demo immutability trigger foundation_organization_is_demo_immutable confirmed in pg_trigger.
+  lab.0010: append-only trigger lab_labresultcorrection_no_update confirmed in pg_trigger (enabled, BEFORE UPDATE) on lab_labresultcorrection.
+  lab.0011: verified_sequence set to 0 on 0 already-verified result(s).
+  service_queue.0006: no duplicate active entries found — nothing to resolve.
+/tmp/claude-0/-home-user-EHR-Cloud-/7debd1d2-4e51-5cba-ab56-821bb4a0e25a/scratchpad/venv/lib/python3.13/site-packages/django/core/handlers/base.py:61: UserWarning: No directory at: /tmp/claude-0/-home-user-EHR-Cloud-/7debd1d2-4e51-5cba-ab56-821bb4a0e25a/scratchpad/ehr-copy/staticfiles/
+  mw_instance = middleware(adapted_handler)
+FRONT DESK LIST ROWS: [{"id": "b70478df-144b-4590-b91c-24e2b0836572", "scheduled_start": "2026-11-09T09:00:00Z", "scheduled_end": "2026-11-09T09:30:00Z", "patient": "Ada Test (PBAP-809803)", "provider": "Dr. Providere2e", "appointment_type": "new_patient", "appointment_type_display": "New Patient", "resource_name": "", "status": "booked", "status_display": "Booked", "rescheduled_from_start": null}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 1.351s
+
+OK
