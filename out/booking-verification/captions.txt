@@ -1,0 +1,120 @@
+caption words 78 | approved narration words 78 | TTS-reported words 78
+TEXT vs approved narration, word for word, in order: PASS
+TEXT vs TTS engine word-boundary transcript (punctuation stripped): PASS
+word-by-word:
+   1. caption A            narration A            TTS A            ok
+   2. caption patient      narration patient      TTS patient      ok
+   3. caption has          narration has          TTS has          ok
+   4. caption called       narration called       TTS called       ok
+   5. caption the          narration the          TTS the          ok
+   6. caption clinic       narration clinic       TTS clinic       ok
+   7. caption all          narration all          TTS all          ok
+   8. caption morning.     narration morning.     TTS morning      ok
+   9. caption The          narration The          TTS The          ok
+  10. caption line         narration line         TTS line         ok
+  11. caption is           narration is           TTS is           ok
+  12. caption busy         narration busy         TTS busy         ok
+  13. caption again.       narration again.       TTS again        ok
+  14. caption Mega-Net     narration Mega-Net     TTS Mega-Net     ok
+  15. caption EHR          narration EHR          TTS EHR          ok
+  16. caption Cloud        narration Cloud        TTS Cloud        ok
+  17. caption lets         narration lets         TTS lets         ok
+  18. caption patients     narration patients     TTS patients     ok
+  19. caption book         narration book         TTS book         ok
+  20. caption without      narration without      TTS without      ok
+  21. caption calling.     narration calling.     TTS calling      ok
+  22. caption Every        narration Every        TTS Every        ok
+  23. caption hospital     narration hospital     TTS hospital     ok
+  24. caption branch       narration branch       TTS branch       ok
+  25. caption has          narration has          TTS has          ok
+  26. caption its          narration its          TTS its          ok
+  27. caption own          narration own          TTS own          ok
+  28. caption booking      narration booking      TTS booking      ok
+  29. caption link.        narration link.        TTS link         ok
+  30. caption No           narration No           TTS No           ok
+  31. caption account      narration account      TTS account      ok
+  32. caption needed.      narration needed.      TTS needed       ok
+  33. caption Patients     narration Patients     TTS Patients     ok
+  34. caption pick         narration pick         TTS pick         ok
+  35. caption a            narration a            TTS a            ok
+  36. caption day,         narration day,         TTS day          ok
+  37. caption up           narration up           TTS up           ok
+  38. caption to           narration to           TTS to           ok
+  39. caption sixty        narration sixty        TTS sixty        ok
+  40. caption days         narration days         TTS days         ok
+  41. caption ahead,       narration ahead,       TTS ahead        ok
+  42. caption and          narration and          TTS and          ok
+  43. caption see          narration see          TTS see          ok
+  44. caption only         narration only         TTS only         ok
+  45. caption the          narration the          TTS the          ok
+  46. caption times        narration times        TTS times        ok
+  47. caption the          narration the          TTS the          ok
+  48. caption hospital     narration hospital     TTS hospital     ok
+  49. caption has          narration has          TTS has          ok
+  50. caption set.         narration set.         TTS set          ok
+  51. caption Then         narration Then         TTS Then         ok
+  52. caption the          narration the          TTS the          ok
+  53. caption patient      narration patient      TTS patient      ok
+  54. caption sees         narration sees         TTS sees         ok
+  55. caption a            narration a            TTS a            ok
+  56. caption booked       narration booked       TTS booked       ok
+  57. caption page,        narration page,        TTS page         ok
+  58. caption and          narration and          TTS and          ok
+  59. caption the          narration the          TTS the          ok
+  60. caption booking      narration booking      TTS booking      ok
+  61. caption appears      narration appears      TTS appears      ok
+  62. caption in           narration in           TTS in           ok
+  63. caption the          narration the          TTS the          ok
+  64. caption front        narration front        TTS front        ok
+  65. caption desk's       narration desk's       TTS desk's       ok
+  66. caption appointment  narration appointment  TTS appointment  ok
+  67. caption list.        narration list.        TTS list         ok
+  68. caption Book         narration Book         TTS Book         ok
+  69. caption a            narration a            TTS a            ok
+  70. caption free         narration free         TTS free         ok
+  71. caption demo         narration demo         TTS demo         ok
+  72. caption with         narration with         TTS with         ok
+  73. caption Mega-Net     narration Mega-Net     TTS Mega-Net     ok
+  74. caption Software.    narration Software.    TTS Software     ok
+  75. caption Message      narration Message      TTS Message      ok
+  76. caption us           narration us           TTS us           ok
+  77. caption on           narration on           TTS on           ok
+  78. caption WhatsApp.    narration WhatsApp.    TTS WhatsApp     ok
+caption chunks (max 2 lines each):
+  | A patient has called
+  | the clinic all morning.
+  | The line is busy again.
+  | Mega-Net EHR Cloud
+  | lets patients book
+  | without calling.
+  | Every hospital branch
+  | has its own booking link.
+  | No account needed.
+  | Patients pick a day,
+  | up to sixty days ahead,
+  | and see only the times
+  | the hospital has set.
+  | Then the patient sees
+  | a booked page,
+  | and the booking
+  | appears in the front desk's
+  | appointment list.
+  | Book a free demo
+  | with Mega-Net Software.
+  | Message us on WhatsApp.
+frames 895, with caption 726; caption bbox x 149-850, y 1179-1271 (limit: x 80-920, bottom y <= 1280); tallest pill 93px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+sentences 9 | caption runs 9 | speech segments by silence detection (-45dB) 12
+"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.
+ # sentence                       caption on caption off TTS start  TTS end audio start audio end max |delta|  result
+ 1 A patient has called the clini      0.500       2.667     0.430    2.605       0.560     2.708       0.070  PASS
+ 2 The line is busy again.             3.067       4.333     2.995    4.270       3.134     4.373       0.072  PASS
+ 3 Mega-Net EHR Cloud lets patien      4.733       7.933     4.660    7.860       4.806     7.963       0.073  PASS
+ 4 Every hospital branch has its       8.333      10.867     8.250   10.787       8.375    10.890       0.083  PASS
+ 5 No account needed.                 11.233      12.400    11.178   12.328      11.306    12.385       0.073  PASS
+ 6 Patients pick a day, up to six     12.800      18.333    12.718   18.255      12.861    18.278       0.082  PASS
+ 7 Then the patient sees a booked     18.700      23.600    18.645   23.532      18.785    23.613       0.085  PASS
+ 8 Book a free demo with Mega-Net     24.000      26.167    23.922   26.097      24.026    26.200       0.078  PASS
+ 9 Message us on WhatsApp.            26.567      27.833    26.488   27.775      26.629    27.855       0.079  PASS
+TIMING (within 0.1s of the measured sentence boundaries): PASS
+RESULT: PASS

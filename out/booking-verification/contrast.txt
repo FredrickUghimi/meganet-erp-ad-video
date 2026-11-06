@@ -1,0 +1,134 @@
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+free demo                           #1458B5   #F1EFEC        116  900     5.92    829    True
+Booked                              #FFFFFF   #0C6F47         52  900     6.14    217    True
+Booked                              #0B6E46   #FEFEFE         64  900     6.14    591    True
+WhatsApp +2347035682478             #FFFFFF   #0B6E46         42  800     6.30    735    True
+Feature:                            #9E3F00   #FFFFFF         34  800     6.64      0    True
+60 days                             #9E3F00   #FFFFFF         34  800     6.64    435    True
+meganetsoftware.com.ng              #FFFFFF   #1458B5         42  800     6.79    740    True
+patient                             #1B2430   #F7941D         48  800     6.86     20    True
+has                                 #1B2430   #F7941D         48  800     6.86     35    True
+called                              #1B2430   #F7941D         48  800     6.86     45    True
+the                                 #1B2430   #F7941D         48  800     6.86    505    True
+clinic                              #1B2430   #F7941D         48  800     6.86     55    True
+morning.                            #1B2430   #F7941D         48  800     6.86     70    True
+The                                 #1B2430   #F7941D         48  800     6.86     95    True
+line                                #1B2430   #F7941D         48  800     6.86    100    True
+is                                  #1B2430   #F7941D         48  800     6.86    105    True
+busy                                #1B2430   #F7941D         48  800     6.86    115    True
+again.                              #1B2430   #F7941D         48  800     6.86    120    True
+Mega-Net                            #1B2430   #F7941D         48  800     6.86    145    True
+EHR                                 #1B2430   #F7941D         48  800     6.86    165    True
+Cloud                               #1B2430   #F7941D         48  800     6.86    175    True
+lets                                #1B2430   #F7941D         48  800     6.86    190    True
+patients                            #1B2430   #F7941D         48  800     6.86    195    True
+book                                #1B2430   #F7941D         48  800     6.86    215    True
+without                             #1B2430   #F7941D         48  800     6.86    220    True
+calling.                            #1B2430   #F7941D         48  800     6.86    230    True
+Every                               #1B2430   #F7941D         48  800     6.86    255    True
+hospital                            #1B2430   #F7941D         48  800     6.86    260    True
+branch                              #1B2430   #F7941D         48  800     6.86    280    True
+its                                 #1B2430   #F7941D         48  800     6.86    295    True
+own                                 #1B2430   #F7941D         48  800     6.86    305    True
+booking                             #1B2430   #F7941D         48  800     6.86    310    True
+link.                               #1B2430   #F7941D         48  800     6.86    320    True
+No                                  #1B2430   #F7941D         48  800     6.86    340    True
+account                             #1B2430   #F7941D         48  800     6.86    345    True
+needed.                             #1B2430   #F7941D         48  800     6.86    365    True
+Patients                            #1B2430   #F7941D         48  800     6.86    390    True
+pick                                #1B2430   #F7941D         48  800     6.86    400    True
+a                                   #1B2430   #F7941D         48  800     6.86    595    True
+day,                                #1B2430   #F7941D         48  800     6.86    410    True
+to                                  #1B2430   #F7941D         48  800     6.86    430    True
+sixty                               #1B2430   #F7941D         48  800     6.86    435    True
+days                                #1B2430   #F7941D         48  800     6.86    450    True
+ahead,                              #1B2430   #F7941D         48  800     6.86    455    True
+see                                 #1B2430   #F7941D         48  800     6.86    485    True
+only                                #1B2430   #F7941D         48  800     6.86    495    True
+times                               #1B2430   #F7941D         48  800     6.86    510    True
+set.                                #1B2430   #F7941D         48  800     6.86    545    True
+sees                                #1B2430   #F7941D         48  800     6.86    585    True
+booked                              #1B2430   #F7941D         48  800     6.86    600    True
+page,                               #1B2430   #F7941D         48  800     6.86    605    True
+appears                             #1B2430   #F7941D         48  800     6.86    645    True
+in                                  #1B2430   #F7941D         48  800     6.86    655    True
+front                               #1B2430   #F7941D         48  800     6.86    665    True
+desk's                              #1B2430   #F7941D         48  800     6.86    675    True
+appointment                         #1B2430   #F7941D         48  800     6.86    685    True
+list.                               #1B2430   #F7941D         48  800     6.86    700    True
+Book                                #1B2430   #F7941D         48  800     6.86    725    True
+free                                #1B2430   #F7941D         48  800     6.86    730    True
+demo                                #1B2430   #F7941D         48  800     6.86    740    True
+Software.                           #1B2430   #F7941D         48  800     6.86    770    True
+Message                             #1B2430   #F7941D         48  800     6.86    800    True
+us                                  #1B2430   #F7941D         48  800     6.86    815    True
+on                                  #1B2430   #F7941D         48  800     6.86    820    True
+WhatsApp.                           #1B2430   #F7941D         48  800     6.86    825    True
+has                                 #44506A   #FFFFFF         48  800     8.07     20    True
+called                              #44506A   #FFFFFF         48  800     8.07     20    True
+all                                 #44506A   #FFFFFF         48  800     8.07     55    True
+morning.                            #44506A   #FFFFFF         48  800     8.07     55    True
+line                                #44506A   #FFFFFF         48  800     8.07     95    True
+is                                  #44506A   #FFFFFF         48  800     8.07     95    True
+busy                                #44506A   #FFFFFF         48  800     8.07     95    True
+again.                              #44506A   #FFFFFF         48  800     8.07     95    True
+EHR                                 #44506A   #FFFFFF         48  800     8.07    145    True
+Cloud                               #44506A   #FFFFFF         48  800     8.07    145    True
+patients                            #44506A   #FFFFFF         48  800     8.07    190    True
+book                                #44506A   #FFFFFF         48  800     8.07    190    True
+calling.                            #44506A   #FFFFFF         48  800     8.07    220    True
+hospital                            #44506A   #FFFFFF         48  800     8.07    255    True
+branch                              #44506A   #FFFFFF         48  800     8.07    255    True
+its                                 #44506A   #FFFFFF         48  800     8.07    290    True
+own                                 #44506A   #FFFFFF         48  800     8.07    290    True
+booking                             #44506A   #FFFFFF         48  800     8.07    290    True
+link.                               #44506A   #FFFFFF         48  800     8.07    290    True
+account                             #44506A   #FFFFFF         48  800     8.07    340    True
+needed.                             #44506A   #FFFFFF         48  800     8.07    340    True
+pick                                #44506A   #FFFFFF         48  800     8.07    390    True
+a                                   #44506A   #FFFFFF         48  800     8.07    390    True
+day,                                #44506A   #FFFFFF         48  800     8.07    390    True
+sixty                               #44506A   #FFFFFF         48  800     8.07    430    True
+days                                #44506A   #FFFFFF         48  800     8.07    430    True
+ahead,                              #44506A   #FFFFFF         48  800     8.07    430    True
+only                                #44506A   #FFFFFF         48  800     8.07    485    True
+the                                 #44506A   #FFFFFF         48  800     8.07    485    True
+times                               #44506A   #FFFFFF         48  800     8.07    485    True
+set.                                #44506A   #FFFFFF         48  800     8.07    520    True
+patient                             #44506A   #FFFFFF         48  800     8.07    570    True
+sees                                #44506A   #FFFFFF         48  800     8.07    570    True
+booked                              #44506A   #FFFFFF         48  800     8.07    595    True
+page,                               #44506A   #FFFFFF         48  800     8.07    595    True
+in                                  #44506A   #FFFFFF         48  800     8.07    645    True
+front                               #44506A   #FFFFFF         48  800     8.07    645    True
+desk's                              #44506A   #FFFFFF         48  800     8.07    645    True
+list.                               #44506A   #FFFFFF         48  800     8.07    685    True
+free                                #44506A   #FFFFFF         48  800     8.07    725    True
+demo                                #44506A   #FFFFFF         48  800     8.07    725    True
+Software.                           #44506A   #FFFFFF         48  800     8.07    755    True
+us                                  #44506A   #FFFFFF         48  800     8.07    800    True
+on                                  #44506A   #FFFFFF         48  800     8.07    800    True
+WhatsApp.                           #44506A   #FFFFFF         48  800     8.07    800    True
+Book a                              #1B2430   #F0EEEA        116  900    13.51    725    True
+Mega-Net EHR Cloud                  #1B2430   #FFFFFF         32  800    15.65      0    True
+Online appointment booking          #1B2430   #FFFFFF         34  800    15.65      0    True
+A                                   #1B2430   #FFFFFF         48  800    15.65     20    True
+all                                 #1B2430   #FFFFFF         48  800    15.65     70    True
+No account needed                   #1B2430   #FFFFFF         46  900    15.65    345    True
+up                                  #1B2430   #FFFFFF         48  800    15.65    430    True
+Today                               #1B2430   #FFFFFF         34  800    15.65    435    True
+and                                 #1B2430   #FFFFFF         48  800    15.65    485    True
+Then                                #1B2430   #FFFFFF         48  800    15.65    570    True
+Front desk appointment list         #1B2430   #FFFFFF         36  900    15.65    645    True
+with                                #1B2430   #FFFFFF         48  800    15.65    755    True
+distinct text+colour pairs: 122; text-node samples audited: 1249; smallest font 32px; lowest contrast 5.92:1; failing samples: 0
+transient samples (text mid fade, effective opacity < 0.99) NOT counted above: 44; lowest ratio among them 1.16:1; sizes all >= 34px; frames: 15, 50, 185, 210, 215, 217, 340, 425, 430, 480, 585, 590, 625, 639, 640, 725, 730, 735, 750
+   transient: "Booked" frame 210 opacity 0.27 contrast 1.16
+   transient: "meganetsoftware.com.ng" frame 730 opacity 0.27 contrast 1.17
+   transient: "WhatsApp +2347035682478" frame 725 opacity 0.49 contrast 1.57
+   transient: "to" frame 425 opacity 0.35 contrast 1.73
+   transient: "sixty" frame 425 opacity 0.35 contrast 1.74
+   transient: "days" frame 425 opacity 0.35 contrast 1.74
+   transient: "booking" frame 625 opacity 0.35 contrast 1.74
+   transient: "ahead," frame 425 opacity 0.35 contrast 1.75
+RESULT: PASS

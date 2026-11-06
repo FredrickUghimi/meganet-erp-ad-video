@@ -1,0 +1,45 @@
+"""SCRATCH COPY ONLY (never in EHR-Cloud-): public booking -> front desk appointment list."""
+import json
+from django.contrib.auth import get_user_model
+from django.test import Client, TestCase
+from django.utils import timezone
+from foundation.models import Facility, Membership, Role
+from api.tests_public_booking import _make_bookable_org, _next_weekday
+from api.tests_scheduling import _add_membership, _login
+
+User = get_user_model()
+
+
+class PublicBookingToFrontDeskListTests(TestCase):
+    def setUp(self):
+        self.org, self.facility, self.provider = _make_bookable_org("e2e", day_of_week=0)
+        self.day = _next_weekday(0)
+        self.start = timezone.make_aware(timezone.datetime.combine(self.day, timezone.datetime.min.time().replace(hour=9)))
+        self.desk = _add_membership(self.org, self.facility, "e2edesk", "front_desk")
+        other_facility = Facility.objects.create(organization=self.org, name="Other Branch", facility_type="branch", slug="other-branch")
+        self.other_desk = _add_membership(self.org, other_facility, "e2eotherdesk", "front_desk")
+
+    def _book(self):
+        return Client().post(
+            f"/api/public-booking/{self.org.slug}/{self.facility.slug}/book/",
+            data=json.dumps({"provider_id": str(self.provider.id), "start": self.start.isoformat(), "phone": "08031234567",
+                             "first_name": "Ada", "last_name": "Test", "date_of_birth": "1990-01-01",
+                             "reason": "Checkup", "appointment_type": "new_patient"}),
+            content_type="application/json")
+
+    def test_public_booking_appears_in_front_desk_list_for_that_facility_only(self):
+        before = _login("e2edesk").get("/api/scheduling/appointments/", {"date": self.day.isoformat()})
+        self.assertEqual(before.status_code, 200); self.assertEqual(before.json()["appointments"], [])
+        r = self._book()
+        self.assertEqual(r.status_code, 200, r.content)
+        appt_id = r.json()["appointment_id"]
+        listing = _login("e2edesk").get("/api/scheduling/appointments/", {"date": self.day.isoformat()})
+        self.assertEqual(listing.status_code, 200, listing.content)
+        rows = listing.json()["appointments"]
+        print("FRONT DESK LIST ROWS:", json.dumps(rows, default=str))
+        self.assertEqual([x["id"] for x in rows], [appt_id])
+        self.assertEqual(rows[0]["status"], "booked")
+        self.assertIn("Ada", rows[0]["patient"])
+        # negative control: front desk of a different branch must not see it
+        other = _login("e2eotherdesk").get("/api/scheduling/appointments/", {"date": self.day.isoformat()})
+        self.assertEqual(other.status_code, 200); self.assertEqual(other.json()["appointments"], [])
