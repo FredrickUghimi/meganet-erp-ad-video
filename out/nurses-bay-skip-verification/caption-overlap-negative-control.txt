@@ -1,0 +1,4 @@
+  test box inside zone: flagged (expected flagged)
+  test box inside clearance band: flagged (expected flagged)
+  test box just clear of band (control, must NOT be flagged): not flagged (expected not flagged)
+NEGATIVE CONTROL: PASS (checker catches a box in the caption zone)

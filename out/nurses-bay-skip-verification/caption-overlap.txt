@@ -1,0 +1,4 @@
+frames decoded (lossless PNG): 909; threshold 24/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1087
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS

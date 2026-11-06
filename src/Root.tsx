@@ -9,6 +9,8 @@ import {MegaNetProfitLossAd, PL_DURATION, PL_FPS} from './MegaNetProfitLossAd';
 import {BS_DURATION, BS_FPS, MegaNetBalanceSheetAd} from './MegaNetBalanceSheetAd';
 import {CF_DURATION, CF_FPS, MegaNetCashFlowAd} from './MegaNetCashFlowAd';
 import {MegaNetPharmacyInteractionAd, PH_DURATION, PH_FPS} from './MegaNetPharmacyInteractionAd';
+import {MegaNetNursesBaySkipAd, SK_DURATION, SK_FPS} from './MegaNetNursesBaySkipAd';
+import {BK_DURATION, BK_FPS, MegaNetBookingAd} from './MegaNetBookingAd';
 
 export const Root: React.FC = () => (
   <>
@@ -77,6 +79,24 @@ export const Root: React.FC = () => (
     component={MegaNetPharmacyInteractionAd}
     durationInFrames={PH_DURATION}
     fps={PH_FPS}
+    width={1080}
+    height={1920}
+    defaultProps={{debug: ''}}
+  />
+  <Composition
+    id="MegaNetNursesBaySkipAd"
+    component={MegaNetNursesBaySkipAd}
+    durationInFrames={SK_DURATION}
+    fps={SK_FPS}
+    width={1080}
+    height={1920}
+    defaultProps={{debug: ''}}
+  />
+  <Composition
+    id="MegaNetBookingAd"
+    component={MegaNetBookingAd}
+    durationInFrames={BK_DURATION}
+    fps={BK_FPS}
     width={1080}
     height={1920}
     defaultProps={{debug: ''}}

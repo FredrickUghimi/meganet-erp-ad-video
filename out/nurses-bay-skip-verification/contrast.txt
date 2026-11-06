@@ -1,0 +1,138 @@
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+1                                   #FFFFFF   #1A6DE0         32  900     4.87     21    True
+2                                   #FFFFFF   #1A6DE0         32  900     4.87     21    True
+3                                   #FFFFFF   #1A6DE0         32  900     4.87     21    True
+4                                   #FFFFFF   #1A6DE0         32  900     4.87     21    True
+Call                                #FFFFFF   #1A6DE0         44  900     4.87    549    True
+2                                   #44506A   #C8D1E0         32  900     5.25    186    True
+free demo                           #1458B5   #F3EFE7        116  900     5.92    756    True
+WhatsApp +2347035682478             #FFFFFF   #0B6E46         42  800     6.30    790    True
+Skipped                             #FFFFFF   #B42328         32  900     6.54    282    True
+Same place in line                  #FFFFFF   #9E3F00         34  900     6.64    501    True
+Called                              #FFFFFF   #9E3F00         52  900     6.64    609    True
+Feature: Skip and call back         #FFFFFF   #1458B5         32  900     6.79     21    True
+Mega-Net EHR Cloud                  #1458B5   #FFFFFF         32  900     6.79    239    True
+meganetsoftware.com.ng              #FFFFFF   #1458B5         42  800     6.79    790    True
+busy                                #1B2430   #F7941D         48  800     6.86     21    True
+clinic,                             #1B2430   #F7941D         48  800     6.86     35    True
+a                                   #1B2430   #F7941D         48  800     6.86    661    True
+full                                #1B2430   #F7941D         48  800     6.86     54    True
+patient                             #1B2430   #F7941D         48  800     6.86     95    True
+called,                             #1B2430   #F7941D         48  800     6.86    141    True
+their                               #1B2430   #F7941D         48  800     6.86    163    True
+drop                                #1B2430   #F7941D         48  800     6.86    186    True
+the                                 #1B2430   #F7941D         48  800     6.86    427    True
+list.                               #1B2430   #F7941D         48  800     6.86    205    True
+With                                #1B2430   #F7941D         48  800     6.86    225    True
+Mega-Net                            #1B2430   #F7941D         48  800     6.86    239    True
+Cloud,                              #1B2430   #F7941D         48  800     6.86    265    True
+skipped                             #1B2430   #F7941D         48  800     6.86    282    True
+nurse                               #1B2430   #F7941D         48  800     6.86    359    True
+skipped,                            #1B2430   #F7941D         48  800     6.86    404    True
+underneath.                         #1B2430   #F7941D         48  800     6.86    441    True
+They                                #1B2430   #F7941D         48  800     6.86    477    True
+original                            #1B2430   #F7941D         48  800     6.86    501    True
+line.                               #1B2430   #F7941D         48  800     6.86    530    True
+When                                #1B2430   #F7941D         48  800     6.86    549    True
+back,                               #1B2430   #F7941D         48  800     6.86    566    True
+them,                               #1B2430   #F7941D         48  800     6.86    609    True
+clears.                             #1B2430   #F7941D         48  800     6.86    633    True
+easy                                #1B2430   #F7941D         48  800     6.86    709    True
+again.                              #1B2430   #F7941D         48  800     6.86    735    True
+Book                                #1B2430   #F7941D         48  800     6.86    756    True
+Mega-Net.                           #1B2430   #F7941D         48  800     6.86    790    True
+Message                             #1B2430   #F7941D         48  800     6.86    817    True
+WhatsApp.                           #1B2430   #F7941D         48  800     6.86    843    True
+clinic,                             #44506A   #FFFFFF         48  800     8.07     21    True
+waiting                             #44506A   #FFFFFF         48  800     8.07     54    True
+room.                               #44506A   #FFFFFF         48  800     8.07     54    True
+steps                               #44506A   #FFFFFF         48  800     8.07     95    True
+out                                 #44506A   #FFFFFF         48  800     8.07     95    True
+when                                #44506A   #FFFFFF         48  800     8.07     95    True
+called,                             #44506A   #FFFFFF         48  800     8.07     95    True
+name                                #44506A   #FFFFFF         48  800     8.07    163    True
+can                                 #44506A   #FFFFFF         48  800     8.07    163    True
+drop                                #44506A   #FFFFFF         48  800     8.07    163    True
+off                                 #44506A   #FFFFFF         48  800     8.07    163    True
+the                                 #44506A   #FFFFFF         48  800     8.07    163    True
+list.                               #44506A   #FFFFFF         48  800     8.07    163    True
+Mega-Net                            #44506A   #FFFFFF         48  800     8.07    225    True
+EHR                                 #44506A   #FFFFFF         48  800     8.07    225    True
+Cloud,                              #44506A   #FFFFFF         48  800     8.07    225    True
+patient                             #44506A   #FFFFFF         48  800     8.07    282    True
+stays                               #44506A   #FFFFFF         48  800     8.07    282    True
+on                                  #44506A   #FFFFFF         48  800     8.07    282    True
+sees                                #44506A   #FFFFFF         48  800     8.07    359    True
+them                                #44506A   #FFFFFF         48  800     8.07    359    True
+marked                              #44506A   #FFFFFF         48  800     8.07    359    True
+as                                  #44506A   #FFFFFF         48  800     8.07    359    True
+skipped,                            #44506A   #FFFFFF         48  800     8.07    359    True
+reason                              #44506A   #FFFFFF         48  800     8.07    427    True
+underneath.                         #44506A   #FFFFFF         48  800     8.07    427    True
+keep                                #44506A   #FFFFFF         48  800     8.07    477    True
+their                               #44506A   #FFFFFF         48  800     8.07    477    True
+original                            #44506A   #FFFFFF         48  800     8.07    477    True
+place                               #44506A   #FFFFFF         48  800     8.07    477    True
+in                                  #44506A   #FFFFFF         48  800     8.07    477    True
+line.                               #44506A   #FFFFFF         48  800     8.07    477    True
+they                                #44506A   #FFFFFF         48  800     8.07    549    True
+are                                 #44506A   #FFFFFF         48  800     8.07    549    True
+back,                               #44506A   #FFFFFF         48  800     8.07    549    True
+calls                               #44506A   #FFFFFF         48  800     8.07    581    True
+them,                               #44506A   #FFFFFF         48  800     8.07    581    True
+and                                 #44506A   #FFFFFF         48  800     8.07    581    True
+mark                                #44506A   #FFFFFF         48  800     8.07    581    True
+clears.                             #44506A   #FFFFFF         48  800     8.07    581    True
+who                                 #44506A   #FFFFFF         48  800     8.07    661    True
+to                                  #44506A   #FFFFFF         48  800     8.07    709    True
+call                                #44506A   #FFFFFF         48  800     8.07    709    True
+again.                              #44506A   #FFFFFF         48  800     8.07    709    True
+a                                   #44506A   #FFFFFF         48  800     8.07    756    True
+free                                #44506A   #FFFFFF         48  800     8.07    756    True
+demo                                #44506A   #FFFFFF         48  800     8.07    756    True
+with                                #44506A   #FFFFFF         48  800     8.07    756    True
+Mega-Net.                           #44506A   #FFFFFF         48  800     8.07    756    True
+us                                  #44506A   #FFFFFF         48  800     8.07    817    True
+WhatsApp.                           #44506A   #FFFFFF         48  800     8.07    817    True
+Book a                              #1B2430   #F0EEEA        116  900    13.51    756    True
+Stepped out — will return           #1B2430   #F2F7FD         38  800    14.53    549    True
+Mega-Net EHR Cloud                  #1B2430   #FFFFFF         32  900    15.65     21    True
+A                                   #1B2430   #FFFFFF         48  800    15.65     21    True
+steps                               #1B2430   #FFFFFF         48  800    15.65    141    True
+out                                 #1B2430   #FFFFFF         48  800    15.65    141    True
+when                                #1B2430   #FFFFFF         48  800    15.65    141    True
+and                                 #1B2430   #FFFFFF         48  800    15.65    163    True
+name                                #1B2430   #FFFFFF         48  800    15.65    186    True
+can                                 #1B2430   #FFFFFF         48  800    15.65    186    True
+A list that drops skipped names     #1B2430   #FFFFFF         32  900    15.65    205    True
+off                                 #1B2430   #FFFFFF         48  800    15.65    205    True
+EHR                                 #1B2430   #FFFFFF         48  800    15.65    265    True
+stays                               #1B2430   #FFFFFF         48  800    15.65    339    True
+on                                  #1B2430   #FFFFFF         48  800    15.65    339    True
+waiting                             #1B2430   #FFFFFF         48  800    15.65    339    True
+Nurses Bay                          #1B2430   #FFFFFF         44  900    15.65    359    True
+The                                 #1B2430   #FFFFFF         48  800    15.65    359    True
+sees                                #1B2430   #FFFFFF         48  800    15.65    404    True
+them                                #1B2430   #FFFFFF         48  800    15.65    404    True
+marked                              #1B2430   #FFFFFF         48  800    15.65    404    True
+as                                  #1B2430   #FFFFFF         48  800    15.65    404    True
+with                                #1B2430   #FFFFFF         48  800    15.65    427    True
+reason                              #1B2430   #FFFFFF         48  800    15.65    441    True
+Waiting list                        #1B2430   #FFFFFF         40  900    15.65    477    True
+keep                                #1B2430   #FFFFFF         48  800    15.65    501    True
+place                               #1B2430   #FFFFFF         48  800    15.65    530    True
+in                                  #1B2430   #FFFFFF         48  800    15.65    530    True
+they                                #1B2430   #FFFFFF         48  800    15.65    566    True
+are                                 #1B2430   #FFFFFF         48  800    15.65    566    True
+calls                               #1B2430   #FFFFFF         48  800    15.65    609    True
+mark                                #1B2430   #FFFFFF         48  800    15.65    633    True
+So                                  #1B2430   #FFFFFF         48  800    15.65    661    True
+is                                  #1B2430   #FFFFFF         48  800    15.65    709    True
+to                                  #1B2430   #FFFFFF         48  800    15.65    735    True
+call                                #1B2430   #FFFFFF         48  800    15.65    735    True
+free                                #1B2430   #FFFFFF         48  800    15.65    790    True
+demo                                #1B2430   #FFFFFF         48  800    15.65    790    True
+us                                  #1B2430   #FFFFFF         48  800    15.65    843    True
+distinct text+colour pairs: 134; text-node samples audited: 581; smallest font 32px; lowest contrast 4.87:1; failing samples: 0
+text-node samples excluded as mid-fade (opacity < 0.99): 3; distinct text+colour pairs seen: 134, measured fully settled at least once: 134
+RESULT: PASS

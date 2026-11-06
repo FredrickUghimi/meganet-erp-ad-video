@@ -1,0 +1,36 @@
+frames audited: 909; text-node boxes measured: 12886; every frame listed in out/nurses-bay-skip-verification/textbox-frames.csv
+time window    frames     text nodes  boxes outside  result
+ 0.00- 1.00 s    0-29            405              0  PASS
+ 1.00- 2.00 s   30-59            462              0  PASS
+ 2.00- 3.00 s   60-89            434              0  PASS
+ 3.00- 4.00 s   90-119           540              0  PASS
+ 4.00- 5.00 s  120-149           540              0  PASS
+ 5.00- 6.00 s  150-179           586              0  PASS
+ 6.00- 7.00 s  180-209           584              0  PASS
+ 7.00- 8.00 s  210-239           444              0  PASS
+ 8.00- 9.00 s  240-269           480              0  PASS
+ 9.00-10.00 s  270-299           599              0  PASS
+10.00-11.00 s  300-329           630              0  PASS
+11.00-12.00 s  330-359           591              0  PASS
+12.00-13.00 s  360-389           450              0  PASS
+13.00-14.00 s  390-419           450              0  PASS
+14.00-15.00 s  420-449           363              0  PASS
+15.00-16.00 s  450-479           434              0  PASS
+16.00-17.00 s  480-509           510              0  PASS
+17.00-18.00 s  510-539           502              0  PASS
+18.00-19.00 s  540-569           420              0  PASS
+19.00-20.00 s  570-599           490              0  PASS
+20.00-21.00 s  600-629           510              0  PASS
+21.00-22.00 s  630-659           438              0  PASS
+22.00-23.00 s  660-689           330              0  PASS
+23.00-24.00 s  690-719           313              0  PASS
+24.00-25.00 s  720-749           284              0  PASS
+25.00-26.00 s  750-779           315              0  PASS
+26.00-27.00 s  780-809           234              0  PASS
+27.00-28.00 s  810-839           236              0  PASS
+28.00-29.00 s  840-869           156              0  PASS
+29.00-30.00 s  870-899           120              0  PASS
+30.00-31.00 s  900-908            36              0  PASS
+extreme text-box edges over all frames: left 118.0 (>= 80), right 879.7 (<= 920), top 224.5 (>= 200), bottom 1254.5 (<= 1095; captions <= 1280)
+frames failing: 0 of 909
+RESULT: PASS

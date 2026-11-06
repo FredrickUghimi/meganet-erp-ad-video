@@ -1,0 +1,121 @@
+caption words 85 | approved narration words 85 | TTS-reported words 85
+TEXT vs approved narration, word for word, in order: PASS
+TEXT vs TTS engine word-boundary transcript (punctuation stripped): PASS
+word-by-word:
+   1. caption A            narration A            TTS A            ok
+   2. caption busy         narration busy         TTS busy         ok
+   3. caption clinic,      narration clinic,      TTS clinic       ok
+   4. caption a            narration a            TTS a            ok
+   5. caption full         narration full         TTS full         ok
+   6. caption waiting      narration waiting      TTS waiting      ok
+   7. caption room.        narration room.        TTS room         ok
+   8. caption A            narration A            TTS A            ok
+   9. caption patient      narration patient      TTS patient      ok
+  10. caption steps        narration steps        TTS steps        ok
+  11. caption out          narration out          TTS out          ok
+  12. caption when         narration when         TTS when         ok
+  13. caption called,      narration called,      TTS called       ok
+  14. caption and          narration and          TTS and          ok
+  15. caption their        narration their        TTS their        ok
+  16. caption name         narration name         TTS name         ok
+  17. caption can          narration can          TTS can          ok
+  18. caption drop         narration drop         TTS drop         ok
+  19. caption off          narration off          TTS off          ok
+  20. caption the          narration the          TTS the          ok
+  21. caption list.        narration list.        TTS list         ok
+  22. caption With         narration With         TTS With         ok
+  23. caption Mega-Net     narration Mega-Net     TTS Mega-Net     ok
+  24. caption EHR          narration EHR          TTS EHR          ok
+  25. caption Cloud,       narration Cloud,       TTS Cloud        ok
+  26. caption a            narration a            TTS a            ok
+  27. caption skipped      narration skipped      TTS skipped      ok
+  28. caption patient      narration patient      TTS patient      ok
+  29. caption stays        narration stays        TTS stays        ok
+  30. caption on           narration on           TTS on           ok
+  31. caption the          narration the          TTS the          ok
+  32. caption waiting      narration waiting      TTS waiting      ok
+  33. caption list.        narration list.        TTS list         ok
+  34. caption The          narration The          TTS The          ok
+  35. caption nurse        narration nurse        TTS nurse        ok
+  36. caption sees         narration sees         TTS sees         ok
+  37. caption them         narration them         TTS them         ok
+  38. caption marked       narration marked       TTS marked       ok
+  39. caption as           narration as           TTS as           ok
+  40. caption skipped,     narration skipped,     TTS skipped      ok
+  41. caption with         narration with         TTS with         ok
+  42. caption the          narration the          TTS the          ok
+  43. caption reason       narration reason       TTS reason       ok
+  44. caption underneath.  narration underneath.  TTS underneath   ok
+  45. caption They         narration They         TTS They         ok
+  46. caption keep         narration keep         TTS keep         ok
+  47. caption their        narration their        TTS their        ok
+  48. caption original     narration original     TTS original     ok
+  49. caption place        narration place        TTS place        ok
+  50. caption in           narration in           TTS in           ok
+  51. caption the          narration the          TTS the          ok
+  52. caption line.        narration line.        TTS line         ok
+  53. caption When         narration When         TTS When         ok
+  54. caption they         narration they         TTS they         ok
+  55. caption are          narration are          TTS are          ok
+  56. caption back,        narration back,        TTS back         ok
+  57. caption the          narration the          TTS the          ok
+  58. caption nurse        narration nurse        TTS nurse        ok
+  59. caption calls        narration calls        TTS calls        ok
+  60. caption them,        narration them,        TTS them         ok
+  61. caption and          narration and          TTS and          ok
+  62. caption the          narration the          TTS the          ok
+  63. caption mark         narration mark         TTS mark         ok
+  64. caption clears.      narration clears.      TTS clears       ok
+  65. caption So           narration So           TTS So           ok
+  66. caption a            narration a            TTS a            ok
+  67. caption patient      narration patient      TTS patient      ok
+  68. caption who          narration who          TTS who          ok
+  69. caption steps        narration steps        TTS steps        ok
+  70. caption out          narration out          TTS out          ok
+  71. caption is           narration is           TTS is           ok
+  72. caption easy         narration easy         TTS easy         ok
+  73. caption to           narration to           TTS to           ok
+  74. caption call         narration call         TTS call         ok
+  75. caption again.       narration again.       TTS again        ok
+  76. caption Book         narration Book         TTS Book         ok
+  77. caption a            narration a            TTS a            ok
+  78. caption free         narration free         TTS free         ok
+  79. caption demo         narration demo         TTS demo         ok
+  80. caption with         narration with         TTS with         ok
+  81. caption Mega-Net.    narration Mega-Net.    TTS Mega-Net     ok
+  82. caption Message      narration Message      TTS Message      ok
+  83. caption us           narration us           TTS us           ok
+  84. caption on           narration on           TTS on           ok
+  85. caption WhatsApp.    narration WhatsApp.    TTS WhatsApp     ok
+caption chunks (max 2 lines each):
+  | A busy clinic,
+  | a full waiting room.
+  | A patient steps out when called,
+  | and their name can drop off the list.
+  | With Mega-Net EHR Cloud,
+  | a skipped patient stays on the waiting list.
+  | The nurse sees them marked as skipped,
+  | with the reason underneath.
+  | They keep their original place in the line.
+  | When they are back,
+  | the nurse calls them, and the mark clears.
+  | So a patient who steps out
+  | is easy to call again.
+  | Book a free demo with Mega-Net.
+  | Message us on WhatsApp.
+frames 909, with caption 740; caption bbox x 110-889, y 1121-1271 (limit: x 80-920, bottom y <= 1280); tallest pill 151px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY: PASS
+sentences 9 | caption runs 9 | speech segments by silence detection (-45dB) 15
+"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.
+ # sentence                       caption on caption off TTS start  TTS end audio start audio end max |delta|  result
+ 1 A busy clinic, a full waiting       0.500       2.567     0.430    2.505       0.561     2.608       0.070  PASS
+ 2 A patient steps out when calle      2.967       6.933     2.895    6.857       3.041     6.936       0.076  PASS
+ 3 With Mega-Net EHR Cloud, a ski      7.300      11.367     7.247   11.297       7.387    11.373       0.087  PASS
+ 4 The nurse sees them marked as      11.767      15.300    11.687   15.237      11.828    15.339       0.079  PASS
+ 5 They keep their original place     15.700      17.733    15.627   17.652      15.775    17.755       0.081  PASS
+ 6 When they are back, the nurse      18.100      21.433    18.042   21.367      18.181    21.470       0.081  PASS
+ 7 So a patient who steps out is      21.833      24.600    21.757   24.532      21.901    24.635       0.076  PASS
+ 8 Book a free demo with Mega-Net     25.000      26.633    24.922   26.572      25.025    26.675       0.078  PASS
+ 9 Message us on WhatsApp.            27.033      28.300    26.962   28.250      27.104    28.329       0.071  PASS
+TIMING (within 0.1s of the measured sentence boundaries): PASS
+RESULT: PASS

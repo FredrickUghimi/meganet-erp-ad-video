@@ -1,4 +1,4 @@
-"""Generates the MegaNetPharmacyInteractionAd voiceover: one edge-tts call per sentence
+"""Generates the MegaNetPharmacyInteractionAd voiceover (v4: 7-sentence feature-spotlight script, target 28-30s): one edge-tts call per sentence
 (en-NG-EzinneNeural, word-level boundaries), leading/trailing silence of each
 sentence trimmed, sentences joined with 0.3s gaps, words never sped up.
 Word timings are written to src/pharmacyTimings.ts and the audio to
@@ -18,10 +18,11 @@ VOICE = "en-NG-EzinneNeural"
 GAP = 0.3
 # One entry per scene; each scene is one or more sentences, spoken with a 0.3s gap.
 SCENES = [
-    ["Warfarin meets aspirin.", "Spot the collision."],
-    ["Mega-Net EHR Cloud warns the prescriber when two drugs are a defined interaction pair."],
-    ["For a severe interaction, the prescriber must stop, and type CONFIRM to continue."],
-    ["Book a free demo with Mega-Net.", "Message us on WhatsApp."],
+    ["A doctor is about to prescribe two drugs for one patient.", "Some drug pairs can interact."],
+    ["Mega-Net EHR Cloud has a feature for that: a drug interaction warning."],
+    ["When the doctor tries to save the prescription, a warning appears if the two drugs are a defined interaction pair."],
+    ["For a severe interaction, the doctor must stop and type CONFIRM to continue.", "Nothing is saved until they do."],
+    ["Mega-Net EHR Cloud. Book a free demo. Message us on WhatsApp."],
 ]
 root = pathlib.Path(__file__).resolve().parent.parent
 work = pathlib.Path(sys.argv[1]); work.mkdir(parents=True, exist_ok=True)

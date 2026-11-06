@@ -1,0 +1,8 @@
+frames checked: 909 (lossless PNG); every frame listed in out/nurses-bay-skip-verification/skipped-word-frames.csv
+frames with the Skipped red (>= 150 px): 384; of those with the word "Skipped" present: 384
+frames with the word present: 388
+runs where the word is on screen (frames): 277-355, 391-473, 478-594, 644-752
+frames with red but NO word: 0 
+negative control 1 (red square painted on frame 100, no word): flagged (check works)
+negative control 2 (frame 277: real chip, "Skipped" text node deleted): flagged (check works)
+RESULT: PASS
