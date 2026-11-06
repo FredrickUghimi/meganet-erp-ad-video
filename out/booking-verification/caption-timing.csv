@@ -1,0 +1,10 @@
+n,sentence,caption_on_s,caption_off_s,tts_start_s,tts_end_s,audio_start_s,audio_end_s,max_abs_delta_s,result
+1,A patient has called the clinic all morning.,0.500,2.667,0.430,2.605,0.560,2.708,0.070,PASS
+2,The line is busy again.,3.067,4.333,2.995,4.270,3.134,4.373,0.072,PASS
+3,Mega-Net EHR Cloud lets patients book without calling.,4.733,7.933,4.660,7.860,4.806,7.963,0.073,PASS
+4,Every hospital branch has its own booking link.,8.333,10.867,8.250,10.787,8.375,10.890,0.083,PASS
+5,No account needed.,11.233,12.400,11.178,12.328,11.306,12.385,0.073,PASS
+6,"Patients pick a day, up to sixty days ahead, and see only the times the hospital has set.",12.800,18.333,12.718,18.255,12.861,18.278,0.082,PASS
+7,"Then the patient sees a booked page, and the booking appears in the front desk's appointment list.",18.700,23.600,18.645,23.532,18.785,23.613,0.085,PASS
+8,Book a free demo with Mega-Net Software.,24.000,26.167,23.922,26.097,24.026,26.200,0.078,PASS
+9,Message us on WhatsApp.,26.567,27.833,26.488,27.775,26.629,27.855,0.079,PASS

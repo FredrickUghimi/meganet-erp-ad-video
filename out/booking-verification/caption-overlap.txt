@@ -1,0 +1,44 @@
+Threshold 12/255 (stricter than the series default 24; see note at the end)
+== caption-zone overlap, every frame (nocaps vs bg) ==
+frames decoded (lossless PNG): 895; threshold 12/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1095
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+exit 0
+
+== synthetic negative control ==
+  test box inside zone: flagged (expected flagged)
+  test box inside clearance band: flagged (expected flagged)
+  test box just clear of band (control, must NOT be flagged): not flagged (expected not flagged)
+NEGATIVE CONTROL: PASS (checker catches a box in the caption zone)
+exit 0
+
+== rendered negative control: strong box (must flag every frame) ==
+frames decoded (lossless PNG): 895; threshold 12/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1095
+frames with scene content inside the zone or its clearance band: 895
+  scene 1: 239 frames (0-238); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 2: 134 frames (239-372); worst frame 239 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 3: 177 frames (373-549); worst frame 373 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 4: 159 frames (550-708); worst frame 550 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 5: 186 frames (709-894); worst frame 709 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 895 frames flagged, got 895)
+exit 0
+
+== rendered negative control: weak white box (must flag every frame) ==
+frames decoded (lossless PNG): 895; threshold 12/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1095
+frames with scene content inside the zone or its clearance band: 895
+  scene 1: 239 frames (0-238); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 2: 134 frames (239-372); worst frame 239 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 3: 177 frames (373-549); worst frame 373 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 4: 159 frames (550-708); worst frame 550 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+  scene 5: 186 frames (709-894); worst frame 709 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 895 frames flagged, got 895)
+exit 0
+
+== same real check at the series default threshold 24, and the weak control at 24 ==
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+RESULT: FAIL (negative control: expected all 895 frames flagged, got 496)
+NOTE: at 24 the weak white control is flagged on only part of the frames (a white box on a near-white gradient differs by only 16-17/255), so 24 is blind there; at 12 every control is flagged on all frames and the real content still has 0 frames in the zone.

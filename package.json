@@ -22,7 +22,9 @@
     "render:pharmacy": "remotion render MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
     "poster:pharmacy": "remotion still MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-poster.png --frame=440 --browser-executable=/opt/pw-browsers/chromium",
     "render:skip": "remotion render MegaNetNursesBaySkipAd out/meganet-nurses-bay-skip-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
-    "poster:skip": "remotion still MegaNetNursesBaySkipAd out/meganet-nurses-bay-skip-poster.png --frame=300 --browser-executable=/opt/pw-browsers/chromium"
+    "poster:skip": "remotion still MegaNetNursesBaySkipAd out/meganet-nurses-bay-skip-poster.png --frame=300 --browser-executable=/opt/pw-browsers/chromium",
+    "render:booking": "remotion render MegaNetBookingAd out/meganet-booking-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
+    "poster:booking": "remotion still MegaNetBookingAd out/meganet-booking-poster.png --frame=175 --browser-executable=/opt/pw-browsers/chromium"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.250",
