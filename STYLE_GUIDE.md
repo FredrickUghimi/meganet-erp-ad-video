@@ -45,7 +45,7 @@ Cards: white, 3px `#C9DCF6` border, soft blue-tinted shadow. Font: Inter (Inter 
 - Voice: a Microsoft `en-NG` neural voice, word-level timing, no music, never sped up, pauses between sentences about 0.3s, 2s frozen hold after the voice ends. **Series default: `en-NG-AbeoNeural` (male).** The voice is a per-feature choice: an ad uses a different `en-NG` voice only when the brief for that ad says so, and its script doc must name the voice and say it is a deliberate exception. The Voice column in section 5 records which voice each ad uses. Narration timing always comes from that ad's own generated audio, never from another ad's timings. Point `certifi` at `/root/.ccr/ca-bundle.crt` if TLS fails; verification stays on.
 - Captions match the narration word for word (`scripts/verify_captions_ledger.py` pattern).
 - No figures, names or statistics; rows, bars and chips are drawn placeholders. No app screenshots. Every product claim traced to the backend or frontend code and written up in the ad's script doc, with what is deliberately not claimed.
-- CTA: "Book a free demo", WhatsApp +2347035682478, meganetsoftware.com.ng.
+- CTA: "Book a free demo", WhatsApp +2347076000030, meganetsoftware.com.ng. Ads published before this number change show the old number (+2347035682478) in their mp4s; they are not re-rendered unless the project owner asks.
 
 ## 5. Hook rule: every ad in the series uses a different hook style
 
