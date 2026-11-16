@@ -1,0 +1,82 @@
+[
+ {
+  "id": "v1",
+  "storyboard_start": 0.3,
+  "start": 0.2,
+  "end": 7.52,
+  "raw_speech_s": 8.2,
+  "atempo": 1.12,
+  "fits_window": true,
+  "text": "Managing multiple projects can quickly become complicated. Deadlines, people, tasks and budgets. Everything needs attention."
+ },
+ {
+  "id": "v2",
+  "storyboard_start": 7.3,
+  "start": 7.6,
+  "end": 15.18,
+  "raw_speech_s": 8.39,
+  "atempo": 1.109,
+  "fits_window": true,
+  "text": "Introducing Project Management in Mega-Net ERP Cloud. A smarter way to plan, organise and monitor your business projects."
+ },
+ {
+  "id": "v3",
+  "storyboard_start": 15.3,
+  "start": 15.3,
+  "end": 24.55,
+  "raw_speech_s": 9.25,
+  "atempo": 1.0,
+  "fits_window": true,
+  "text": "Create projects, establish milestones, break work into tasks and assign responsibilities. Everyone knows what needs to be done and when."
+ },
+ {
+  "id": "v4",
+  "storyboard_start": 25.3,
+  "start": 25.3,
+  "end": 31.61,
+  "raw_speech_s": 6.31,
+  "atempo": 1.0,
+  "fits_window": true,
+  "text": "Plan employee workloads, monitor capacity and identify over-allocation before it becomes a bigger problem."
+ },
+ {
+  "id": "v5",
+  "storyboard_start": 34.3,
+  "start": 34.3,
+  "end": 42.2,
+  "raw_speech_s": 7.9,
+  "atempo": 1.0,
+  "fits_window": true,
+  "text": "Track working hours, approve timesheets and monitor project costs against budgets using purchases and expenses recorded in your ERP."
+ },
+ {
+  "id": "v6",
+  "storyboard_start": 45.3,
+  "start": 45.3,
+  "end": 51.5,
+  "raw_speech_s": 6.2,
+  "atempo": 1.0,
+  "fits_window": true,
+  "text": "Monitor project progress, identify delays and give management better visibility into project performance."
+ },
+ {
+  "id": "v7",
+  "storyboard_start": 53.3,
+  "start": 53.3,
+  "end": 56.32,
+  "raw_speech_s": 3.02,
+  "atempo": 1.0,
+  "fits_window": true,
+  "text": "Take control of your projects with Mega-Net ERP Cloud."
+ },
+ {
+  "id": "v8",
+  "storyboard_start": 57.5,
+  "start": 57.5,
+  "end": 61.54,
+  "raw_speech_s": 4.04,
+  "atempo": 1.0,
+  "fits_window": true,
+  "text": "Contact Mega-Net Software today to request your personalised demonstration."
+ }
+]

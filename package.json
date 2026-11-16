@@ -20,9 +20,15 @@
     "render:balancesheet": "remotion render MegaNetBalanceSheetAd out/meganet-balancesheet-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
     "poster:balancesheet": "remotion still MegaNetBalanceSheetAd out/meganet-balancesheet-poster.png --frame=157 --browser-executable=/opt/pw-browsers/chromium",
     "render:pharmacy": "remotion render MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
-    "poster:pharmacy": "remotion still MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-poster.png --frame=395 --browser-executable=/opt/pw-browsers/chromium"
+    "poster:pharmacy": "remotion still MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-poster.png --frame=395 --browser-executable=/opt/pw-browsers/chromium",
+    "render:pm": "scripts/pm_render.sh out/pm-scenes",
+    "stills:pm": "node scripts/pm_stills.mjs out/pm-stills",
+    "audit:pm": "node scripts/pm_audit.mjs out/pm-audit.json 10",
+    "studio:pm": "remotion studio"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/poppins": "^5.3.0",
     "@remotion/cli": "^4.0.250",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
