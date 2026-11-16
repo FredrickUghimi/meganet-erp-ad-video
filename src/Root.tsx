@@ -8,6 +8,7 @@ import {LEDGER_DURATION, LEDGER_FPS, MegaNetLedgerAd} from './MegaNetLedgerAd';
 import {MegaNetProfitLossAd, PL_DURATION, PL_FPS} from './MegaNetProfitLossAd';
 import {BS_DURATION, BS_FPS, MegaNetBalanceSheetAd} from './MegaNetBalanceSheetAd';
 import {CF_DURATION, CF_FPS, MegaNetCashFlowAd} from './MegaNetCashFlowAd';
+import {CRM_DURATION, CRM_FPS, MegaNetCrmAd, MegaNetCrmThumb} from './MegaNetCrmAd';
 import {MegaNetPharmacyInteractionAd, PH_DURATION, PH_FPS} from './MegaNetPharmacyInteractionAd';
 
 export const Root: React.FC = () => (
@@ -90,5 +91,14 @@ export const Root: React.FC = () => (
     height={1920}
     defaultProps={{debug: ''}}
   />
+  <Composition
+    id="MegaNetCrmAd"
+    component={MegaNetCrmAd}
+    durationInFrames={CRM_DURATION}
+    fps={CRM_FPS}
+    width={1080}
+    height={1920}
+  />
+  <Composition id="MegaNetCrmThumb" component={MegaNetCrmThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
   </>
 );
