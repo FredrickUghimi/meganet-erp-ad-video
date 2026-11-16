@@ -9,6 +9,8 @@ import {MegaNetProfitLossAd, PL_DURATION, PL_FPS} from './MegaNetProfitLossAd';
 import {BS_DURATION, BS_FPS, MegaNetBalanceSheetAd} from './MegaNetBalanceSheetAd';
 import {CF_DURATION, CF_FPS, MegaNetCashFlowAd} from './MegaNetCashFlowAd';
 import {MegaNetPharmacyInteractionAd, PH_DURATION, PH_FPS} from './MegaNetPharmacyInteractionAd';
+import {MegaNetPMAd, PMScene} from './pm/MegaNetPMAd';
+import {PM_FPS, PM_H, PM_TOTAL_FRAMES, PM_W, SCENES} from './pm/timing';
 
 export const Root: React.FC = () => (
   <>
@@ -90,5 +92,18 @@ export const Root: React.FC = () => (
     height={1920}
     defaultProps={{debug: ''}}
   />
-  </>
+    <Composition id="MegaNetPMAd" component={MegaNetPMAd} durationInFrames={PM_TOTAL_FRAMES} fps={PM_FPS} width={PM_W} height={PM_H} defaultProps={{audit: false}} />
+  {SCENES.map((sc) => (
+    <Composition
+      key={sc.id}
+      id={`PMScene${sc.id}`}
+      component={PMScene as React.FC<any>}
+      durationInFrames={sc.dur * PM_FPS}
+      fps={PM_FPS}
+      width={PM_W}
+      height={PM_H}
+      defaultProps={{n: sc.id, audit: false}}
+    />
+  ))}
+</>
 );
