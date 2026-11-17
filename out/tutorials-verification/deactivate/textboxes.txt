@@ -1,0 +1,84 @@
+frames audited: 1966; text-node boxes measured: 16058; every frame listed in out/tutorials-verification/deactivate/textbox-frames.csv
+time window    frames     text nodes  boxes outside  result
+ 0.00- 1.00 s    0-29            232              0  PASS
+ 1.00- 2.00 s   30-59            330              0  PASS
+ 2.00- 3.00 s   60-89            330              0  PASS
+ 3.00- 4.00 s   90-119           177              0  PASS
+ 4.00- 5.00 s  120-149           300              0  PASS
+ 5.00- 6.00 s  150-179           341              0  PASS
+ 6.00- 7.00 s  180-209           390              0  PASS
+ 7.00- 8.00 s  210-239           367              0  PASS
+ 8.00- 9.00 s  240-269           360              0  PASS
+ 9.00-10.00 s  270-299           227              0  PASS
+10.00-11.00 s  300-329           156              0  PASS
+11.00-12.00 s  330-359           180              0  PASS
+12.00-13.00 s  360-389           164              0  PASS
+13.00-14.00 s  390-419           212              0  PASS
+14.00-15.00 s  420-449           270              0  PASS
+15.00-16.00 s  450-479           210              0  PASS
+16.00-17.00 s  480-509           158              0  PASS
+17.00-18.00 s  510-539           270              0  PASS
+18.00-19.00 s  540-569           178              0  PASS
+19.00-20.00 s  570-599           179              0  PASS
+20.00-21.00 s  600-629           270              0  PASS
+21.00-22.00 s  630-659           209              0  PASS
+22.00-23.00 s  660-689           118              0  PASS
+23.00-24.00 s  690-719           265              0  PASS
+24.00-25.00 s  720-749           327              0  PASS
+25.00-26.00 s  750-779           259              0  PASS
+26.00-27.00 s  780-809           254              0  PASS
+27.00-28.00 s  810-839           192              0  PASS
+28.00-29.00 s  840-869           285              0  PASS
+29.00-30.00 s  870-899           220              0  PASS
+30.00-31.00 s  900-929           180              0  PASS
+31.00-32.00 s  930-959           231              0  PASS
+32.00-33.00 s  960-989           270              0  PASS
+33.00-34.00 s  990-1019          248              0  PASS
+34.00-35.00 s  1020-1049          224              0  PASS
+35.00-36.00 s  1050-1079          270              0  PASS
+36.00-37.00 s  1080-1109          270              0  PASS
+37.00-38.00 s  1110-1139          150              0  PASS
+38.00-39.00 s  1140-1169          129              0  PASS
+39.00-40.00 s  1170-1199          204              0  PASS
+40.00-41.00 s  1200-1229          190              0  PASS
+41.00-42.00 s  1230-1259          256              0  PASS
+42.00-43.00 s  1260-1289          270              0  PASS
+43.00-44.00 s  1290-1319          250              0  PASS
+44.00-45.00 s  1320-1349          210              0  PASS
+45.00-46.00 s  1350-1379          232              0  PASS
+46.00-47.00 s  1380-1409          270              0  PASS
+47.00-48.00 s  1410-1439          154              0  PASS
+48.00-49.00 s  1440-1469          216              0  PASS
+49.00-50.00 s  1470-1499          240              0  PASS
+50.00-51.00 s  1500-1529          179              0  PASS
+51.00-52.00 s  1530-1559          264              0  PASS
+52.00-53.00 s  1560-1589          286              0  PASS
+53.00-54.00 s  1590-1619          390              0  PASS
+54.00-55.00 s  1620-1649          383              0  PASS
+55.00-56.00 s  1650-1679          360              0  PASS
+56.00-57.00 s  1680-1709          360              0  PASS
+57.00-58.00 s  1710-1739          302              0  PASS
+58.00-59.00 s  1740-1769          312              0  PASS
+59.00-60.00 s  1770-1799          182              0  PASS
+60.00-61.00 s  1800-1829          270              0  PASS
+61.00-62.00 s  1830-1859          270              0  PASS
+62.00-63.00 s  1860-1889          270              0  PASS
+63.00-64.00 s  1890-1919          152              0  PASS
+64.00-65.00 s  1920-1949          120              0  PASS
+65.00-66.00 s  1950-1965           64              0  PASS
+extreme text-box edges over all frames: left 80.0 (>= 80), right 902.0 (<= 920), top 208.0 (>= 200), bottom 1254.5 (<= 1095; captions <= 1280)
+frames failing: 0 of 1966
+RESULT: PASS
+--- negative control: a text node outside the safe area MUST be flagged
+frames audited: 6; text-node boxes measured: 36; every frame listed in /tmp/claude-0/-home-user/f4f0bcf6-9e3b-53c4-926b-5666168a7217/scratchpad/work/deactivate/tb-neg/neg.csv
+time window    frames     text nodes  boxes outside  result
+extreme text-box edges over all frames: left 30.0 (>= 80), right 902.0 (<= 920), top 208.0 (>= 200), bottom 1254.5 (<= 1095; captions <= 1280)
+frames failing: 6 of 6
+  frame 300 (10.00s): "Text outside t" x 30-545 y 900-949
+  frame 301 (10.03s): "Text outside t" x 30-545 y 900-949
+  frame 302 (10.07s): "Text outside t" x 30-545 y 900-949
+  frame 303 (10.10s): "Text outside t" x 30-545 y 900-949
+  frame 304 (10.13s): "Text outside t" x 30-545 y 900-949
+  frame 305 (10.17s): "Text outside t" x 30-545 y 900-949
+RESULT: FAIL
+NEGATIVE CONTROL: PASS (flagged, exit status non-zero as required)

@@ -1,0 +1,23 @@
+frames decoded (lossless PNG): 2637; threshold 24/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1087
+frames with scene content inside the zone or its clearance band: 0
+RESULT: PASS
+--- negative control (synthetic boxes: one inside the zone must be caught, one just clear of the band must not)
+  test box inside zone: flagged (expected flagged)
+  test box inside clearance band: flagged (expected flagged)
+  test box just clear of band (control, must NOT be flagged): not flagged (expected not flagged)
+NEGATIVE CONTROL: PASS (checker catches a box in the caption zone)
+--- rendered control nocaps-violate-caption (--expect-fail: PASS means all 6 frames flagged)
+frames decoded (lossless PNG): 6; threshold 24/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1055
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+--- rendered control nocaps-violateweak-caption (--expect-fail: PASS means all 6 frames flagged)
+frames decoded (lossless PNG): 6; threshold 24/255; zone x 110-889, y 1120-1271; clearance 24px (content must end by y 1095)
+lowest scene content outside zone + band: y 1055
+frames with scene content inside the zone or its clearance band: 6
+  scene None: 6 frames (0-5); worst frame 0 (1600 px in zone, 0 px in band); offending bbox x 500-539, y 1180-1219
+RESULT: PASS (negative control: expected all 6 frames flagged, got 6)
+exit statuses: main=0 negative-controls=0
+CAPTION-ZONE RESULT: PASS

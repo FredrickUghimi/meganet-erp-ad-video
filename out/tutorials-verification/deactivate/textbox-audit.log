@@ -1,0 +1,11 @@
+deactivate frame 0 text nodes 4
+deactivate frame 200 text nodes 13
+deactivate frame 400 text nodes 7
+deactivate frame 600 text nodes 9
+deactivate frame 800 text nodes 9
+deactivate frame 1000 text nodes 9
+deactivate frame 1200 text nodes 8
+deactivate frame 1400 text nodes 9
+deactivate frame 1600 text nodes 13
+deactivate frame 1800 text nodes 9
+deactivate done 1966 frames

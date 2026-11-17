@@ -1,0 +1,250 @@
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+Org Admin only                      #FFFFFF   #1A6DE0         32  900     4.87     34    True
+1                                   #FFFFFF   #1A6DE0         44  900     4.87    184    True
+2                                   #FFFFFF   #1A6DE0         44  900     4.87    184    True
+3                                   #FFFFFF   #1A6DE0         44  900     4.87    184    True
+Staff Directory in Mega-Net EHR Cl  #1458B5   #FEE8CC         48  800     5.70     34    True
+Fictional demo data                 #1458B5   #FFFFFF         32  900     6.79     34    True
+Role options in the app             #1458B5   #FFFFFF         42  900     6.79   1155    True
+Questions? Message us on WhatsApp   #1458B5   #FFFFFF         38  800     6.79   2417    True
+meganetsoftware.com.ng              #1458B5   #FFFFFF         48  800     6.79   2417    True
+staff                               #1B2430   #F7941D         48  800     6.86     34    True
+Mega-Net                            #1B2430   #F7941D         48  800     6.86     70    True
+Cloud.                              #1B2430   #F7941D         48  800     6.86     90    True
+the                                 #1B2430   #F7941D         48  800     6.86   1761    True
+Org                                 #1B2430   #F7941D         48  800     6.86   1155    True
+role.                               #1B2430   #F7941D         48  800     6.86    149    True
+Staff                               #1B2430   #F7941D         48  800     6.86    184    True
+Directory,                          #1B2430   #F7941D         48  800     6.86    220    True
+form,                               #1B2430   #F7941D         48  800     6.86    260    True
+save.                               #1B2430   #F7941D         48  800     6.86    277    True
+Nurse menu                          #1B2430   #F7941D         32  900     6.86    312    True
+do                                  #1B2430   #F7941D         48  800     6.86    312    True
+Directory                           #1B2430   #F7941D         48  800     6.86    354    True
+menu.                               #1B2430   #F7941D         48  800     6.86    371    True
+Step 1: open the menu               #1B2430   #F7941D         32  900     6.86    407    True
+menu,                               #1B2430   #F7941D         48  800     6.86    407    True
+Directory.                          #1B2430   #F7941D         48  800     6.86    456    True
+Step 2: the list                    #1B2430   #F7941D         32  900     6.86    492    True
+list                                #1B2430   #F7941D         48  800     6.86    731    True
+everyone                            #1B2430   #F7941D         48  800     6.86    492    True
+organization,                       #1B2430   #F7941D         48  800     6.86    544    True
+role,                               #1B2430   #F7941D         48  800     6.86    572    True
+status.                             #1B2430   #F7941D         48  800     6.86    624    True
+Filter box                          #1B2430   #F7941D         32  900     6.86    659    True
+filter                              #1B2430   #F7941D         48  800     6.86    659    True
+someone.                            #1B2430   #F7941D         48  800     6.86    695    True
+Step 3: the form                    #1B2430   #F7941D         32  900     6.86    731    True
+is                                  #1B2430   #F7941D         48  800     6.86   1957    True
+or                                  #1B2430   #F7941D         48  800     6.86    754    True
+form.                               #1B2430   #F7941D         48  800     6.86    780    True
+required.                           #1B2430   #F7941D         48  800     6.86    864    True
+Type the details                    #1B2430   #F7941D         32  900     6.86    900    True
+name,                               #1B2430   #F7941D         48  800     6.86    900    True
+email                               #1B2430   #F7941D         48  800     6.86   2115    True
+address.                            #1B2430   #F7941D         48  800     6.86    982    True
+One account per email               #1B2430   #F7941D         32  900     6.86   1017    True
+address                             #1B2430   #F7941D         48  800     6.86   1017    True
+only                                #1B2430   #F7941D         48  800     6.86   1060    True
+account.                            #1B2430   #F7941D         48  800     6.86   1080    True
+Choose a role                       #1B2430   #F7941D         32  900     6.86   1115    True
+Drawn, not captured                 #1B2430   #F7941D         32  900     6.86   1155    True
+Admin,                              #1B2430   #F7941D         48  800     6.86   1183    True
+Desk,                               #1B2430   #F7941D         48  800     6.86   1267    True
+Technician,                         #1B2430   #F7941D         48  800     6.86   1332    True
+Manager.                            #1B2430   #F7941D         48  800     6.86   1397    True
+Choose a facility                   #1B2430   #F7941D         32  900     6.86   1433    True
+facility                            #1B2430   #F7941D         48  800     6.86   1433    True
+organization's                      #1B2430   #F7941D         48  800     6.86   1482    True
+list.                               #1B2430   #F7941D         48  800     6.86   1490    True
+No password field                   #1B2430   #F7941D         32  900     6.86   1526    True
+password                            #1B2430   #F7941D         48  800     6.86   1526    True
+field.                              #1B2430   #F7941D         48  800     6.86   1543    True
+password.                           #1B2430   #F7941D         48  800     6.86   1608    True
+Step 4: Save                        #1B2430   #F7941D         32  900     6.86   1639    True
+Save.                               #1B2430   #F7941D         48  800     6.86   1639    True
+Invite confirmed                    #1B2430   #F7941D         32  900     6.86   1674    True
+confirms                            #1B2430   #F7941D         48  800     6.86   1674    True
+invite,                             #1B2430   #F7941D         48  800     6.86   1716    True
+Then Clear                          #1B2430   #F7941D         32  900     6.86   1805    True
+keeps                               #1B2430   #F7941D         48  800     6.86   1805    True
+details.                            #1B2430   #F7941D         48  800     6.86   1833    True
+else,                               #1B2430   #F7941D         48  800     6.86   1895    True
+first.                              #1B2430   #F7941D         48  800     6.86   1922    True
+Missing details                     #1B2430   #F7941D         32  900     6.86   1957    True
+wrong,                              #1B2430   #F7941D         48  800     6.86   1976    True
+you                                 #1B2430   #F7941D         48  800     6.86   2417    True
+fix.                                #1B2430   #F7941D         48  800     6.86   2023    True
+Invalid email                       #1B2430   #F7941D         32  900     6.86   2058    True
+example,                            #1B2430   #F7941D         48  800     6.86   2058    True
+Email already used                  #1B2430   #F7941D         32  900     6.86   2166    True
+another                             #1B2430   #F7941D         48  800     6.86   2166    True
+uses                                #1B2430   #F7941D         48  800     6.86   2219    True
+refused.                            #1B2430   #F7941D         48  800     6.86   2239    True
+recap:                              #1B2430   #F7941D         48  800     6.86   2274    True
+member.                             #1B2430   #F7941D         48  800     6.86   2446    True
+on                                  #1B2430   #F7941D         48  800     6.86   2564    True
+WhatsApp.                           #1B2430   #F7941D         48  800     6.86   2575    True
+member                              #44506A   #FFFFFF         48  800     8.07     34    True
+in                                  #44506A   #FFFFFF         48  800     8.07     34    True
+Mega-Net                            #44506A   #FFFFFF         48  800     8.07     34    True
+Directory,                          #44506A   #FFFFFF         48  800     8.07    184    True
+not                                 #44506A   #FFFFFF         48  800     8.07    312    True
+see                                 #44506A   #FFFFFF         48  800     8.07    312    True
+Staff                               #44506A   #FFFFFF         48  800     8.07    312    True
+Directory                           #44506A   #FFFFFF         48  800     8.07    312    True
+your                                #44506A   #FFFFFF         48  800     8.07    492    True
+organization,                       #44506A   #FFFFFF         48  800     8.07    492    True
+box                                 #44506A   #FFFFFF         48  800     8.07    659    True
+to                                  #44506A   #FFFFFF         48  800     8.07    659    True
+find                                #44506A   #FFFFFF         48  800     8.07    659    True
+someone.                            #44506A   #FFFFFF         48  800     8.07    659    True
+is                                  #44506A   #FFFFFF         48  800     8.07    731    True
+the                                 #44506A   #FFFFFF         48  800     8.07    731    True
+Add                                 #44506A   #FFFFFF         48  800     8.07    731    True
+or                                  #44506A   #FFFFFF         48  800     8.07    731    True
+can                                 #44506A   #FFFFFF         48  800     8.07   1017    True
+belong                              #44506A   #FFFFFF         48  800     8.07   1017    True
+only                                #44506A   #FFFFFF         48  800     8.07   1017    True
+Admin,                              #44506A   #FFFFFF         48  800     8.07   1155    True
+from                                #44506A   #FFFFFF         48  800     8.07   1433    True
+organization's                      #44506A   #FFFFFF         48  800     8.07   1433    True
+field.                              #44506A   #FFFFFF         48  800     8.07   1526    True
+invite,                             #44506A   #FFFFFF         48  800     8.07   1674    True
+their                               #44506A   #FFFFFF         48  800     8.07   1805    True
+details.                            #44506A   #FFFFFF         48  800     8.07   1805    True
+wrong,                              #44506A   #FFFFFF         48  800     8.07   1957    True
+a                                   #44506A   #FFFFFF         48  800     8.07   2058    True
+missing                             #44506A   #FFFFFF         48  800     8.07   2058    True
+invalid                             #44506A   #FFFFFF         48  800     8.07   2058    True
+email                               #44506A   #FFFFFF         48  800     8.07   2058    True
+account                             #44506A   #FFFFFF         48  800     8.07   2166    True
+already                             #44506A   #FFFFFF         48  800     8.07   2166    True
+uses                                #44506A   #FFFFFF         48  800     8.07   2166    True
+open                                #44506A   #FFFFFF         48  800     8.07   2274    True
+add                                 #44506A   #FFFFFF         48  800     8.07   2417    True
+staff                               #44506A   #FFFFFF         48  800     8.07   2417    True
+Open Staff Directory                #1B2430   #FEEAD1         52  800    13.34    184    True
+Fill in a short form                #1B2430   #FEEED9         52  800    13.75    184    True
+What you will do                    #1B2430   #FEF0DF         64  900    13.97    184    True
+Fill in the form                    #1B2430   #FEF3E2         52  800    14.26   2274    True
+Add a staff member                  #1B2430   #FEF3E3         84  900    14.27     34    True
+Choose Save                         #1B2430   #FFF3E1         52  800    14.28   2274    True
+Save                                #1B2430   #FFF3E2         52  800    14.29    184    True
+To recap                            #1B2430   #FFF8EF         64  900    14.85   2274    True
+Add                                 #1B2430   #FFFFFF         48  800    15.65     34    True
+a                                   #1B2430   #FFFFFF         48  800    15.65     34    True
+new                                 #1B2430   #FFFFFF         48  800    15.65     34    True
+member                              #1B2430   #FFFFFF         48  800    15.65     70    True
+in                                  #1B2430   #FFFFFF         48  800    15.65     70    True
+EHR                                 #1B2430   #FFFFFF         48  800    15.65     90    True
+You                                 #1B2430   #FFFFFF         48  800    15.65    149    True
+need                                #1B2430   #FFFFFF         48  800    15.65    149    True
+Admin                               #1B2430   #FFFFFF         48  800    15.65    149    True
+will                                #1B2430   #FFFFFF         48  800    15.65    184    True
+open                                #1B2430   #FFFFFF         48  800    15.65    184    True
+fill                                #1B2430   #FFFFFF         48  800    15.65    260    True
+short                               #1B2430   #FFFFFF         48  800    15.65    260    True
+and                                 #1B2430   #FFFFFF         48  800    15.65    277    True
+Other                               #1B2430   #FFFFFF         48  800    15.65    312    True
+roles                               #1B2430   #FFFFFF         48  800    15.65    312    True
+not                                 #1B2430   #FFFFFF         48  800    15.65    354    True
+see                                 #1B2430   #FFFFFF         48  800    15.65    354    True
+Open                                #1B2430   #FFFFFF         48  800    15.65    407    True
+choose                              #1B2430   #FFFFFF         48  800    15.65    456    True
+The                                 #1B2430   #FFFFFF         48  800    15.65    492    True
+shows                               #1B2430   #FFFFFF         48  800    15.65    492    True
+your                                #1B2430   #FFFFFF         48  800    15.65    544    True
+with                                #1B2430   #FFFFFF         48  800    15.65    572    True
+their                               #1B2430   #FFFFFF         48  800    15.65    572    True
+facility,                           #1B2430   #FFFFFF         48  800    15.65    624    True
+Use                                 #1B2430   #FFFFFF         48  800    15.65    659    True
+box                                 #1B2430   #FFFFFF         48  800    15.65    695    True
+to                                  #1B2430   #FFFFFF         48  800    15.65    695    True
+find                                #1B2430   #FFFFFF         48  800    15.65    695    True
+Below                               #1B2430   #FFFFFF         48  800    15.65    731    True
+Edit                                #1B2430   #FFFFFF         48  800    15.65    780    True
+Fields                              #1B2430   #FFFFFF         48  800    15.65    864    True
+marked                              #1B2430   #FFFFFF         48  800    15.65    864    True
+an                                  #1B2430   #FFFFFF         48  800    15.65    864    True
+asterisk                            #1B2430   #FFFFFF         48  800    15.65    864    True
+are                                 #1B2430   #FFFFFF         48  800    15.65    864    True
+Type                                #1B2430   #FFFFFF         48  800    15.65    900    True
+first                               #1B2430   #FFFFFF         48  800    15.65    900    True
+last                                #1B2430   #FFFFFF         48  800    15.65    946    True
+Each                                #1B2430   #FFFFFF         48  800    15.65   1017    True
+can                                 #1B2430   #FFFFFF         48  800    15.65   1060    True
+belong                              #1B2430   #FFFFFF         48  800    15.65   1060    True
+one                                 #1B2430   #FFFFFF         48  800    15.65   1080    True
+Now                                 #1B2430   #FFFFFF         48  800    15.65   1115    True
+Org Admin                           #1B2430   #FFFFFF         40  800    15.65   1155    True
+Physician/Clinician                 #1B2430   #FFFFFF         40  800    15.65   1155    True
+Nurse                               #1B2430   #FFFFFF         40  800    15.65   1155    True
+Front Desk/Registration             #1B2430   #FFFFFF         40  800    15.65   1155    True
+Billing Clerk                       #1B2430   #FFFFFF         40  800    15.65   1155    True
+Lab Technician                      #1B2430   #FFFFFF         40  800    15.65   1155    True
+Pharmacist                          #1B2430   #FFFFFF         40  800    15.65   1155    True
+Inventory Manager                   #1B2430   #FFFFFF         40  800    15.65   1155    True
+Physician,                          #1B2430   #FFFFFF         48  800    15.65   1267    True
+Nurse,                              #1B2430   #FFFFFF         48  800    15.65   1267    True
+Front                               #1B2430   #FFFFFF         48  800    15.65   1267    True
+Billing                             #1B2430   #FFFFFF         48  800    15.65   1332    True
+Clerk,                              #1B2430   #FFFFFF         48  800    15.65   1332    True
+Lab                                 #1B2430   #FFFFFF         48  800    15.65   1332    True
+Pharmacist,                         #1B2430   #FFFFFF         48  800    15.65   1397    True
+Inventory                           #1B2430   #FFFFFF         48  800    15.65   1397    True
+Then                                #1B2430   #FFFFFF         48  800    15.65   1433    True
+from                                #1B2430   #FFFFFF         48  800    15.65   1482    True
+There                               #1B2430   #FFFFFF         48  800    15.65   1526    True
+no                                  #1B2430   #FFFFFF         48  800    15.65   1526    True
+never                               #1B2430   #FFFFFF         48  800    15.65   1608    True
+Choose                              #1B2430   #FFFFFF         48  800    15.65   1639    True
+A                                   #1B2430   #FFFFFF         48  800    15.65   1674    True
+message                             #1B2430   #FFFFFF         48  800    15.65   1674    True
+person                              #1B2430   #FFFFFF         48  800    15.65   1761    True
+appears                             #1B2430   #FFFFFF         48  800    15.65   1761    True
+form                                #1B2430   #FFFFFF         48  800    15.65   1805    True
+To                                  #1B2430   #FFFFFF         48  800    15.65   1895    True
+add                                 #1B2430   #FFFFFF         48  800    15.65   1895    True
+someone                             #1B2430   #FFFFFF         48  800    15.65   1895    True
+Clear                               #1B2430   #FFFFFF         48  800    15.65   1922    True
+If                                  #1B2430   #FFFFFF         48  800    15.65   1957    True
+something                           #1B2430   #FFFFFF         48  800    15.65   1957    True
+tells                               #1B2430   #FFFFFF         48  800    15.65   2023    True
+what                                #1B2430   #FFFFFF         48  800    15.65   2023    True
+For                                 #1B2430   #FFFFFF         48  800    15.65   2058    True
+missing                             #1B2430   #FFFFFF         48  800    15.65   2115    True
+invalid                             #1B2430   #FFFFFF         48  800    15.65   2115    True
+An                                  #1B2430   #FFFFFF         48  800    15.65   2166    True
+that                                #1B2430   #FFFFFF         48  800    15.65   2166    True
+account                             #1B2430   #FFFFFF         48  800    15.65   2219    True
+already                             #1B2430   #FFFFFF         48  800    15.65   2219    True
+Mega-Net Software                   #1B2430   #FFFFFF         72  900    15.65   2417    True
++2347076000030                      #1B2430   #FFFFFF         84  900    15.65   2417    True
+That                                #1B2430   #FFFFFF         48  800    15.65   2417    True
+how                                 #1B2430   #FFFFFF         48  800    15.65   2417    True
+Questions?                          #1B2430   #FFFFFF         48  800    15.65   2564    True
+Message                             #1B2430   #FFFFFF         48  800    15.65   2564    True
+Software                            #1B2430   #FFFFFF         48  800    15.65   2564    True
+distinct text+colour pairs: 227; text-node samples audited: 594; smallest font 32px; lowest contrast 4.87:1; failing samples: 0
+RESULT: PASS
+--- negative control lowcontrast-text (MUST fail)
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+Low contrast control                #B7C9E6   #BFCAC8         48  900     1.00   1080    True  <-- FAIL
+Fictional demo data                 #1458B5   #FFFFFF         32  900     6.79   1080    True
+One account per email               #1B2430   #F7941D         32  900     6.86   1080    True
+account.                            #1B2430   #F7941D         48  800     6.86   1080    True
+one                                 #1B2430   #FFFFFF         48  800    15.65   1080    True
+distinct text+colour pairs: 5; text-node samples audited: 5; smallest font 32px; lowest contrast 1.00:1; failing samples: 1
+RESULT: FAIL
+NEGATIVE CONTROL lowcontrast-text: PASS (flagged)
+--- negative control smalltext (MUST fail)
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+Small text control                  #1B2430   #1D2928         24  900     1.04   1080    True  <-- FAIL
+Fictional demo data                 #1458B5   #FFFFFF         32  900     6.79   1080    True
+One account per email               #1B2430   #F7941D         32  900     6.86   1080    True
+account.                            #1B2430   #F7941D         48  800     6.86   1080    True
+one                                 #1B2430   #FFFFFF         48  800    15.65   1080    True
+distinct text+colour pairs: 5; text-node samples audited: 5; smallest font 24px; lowest contrast 1.04:1; failing samples: 1
+RESULT: FAIL
+NEGATIVE CONTROL smalltext: PASS (flagged)
