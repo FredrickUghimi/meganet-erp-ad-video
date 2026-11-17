@@ -20,7 +20,10 @@
     "render:balancesheet": "remotion render MegaNetBalanceSheetAd out/meganet-balancesheet-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
     "poster:balancesheet": "remotion still MegaNetBalanceSheetAd out/meganet-balancesheet-poster.png --frame=157 --browser-executable=/opt/pw-browsers/chromium",
     "render:pharmacy": "remotion render MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-ad.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
-    "poster:pharmacy": "remotion still MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-poster.png --frame=395 --browser-executable=/opt/pw-browsers/chromium"
+    "poster:pharmacy": "remotion still MegaNetPharmacyInteractionAd out/meganet-pharmacy-interaction-poster.png --frame=395 --browser-executable=/opt/pw-browsers/chromium",
+    "render:tutorial-invite": "remotion render MegaNetTutorialInvite out/meganet-tutorial-invite.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
+    "render:tutorial-change": "remotion render MegaNetTutorialChange out/meganet-tutorial-change.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14",
+    "render:tutorial-deactivate": "remotion render MegaNetTutorialDeactivate out/meganet-tutorial-deactivate.mp4 --browser-executable=/opt/pw-browsers/chromium --crf=14"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.250",

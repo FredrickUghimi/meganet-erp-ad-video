@@ -1,5 +1,7 @@
 # Mega-Net ad series: style guide
 
+Section 6 covers the **tutorial series** (not ads), which shares this guide's look, safe area and checks but not its ad-only rules.
+
 Applies to every new vertical ad (1080x1920, 30fps, programmatic Remotion). The Ledger ad (`MegaNetLedgerAd`) is the reference build. The four earlier ads (`MegaNetAd`, `MegaNetEhrAd`, `MegaNetSentinelAd`, `MegaNetAssistantAd`) predate this guide and have not been recoloured.
 
 ## 1. Look: light, airy, brand blue and orange
@@ -44,8 +46,8 @@ Cards: white, 3px `#C9DCF6` border, soft blue-tinted shadow. Font: Inter (Inter 
 
 - Voice: a Microsoft `en-NG` neural voice, word-level timing, no music, never sped up, pauses between sentences about 0.3s, 2s frozen hold after the voice ends. **Series default: `en-NG-AbeoNeural` (male).** The voice is a per-feature choice: an ad uses a different `en-NG` voice only when the brief for that ad says so, and its script doc must name the voice and say it is a deliberate exception. The Voice column in section 5 records which voice each ad uses. Narration timing always comes from that ad's own generated audio, never from another ad's timings. Point `certifi` at `/root/.ccr/ca-bundle.crt` if TLS fails; verification stays on.
 - Captions match the narration word for word (`scripts/verify_captions_ledger.py` pattern).
-- No figures, names or statistics; rows, bars and chips are drawn placeholders. No app screenshots. Every product claim traced to the backend or frontend code and written up in the ad's script doc, with what is deliberately not claimed.
-- CTA: "Book a free demo", WhatsApp +2347035682478, meganetsoftware.com.ng.
+- No figures, names or statistics; rows, bars and chips are drawn placeholders. No app screenshots. (These two rules are for the ads; the tutorials in section 6 show real captures with fictional demo data.) Every product claim traced to the backend or frontend code and written up in the ad's script doc, with what is deliberately not claimed.
+- CTA: "Book a free demo", WhatsApp **+2347076000030** (updated 2026-11-17 by the project owner for everything made from now on; the nine ads published before that date show +2347035682478 and have not been changed), meganetsoftware.com.ng.
 
 ## 5. Hook rule: every ad in the series uses a different hook style
 
@@ -64,3 +66,17 @@ The first scene of each ad must be built differently from every other ad's first
 | `MegaNetPharmacyInteractionAd` | "Spot the collision": two drug tiles slide toward each other, an orange stop-bar drops between them and halts them, and the label "Interaction warning" lands; the words sit under the object in the caption pill, no question, no trail, no calendar story, no command stamp | Ezinne (`en-NG-EzinneNeural`, female; per-feature exception requested by the project owner) |
 
 Scene transitions should also vary between ads. The Cash Flow ad uses vertical blinds, a clock wipe, a blur dissolve, a diamond iris and a fade-through; the Pharmacy Interaction ad uses a split (barn doors from the centre line), a circle iris and a zoom-fade. The Ledger ad uses slides and wipes only, in a different direction at each cut (slide-left, wipe-up, slide-right, diagonal wipe, slide-up), all inside the safe area.
+
+## 6. Tutorial series (not ads)
+
+The Staff Directory tutorials (`MegaNetTutorialInvite`, `MegaNetTutorialChange`, `MegaNetTutorialDeactivate`, all in `src/MegaNetTutorials.tsx`) and any later tutorial. Script doc: `TUTORIAL_STAFF_DIRECTORY_SCRIPT.md`.
+
+- **Scope.** 60-120 s, one task per tutorial. The ad-only rules do not apply: the 28-32 s length, the hook rule and hook table (section 5), and the "Book a free demo" CTA copy. Everything about the look still applies: 1080x1920 at 30 fps, light backgrounds and the palette (section 1), Inter 800-900, the safe area and the caption zone (section 3).
+- **Voice.** `en-NG-EzinneNeural` for the whole series, a deliberate exception to the ads' default; each script doc names it as such. Narration timing comes from the tutorial's own generated audio (`scripts/tutorial_voice.py`, same method and certifi fix as `scripts/pharmacy_voice.py`; certificate verification stays on). No music, never sped up, 0.3 s between sentences, 0.4 s lead-in, 2 s frozen hold.
+- **Captions.** As section 3: burned in, word for word, at most 2 lines, bottom edge at y <= 1280, orange highlight on the spoken word, each chunk fitting two lines at 48 px. Captions follow the TTS word boundaries by 2 frames.
+- **Screens are real captures of a local build.** Captured from a local `EHR-Cloud-` build with fictional demo data (`seed_mega_net_demo`) and the console email backend, at a 360 CSS px viewport and device scale 3, shown 840 px wide (x2.333; 14 CSS px text becomes 32.7 px). Never the live Northgate demo, never staging or production, never real data, never a real email address; names and addresses on screen must be clearly fictional (`.example` domains), and anything else is masked. Every screen carries the chip "Fictional demo data" (32 px). A native dialog or dropdown that cannot be captured, and title / step / end cards, are drawn and any drawn imitation of the app carries the label "Drawn, not captured".
+- **Captured UI is held to the same rules, no exemption.** Measured on the captured pixels: text at least 4.5:1 against the worst background pixel behind it, at least 32 px effective size, no clipped text. `scripts/tutorials/tutorial_assets.py` pre-flights every crop and fails the build otherwise. App text that cannot meet this is kept out of the frame (a focus crop or a different crop) and listed in the script doc. The app's navy menu drawer is allowed as captured app UI (it is content, not a scene background).
+- **Claims.** Every step cites `file:line` in the script doc with what was checked locally and what was not. No compliance, encryption, "secure" or "HIPAA" wording unless the code proves it. Email delivery is never claimed unless the project owner has confirmed production email.
+- **Checks (every frame, with negative controls).** Safe area on lossless PNG frames; caption zone; captions word for word against the approved narration and the TTS transcript, the caption text actually rendered on every frame, and caption timing within 0.1 s of both the TTS boundaries and the silence-detected audio; every text box on every frame inside the safe area; contrast and size of drawn text on settled frames. Run with `scripts/tutorials/verify_tutorial.sh`; the ads' generic scripts are reused where they are not ad-specific. Results go in `out/tutorials-verification/<key>/`.
+- **End card.** "Mega-Net Software", "Questions? Message us on WhatsApp", **+2347076000030**, meganetsoftware.com.ng, with the logo card.
+- **Delivery.** A draft pull request only; never merged without the project owner's explicit request. App problems found while building are listed in the PR as suggestions, not fixed in this repo.

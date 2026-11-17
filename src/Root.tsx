@@ -8,6 +8,7 @@ import {LEDGER_DURATION, LEDGER_FPS, MegaNetLedgerAd} from './MegaNetLedgerAd';
 import {MegaNetProfitLossAd, PL_DURATION, PL_FPS} from './MegaNetProfitLossAd';
 import {BS_DURATION, BS_FPS, MegaNetBalanceSheetAd} from './MegaNetBalanceSheetAd';
 import {CF_DURATION, CF_FPS, MegaNetCashFlowAd} from './MegaNetCashFlowAd';
+import {MegaNetTutorialInvite, MegaNetTutorialChange, MegaNetTutorialDeactivate, tutDuration, TUT_FPS} from './MegaNetTutorials';
 import {MegaNetPharmacyInteractionAd, PH_DURATION, PH_FPS} from './MegaNetPharmacyInteractionAd';
 
 export const Root: React.FC = () => (
@@ -90,5 +91,8 @@ export const Root: React.FC = () => (
     height={1920}
     defaultProps={{debug: ''}}
   />
+  <Composition id="MegaNetTutorialInvite" component={MegaNetTutorialInvite} durationInFrames={tutDuration('invite')} fps={TUT_FPS} width={1080} height={1920} defaultProps={{debug: ''}} />
+  <Composition id="MegaNetTutorialChange" component={MegaNetTutorialChange} durationInFrames={tutDuration('change')} fps={TUT_FPS} width={1080} height={1920} defaultProps={{debug: ''}} />
+  <Composition id="MegaNetTutorialDeactivate" component={MegaNetTutorialDeactivate} durationInFrames={tutDuration('deactivate')} fps={TUT_FPS} width={1080} height={1920} defaultProps={{debug: ''}} />
   </>
 );
