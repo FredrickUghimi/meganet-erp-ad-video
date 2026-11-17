@@ -19,12 +19,12 @@ echo "== $KEY: negative-control stills"; mkdir -p "$W/neg"
 for n in violate-left violate-right violate-top violate-bottom violateweak-left; do R still $ID "$W/neg/$n.png" --frame=$NF --image-format=png --props="{\"debug\":\"$n\"}" > /dev/null 2>&1 || RC=1; done
 for n in nocaps-violate-caption nocaps-violateweak-caption; do R render $ID "$W/$n" --sequence --image-format=png --frames=0-5 --props="{\"debug\":\"$n\"}" --concurrency=4 > /dev/null 2>&1 || RC=1; done
 STARTS=$(python3 - <<PY
-import json
+import json, math
 t=open('src/tutorialTimings.ts').read(); T=json.loads(t[t.index('= {',t.index('TIMINGS:'))+2:t.rindex(';')])['$KEY']
 f=open('src/tutorialFrames.ts').read(); F=json.loads(f[f.index('= {',f.index('FRAMES:'))+2:f.rindex(';')])['$KEY']
 S=T['SENTENCES']; st=[]
 for i,fr in enumerate(F):
-    first=next(j for j,s in enumerate(S) if s['scene']==fr['scene']); st.append(0 if i==0 else 12+round(S[first+fr['at']]['start']*30)-9)
+    first=next(j for j,s in enumerate(S) if s['scene']==fr['scene']); st.append(0 if i==0 else 12+math.floor(S[first+fr['at']]['start']*30+0.5)-9)
 print(','.join(map(str,st)))
 PY
 )

@@ -21,8 +21,9 @@ const objOf = (file, name) => { const t = fs.readFileSync(file, 'utf8'); const i
 const T = objOf('src/tutorialTimings.ts', 'TIMINGS')[key];
 const FR = objOf('src/tutorialFrames.ts', 'FRAMES')[key];
 const LEAD = 12, FADE = 8, CAP_DELAY = 2, SETTLE = 34;
-const wordF = (s, w) => LEAD + Math.round(T.SENTENCES[s].words[w].start * 30);
-const wordEndF = (s, w) => LEAD + Math.round(T.SENTENCES[s].words[w].end * 30);
+const mid = (a, b) => LEAD + Math.round(((a + b) / 2) * 30);
+const capOn = (s, w) => (w === 0 ? mid(T.SENTENCES[s].words[0].start, T.SENTENCES[s].aon) : LEAD + Math.round(T.SENTENCES[s].words[w].start * 30) + CAP_DELAY);
+const capSentenceOff = (s) => mid(T.SENTENCES[s].words.at(-1).end, T.SENTENCES[s].aoff);
 const starts = FR.map((fr, i) => {
   if (i === 0) return 0;
   const first = T.SENTENCES.findIndex((s) => s.scene === fr.scene);
@@ -34,11 +35,11 @@ const frames = new Set();
 starts.forEach((s, i) => frames.add(Math.min(s + SETTLE, i + 1 < starts.length ? starts[i + 1] - 1 : FREEZE)));
 const skippedChunks = [];
 T.CHUNKS.forEach(([s, a, b], ci) => {
-  const on = wordF(s, a) + CAP_DELAY;
+  const on = capOn(s, a);
   const endsS = /[.?!]$/.test(T.SENTENCES[s].words[b].text);
-  const off = endsS || ci === T.CHUNKS.length - 1 ? wordEndF(s, b) + CAP_DELAY : wordF(T.CHUNKS[ci + 1][0], T.CHUNKS[ci + 1][1]) + CAP_DELAY;
+  const off = endsS || ci === T.CHUNKS.length - 1 ? capSentenceOff(s) : capOn(T.CHUNKS[ci + 1][0], T.CHUNKS[ci + 1][1]);
   let pick = null;
-  for (let f = Math.min(wordF(s, b) + CAP_DELAY + 4, off - 1); f >= on + 3; f--) if (settledAt(f)) { pick = f; break; }
+  for (let f = off - 1; f >= on + 3; f--) if (settledAt(f)) { pick = f; break; }
   if (pick === null) skippedChunks.push(ci); else frames.add(pick);
 });
 frames.add(FREEZE);

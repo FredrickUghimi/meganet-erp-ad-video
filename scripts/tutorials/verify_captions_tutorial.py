@@ -16,12 +16,13 @@ usage: verify_captions_tutorial.py KEY FULL_DIR NOCAPS_DIR FINAL.mp4 OUT_CSV TEX
    boundaries, two ways: the TTS word boundaries (+0.4s lead-in) and silence detection (-45dB) run on the rendered video's own
    audio. Pass = within 0.1s on both ends against both measurements.
 5) NEGATIVE CONTROLS: a changed word, a 0.25s timing shift and a blanked / altered caption frame must each be caught."""
-import ast, csv, glob, json, os, re, subprocess, sys
+import ast, csv, glob, json, math, os, re, subprocess, sys
 import numpy as np
 from PIL import Image
 
 KEY, CAPS, BGS, FINAL, OUT, TB = sys.argv[1:7]   # CAPS = full render dir, BGS = no-captions render dir
 FPS, LEAD, CAP_DELAY = 30, 12, 2
+jsr = lambda x: math.floor(x + 0.5)   # JavaScript Math.round (Python's round() is half-to-even and would disagree on exact .5 frames)
 root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 vs = ast.parse(open(os.path.join(root, 'scripts', 'tutorial_voice.py')).read())
 TUTORIALS = next(ast.literal_eval(n.value) for n in vs.body if isinstance(n, ast.Assign) and getattr(n.targets[0], 'id', '') == 'TUTORIALS')
@@ -30,7 +31,7 @@ t = open(os.path.join(root, 'src', 'tutorialTimings.ts')).read()
 i = t.index('= {', t.index('TIMINGS:')) + 2
 T = json.loads(t[i:t.rindex(';')])[KEY]
 S, CH = T['SENTENCES'], T['CHUNKS']
-FREEZE = LEAD + round(T['VOICE_END'] * FPS)
+FREEZE = LEAD + jsr(T['VOICE_END'] * FPS)
 norm = lambda w: re.sub(r'[^\w-]', '', w).lower()
 ok = True
 
@@ -50,11 +51,11 @@ print('caption chunks (each fits 2 lines at 48px):')
 for s, a, b in CH: print('  |', ' '.join(w['text'] for w in S[s]['words'][a:b + 1]))
 
 # chunk windows, same formulas as src/MegaNetTutorials.tsx
-wordF = lambda s, w: LEAD + round(S[s]['words'][w]['start'] * FPS)
-wordEndF = lambda s, w: LEAD + round(S[s]['words'][w]['end'] * FPS)
+mid = lambda a, b: LEAD + jsr(((a + b) / 2) * FPS)
+def cap_on(s, w): return mid(S[s]['words'][0]['start'], S[s]['aon']) if w == 0 else LEAD + jsr(S[s]['words'][w]['start'] * FPS) + CAP_DELAY
 def window(ci):
-    s, a, b = CH[ci]; on = wordF(s, a) + CAP_DELAY
-    off = wordEndF(s, b) + CAP_DELAY if (re.search(r'[.?!]$', S[s]['words'][b]['text']) or ci == len(CH) - 1) else wordF(*CH[ci + 1][:2]) + CAP_DELAY
+    s, a, b = CH[ci]; on = cap_on(s, a)
+    off = mid(S[s]['words'][-1]['end'], S[s]['aoff']) if (re.search(r'[.?!]$', S[s]['words'][b]['text']) or ci == len(CH) - 1) else cap_on(*CH[ci + 1][:2])
     return on, off
 def expected_text(f):
     ff = min(f, FREEZE)

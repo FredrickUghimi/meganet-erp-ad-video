@@ -27,7 +27,7 @@ export const TUT_FPS = 30;
 export type TutKey = 'invite' | 'change' | 'deactivate';
 const LEAD = 12; // 0.4s before the voice starts
 const FADE = 8; // cross-fade between frames
-const CAP_DELAY = 2; // captions run 2 frames behind the TTS word boundaries (they lead the audible onset by ~0.05-0.15s)
+const CAP_DELAY = 2; // words inside a sentence run 2 frames behind the TTS word boundaries (they lead the audible onset by ~0.05-0.15s)
 export const freezeFrame = (k: TutKey) => LEAD + Math.round(TIMINGS[k].VOICE_END * TUT_FPS);
 export const tutDuration = (k: TutKey) => freezeFrame(k) + 2 * TUT_FPS;
 
@@ -209,15 +209,25 @@ const FrameLayer: React.FC<{k: TutKey; i: number}> = ({k, i}) => {
 
 /* ---------- captions (burned in, word for word; max 2 lines, bottom edge at y=1272, limit 1280) ---------- */
 
-const wordF = (k: TutKey, s: number, w: number) => LEAD + Math.round(TIMINGS[k].SENTENCES[s].words[w].start * TUT_FPS);
-const wordEndF = (k: TutKey, s: number, w: number) => LEAD + Math.round(TIMINGS[k].SENTENCES[s].words[w].end * TUT_FPS);
+/* A sentence's first caption appears, and its last disappears, halfway between the TTS engine's word boundary and the audible
+ * start/end measured on the generated audio (their gap is typically 0.05-0.15 s), so the caption stays within 0.1 s of both.
+ * Words inside a sentence follow the TTS boundaries by CAP_DELAY frames. */
+const mid = (a: number, b: number) => LEAD + Math.round(((a + b) / 2) * TUT_FPS);
+const capOn = (k: TutKey, s: number, w: number) => {
+  const S = TIMINGS[k].SENTENCES[s];
+  return w === 0 ? mid(S.words[0].start, S.aon) : LEAD + Math.round(S.words[w].start * TUT_FPS) + CAP_DELAY;
+};
+const capSentenceOff = (k: TutKey, s: number) => {
+  const S = TIMINGS[k].SENTENCES[s];
+  return mid(S.words[S.words.length - 1].end, S.aoff);
+};
 const endsSentence = (k: TutKey, s: number, b: number) => /[.?!]$/.test(TIMINGS[k].SENTENCES[s].words[b].text);
 /** [on, off) frame window of caption chunk i. */
 export const chunkWindow = (k: TutKey, i: number): [number, number] => {
   const C = TIMINGS[k].CHUNKS;
   const [s, a, b] = C[i];
-  const on = wordF(k, s, a) + CAP_DELAY;
-  const off = endsSentence(k, s, b) || i === C.length - 1 ? wordEndF(k, s, b) + CAP_DELAY : wordF(k, C[i + 1][0], C[i + 1][1]) + CAP_DELAY;
+  const on = capOn(k, s, a);
+  const off = endsSentence(k, s, b) || i === C.length - 1 ? capSentenceOff(k, s) : capOn(k, C[i + 1][0], C[i + 1][1]);
   return [on, off];
 };
 
@@ -240,8 +250,8 @@ const Captions: React.FC<{k: TutKey}> = ({k}) => {
         <div style={{maxWidth: COL_W, boxSizing: 'border-box', padding: '14px 30px', borderRadius: 36, background: WHITE, border: '3px solid #9FBFEA', boxShadow: '0 4px 10px rgba(26,80,160,0.12)', fontSize: 48, lineHeight: 1.22, fontWeight: 800, textAlign: 'center', opacity: t}}>
           {words.slice(a, b + 1).map((w, i) => {
             const wi = a + i;
-            const started = f >= wordF(k, s, wi) + CAP_DELAY;
-            const nextStart = wi + 1 < words.length ? wordF(k, s, wi + 1) + CAP_DELAY : Infinity;
+            const started = f >= capOn(k, s, wi);
+            const nextStart = wi + 1 < words.length ? capOn(k, s, wi + 1) : Infinity;
             const active = started && f < nextStart;
             return (
               <React.Fragment key={wi}>
