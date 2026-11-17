@@ -1,0 +1,27 @@
+n,sentence,caption_on_s,caption_off_s,tts_start_s,tts_end_s,audio_start_s,audio_end_s,max_abs_delta_s,result
+1,Add a new staff member in Mega-Net EHR Cloud.,0.500,3.033,0.430,3.005,0.580,3.078,0.080,PASS
+2,You need the Org Admin role.,3.467,5.000,3.395,4.933,3.550,5.035,0.084,PASS
+3,"You will open Staff Directory, fill in a short form, and save.",5.400,9.267,5.323,9.210,5.474,9.312,0.077,PASS
+4,Other roles do not see Staff Directory in the menu.,9.667,12.400,9.600,12.363,9.742,12.465,0.075,PASS
+5,"Open the menu, and choose Staff Directory.",12.833,15.233,12.752,15.190,12.884,15.293,0.081,PASS
+6,"The list shows everyone in your organization, with their role, facility, and status.",15.633,20.833,15.580,20.767,15.719,20.870,0.085,PASS
+7,Use the filter box to find someone.,21.233,23.200,21.157,23.157,21.303,23.260,0.076,PASS
+8,Below the list is the Add or Edit Staff form.,23.600,26.033,23.547,25.973,23.677,26.074,0.077,PASS
+9,Fields marked with an asterisk are required.,26.433,28.833,26.362,28.800,26.484,28.873,0.071,PASS
+10,"Type the first name, the last name, and the email address.",29.267,32.767,29.190,32.703,29.335,32.805,0.077,PASS
+11,Each email address can belong to only one account.,33.167,36.033,33.093,35.968,33.226,36.071,0.074,PASS
+12,Now choose a role.,36.433,37.333,36.358,37.295,36.488,37.398,0.076,PASS
+13,"The roles are Org Admin, Physician, Nurse, Front Desk, Billing Clerk, Lab Technician, Pharmacist, and Inventory Manager.",37.733,46.600,37.685,46.560,37.799,46.657,0.066,PASS
+14,Then choose a facility from your organization's list.,47.000,49.700,46.950,49.663,47.070,49.752,0.070,PASS
+15,There is no password field.,50.133,51.467,50.053,51.415,50.181,51.486,0.081,PASS
+16,You never choose or see a password.,51.867,53.633,51.805,53.580,51.957,53.664,0.090,PASS
+17,Choose Save.,54.033,54.667,53.970,54.620,54.083,54.723,0.063,PASS
+18,"A message confirms the invite, and the new person appears in the list.",55.067,59.033,55.010,58.985,55.117,59.060,0.057,PASS
+19,The form keeps their details.,59.433,61.133,59.375,61.087,59.505,61.190,0.071,PASS
+20,"To add someone else, choose Clear first.",61.567,64.100,61.477,64.053,61.623,64.131,0.089,PASS
+21,"If something is wrong, Save tells you what to fix.",64.500,67.467,64.443,67.418,64.591,67.520,0.091,PASS
+22,"For example, a missing or invalid email address.",67.867,71.067,67.808,71.020,67.950,71.123,0.083,PASS
+23,An email that another account already uses is refused.,71.467,74.667,71.410,74.610,71.532,74.694,0.065,PASS
+24,"To recap: open Staff Directory, fill in the form, and choose Save.",75.067,79.433,75.000,79.388,75.145,79.490,0.078,PASS
+25,That is how you add a staff member.,79.833,81.567,79.778,81.528,79.908,81.630,0.074,PASS
+26,Questions? Message Mega-Net Software on WhatsApp.,81.967,85.867,81.918,85.830,82.034,85.898,0.068,PASS

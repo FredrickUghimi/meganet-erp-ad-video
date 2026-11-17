@@ -1,0 +1,198 @@
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+Org Admin only                      #FFFFFF   #1A6DE0         32  900     4.87     34    True
+1                                   #FFFFFF   #1A6DE0         44  900     4.87    191    True
+2                                   #FFFFFF   #1A6DE0         44  900     4.87    191    True
+3                                   #FFFFFF   #1A6DE0         44  900     4.87    191    True
+OK                                  #FFFFFF   #1A6DE0         38  900     4.87    725    True
+Staff Directory in Mega-Net EHR Cl  #1458B5   #FEE8CC         48  800     5.70     34    True
+Fictional demo data                 #1458B5   #FFFFFF         32  900     6.79     34    True
+Cancel                              #1458B5   #FFFFFF         38  900     6.79    725    True
+Questions? Message us on WhatsApp   #1458B5   #FFFFFF         38  800     6.79   1736    True
+meganetsoftware.com.ng              #1458B5   #FFFFFF         48  800     6.79   1736    True
+a                                   #1B2430   #F7941D         48  800     6.86     34    True
+staff                               #1B2430   #F7941D         48  800     6.86   1766    True
+in                                  #1B2430   #F7941D         48  800     6.86    464    True
+EHR                                 #1B2430   #F7941D         48  800     6.86     89    True
+Cloud.                              #1B2430   #F7941D         48  800     6.86     98    True
+the                                 #1B2430   #F7941D         48  800     6.86    191    True
+role.                               #1B2430   #F7941D         48  800     6.86    156    True
+person,                             #1B2430   #F7941D         48  800     6.86    216    True
+confirm.                            #1B2430   #F7941D         48  800     6.86    276    True
+Step 1: open the menu               #1B2430   #F7941D         32  900     6.86    311    True
+menu,                               #1B2430   #F7941D         48  800     6.86    311    True
+Directory.                          #1B2430   #F7941D         48  800     6.86    361    True
+Find the person                     #1B2430   #F7941D         32  900     6.86    396    True
+is                                  #1B2430   #F7941D         48  800     6.86    396    True
+long,                               #1B2430   #F7941D         48  800     6.86    418    True
+of                                  #1B2430   #F7941D         48  800     6.86    525    True
+box.                                #1B2430   #F7941D         48  800     6.86    490    True
+Step 2: choose the row              #1B2430   #F7941D         32  900     6.86    525    True
+you                                 #1B2430   #F7941D         48  800     6.86    546    True
+deactivate.                         #1B2430   #F7941D         48  800     6.86    573    True
+Details load here                   #1B2430   #F7941D         32  900     6.86    609    True
+load                                #1B2430   #F7941D         48  800     6.86    609    True
+below.                              #1B2430   #F7941D         48  800     6.86    648    True
+Step 3: Deactivate                  #1B2430   #F7941D         32  900     6.86    684    True
+Deactivate.                         #1B2430   #F7941D         48  800     6.86    684    True
+Drawn, not captured                 #1B2430   #F7941D         32  900     6.86    725    True
+asks                                #1B2430   #F7941D         48  800     6.86    725    True
+Cancel,                             #1B2430   #F7941D         48  800     6.86    781    True
+changes.                            #1B2430   #F7941D         48  800     6.86    830    True
+ahead.                              #1B2430   #F7941D         48  800     6.86    881    True
+Deactivated                         #1B2430   #F7941D         32  900     6.86    916    True
+confirms                            #1B2430   #F7941D         48  800     6.86    916    True
+it,                                 #1B2430   #F7941D         48  800     6.86    942    True
+Deactivated.                        #1B2430   #F7941D         48  800     6.86   1015    True
+Still in the list                   #1B2430   #F7941D         32  900     6.86   1051    True
+Deactivating                        #1B2430   #F7941D         48  800     6.86   1051    True
+organization.                       #1B2430   #F7941D         48  800     6.86   1118    True
+deleted.                            #1B2430   #F7941D         48  800     6.86   1162    True
+list.                               #1B2430   #F7941D         48  800     6.86   1218    True
+Login refused                       #1B2430   #F7941D         32  900     6.86   1254    True
+deactivated                         #1B2430   #F7941D         48  800     6.86   1254    True
+log                                 #1B2430   #F7941D         48  800     6.86   1299    True
+refused.                            #1B2430   #F7941D         48  800     6.86   1342    True
+Your own record                     #1B2430   #F7941D         32  900     6.86   1378    True
+works                               #1B2430   #F7941D         48  800     6.86   1378    True
+person.                             #1B2430   #F7941D         48  800     6.86   1431    True
+record.                             #1B2430   #F7941D         48  800     6.86   1499    True
+try.                                #1B2430   #F7941D         48  800     6.86   1565    True
+recap:                              #1B2430   #F7941D         48  800     6.86   1600    True
+member.                             #1B2430   #F7941D         48  800     6.86   1776    True
+on                                  #1B2430   #F7941D         48  800     6.86   1893    True
+WhatsApp.                           #1B2430   #F7941D         48  800     6.86   1905    True
+staff                               #44506A   #FFFFFF         48  800     8.07     34    True
+member                              #44506A   #FFFFFF         48  800     8.07     34    True
+in                                  #44506A   #FFFFFF         48  800     8.07     34    True
+Mega-Net                            #44506A   #FFFFFF         48  800     8.07     34    True
+EHR                                 #44506A   #FFFFFF         48  800     8.07     34    True
+person,                             #44506A   #FFFFFF         48  800     8.07    191    True
+long,                               #44506A   #FFFFFF         48  800     8.07    396    True
+the                                 #44506A   #FFFFFF         48  800     8.07    525    True
+person                              #44506A   #FFFFFF         48  800     8.07    525    True
+you                                 #44506A   #FFFFFF         48  800     8.07    525    True
+into                                #44506A   #FFFFFF         48  800     8.07    609    True
+form                                #44506A   #FFFFFF         48  800     8.07    609    True
+below.                              #44506A   #FFFFFF         48  800     8.07    609    True
+to                                  #44506A   #FFFFFF         48  800     8.07    725    True
+confirm.                            #44506A   #FFFFFF         48  800     8.07    725    True
+it,                                 #44506A   #FFFFFF         48  800     8.07    916    True
+removes                             #44506A   #FFFFFF         48  800     8.07   1051    True
+their                               #44506A   #FFFFFF         48  800     8.07   1051    True
+access                              #44506A   #FFFFFF         48  800     8.07   1051    True
+this                                #44506A   #FFFFFF         48  800     8.07   1051    True
+organization.                       #44506A   #FFFFFF         48  800     8.07   1051    True
+who                                 #44506A   #FFFFFF         48  800     8.07   1254    True
+tries                               #44506A   #FFFFFF         48  800     8.07   1254    True
+log                                 #44506A   #FFFFFF         48  800     8.07   1254    True
+only                                #44506A   #FFFFFF         48  800     8.07   1378    True
+after                               #44506A   #FFFFFF         48  800     8.07   1378    True
+choose                              #44506A   #FFFFFF         48  800     8.07   1378    True
+a                                   #44506A   #FFFFFF         48  800     8.07   1378    True
+deactivate                          #44506A   #FFFFFF         48  800     8.07   1736    True
+Deactivate a staff member           #1B2430   #FDE4C6         84  900    12.74     34    True
+Choose the person                   #1B2430   #FEECD5         52  800    13.55    191    True
+Choose Deactivate                   #1B2430   #FEEDD6         52  800    13.64    191    True
+What you will do                    #1B2430   #FEF0DF         64  900    13.97    191    True
+Confirm                             #1B2430   #FFF3E2         52  800    14.29    191    True
+To recap                            #1B2430   #FFF8EF         64  900    14.85   1600    True
+Deactivate                          #1B2430   #FFFFFF         48  800    15.65     34    True
+member                              #1B2430   #FFFFFF         48  800    15.65     89    True
+Mega-Net                            #1B2430   #FFFFFF         48  800    15.65     89    True
+You                                 #1B2430   #FFFFFF         48  800    15.65    156    True
+need                                #1B2430   #FFFFFF         48  800    15.65    156    True
+Org                                 #1B2430   #FFFFFF         48  800    15.65    156    True
+Admin                               #1B2430   #FFFFFF         48  800    15.65    156    True
+will                                #1B2430   #FFFFFF         48  800    15.65    191    True
+choose                              #1B2430   #FFFFFF         48  800    15.65    191    True
+Deactivate,                         #1B2430   #FFFFFF         48  800    15.65    276    True
+and                                 #1B2430   #FFFFFF         48  800    15.65    276    True
+Open                                #1B2430   #FFFFFF         48  800    15.65    311    True
+Staff                               #1B2430   #FFFFFF         48  800    15.65    361    True
+If                                  #1B2430   #FFFFFF         48  800    15.65    396    True
+list                                #1B2430   #FFFFFF         48  800    15.65    396    True
+type                                #1B2430   #FFFFFF         48  800    15.65    464    True
+part                                #1B2430   #FFFFFF         48  800    15.65    464    True
+person's                            #1B2430   #FFFFFF         48  800    15.65    464    True
+name                                #1B2430   #FFFFFF         48  800    15.65    464    True
+filter                              #1B2430   #FFFFFF         48  800    15.65    490    True
+Choose                              #1B2430   #FFFFFF         48  800    15.65    525    True
+row                                 #1B2430   #FFFFFF         48  800    15.65    525    True
+person                              #1B2430   #FFFFFF         48  800    15.65    546    True
+want                                #1B2430   #FFFFFF         48  800    15.65    573    True
+to                                  #1B2430   #FFFFFF         48  800    15.65    573    True
+Their                               #1B2430   #FFFFFF         48  800    15.65    609    True
+details                             #1B2430   #FFFFFF         48  800    15.65    609    True
+into                                #1B2430   #FFFFFF         48  800    15.65    648    True
+form                                #1B2430   #FFFFFF         48  800    15.65    648    True
+Deactivate Nneka Eze? They'll no l  #1B2430   #FFFFFF         44  800    15.65    725    True
+The                                 #1B2430   #FFFFFF         48  800    15.65    725    True
+app                                 #1B2430   #FFFFFF         48  800    15.65    725    True
+nothing                             #1B2430   #FFFFFF         48  800    15.65    830    True
+OK                                  #1B2430   #FFFFFF         48  800    15.65    881    True
+go                                  #1B2430   #FFFFFF         48  800    15.65    881    True
+A                                   #1B2430   #FFFFFF         48  800    15.65    916    True
+message                             #1B2430   #FFFFFF         48  800    15.65    916    True
+status                              #1B2430   #FFFFFF         48  800    15.65   1015    True
+changes                             #1B2430   #FFFFFF         48  800    15.65   1015    True
+removes                             #1B2430   #FFFFFF         48  800    15.65   1118    True
+their                               #1B2430   #FFFFFF         48  800    15.65   1118    True
+access                              #1B2430   #FFFFFF         48  800    15.65   1118    True
+this                                #1B2430   #FFFFFF         48  800    15.65   1118    True
+Nothing                             #1B2430   #FFFFFF         48  800    15.65   1162    True
+stays                               #1B2430   #FFFFFF         48  800    15.65   1218    True
+who                                 #1B2430   #FFFFFF         48  800    15.65   1299    True
+tries                               #1B2430   #FFFFFF         48  800    15.65   1299    True
+with                                #1B2430   #FFFFFF         48  800    15.65   1342    True
+that                                #1B2430   #FFFFFF         48  800    15.65   1342    True
+role                                #1B2430   #FFFFFF         48  800    15.65   1342    True
+only                                #1B2430   #FFFFFF         48  800    15.65   1421    True
+after                               #1B2430   #FFFFFF         48  800    15.65   1421    True
+cannot                              #1B2430   #FFFFFF         48  800    15.65   1499    True
+deactivate                          #1B2430   #FFFFFF         48  800    15.65   1499    True
+your                                #1B2430   #FFFFFF         48  800    15.65   1499    True
+own                                 #1B2430   #FFFFFF         48  800    15.65   1499    True
+screen                              #1B2430   #FFFFFF         48  800    15.65   1558    True
+tells                               #1B2430   #FFFFFF         48  800    15.65   1558    True
+so                                  #1B2430   #FFFFFF         48  800    15.65   1558    True
+if                                  #1B2430   #FFFFFF         48  800    15.65   1558    True
+To                                  #1B2430   #FFFFFF         48  800    15.65   1600    True
+Mega-Net Software                   #1B2430   #FFFFFF         72  900    15.65   1736    True
++2347076000030                      #1B2430   #FFFFFF         84  900    15.65   1736    True
+That                                #1B2430   #FFFFFF         48  800    15.65   1736    True
+how                                 #1B2430   #FFFFFF         48  800    15.65   1736    True
+Questions?                          #1B2430   #FFFFFF         48  800    15.65   1893    True
+Message                             #1B2430   #FFFFFF         48  800    15.65   1893    True
+Software                            #1B2430   #FFFFFF         48  800    15.65   1893    True
+distinct text+colour pairs: 165; text-node samples audited: 427; smallest font 32px; lowest contrast 4.87:1; failing samples: 0
+RESULT: PASS
+--- negative control lowcontrast-text (MUST fail)
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+Low contrast control                #B7C9E6   #BCCAD0         48  900     1.00   1118    True  <-- FAIL
+Fictional demo data                 #1458B5   #FFFFFF         32  900     6.79   1118    True
+Still in the list                   #1B2430   #F7941D         32  900     6.86   1118    True
+organization.                       #1B2430   #F7941D         48  800     6.86   1118    True
+Deactivating                        #1B2430   #FFFFFF         48  800    15.65   1118    True
+removes                             #1B2430   #FFFFFF         48  800    15.65   1118    True
+their                               #1B2430   #FFFFFF         48  800    15.65   1118    True
+access                              #1B2430   #FFFFFF         48  800    15.65   1118    True
+to                                  #1B2430   #FFFFFF         48  800    15.65   1118    True
+this                                #1B2430   #FFFFFF         48  800    15.65   1118    True
+distinct text+colour pairs: 10; text-node samples audited: 10; smallest font 32px; lowest contrast 1.00:1; failing samples: 1
+RESULT: FAIL
+NEGATIVE CONTROL lowcontrast-text: PASS (flagged)
+--- negative control smalltext (MUST fail)
+text                                text colour worst bg pixel  px   wt contrast  frame in safe
+Small text control                  #1B2430   #5C7371         24  900     3.09   1118    True  <-- FAIL
+Fictional demo data                 #1458B5   #FFFFFF         32  900     6.79   1118    True
+Still in the list                   #1B2430   #F7941D         32  900     6.86   1118    True
+organization.                       #1B2430   #F7941D         48  800     6.86   1118    True
+Deactivating                        #1B2430   #FFFFFF         48  800    15.65   1118    True
+removes                             #1B2430   #FFFFFF         48  800    15.65   1118    True
+their                               #1B2430   #FFFFFF         48  800    15.65   1118    True
+access                              #1B2430   #FFFFFF         48  800    15.65   1118    True
+to                                  #1B2430   #FFFFFF         48  800    15.65   1118    True
+this                                #1B2430   #FFFFFF         48  800    15.65   1118    True
+distinct text+colour pairs: 10; text-node samples audited: 10; smallest font 24px; lowest contrast 3.09:1; failing samples: 1
+RESULT: FAIL
+NEGATIVE CONTROL smalltext: PASS (flagged)

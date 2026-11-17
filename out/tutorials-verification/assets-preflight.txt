@@ -1,0 +1,42 @@
+Staff Directory tutorials: asset pre-flight (every captured crop)
+captures: /tmp/claude-0/-home-user-EHR-Cloud-/f4f0bcf6-9e3b-53c4-926b-5666168a7217/scratchpad/tut/shots
+
+T1 frame 03 ui    shot=s40_nurse_drawer y0=354.8 h=354 text boxes=8 min contrast=8.19:1 min size=32.9 px issues=none emails=-
+T1 frame 04 ui    shot=s02_drawer_open y0=354.6 h=354 text boxes=8 min contrast=5.01:1 min size=32.9 px issues=none emails=-
+T1 frame 05 ui    shot=s03_list_top y0=240.2 h=354 text boxes=6 min contrast=5.07:1 min size=34.3 px issues=none emails=['mnd.inventory@demo.mega-net.example']
+T1 frame 06 ui    shot=s04_filter_one_card y0=236.2 h=354 text boxes=6 min contrast=14.81:1 min size=34.3 px issues=none emails=['mnd.frontdesk@demo.mega-net.example']
+T1 frame 07 ui    shot=s05_form_empty y0=115.7 h=354 text boxes=13 min contrast=5.07:1 min size=32.7 px issues=none emails=['amara.chukwu@example.com']
+T1 frame 08 ui    shot=s09_names_typed y0=115.7 h=354 text boxes=13 min contrast=7.35:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T1 frame 09 ui    shot=s09_names_typed y0=239.7 h=354 text boxes=12 min contrast=7.35:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T1 frame 10 ui    shot=s10_role_chosen y0=238.5 h=354 text boxes=12 min contrast=7.35:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T1 frame 12 ui    shot=s11_ready_to_save y0=471.2 h=100 text boxes=3 min contrast=7.35:1 min size=32.7 px issues=none emails=-
+T1 frame 13 ui    shot=s11_ready_to_save y0=115.7 h=354 text boxes=13 min contrast=7.35:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T1 frame 14 ui    shot=s11_ready_to_save y0=572.2 h=60 text boxes=1 min contrast=5.01:1 min size=34.3 px issues=none emails=-
+T1 frame 15 stack shot=s13_new_row_listed y0=250.2 h=294.4 text boxes=5 min contrast=12.84:1 min size=34.3 px issues=none emails=['nneka.eze@demo.mega-net.example'] toast=s12_after_invite_toast mask_residual=0 kept_text_diff=225
+T1 frame 16 ui    shot=s12_after_invite_toast y0=364.7 h=354 text boxes=10 min contrast=5.44:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T1 frame 17 ui    shot=s06_err_empty y0=103.7 h=354 text boxes=11 min contrast=5.07:1 min size=32.7 px issues=none emails=-
+T1 frame 18 ui    shot=s07_err_bad_email y0=107.7 h=354 text boxes=11 min contrast=6.06:1 min size=32.7 px issues=none emails=-
+T1 frame 19 ui    shot=s08_err_duplicate y0=111.7 h=354 text boxes=12 min contrast=6.06:1 min size=32.7 px issues=none emails=['mnd.nurse@demo.mega-net.example']
+T2 frame 03 ui    shot=s02_drawer_open y0=354.6 h=354 text boxes=8 min contrast=5.01:1 min size=32.9 px issues=none emails=-
+T2 frame 04 ui    shot=s13_new_row_listed y0=258.2 h=354 text boxes=7 min contrast=12.84:1 min size=34.3 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 05 ui    shot=s13_new_row_listed y0=258.2 h=354 text boxes=7 min contrast=12.84:1 min size=34.3 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 06 ui    shot=s21_form_loaded y0=100.5 h=354 text boxes=12 min contrast=7.35:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 07 ui    shot=s21_form_loaded y0=316.4 h=354 text boxes=12 min contrast=5.01:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 08 ui    shot=s22_role_facility_changed y0=367.2 h=354 text boxes=10 min contrast=5.01:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 09 ui    shot=s22_role_facility_changed y0=364.9 h=354 text boxes=10 min contrast=5.01:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 10 stack shot=s24b_row_updated_unselected y0=446.2 h=293.1 text boxes=5 min contrast=4.71:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example'] toast=s23_after_update_toast mask_residual=None kept_text_diff=None
+T2 frame 11 ui    shot=s21_form_loaded y0=162.8 h=354 text boxes=14 min contrast=7.35:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 12 ui    shot=s21_form_loaded y0=364.9 h=354 text boxes=10 min contrast=5.01:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T2 frame 13 ui    shot=s25_edit_own_error y0=104.5 h=354 text boxes=11 min contrast=6.06:1 min size=32.7 px issues=none emails=-
+T3 frame 03 ui    shot=s02_drawer_open y0=354.6 h=354 text boxes=8 min contrast=5.01:1 min size=32.9 px issues=none emails=-
+T3 frame 04 ui    shot=s24b_row_updated_unselected y0=258.2 h=354 text boxes=7 min contrast=12.84:1 min size=34.3 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T3 frame 05 ui    shot=s24b_row_updated_unselected y0=258.2 h=354 text boxes=7 min contrast=12.84:1 min size=34.3 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T3 frame 06 ui    shot=s30_form_ready_deactivate y0=100.5 h=354 text boxes=12 min contrast=7.35:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T3 frame 07 ui    shot=s30_form_ready_deactivate y0=364.9 h=354 text boxes=10 min contrast=5.01:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T3 frame 10 stack shot=s32_row_deactivated y0=486.9 h=293.1 text boxes=4 min contrast=12.84:1 min size=32.7 px issues=none emails=- toast=s31_after_deactivate_toast mask_residual=None kept_text_diff=None
+T3 frame 11 ui    shot=s32_row_deactivated y0=363.5 h=354 text boxes=7 min contrast=12.84:1 min size=32.7 px issues=none emails=['nneka.eze@demo.mega-net.example']
+T3 frame 12 ui    shot=s36_login_refused y0=32 h=354 text boxes=9 min contrast=7.39:1 min size=33.6 px issues=none emails=-
+T3 frame 13 stack shot=s34_own_deactivate_error y0=360.9 h=233.1 text boxes=7 min contrast=7.35:1 min size=32.7 px issues=none emails=['mnd.admin@demo.mega-net.example'] toast=s34_own_deactivate_error mask_residual=None kept_text_diff=None
+
+captured frames: 36; minimum contrast over all of them: 4.71:1; minimum effective text size: 32.7 px
+RESULT: PASS

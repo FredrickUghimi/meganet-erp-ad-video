@@ -1,0 +1,73 @@
+deactivate: caption words 166 | approved narration words 166 | TTS-reported words 166
+TEXT vs approved narration, word for word, in order: PASS
+TEXT vs TTS engine word-boundary transcript (punctuation stripped): PASS
+word mismatches: none (first 6 words: Deactivate/Deactivate/Deactivate | a/a/a | staff/staff/staff | member/member/member | in/in/in | Mega-Net/Mega-Net/Mega-Net)
+caption chunks (each fits 2 lines at 48px):
+  | Deactivate a staff member in Mega-Net EHR
+  | Cloud.
+  | You need the Org Admin role.
+  | You will choose the person,
+  | choose Deactivate, and confirm.
+  | Open the menu,
+  | and choose Staff Directory.
+  | If the list is long,
+  | type part of the person's name in
+  | the filter box.
+  | Choose the row of the person you
+  | want to deactivate.
+  | Their details load into the form below.
+  | Choose Deactivate.
+  | The app asks you to confirm.
+  | If you choose Cancel,
+  | nothing changes.
+  | Choose OK to go ahead.
+  | A message confirms it,
+  | and the person's status changes to Deactivated.
+  | Deactivating removes their access to this organization.
+  | Nothing is deleted.
+  | The person stays in the list.
+  | A deactivated person who tries to log
+  | in with that role is refused.
+  | Deactivate works only after you choose a
+  | person.
+  | You cannot deactivate your own record.
+  | The screen tells you so if you
+  | try.
+  | To recap: choose the person,
+  | choose Deactivate, and confirm.
+  | That is how you deactivate a staff
+  | member.
+  | Questions? Message Mega-Net Software on
+  | WhatsApp.
+RENDERED TEXT (DOM) on 1966 frames: frames whose caption text differs from the scheduled chunk: 0 -> PASS 
+frames 1966, with caption 1633; caption bbox x 110-889, y 1121-1271 (limit x 80-920, bottom y <= 1280); tallest pill 151px (1 line ~86, 2 lines ~146, 3 lines ~204)
+GEOMETRY (every frame): PASS
+sentences 22 | caption runs 22 | speech segments by silence detection (-45dB) 32
+"TTS" = start/end the TTS engine reported (+0.4s lead-in); "audio" = measured on the rendered video audio.
+ # sentence                         cap on  cap off   TTS st  TTS end  audio st audio end  max |d|  result
+ 1 Deactivate a staff member in M    0.467    3.300    0.430    3.255     0.535     3.330    0.069  PASS
+ 2 You need the Org Admin role.      3.733    5.233    3.645    5.183     3.800     5.285    0.088  PASS
+ 3 You will choose the person, ch    5.633    9.233    5.573    9.185     5.719     9.288    0.086  PASS
+ 4 Open the menu, and choose Staf    9.633   12.067    9.575   12.013     9.707    12.115    0.074  PASS
+ 5 If the list is long, type part   12.467   16.367   12.402   16.302    12.556    16.405    0.090  PASS
+ 6 Choose the row of the person y   16.767   19.133   16.692   19.105    16.826    19.138    0.074  PASS
+ 7 Their details load into the fo   19.567   21.633   19.495   21.595    19.625    21.698    0.072  PASS
+ 8 Choose Deactivate.               22.033   23.000   21.985   22.973    22.098    23.046    0.065  PASS
+ 9 The app asks you to confirm.     23.433   24.900   23.362   24.837    23.496    24.940    0.071  PASS
+10 If you choose Cancel, nothing    25.300   27.700   25.227   27.640    25.373    27.743    0.073  PASS
+11 Choose OK to go ahead.           28.100   29.400   28.030   29.342    28.147    29.430    0.070  PASS
+12 A message confirms it, and the   29.800   33.867   29.732   33.832    29.836    33.903    0.068  PASS
+13 Deactivating removes their acc   34.267   37.300   34.222   37.247    34.325    37.350    0.058  PASS
+14 Nothing is deleted.              37.700   38.767   37.637   38.737    37.736    38.802    0.063  PASS
+15 The person stays in the list.    39.200   40.633   39.127   40.602    39.268    40.695    0.073  PASS
+16 A deactivated person who tries   41.067   44.767   40.992   44.742    41.123    44.806    0.074  PASS
+17 Deactivate works only after yo   45.200   47.733   45.133   47.682    45.251    47.785    0.068  PASS
+18 You cannot deactivate your own   48.133   50.000   48.072   49.972    48.222    50.038    0.089  PASS
+19 The screen tells you so if you   50.433   52.200   50.362   52.137    50.504    52.240    0.071  PASS
+20 To recap: choose the person, c   52.600   56.733   52.527   56.678    52.671    56.780    0.073  PASS
+21 That is how you deactivate a s   57.133   59.233   57.067   59.180    57.209    59.283    0.075  PASS
+22 Questions? Message Mega-Net So   59.633   63.533   59.570   63.483    59.687    63.551    0.063  PASS
+worst |delta| over 22 sentences x 4 comparisons: 0.090s
+TIMING (within 0.1s of the measured sentence boundaries): PASS
+NEGATIVE CONTROLS: changed caption word caught: True; 0.25s timing shift caught: True; blanked caption frame caught: True; altered caption word on a frame caught: True
+RESULT: PASS

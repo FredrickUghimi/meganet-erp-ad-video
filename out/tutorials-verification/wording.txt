@@ -1,0 +1,10 @@
+approved narration: 68 strings scanned
+rendered caption chunks: 126 strings scanned
+drawn strings (title / steps / roles / dialog / chip labels): 79 strings scanned
+end card and chips in src/MegaNetTutorials.tsx: 11 strings scanned
+rendered DOM text, /tmp/claude-0/-home-user/f4f0bcf6-9e3b-53c4-926b-5666168a7217/scratchpad/work/change/tb/textboxes.json: 1979 frames, 15434 text nodes, 138 distinct strings scanned
+rendered DOM text, /tmp/claude-0/-home-user/f4f0bcf6-9e3b-53c4-926b-5666168a7217/scratchpad/work/deactivate/tb/textboxes.json: 1966 frames, 16058 text nodes, 135 distinct strings scanned
+rendered DOM text, /tmp/claude-0/-home-user/f4f0bcf6-9e3b-53c4-926b-5666168a7217/scratchpad/work/invite/tb/textboxes.json: 2637 frames, 22255 text nodes, 188 distinct strings scanned
+NEGATIVE CONTROL (the toast sentence, a security claim and a delivery claim are all caught): PASS
+matches: none
+RESULT: PASS
